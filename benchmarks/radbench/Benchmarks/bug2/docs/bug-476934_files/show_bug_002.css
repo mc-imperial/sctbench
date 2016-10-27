@@ -1,0 +1,38 @@
+/*
+ * Custom rules for show_bug.css.
+ * The rules you put here override rules in that stylesheet.
+ */
+
+.last_comment_link {
+    float: right;
+    font-size: 80%;
+    font-weight: normal;
+}
+
+/* colorize bugs in various groups */
+body[class*=bz_group_] {
+    background-color: #eeeeff;
+}
+
+body.bz_group_webtools-security,
+body.bz_group_websites-security,
+body.bz_group_bugzilla-security {
+    background-color: #ffeeee;
+}
+
+body.bz_group_client-services-security {
+    background-color: #ffff80;
+}
+
+body.bz_group_core-security {
+   background-color: #ffe0b0;
+}
+
+#legal_disclaimer {
+    width: 40em;
+    padding: 1em;
+    margin: 0 1em 1em 1em;
+    font-weight: bold;
+    border: 1px red solid;
+    background-color: lightyellow;
+}

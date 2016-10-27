@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: Magick Vector Graphics</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="magick, vector, graphics, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../index.html"><img id="titlebar-west" src="../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="982871066"><img id="titlebar-west" src="../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img src="../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img id="titlebar-east" src="../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../index.html">About ImageMagick</a>
+      <a href="../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="451582667" class="sub">Usage</a>
+      <a href="../www/api.html">Program Interfaces</a>
+      <a href="../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../Magick++/" target="425888659" class="sub">Magick++</a>
+      <a href="../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/install-source.html">Install from Source</a>
+      <a href="../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../www/binary-releases.html">Binary Releases</a>
+      <a href="../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/sitemap.html">Site Map</a>
+			<a href="../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../www/sponsors.html">Sponsors</a>
+  <a href="http://www.hitflip.de/dvds/" class="sponsor" target="sponsor">Filme Tauschen</a><!-- 200802010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[<a href="#intro">Introduction to Vector Graphics</a> &bull; <a href="#overview">MVG Overview</a> &bull; <a href="#primitives">Drawing Primitives</a>]</p>
+
+<div style="margin: auto;">
+  <h2><a name="intro"></a>Introduction to Vector Graphics</h2></div>
+</div>
+
+<p>This specification defines the features and syntax for Magick Vector Graphics (MVG), a modularized language for describing two-dimensional vector and mixed vector/raster graphics in ImageMagick.  You can use the language to draw from the
+command line, from an MVG file, from an <a href="http://www.w3.org/TR/SVG/"  target="1723011257">SVG -- Scalable Vector Graphics</a> file or from one of the ImageMagick <a href="../www/api.html">program interfaces</a>.  Use this command, for example, to render an arc:</p>
+
+<pre class="text">
+ convert -size 100x60 xc:skyblue -fill white -stroke black \
+    -draw "path 'M 30,40  A 30,20  20  0,0 70,20 A 30,20  20  1,0 30,40 Z '" \
+    arc.png
+</pre>
+
+<p>and here is the results:</p>
+
+<p class="image">
+  <a href="../images/arc.png"><img src="../images/arc.png" width="100" height="60" align="middle" alt="arc" /></a>
+</p>
+
+<p>When the drawing gets sufficiently complex, we recommend you assemble the graphic primitives into a MVG file. For our example, we use <a href="../www/source/piechart.mvg">piechart.mvg</a>:</p>
+
+<div class="viewport">
+<pre class="code">
+  push graphic-context
+    viewbox 0 0 624 369
+    affine 0.283636 0 0 0.283846 -0 -0
+    push graphic-context
+      push graphic-context
+        fill 'darkslateblue'
+        stroke 'blue'
+        stroke-width 1
+        rectangle 1,1 2199,1299
+      pop graphic-context
+      push graphic-context
+        font-size 40
+        fill 'white'
+        stroke-width 1
+        text 600,1100 'Average: 20.0'
+      pop graphic-context
+      push graphic-context
+        fill 'red'
+        stroke 'black'
+        stroke-width 5
+        path 'M700.0,600.0 L340.0,600.0 A360.0,360.0 0 0,1 408.1452123287954,389.2376150414973 z'
+      pop graphic-context
+      push graphic-context
+        font-size 40
+        fill 'white'
+        stroke-width 1
+        text 1400,140 'MagickWand for PHP'
+      pop graphic-context
+      push graphic-context
+        font-size 30
+        fill 'white'
+        stroke-width 1
+        text 1800,140 '(10.0%)'
+      pop graphic-context
+      push graphic-context
+        fill 'red'
+        stroke 'black'
+        stroke-width 4
+        rectangle 1330,100 1370,140
+      pop graphic-context
+      push graphic-context
+        fill 'yellow'
+        stroke 'black'
+        stroke-width 5
+        path 'M700.0,600.0 L408.1452123287954,389.2376150414973 A360.0,360.0 0 0,1 976.5894480359858,369.56936567559273 z'
+      pop graphic-context
+      push graphic-context
+        font-size 40
+        fill 'white'
+        stroke-width 1
+        text 1400,220 'MagickCore'
+      pop graphic-context
+      push graphic-context
+        font-size 30
+        fill 'white'
+        stroke-width 1
+        text 1800,220 '(29.0%)'
+      pop graphic-context
+      push graphic-context
+        fill 'yellow'
+        stroke 'black'
+        stroke-width 4
+        rectangle 1330,180 1370,220
+      pop graphic-context
+      push graphic-context
+        fill 'fuchsia'
+        stroke 'black'
+        stroke-width 5
+        path 'M700.0,600.0 L976.5894480359858,369.56936567559273 A360.0,360.0 0 0,1 964.2680466142854,844.4634932636567 z'
+      pop graphic-context
+      push graphic-context
+        font-size 40
+        fill 'white'
+        stroke-width 1
+        text 1400,300 'MagickWand'
+      pop graphic-context
+      push graphic-context
+        font-size 30
+        fill 'white'
+        stroke-width 1
+        text 1800,300 '(22.9%)'
+      pop graphic-context
+      push graphic-context
+        fill 'fuchsia'
+        stroke 'black'
+        stroke-width 4
+        rectangle 1330,260 1370,300
+      pop graphic-context
+      push graphic-context
+        fill 'blue'
+        stroke 'black'
+        stroke-width 5
+        path 'M700.0,600.0 L964.2680466142854,844.4634932636567 A360.0,360.0 0 0,1 757.853099990584,955.3210081341651 z'
+      pop graphic-context
+      push graphic-context
+        font-size 40
+        fill 'white'
+        stroke-width 1
+        text 1400,380 'JMagick'
+      pop graphic-context
+      push graphic-context
+        font-size 30
+        fill 'white'
+        stroke-width 1
+        text 1800,380 '(10.6%)'
+      pop graphic-context
+      push graphic-context
+        fill 'blue'
+        stroke 'black'
+        stroke-width 4
+        rectangle 1330,340 1370,380
+      pop graphic-context
+      push graphic-context
+        fill 'lime'
+        stroke 'black'
+        stroke-width 5
+        path 'M700.0,600.0 L757.853099990584,955.3210081341651 A360.0,360.0 0 0,1 340.0,600.0 z'
+      pop graphic-context
+      push graphic-context
+        font-size 40
+        fill 'white'
+        stroke-width 1
+        text 1400,460 'Magick++'
+      pop graphic-context
+      push graphic-context
+        font-size 30
+        fill 'white'
+        stroke-width 1
+        text 1800,460 '(27.5%)'
+      pop graphic-context
+      push graphic-context
+        fill 'lime'
+        stroke 'black'
+        stroke-width 4
+        rectangle 1330,420 1370,460
+      pop graphic-context
+      push graphic-context
+        font-size 100
+        fill 'white'
+        stroke-width 1
+        text 100,150 'ImageMagick'
+      pop graphic-context
+      push graphic-context
+        fill 'none'
+        stroke 'black'
+        stroke-width 5
+        circle 700,600 700,960
+      pop graphic-context
+    pop graphic-context
+  pop graphic-context
+</pre>
+</div>
+
+<p>to render a pie chart with this command:</p>
+
+<pre class="text">
+   convert piechart.mvg piechart.png
+</pre>
+
+<p>which produces this rendering:</p>
+
+<p class="image">
+  <a href="../images/piechart.png"><img src="../images/piechart.png" width="624" height="369" align="middle" alt="piechart" /></a>
+</p>
+
+<p>However, in general, MVG is sufficiently difficult to work with that you probably want to use a program to generate your graphics in the SVG format.  ImageMagick automatically converts SVG to MVG and renders your image, for example, we render <a href="../www/source/piechart.svg">piechart.svg</a> with this command:
+
+<pre class="text">
+   convert piechart.svg piechart.jpg
+</pre>
+
+<p>to produce the same pie chart we created with the the MVG language.</p>
+
+<p>Drawing is available from many of the ImageMagick <a href="../www/api.html">program interfaces</a> as well.  ImageMagick converts the drawing API calls to MVG and renders it.  Here is example code written in the <a href="../www/magick-wand.html">MagickWand</a> language:
+
+<div class="viewport">
+<pre class="code">
+   (void) PushDrawingWand(draw_wand);
+   {
+     const PointInfo points[6] =
+     {
+       { 180,504 },
+       { 282.7,578.6 },
+       { 243.5,699.4 },
+       { 116.5,699.4 },
+       { 77.26,578.6 },
+       { 180,504 }
+     };
+
+     DrawSetStrokeAntialias(draw_wand,True);
+     DrawSetStrokeWidth(draw_wand,9);
+     DrawSetStrokeLineCap(draw_wand,RoundCap);
+     DrawSetStrokeLineJoin(draw_wand,RoundJoin);
+     (void) DrawSetStrokeDashArray(draw_wand,0,(const double *)NULL);
+     (void) PixelSetColor(color,"#4000c2");
+     DrawSetStrokeColor(draw_wand,color);
+     DrawSetFillRule(draw_wand,EvenOddRule);
+     (void) PixelSetColor(color,"#800000");
+     DrawSetFillColor(draw_wand,color);
+     DrawPolygon(draw_wand,6,points);
+   }
+   (void) PopDrawingWand(draw_wand);
+</pre>
+</div>
+
+<div style="margin: auto;">
+  <h2><a name="overview"></a>MVG Overview</h2></div>
+</div>
+
+<p>MVG ignores all white-space between commands. This allows multiple MVG commands per line. It is common convention to terminate each MVG command with a new line to make MVG easier to edit and read. This syntax description uses indentation in MVG sequences to aid with understanding. Indentation is supported but is not required.</p>
+
+<p>Metafile wrapper syntax (to support stand-alone MVG files):</p>
+
+<pre class="text">
+  push graphic-context
+    viewbox 0 0 width height
+    [ any other MVG commands ]
+  pop graphic-context
+</pre>
+
+<p>Pattern syntax (saving and restoring context):</p>
+
+<pre class="text">
+  push pattern id x,y width,height
+   push graphic-context
+    [ drawing commands ]
+   pop graphic-context
+  pop pattern
+</pre>
+
+<p>an example is (%s is a identifier string):</p>
+
+<pre class="text">
+  push defs
+   push pattern %s 10,10 20,20
+    push graphic-context
+     fill red
+     rectangle 5,5 15,15
+    pop graphic-context
+    push graphic-context
+     fill green
+     rectangle 10,10 20,20
+    pop graphic-context
+   pop pattern
+  pop defs
+</pre>
+
+<p>For image tiling use:</p>
+
+<pre class="text">
+  push pattern id x,y width,height
+   image Copy ...
+  pop pattern
+</pre>
+
+<p>Note you can use the pattern for either the fill or stroke like:</p>
+
+<pre class="text">
+  stroke url(#%s)
+</pre>
+
+<p>or</p>
+
+<pre class="text">
+  fill url(#%s)
+</pre>
+
+<p>The clip path defines a clipping area, where only the contained area to be drawn upon.  Areas outside of the clipping area are masked.</p>
+
+<pre class="text">
+  push defs
+   push clip-path %s
+    push graphic-context
+     rectangle 10,10 20,20
+    pop graphic-context
+   pop clip-path
+  pop defs
+  clip-path url(#%s)
+</pre>
+
+<div style="margin: auto;">
+  <h2><a name="primitives"></a>Drawing Primitives</h2></div>
+</div>
+
+<p>Here is a complete description of the MVG drawing primitives:</p>
+
+<ul>
+
+<div style="margin: auto;">
+  <h4><a name="affine" id="affine"></a>affine <em class="option">s<sub>x</sub></em>,<em class="option">r<sub>x</sub></em>,<em class="option">r<sub>y</sub></em>,<em class="option">s<sub>y</sub></em>,<em class="option">t<sub>x</sub></em>,<em class="option">t<sub>y</sub></em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="arc" id="arc"></a>arc <em class="option">x<sub>0</sub></em>,<em class="option">y<sub>0</sub></em>&nbsp; &nbsp;<em class="option">x<sub>1</sub></em>,<em class="option">y<sub>1</sub></em>&nbsp; &nbsp;<em class="option">a<sub>0</sub></em>,<em class="option">a<sub>1</sub></em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="bezier" id="bezier"></a>bezier <em class="option">x<sub>0</sub></em>,<em class="option">y<sub>0</sub></em> ... <em class="option">x<sub>n</sub></em>,<em class="option">y<sub>n</sub></em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="circle" id="circle"></a>circle <em class="option">origin<sub>x</sub></em>,<em class="option">origin<sub>y</sub></em>&nbsp; &nbsp;<em class="option">perimeter<sub>x</sub></em>,<em class="option">perimeter<sub>y</sub></em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="clip-path" id="clip-path"></a>clip-path url(<em class="option">name</em>)</h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="clip-rule" id="clip-rule"></a>clip-rule <em class="option">rule</em></h4>
+</div>
+
+<p>Choose from these rule types:</p>
+
+<pre class="text">
+  evenodd
+  nonzero
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="clip-units" id="clip-units"></a>clip-units <em class="option">units</em></h4>
+</div>
+
+<p>Choose from these unit types:</p>
+
+<pre class="text">
+  userSpace
+  userSpaceOnUse
+  objectBoundingBox
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="color" id="color"></a>color <em class="option">x</em>,<em class="option">y</em> <em class="option">method</em></h4>
+</div>
+
+<p>Choose from these method types:</p>
+
+<pre class="text">
+  point
+  replace
+  floodfill
+  filltoborder
+  reset
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="decorate" id="decorate"></a>decorate <em class="option">type</em></h4>
+</div>
+
+<p>Choose from these types of decorations:</p>
+
+<pre class="text">
+  none
+  line-through
+  overline
+  underline
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="ellipse" id="ellipse"></a>ellipse <em class="option">center<sub>x</sub></em>,<em class="option">center<sub>y</sub></em>&nbsp; &nbsp;<em class="option">radius<sub>x</sub></em>,<em class="option">radius<sub>y</sub></em>&nbsp; &nbsp;<em class="option">arc<sub>start</sub></em>,<em class="option">arc<sub>stop</sub></em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="fill" id="fill"></a>fill <em class="option">color</em></h4>
+</div>
+
+<p>Choose from any of these <a href="../www/color.html" target="412272502">colors</a>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="fill-opacity" id="fill-opacity"></a>fill-opacity <em class="option">opacity</em></h4>
+</div>
+
+<p>The opacity ranges from 0.0 (fully transparent) to 1.0 (fully opaque) or as a percentage (e.g. 50%).</p>
+
+<div style="margin: auto;">
+  <h4><a name="fill-rule" id="fill-rule"></a>fill-rule <em class="option">rule</em></h4>
+</div>
+
+<p>Choose from these rule types:</p>
+
+<pre class="text">
+  evenodd
+  nonzero
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="font" id="font"></a>font <em class="option">name</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="font-family" id="font-family"></a>font-family <em class="option">family</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="font-size" id="font-size"></a>font-size <em class="option">point-size</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="font-stretch" id="font-stretch"></a>font-stretch <em class="option">type</em></h4>
+</div>
+
+<p>Choose from these stretch types:</p>
+
+<pre class="text">
+  all
+  normal
+  ultra-condensed
+  extra-condensed
+  condensed
+  semi-condensed
+  semi-expanded
+  expanded
+  extra-expanded
+  ultra-expanded
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="font-style" id="font-style"></a>font-style <em class="option">style</em></h4>
+</div>
+
+<p>Choose from these styles:</p>
+
+<pre class="text">
+  all
+  normal
+  italic
+  oblique
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="font-weight" id="font-weight"></a>font-weight <em class="option">weight</em></h4>
+</div>
+
+<p>Choose from these weights:</p>
+
+<pre class="text">
+  all
+  normal
+  bold
+  100
+  200
+  300
+  400
+  500
+  600
+  700
+  800
+  900
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="gradient-units" id="gradient-units"></a>gradient-units <em class="option">units</em></h4>
+</div>
+
+<p>Choose from these units:</p>
+
+<pre class="text">
+  userSpace
+  userSpaceOnUse
+  objectBoundingBox
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="gravity" id="gravity"></a>gravity <em class="option">type</em></h4>
+</div>
+
+<p>Choose from these gravity types:</p>
+
+<pre class="text">
+  NorthWest
+  North
+  NorthEast
+  West
+  Center
+  East
+  SouthWest
+  South
+  SouthEast
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="image" id="image"></a>image <em class="option">compose x,y width,height 'filename'</em></h4>
+</div>
+
+<p>Choose from these compose operations:</p>
+
+<div class="viewport">
+<pre class="text">
+  Undefined
+  Add
+  Atop
+  Blend
+  Bumpmap
+  Clear
+  ColorBurn
+  ColorDodge
+  Colorize
+  CopyBlack
+  CopyBlue
+  CopyCyan
+  CopyGreen
+  Copy
+  CopyMagenta
+  CopyOpacity
+  CopyRed
+  CopyYellow
+  Darken
+  Dst
+  Difference
+  Displace
+  Dissolve
+  DstAtop
+  DstIn
+  DstOut
+  DstOver
+  Dst
+  Exclusion
+  HardLight
+  Hue
+  In
+  Lighten
+  Luminize
+  Minus
+  Modulate
+  Multiply
+  None
+  Out
+  Overlay
+  Over
+  Plus
+  Replace
+  Saturate
+  Screen
+  SoftLight
+  Src
+  SrcAtop
+  SrcIn
+  SrcOut
+  SrcOver
+  Src
+  Subtract
+  Threshold
+  Xor
+</pre>
+</div>
+
+<div style="margin: auto;">
+  <h4><a name="line" id="line"></a>line <em class="option">x,y x<sub>1</sub>,y<sub>1</sub></em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="matte" id="matte"></a>font-style <em class="option">x,y method</em></h4>
+</div>
+
+<p>Choose from these methods:</p>
+
+<pre class="text">
+  point
+  replace
+  floodfill
+  filltoborder
+  reset
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="offset" id="offset"></a>offset <em class="option">offset</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="opacity" id="opacity"></a>opacity <em class="option">opacity</em></h4>
+</div>
+
+<p>Use percent (e.g. 50%).</p>
+
+<div style="margin: auto;">
+  <h4><a name="path" id="path"></a>path <em class="option">path</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="point" id="point"></a>point <em class="option">x,y</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="polygon" id="polygon"></a>polygon <em class="option">x,y x<sub>1</sub>,y<sub>1</sub>, ..., x<sub>n</sub>,y<sub>n</sub></em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="polyline" id="polyline"></a>polyline <em class="option">x,y x<sub>1</sub>,y<sub>1</sub>, ..., x<sub>n</sub>,y<sub>n</sub></em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="pop-clip-path" id="pop-clip-path"></a>pop clip-path</h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="pop-defs" id="pop-defs"></a>pop defs</h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="pop-gradient" id="pop-gradient"></a>pop gradient</h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="pop-graphic-context" id="pop-graphic-context"></a>pop graphic-context</h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="pop-pattern" id="pop-pattern"></a>pop pattern</h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="push" id="push"></a>push clip-path <em class="option">name</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="push-defs" id="push-defs"></a>push defs</h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="push-gradient-linear" id="push-gradient-linear"></a>push gradient <em class="option">id linear x,y x<sub>1</sub>,y<sub>1</sub></em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="push-gradient-radial" id="push-gradient-radial"></a>push gradient <em class="option">id radial x<sub>c</sub>,c<sub>y</sub> x<sub>f</sub>,y<sub>f</sub> radius</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="push-graphic-context" id="push-graphic-context"></a>push graphic-context</h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="push-pattern" id="push-pattern"></a>push pattern <em class="option">id radial x,y width,height</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="rectangle" id="rectangle"></a>rectangle <em class="option">x,y x<sub>1</sub>,y<sub>1</sub></em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="rotate" id="rotate"></a>rotate <em class="option">angle</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="roundrectangle" id="roundrectangle"></a>roundrectangle <em class="option">x,y x<sub>1</sub>,y<sub>1</sub> width,height</em></h4>
+</div>
+
+<p></p>
+
+
+<div style="margin: auto;">
+  <h4><a name="scale" id="scale"></a>scale <em class="option">x,y</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="skewX" id="skewX"></a>skewX <em class="option">angle</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="skewY" id="skewY"></a>skewX <em class="option">angle</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="stop-color" id="stop-color"></a>stop-color <em class="option">color offset</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="stroke" id="stroke"></a>stroke <em class="option">color</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="stroke-antialias" id="stroke-antialias"></a>stroke-antialias <em class="option">0 &bull; 1</em></h4>
+</div>
+
+<p></p>
+
+
+<div style="margin: auto;">
+  <h4><a name="stroke-dasharray" id="stroke-dasharray"></a>stroke-dasharray <em class="option">none &bull; numeric-list</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="stroke-dashoffset" id="stroke-dashoffset"></a>stroke-dashoffset <em class="option">offset</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="stroke-linecap" id="stroke-linecap"></a>stroke-linecap <em class="option">type</em></h4>
+</div>
+
+<p>Choose from these cap types:</p>
+
+<pre class="text">
+  butt
+  round
+  square
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="stroke-linejoin" id="stroke-linejoin"></a>stroke-linejoin <em class="option">type</em></h4>
+</div>
+
+<p>Choose from these join types:</p>
+
+<pre class="text">
+  bevel
+  miter
+  round
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="stroke-miterlimit" id="stroke-miterlimit"></a>stroke-miterlimit <em class="option">limit</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="stroke-opacity" id="stroke-opacity"></a>stroke-opacity <em class="option">opacity</em></h4>
+</div>
+
+<p>The opacity ranges from 0.0 (fully transparent) to 1.0 (fully opaque) or as a percentage (e.g. 50%).</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="stroke-width" id="stroke-width"></a>stroke-width <em class="option">width</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="text" id="text"></a>text <em class="option">"text"</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="text-antialias" id="text-antialias"></a>text-antialias <em class="option">0 &bull; 1</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="text-undercolor" id="text-undercolor"></a>text-undercolor <em class="option">color</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="translate" id="translate"></a>translate <em class="option">x,y</em></h4>
+</div>
+
+<p></p>
+
+<div style="margin: auto;">
+  <h4><a name="viewbox" id="viewbox"></a>viewbox <em class="option">x,y x<sub>1</sub>,y<sub>1</sub></em></h4>
+</div>
+</ul>
+
+<p></p>
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="785152888">Discourse Server</a> &bull;
+    <a href="../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://studio.webbyland.com/ImageMagick/MagickStudio/scripts/MagickStudio.cgi" target="1339814373">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

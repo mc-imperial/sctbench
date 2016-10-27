@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>Image formats</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<!-- 3,html --> 
+<meta name="src" content="vipsmanual.tex"> 
+<meta name="date" content="2008-09-15 17:53:00"> 
+<link rel="stylesheet" type="text/css" href="vipsmanual.css"> 
+</head><body 
+>
+  <!--l. 1--><div class="crosslinks"><p class="noindent">[<a 
+href="vipsmanualse9.html" >prev</a>] [<a 
+href="vipsmanualse9.html#tailvipsmanualse9.html" >prev-tail</a>] [<a 
+href="#tailvipsmanualse10.html">tail</a>] [<a 
+href="vipsmanualch2.html#vipsmanualse10.html" >up</a>] </p></div>
+  <h3 class="sectionHead"><span class="titlemark">2.4    </span> <a 
+ id="x16-680002.4"></a>Image formats</h3>
+<!--l. 4--><p class="noindent" >VIPS has a simple system for adding support for new image
+file formats. You can register a new format and it will
+automatically be supported by all the VIPS interfaces. You
+can ask VIPS to find a format to load a file with, or to select
+a image file writer based on a filename. Convenience
+functions copy a file to an <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">IMAGE</span></span></span>, or an <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">IMAGE</span></span></span> to a
+file.
+<!--l. 10--><p class="indent" >  This is a parallel API to <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_open()</span></span></span>, see <span 
+class="cmsy-10">§</span><a 
+href="vipsmanualse8.html#x14-420002.2.4">2.2.4<!--tex4ht:ref: sec:open --></a>. The
+format system is useful for images which are large or
+slow to open, because you pass a descriptor to write
+to and so control how and where the decompressed
+image is held. <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_open()</span></span></span> is useful for images in
+formats which can be directly read from disc, since you
+will avoid a copy operation and can directly control
+the disc file. The inplace operations (see <span 
+class="cmsy-10">§</span><a 
+href="vipsmanualse16.html#x24-1040004.2.8">4.2.8<!--tex4ht:ref: sec:inplace --></a>), for
+example, will only work directly on disc images if you use
+<span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_open()</span></span></span>.
+<!--l. 19--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">2.4.1    </span> <a 
+ id="x16-690002.4.1"></a>How a format is represented</h4>
+<!--l. 21--><p class="noindent" >See the man page for <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_format</span></span></span> for full details,
+but briefly, an image format consists of the following
+items:
+    <ul class="itemize1">
+    <li class="itemize">A  name,  a  name  that  can  be  shows  to  the  user,
+    and a list of possible filename suffixes (<span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">.tif</span></span></span>, for
+    example)
+    </li>
+    <li class="itemize">A  function  which  tests  for  a  file  being  in  that
+    format, a function which loads just the header of
+    the file (that is, it reads properties like width and
+    height  and  does  not  read  any  pixel  data)  and  a
+    function which loads the pixel data
+    </li>
+    <li class="itemize">A function which will write an IMAGE to a file in
+    the format                                          </li>
+          <li class="itemize">And  finally  a  function  which  examines  a  file  in
+          the format and returns flags indicating how VIPS
+          should  deal  with  the  file.  The  only  flag  in  the
+          current version is one indicating that the file can be
+          opened lazily
+          </li></ul>
+  <!--l. 45--><p class="noindent" >
+      <h4 class="subsectionHead"><span class="titlemark">2.4.2    </span> <a 
+ id="x16-700002.4.2"></a>The format table</h4>
+  <!--l. 47--><p class="noindent" >VIPS keeps a table of known formats, sorted by insert
+  order and priority. You register new formats with
+  <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_format_register()</span></span></span> and, optionally, unregister
+  with <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_format_unregister()</span></span></span>. You can call these
+  operations from a plugin&#8217;s init function.
+  <!--l. 52--><p class="indent" >    Any of the functions may be left NULL and VIPS will
+  try to make do with what you do supply. Of course a
+  format with all functions as NULL will not be very
+  useful.
+  <!--l. 56--><p class="indent" >    The priority system is useful if a file can be read by
+  several possible format loaders. For example, the libMagick
+  loader can read TIFF files, but not as well as VIPS&#8217; native
+  TIFF reader. To make sure the VIPS TIFF reader is tried
+  first, the libMagick format is given a low priority. Most of
+  the time, you won&#8217;t need this.
+  <!--l. 62--><p class="indent" >    A switch to the <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">vips</span></span></span> command-line program is handy
+  for listing the supported formats. Try:
+                                                                                       
+
+                                                                                       
+  <table 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><div class="verbatim">
+vips&#x00A0;--list&#x00A0;formats
+</div>
+</td></tr></table>
+<!--l. 67--><p class="nopar" >
+<!--l. 69--><p class="indent" >  As an example, Figure&#x00A0;<a 
+href="#x16-700019">2.9<!--tex4ht:ref: fg:newformat --></a> shows how to register a new
+format in a plugin.
+                                           
+                                                                                       
+
+                                                                                       
+<!--l. 73--><p class="indent" >  <a 
+ id="x16-700019"></a><hr class="float"><div class="float" 
+><table class="float"><tr class="float"><td class="float" 
+>
+                                           
+                                                                                       
+
+                                                                                       
+<table 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><div class="verbatim">
+static&#x00A0;const&#x00A0;char&#x00A0;&#x22C6;my_suffs[]&#x00A0;=&#x00A0;{&#x00A0;".me",&#x00A0;NULL&#x00A0;};
+&#x00A0;<br />
+&#x00A0;<br />static&#x00A0;int
+&#x00A0;<br />is_myformat(&#x00A0;const&#x00A0;char&#x00A0;&#x22C6;filename&#x00A0;)
+&#x00A0;<br />{
+&#x00A0;<br />&#x00A0;&#x00A0;unsigned&#x00A0;char&#x00A0;buf[2];
+&#x00A0;<br />
+&#x00A0;<br />&#x00A0;&#x00A0;if(&#x00A0;im__get_bytes(&#x00A0;filename,&#x00A0;buf,&#x00A0;2&#x00A0;)&#x00A0;&amp;&amp;
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;(int)&#x00A0;buf[0]&#x00A0;==&#x00A0;0xff&#x00A0;&amp;&amp;
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;(int)&#x00A0;buf[1]&#x00A0;==&#x00A0;0xd8&#x00A0;)
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;return(&#x00A0;1&#x00A0;);
+&#x00A0;<br />
+&#x00A0;<br />&#x00A0;&#x00A0;return(&#x00A0;0&#x00A0;);
+&#x00A0;<br />}
+&#x00A0;<br />
+&#x00A0;<br />char&#x00A0;&#x22C6;
+&#x00A0;<br />g_module_check_init(&#x00A0;GModule&#x00A0;&#x22C6;self&#x00A0;)
+&#x00A0;<br />{
+&#x00A0;<br />&#x00A0;&#x00A0;im_format_t&#x00A0;&#x22C6;format;
+&#x00A0;<br />
+&#x00A0;<br />&#x00A0;&#x00A0;format&#x00A0;=&#x00A0;im_format_register(&#x00A0;"myformat",
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;_(&#x00A0;"My&#x00A0;image&#x00A0;format"&#x00A0;),
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;my_suffs,
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;is_myformat,
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;read_myformat_header,
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;read_myformat_image,
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;write_myformat,
+&#x00A0;<br />&#x00A0;&#x00A0;&#x00A0;&#x00A0;NULL
+&#x00A0;<br />&#x00A0;&#x00A0;};
+&#x00A0;<br />&#x00A0;&#x00A0;im_format_set_priority(&#x00A0;format,&#x00A0;100&#x00A0;);
+&#x00A0;<br />}
+</div>
+</td></tr></table>
+<!--l. 105--><p class="nopar" >
+<br /><table class="caption" 
+><tr style="vertical-align:baseline;" class="caption"><td class="id">Figure&#x00A0;2.9: </td><td  
+class="content">Registering a format in a plugin</td></tr></table><!--tex4ht:label?: x16-700019 -->
+                                           
+                                                                                       
+
+                                                                                       
+  </td></tr></table></div><hr class="endfloat" />
+  <h4 class="subsectionHead"><span class="titlemark">2.4.3    </span> <a 
+ id="x16-710002.4.3"></a>Finding a format</h4>
+<!--l. 112--><p class="noindent" >You can loop over the format table in order with
+<span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_format_map()</span></span></span>. Like all the map functions in VIPS,
+this take a function and applies it to every element in the
+table until it returns non-zero, or until the table has been all
+covered.
+<!--l. 117--><p class="indent" >  You find an <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_format_t</span></span></span> to use to open a file with
+<span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_format_for_file()</span></span></span>. This searches the VIPS
+format table and returns the first format whose test function
+returns true, setting an error message and returning NULL if
+no format is found.
+<!--l. 122--><p class="indent" >  You find a format to write a file with <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_format_for_name()</span></span></span>.
+This returns the first format with a save function whose
+suffix list matches the suffix of the supplied filename.
+<!--l. 126--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">2.4.4    </span> <a 
+ id="x16-720002.4.4"></a>Convenience functions</h4>
+<!--l. 128--><p class="noindent" >A pair of convenience functions, <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_format_write()</span></span></span>
+and <span class="obeylines-h"><span class="verb"><span 
+class="pcrr7t-">im_format_read()</span></span></span>, will copy an image to and
+from disc using the appropriate format.
+                                           
+                                                                                       
+
+                                                                                       
+  <!--l. 77--><div class="crosslinks"><p class="noindent">[<a 
+href="vipsmanualse9.html" >prev</a>] [<a 
+href="vipsmanualse9.html#tailvipsmanualse9.html" >prev-tail</a>] [<a 
+href="vipsmanualse10.html" >front</a>] [<a 
+href="vipsmanualch2.html#vipsmanualse10.html" >up</a>] </p></div>
+<!--l. 77--><p class="indent" >  <a 
+ id="tailvipsmanualse10.html"></a>   
+</body></html> 

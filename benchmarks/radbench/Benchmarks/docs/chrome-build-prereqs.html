@@ -1,0 +1,1379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+ 
+
+
+ 
+ 
+ 
+
+
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ var codesite_token = "83e32edf1ac2b0ff023c92cbe0eb07f8";
+ 
+ 
+ var logged_in_user_email = "NickJalbert@gmail.com";
+ 
+ 
+ var relative_base_url = "";
+ 
+ </script>
+ 
+ 
+ <title>LinuxBuildInstructionsPrerequisites - 
+ chromium -
+ 
+ Prerequisites for building. - Project Hosting on Google Code</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link type="text/css" rel="stylesheet" href="chrome-build-prereqs_files/ph_core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="chrome-build-prereqs_files/ph_detail.css">
+ 
+ 
+ 
+ <link type="application/atom+xml" rel="alternate" href="http://code.google.com/feeds/p/chromium/svnchanges/basic?path=/wiki/LinuxBuildInstructionsPrerequisites.wiki">
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/18091280713519311357/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ </style>
+<script src="chrome-build-prereqs_files/ga.js" async="" type="text/javascript"></script></head><body class="t6">
+ <script type="text/javascript">
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ </script>
+ <div id="gaia">
+ 
+ <span>
+ 
+ 
+ <b>NickJalbert@gmail.com</b>
+ 
+ 
+ | <a href="http://code.google.com/u/NickJalbert/" id="projects-dropdown" onclick="return false;"><u>My favorites</u> <small>▼</small></a>
+ | <a href="http://code.google.com/u/NickJalbert/" onclick="_CS_click('/gb/ph/profile');" title="Profile, Updates, and Settings"><u>Profile</u></a>
+ | <a href="https://www.google.com/accounts/Logout?continue=http%3A%2F%2Fcode.google.com%2Fp%2Fchromium%2Fwiki%2FLinuxBuildInstructionsPrerequisites" onclick="_CS_click('/gb/ph/signout');"><u>Sign out</u></a>
+ 
+ </span>
+
+ </div>
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px;"></div>
+<!--[if IE 6]>
+<div style="text-align:center;">
+Support browsers that contribute to open source, try <a href="http://www.firefox.com">Firefox</a> or <a href="http://www.google.com/chrome">Google Chrome</a>.
+</div>
+<![endif]-->
+
+
+
+
+ <table style="padding: 0px; margin: 20px 0px 0px; width: 100%;" cellpadding="0" cellspacing="0">
+ <tbody><tr style="height: 58px;">
+ 
+ <td style="width: 55px; text-align: center;">
+ <a href="http://code.google.com/p/chromium/">
+ 
+ 
+ <img src="chrome-build-prereqs_files/logo.png" alt="Logo">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em;">
+ 
+ <div id="pname" style="margin: 0px 0px -3px;">
+ <a href="http://code.google.com/p/chromium/" style="text-decoration: none; color: rgb(0, 0, 0);">chromium</a>
+ 
+ </div>
+ <div id="psum">
+ <i><a id="project_summary_link" href="http://code.google.com/p/chromium/" style="text-decoration: none; color: rgb(0, 0, 0);">An open-source browser project to help move the web forward.</a></i>
+ </div>
+ 
+ </td>
+ <td style="white-space: nowrap; text-align: right;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q">
+ <input name="projectsearch" value="Search projects" type="submit">
+ </form>
+ 
+ </td></tr>
+ </tbody></table>
+
+
+ 
+<table id="mt" border="0" cellpadding="0" cellspacing="0" width="100%">
+ <tbody><tr>
+ <th onclick="if (!cancelBubble) _go('/p/chromium/');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="http://code.google.com/p/chromium/">Project&nbsp;Home</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ <th onclick="if (!cancelBubble) _go('/p/chromium/downloads/list');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="http://code.google.com/p/chromium/downloads/list">Downloads</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ 
+ <th onclick="if (!cancelBubble) _go('/p/chromium/w/list');">
+ <div class="tab active">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="http://code.google.com/p/chromium/w/list">Wiki</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ 
+ <th onclick="if (!cancelBubble) _go('/p/chromium/issues/list');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="http://code.google.com/p/chromium/issues/list">Issues</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ <td width="100%">&nbsp;</td>
+ </tr>
+</tbody></table>
+<table class="st" align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+ <tbody><tr>
+ 
+ 
+ 
+ <td>
+ <div class="issueDetail">
+<div class="isf">
+ 
+ <span class="inIssueList"> 
+ <span>Search</span>
+ <form action="/p/chromium/w/list" method="GET" style="display: inline;">
+ <select id="can" name="can" style="font-size: 92%;">
+ <option disabled="disabled">Search within:</option>
+ 
+ <option value="1">&nbsp;All wiki pages</option>
+ <option value="3">&nbsp;Featured pages</option>
+ <option value="2" selected="selected">&nbsp;Current pages</option>
+ 
+ 
+ <option value="5">&nbsp;My starred pages</option>
+ 
+ <option value="4">&nbsp;Deprecated pages</option>
+ 
+ </select>
+ <span>for</span>
+ <span id="qq"><input size="38" id="searchq" name="q" autocomplete="off" style="font-size: 92%;" type="text"></span>
+ 
+ 
+ <input value="Search" style="font-size: 92%;" type="submit">
+ </form>
+ </span>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td class="bevel-right" align="right" height="4" valign="top">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ </td>
+ </tr>
+</tbody></table>
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+
+
+<div id="maincol">
+
+ 
+<!-- IE -->
+
+
+
+
+
+
+
+ <style type="text/css">
+ .artifactcomment {
+ margin: .5em 0 0 0;
+ padding: .3em 0 .3em .3em;
+ border-top: 3px solid #c3d9ff;
+ }
+ #commentlist {
+ border-bottom: 3px solid #c3d9ff;
+ }
+ #commentform { padding-top: 1em; }
+ .delcom { background: #e8e8e8 }
+ .commentcontent { margin: 1em 0;}
+ </style>
+
+
+ <div id="wikicontent">
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+ <tbody><tr>
+ 
+ <td class="vt" id="wikimaincol" width="100%">
+ 
+ <div style="float: right; width: 18em;" id="wikimeta">
+ <div class="pmeta_bubble_bg">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <table style="padding: 5px;">
+ <tbody><tr><td colspan="2" style="padding-bottom: 5px;">Updated <span title="Mon Sep 27 14:07:55 2010">Sep 27, 2010</span>
+ 
+ by <a style="white-space: nowrap;" href="http://code.google.com/u/tony.chromium/">tony.chromium</a>
+ </td></tr>
+ 
+ <tr><th class="vt">Labels:</th>
+ <td>
+ 
+ <a href="http://code.google.com/p/chromium/w/list?q=label:Linux" title="">Linux</a>
+ 
+ </td>
+ </tr>
+ 
+ 
+ </tbody></table>
+ </div>
+ <div class="round1"></div>
+ <div class="round2"></div>
+ <div class="round4"></div>
+ </div>
+ </div>
+ 
+ <div id="wikiheader" style="margin-bottom: 1em;">
+ 
+ <img id="star_img" src="chrome-build-prereqs_files/star_off.gif" style="cursor: pointer;" onclick="_CS_toggleStar(this,
+ '',
+ {'scope': 'wiki',
+ 'user': '_CURRENT_USER',
+ 'item': 'chromium:LinuxBuildInstructionsPrerequisites',
+ 'token': codesite_token
+ });" height="15" width="15">
+ 
+ &nbsp;
+ <span style="font-size: 120%; font-weight: bold;">LinuxBuildInstructionsPrerequisites</span>
+ &nbsp;
+ 
+ 
+ <div style="font-style: italic; margin-top: 3px;">Prerequisites for building.</div>
+ 
+ </div>
+ <p>This page describes system requirements for building Chromium on Linux. </p><p></p><ul><li><a href="#System_Requirements">System Requirements</a></li><ul><li><a href="#Linux_distribution">Linux distribution</a></li><li><a href="#Disk_space">Disk space</a></li><li><a href="#Memory_space">Memory space</a></li><li><a href="#64-bit_Systems">64-bit Systems</a></li></ul><li><a href="#Software_Requirements">Software Requirements</a></li><ul><li><a href="#Automated_Setup">Automated Setup</a></li><li><a href="#Distribution-specific_Notes">Distribution-specific Notes</a></li><ul><li><a href="#Ubuntu_Setup">Ubuntu Setup</a></li><li><a href="#Ubuntu_32bit_chroot_on_64bit_system">Ubuntu 32bit chroot on 64bit system</a></li><li><a href="#Debian_Setup">Debian Setup</a></li><li><a href="#openSUSE_Setup">openSUSE Setup</a></li><li><a href="#Fedora_Setup">Fedora Setup</a></li><li><a href="#Arch_Linux_Setup">Arch Linux Setup</a></li><li><a href="#Mandriva_setup">Mandriva setup</a></li><li><a href="#Gentoo_setup">Gentoo setup</a></li></ul></ul></ul> <h1><a name="System_Requirements">System Requirements</a><a href="#System_Requirements" class="section_anchor">¶</a></h1><h2><a name="Linux_distribution">Linux distribution</a><a href="#Linux_distribution" class="section_anchor">¶</a></h2><p>You
+ should be able to build Chromium on any reasonably modern Linux 
+distribution, but there are a lot of distributions and we sometimes 
+break things on one or another. Internally, our development platform has
+ been a variant of Ubuntu 8.04 (Hardy Heron) and Ubuntu Karmic; we 
+expect you will have the most luck on these platform, although 
+directions for other popular platforms are included below. </p><h2><a name="Disk_space">Disk space</a><a href="#Disk_space" class="section_anchor">¶</a></h2><p>It takes about ten gigabytes or so of disk space to check out and build the source tree. </p><h2><a name="Memory_space">Memory space</a><a href="#Memory_space" class="section_anchor">¶</a></h2><p>Linking
+ chrome requires a lot of memory.  If you get an out-of-memory error 
+during the final link, you will need to add swap space with swapon. </p><h2><a name="64-bit_Systems">64-bit Systems</a><a href="#64-bit_Systems" class="section_anchor">¶</a></h2><p>Chromium
+ can be compiled as either a 32-bit or 64-bit application. Chrome 
+requires several system libraries to compile and run. While it is 
+possible to compile and run a 32-bit Chrome on 64-bit Linux, many 
+distributions are missing the necessary 32-bit libraries, and will 
+result in build or run-time errors. </p><h1><a name="Software_Requirements">Software Requirements</a><a href="#Software_Requirements" class="section_anchor">¶</a></h1><p>Building on Linux requires the following software. (<i>TODO: make this Linux-distribution independent</i>) </p><ul><li>Python &gt;= 2.4 </li><li>python2.5-dev </li><li>Perl &gt;= 5.x </li><li>gcc/g++ &gt;= 4.2 </li><li>g++-multilib &gt;=4.2 </li><li>bison &gt;= 2.3 </li><li>flex &gt;= 2.5.34 </li><li>gperf &gt;= 3.0.4 </li><li>pkg-config &gt;= 0.20 </li><li>libnss3-dev &gt;= 3.12 </li><li>libasound2-dev </li><li>libgconf2-dev </li><li>libglib2.0-dev </li><li>libgnome-keyring-dev </li><li>libgtk2.0-dev </li><li>libnspr4-0d &gt;= 4.7.1+1.9-0ubuntu0.8.04.5 (ubuntu0.8.04.1 causes duplicate dtoa references) </li><li>libnspr4-dev &gt;= 4.7.1+1.9-0ubuntu0.8.04.5 </li><li>freetype-dev </li><li>libcairo2-dev </li><li>libcupsys2-dev </li><li>libdbus-1-dev </li><li>libbz2-dev </li><li>libjpeg62-dev </li><li>libpam0g-dev </li><li>libexpat-dev </li><li>libbzip2-dev </li><li>mesa-common-dev </li><li>libgl1-mesa-dev </li><li>libglu1-mesa-dev </li><li>libxss-dev </li><li>libcurl4-gnutls-dev </li><li>libcupsys2-dev </li></ul><p>Optional (currently, all of these are only used by layout tests): </p><ul><li>apache2 </li><li>libapache2-mod-php5 </li><li>wdiff </li><li>msttcorefonts (Microsoft fonts) </li><li>lighttpd </li><li>php5-cgi </li><li>sun-java6-fonts (needed for Lucida-- you probably need to add the 'partner' repositories to /etc/apt/sources.list) </li><li>ttf-dejavu-core </li><li>ttf-kochi-gothic </li><li>ttf-kochi-mincho </li></ul><h2><a name="Automated_Setup">Automated Setup</a><a href="#Automated_Setup" class="section_anchor">¶</a></h2><p>The script <a href="http://src.chromium.org/svn/trunk/src/build/install-build-deps.sh" rel="nofollow">build/install-build-deps.sh</a>
+ (for Ubuntu) attempts to automate installing the above software (the 
+installation steps used to be more complicated, but they've been 
+simplified so this script may be redundant now). </p><p>Please update that script if you find it's incomplete. </p><h2><a name="Distribution-specific_Notes">Distribution-specific Notes</a><a href="#Distribution-specific_Notes" class="section_anchor">¶</a></h2><h3><a name="Ubuntu_Setup">Ubuntu Setup</a><a href="#Ubuntu_Setup" class="section_anchor">¶</a></h3><p>On a 32-bit Ubuntu 8.04, you can fetch all of the above as follows: </p><pre class="prettyprint"><span class="pln">$ sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install bison fakeroot flex g</span><span class="pun">++</span><span class="pln"> g</span><span class="pun">++-</span><span class="pln">multilib gperf </span><span class="pun">\</span><span class="pln"><br>&nbsp; libapache2</span><span class="pun">-</span><span class="pln">mod</span><span class="pun">-</span><span class="pln">php5 libasound2</span><span class="pun">-</span><span class="pln">dev libbz2</span><span class="pun">-</span><span class="pln">dev libcairo2</span><span class="pun">-</span><span class="pln">dev </span><span class="pun">\</span><span class="pln"><br>&nbsp; libdbus</span><span class="pun">-</span><span class="pln">glib</span><span class="pun">-</span><span class="lit">1</span><span class="pun">-</span><span class="pln">dev libgconf2</span><span class="pun">-</span><span class="pln">dev libgl1</span><span class="pun">-</span><span class="pln">mesa</span><span class="pun">-</span><span class="pln">dev libglu1</span><span class="pun">-</span><span class="pln">mesa</span><span class="pun">-</span><span class="pln">dev </span><span class="pun">\</span><span class="pln"><br>&nbsp; libglib2</span><span class="pun">.</span><span class="lit">0</span><span class="pun">-</span><span class="pln">dev libgtk2</span><span class="pun">.</span><span class="lit">0</span><span class="pun">-</span><span class="pln">dev libjpeg62</span><span class="pun">-</span><span class="pln">dev libnspr4</span><span class="pun">-</span><span class="pln">dev libnss3</span><span class="pun">-</span><span class="pln">dev </span><span class="pun">\</span><span class="pln"><br>&nbsp; libpam0g</span><span class="pun">-</span><span class="pln">dev libsqlite3</span><span class="pun">-</span><span class="pln">dev libxslt1</span><span class="pun">-</span><span class="pln">dev libxss</span><span class="pun">-</span><span class="pln">dev </span><span class="pun">\</span><span class="pln"><br>&nbsp; mesa</span><span class="pun">-</span><span class="pln">common</span><span class="pun">-</span><span class="pln">dev msttcorefonts patch perl pkg</span><span class="pun">-</span><span class="pln">config python </span><span class="pun">\</span><span class="pln"><br>&nbsp; python2</span><span class="pun">.</span><span class="lit">5</span><span class="pun">-</span><span class="pln">dev rpm subversion libcupsys2</span><span class="pun">-</span><span class="pln">dev libgnome</span><span class="pun">-</span><span class="pln">keyring</span><span class="pun">-</span><span class="pln">dev </span><span class="pun">\</span><span class="pln"><br>&nbsp; libcurl4</span><span class="pun">-</span><span class="pln">gnutls</span><span class="pun">-</span><span class="pln">dev libcupsys2</span><span class="pun">-</span><span class="pln">dev</span></pre><p>There are some optional extra packages that are only necessary to run tests. For example, <tt>sun-java6-fonts</tt> includes one font (along with a hefty JRE) that is used by a WebKit test. </p><pre class="prettyprint"><span class="pln">$ sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install apache2 wdiff lighttpd php5</span><span class="pun">-</span><span class="pln">cgi sun</span><span class="pun">-</span><span class="pln">java6</span><span class="pun">-</span><span class="pln">fonts </span><span class="pun">\</span><span class="pln"><br>&nbsp; &nbsp;msttcorefonts ttf</span><span class="pun">-</span><span class="pln">dejavu</span><span class="pun">-</span><span class="pln">core ttf</span><span class="pun">-</span><span class="pln">kochi</span><span class="pun">-</span><span class="pln">gothic ttf</span><span class="pun">-</span><span class="pln">kochi</span><span class="pun">-</span><span class="pln">mincho</span></pre><p>On Lucid I also needed these fonts for layout tests: </p><pre class="prettyprint"><span class="pln">$ sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install ttf</span><span class="pun">-</span><span class="pln">indic</span><span class="pun">-</span><span class="pln">fonts</span></pre><h3><a name="Ubuntu_32bit_chroot_on_64bit_system">Ubuntu 32bit chroot on 64bit system</a><a href="#Ubuntu_32bit_chroot_on_64bit_system" class="section_anchor">¶</a></h3><p>The <a href="http://src.chromium.org/svn/trunk/src/build/install-build-deps.sh" rel="nofollow">build/install-build-deps.sh</a>
+ script installs all the 32bit compatibility libraries to build a 32bit 
+binary on a 64bit Ubuntu system. But it is often easier and more 
+reliable to develop in a real 32bit environment, instead of building 
+against compatibility libraries. </p><p>This can be done by setting up a 32bit chroot on a machine that is otherwise running a 64bit distribution. </p><p>To do so, run the <a href="http://src.chromium.org/svn/trunk/src/build/install-chroot.sh" rel="nofollow">build/install-chroot.sh</a>
+ script. It asks you which environment to install. Pick any recent 
+Ubuntu distribution (e.g. lucid) and select a 32bit installation. </p><p>Optionally,
+ change your chrome/src/out directory to be a symbolic link pointing to 
+$HOME/chroot. This way, you can build both 32bit and 64bit versions from
+ the same source tree. </p><p>Now, install all build-prerequisites in the 32bit chroot: </p><pre class="prettyprint"><span class="pln">&nbsp; lucid32 build</span><span class="pun">/</span><span class="pln">install</span><span class="pun">-</span><span class="pln">build</span><span class="pun">-</span><span class="pln">deps</span><span class="pun">.</span><span class="pln">sh</span></pre><p>Reset your makefiles, if they are still configured for a 64bit build environment: </p><pre class="prettyprint"><span class="pln">&nbsp; lucid32 gclient runhooks</span></pre><p>And build Chromium using the development tools in the chroot environment: </p><pre class="prettyprint"><span class="pln">&nbsp; lucid32 make chrome</span></pre><p>Run the resulting binary as you would normally do: </p><pre class="prettyprint"><span class="pln">&nbsp; &nbsp;lucid32 </span><span class="kwd">out</span><span class="pun">/</span><span class="typ">Debug</span><span class="pun">/</span><span class="pln">chrome</span></pre><p>Before building a 64bit version in the same source tree, don't forget to reset your makefiles again </p><pre class="prettyprint"><span class="pln">&nbsp; &nbsp;gclient runhooks </span><span class="pun">&amp;&amp;</span><span class="pln"> make chrome</span></pre><h3><a name="Debian_Setup">Debian Setup</a><a href="#Debian_Setup" class="section_anchor">¶</a></h3><p>Building a 32 bit version on debian amd64 for chrome os </p><p>Follow the Ubuntu instructions above. </p><p>Make sure that you uninstall all ia32 libraries before running the automatic script linked in this section. </p><p>Especially uninstall ia32-libs-gtk. </p><p>Run a modified version of the script that works on at least one installation of debian unstable <a href="http://chromium.googlecode.com/issues/attachment?aid=-7405953341462172412&amp;name=set.tool.sh" rel="nofollow">posted here</a>  </p><p>If
+ you want to install the build-deps manually, note that the original 
+packages are for Ubuntu. Here are the Debian equivalents: </p><ul><li>libexpat-dev -&gt; libexpat1-dev </li><li>freetype-dev -&gt; libfreetype6-dev </li><li>libbzip2-dev -&gt; libbz2-dev </li></ul><h3><a name="openSUSE_Setup">openSUSE Setup</a><a href="#openSUSE_Setup" class="section_anchor">¶</a></h3><p>For openSUSE 11.0 and later, see <a href="http://code.google.com/p/chromium/wiki/LinuxOpenSuseBuildInstructions">Linux openSUSE Build Instructions</a>. </p><h3><a name="Fedora_Setup">Fedora Setup</a><a href="#Fedora_Setup" class="section_anchor">¶</a></h3><p>Recent systems: </p><pre class="prettyprint"><span class="pln">su </span><span class="pun">-</span><span class="pln">c </span><span class="str">'yum install subversion pkgconfig python perl gcc-c++ bison \<br>flex gperf nss-devel nspr-devel gtk2-devel glib2-devel freetype-devel \<br>atk-devel pango-devel cairo-devel fontconfig-devel GConf2-devel \<br>dbus-devel alsa-lib-devel libX11-devel expat-devel bzip2-devel \<br>dbus-glib-devel libjpeg-devel mesa-libGLU-devel libXScrnSaver-devel \<br>libgnome-keyring-devel'</span></pre><p>The msttcorefonts packages can be obtained by following the instructions present here: <a href="http://www.fedorafaq.org/#installfonts" rel="nofollow">http://www.fedorafaq.org/#installfonts</a> </p><p>For the optional packages: </p><ul><li>php-cgi is provided by the php-cli package </li><li>wdiff doesn't exist in Fedora repositories, a possible alternative would be dwdiff </li><li>sun-java6-fonts doesn't exist in Fedora repositories, needs investigating </li></ul><pre class="prettyprint"><span class="pln">su </span><span class="pun">-</span><span class="pln">c </span><span class="str">'yum install lighttpd php-cli dwdiff'</span></pre><h3><a name="Arch_Linux_Setup">Arch Linux Setup</a><a href="#Arch_Linux_Setup" class="section_anchor">¶</a></h3><p>Most
+ of these packages are probably already installed since they're often 
+used, and the parameter --needed ensures that packages up to date are 
+not reinstalled. </p><pre class="prettyprint"><span class="pln">$ sudo pacman </span><span class="pun">-</span><span class="pln">S </span><span class="pun">--</span><span class="pln">needed python perl gcc gcc</span><span class="pun">-</span><span class="pln">libs bison flex gperf pkgconfig nss </span><span class="pun">\</span><span class="pln"><br>&nbsp; alsa</span><span class="pun">-</span><span class="pln">lib gconf glib2 gtk2 nspr ttf</span><span class="pun">-</span><span class="pln">ms</span><span class="pun">-</span><span class="pln">fonts freetype2 cairo dbus</span></pre><p>For the optional packages on Arch Linux: </p><ul><li>php-cgi is provided with pacman </li><li>wdiff is not in the main repository but dwdiff is. You can get wdiff in AUR/yaourt </li><li>sun-java6-fonts do not seem to be in main repository or AUR. </li></ul><p>For a successful build, add<tt>'remove_webcore_debug_symbols': 1,</tt> to the variables-object in include.gypi. Tested on 64-bit Arch Linux. </p><p>TODO: Figure out how to make it build with the WebCore debug symbols. <tt>make V=1</tt> can be useful for solving the problem. </p><h3><a name="Mandriva_setup">Mandriva setup</a><a href="#Mandriva_setup" class="section_anchor">¶</a></h3><pre class="prettyprint"><span class="pln">urpmi lib64fontconfig</span><span class="pun">-</span><span class="pln">devel lib64alsa2</span><span class="pun">-</span><span class="pln">devel lib64dbus</span><span class="pun">-</span><span class="lit">1</span><span class="pun">-</span><span class="pln">devel lib64GConf2</span><span class="pun">-</span><span class="pln">devel </span><span class="pun">\</span><span class="pln"><br>lib64freetype6</span><span class="pun">-</span><span class="pln">devel lib64atk1</span><span class="pun">.</span><span class="lit">0</span><span class="pun">-</span><span class="pln">devel lib64gtk</span><span class="pun">+</span><span class="lit">2.0</span><span class="pln">_0</span><span class="pun">-</span><span class="pln">devel lib64pango1</span><span class="pun">.</span><span class="lit">0</span><span class="pun">-</span><span class="pln">devel </span><span class="pun">\</span><span class="pln"><br>lib64cairo</span><span class="pun">-</span><span class="pln">devel lib64nss</span><span class="pun">-</span><span class="pln">devel lib64nspr</span><span class="pun">-</span><span class="pln">devel g</span><span class="pun">++</span><span class="pln"> python perl bison flex subversion </span><span class="pun">\</span><span class="pln"><br>gperf</span></pre><p>Note 1: msttcorefonts are not available, you will need to build your own (see instructions, not hard to do, see <a href="http://code.google.com/p/chromium/wiki/MandrivaMsttcorefonts" rel="nofollow">http://code.google.com/p/chromium/wiki/MandrivaMsttcorefonts</a> ) or use drakfont to import the fonts from a windows installation </p><p>Note 2: these packages are for 64 bit, to download the 32 bit packages, substitute lib64 with lib </p><p>Note
+ 3: some of these packages might not be explicitly necessary as they 
+come as dependencies, there is no harm in including them however. </p><p>Note
+ 4: to build on 64 bit systems use, instead of 
+GYP_DEFINES=target_arch=x64 , as mentioned in the general notes for 
+building on 64 bit:  </p><pre class="prettyprint"><span class="kwd">export</span><span class="pln"> GYP_DEFINES</span><span class="pun">=</span><span class="str">"target_arch=x64"</span><span class="pln"><br>gclient runhooks </span><span class="pun">--</span><span class="pln">force</span></pre><h3><a name="Gentoo_setup">Gentoo setup</a><a href="#Gentoo_setup" class="section_anchor">¶</a></h3><p>You can chose to compile...(takes some hours) </p><pre class="prettyprint"><span class="pln">emerge www</span><span class="pun">-</span><span class="pln">client</span><span class="pun">/</span><span class="pln">chromium </span></pre><p>...or take the binary one: </p><pre class="prettyprint"><span class="pln">emerge www</span><span class="pun">-</span><span class="pln">client</span><span class="pun">/</span><span class="pln">chromium</span><span class="pun">-</span><span class="pln">bin</span></pre>
+ </td> 
+ </tr>
+ </tbody></table>
+ </div>
+
+
+ 
+ <br>
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<div class="collapse">
+
+
+ 
+
+
+<div id="commentlist">
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/musuruan/">musuruan</a>,
+ 
+ </span>
+ <span class="date" title="Thu Mar 19 06:01:39 2009">Mar 19, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>Lucida font should be in the bitmap-fonts package in Fedora.  </p><p>Maybe liberation-fonts can be used instead of Microsoft proprietary fonts:  <a href="https://fedorahosted.org/liberation-fonts/" rel="nofollow">https://fedorahosted.org/liberation-fonts/</a> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/InternetBummer/">InternetBummer</a>,
+ 
+ </span>
+ <span class="date" title="Sat Apr  4 09:27:54 2009">Apr 04, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>You also need glibc-devel.i386 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/bobbypowers/">bobbypowers</a>,
+ 
+ </span>
+ <span class="date" title="Tue Apr  7 20:26:29 2009">Apr 07, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>for Fedora rawhide and F11, those packages will be <strong>.586, not </strong>.386 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/bobbypowers/">bobbypowers</a>,
+ 
+ </span>
+ <span class="date" title="Tue Apr  7 21:33:30 2009">Apr 07, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>libX11-devel.i586 as well for fedora </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/eddi2k/">eddi2k</a>,
+ 
+ </span>
+ <span class="date" title="Sun Apr 26 03:33:54 2009">Apr 26, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>need dbus-devel too on fedora 10 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/imagen.patagonica/">imagen.patagonica</a>,
+ 
+ </span>
+ <span class="date" title="Sat May 30 08:48:10 2009">May 30, 2009</span>
+ <div>
+<div class="commentcontent">
+<p>for debian lenny = Ubuntu Setup? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/drewstile/">drewstile</a>,
+ 
+ </span>
+ <span class="date" title="Tue Feb  2 19:05:11 2010">Feb 02, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>For mandriva, instead of g++ you want gcc-c++   The following is the correct command on 64 bit: </p><p>urpmi
+ lib64fontconfig-devel lib64alsa2-devel lib64dbus-1-devel 
+lib64GConf2-devel lib64freetype6-devel lib64atk1.0-devel 
+lib64gtk+2.0_0-devel lib64pango1.0-devel lib64cairo-devel lib64nss-devel
+ lib64nspr-devel gcc-c++ python perl bison flex subversion gperf </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/codedr/">codedr</a>,
+ 
+ </span>
+ <span class="date" title="Fri Feb  5 22:20:15 2010">Feb 05, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>under memory space, add note to check your ulimit for process max 
+memory and virtual memory, otherwise ld will fail with "failed to set 
+dynamic section sizes: Memory exhausted" </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/motiur.rahman0/">motiur.rahman0</a>,
+ 
+ </span>
+ <span class="date" title="Fri Mar  5 11:33:42 2010">Mar 05, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>Hi guys its really a hectic to go all these hoopla's of building and 
+creating . When will google release chrome os like any other software . </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/@WBRQQlxTARNBXAM%3D/">phamnaml...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Wed Mar 10 20:28:53 2010">Mar 10, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>"Package lib32readline-dev has no installation candidate" </p><p>I got this package missing in Ubuntu 64-bit 9.10 when running automated setup. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/vladlosev/">vladlosev</a>,
+ 
+ </span>
+ <span class="date" title="Sat Mar 20 21:31:03 2010">Mar 20, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>On 32-bit Ubuntu Karmic, package libdbus-glib-1-dev is also needed. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/airchuck88/">airchuck88</a>,
+ 
+ </span>
+ <span class="date" title="Tue Apr  6 20:42:36 2010">Apr 06, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>On Debian (or on testing/squeeze at least), the package <tt>dbus-glib-1-dev</tt>
+ was also needed, but was not installed by the supplied script for 
+Debian. Granted, that script is not declared to actually work, but it 
+seems to except for that one exception. Nice work guys! </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/airchuck88/">airchuck88</a>,
+ 
+ </span>
+ <span class="date" title="Tue Apr  6 20:59:53 2010">Apr 06, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>It appears the following packages are also required under Debian:<tt> mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev</tt>. </p><p>See <a href="http://www.mail-archive.com/chromium-dev@googlegroups.com/msg11951.html" rel="nofollow">http://www.mail-archive.com/chromium-dev@googlegroups.com/msg11951.html</a> </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/airchuck88/">airchuck88</a>,
+ 
+ </span>
+ <span class="date" title="Tue Apr  6 21:56:28 2010">Apr 06, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>I have found that <tt>libxss-dev</tt> is similarly required (at least on Debian testing) for compiling Chromium. (<a href="http://groups.google.com/a/chromium.org/group/chromium-dev/browse_thread/thread/d57148d3845de8c7" rel="nofollow">http://groups.google.com/a/chromium.org/group/chromium-dev/browse_thread/thread/d57148d3845de8c7</a>) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/rice.rob/">rice.rob</a>,
+ 
+ </span>
+ <span class="date" title="Tue Apr 27 14:49:40 2010">Apr 27, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>there is no information about how to install depot_tools on slackware_13.0-x86_64 this a complete show stopper  </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/0floon/">0floon</a>,
+ 
+ </span>
+ <span class="date" title="Wed Apr 28 07:12:25 2010">Apr 28, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>Как установить на Debian Lenny ? последнюю версию хромиума? что нужно делать можно поподробнее и на русском язычке )) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/lerma08831/">lerma08831</a>,
+ 
+ </span>
+ <span class="date" title="Mon May 10 18:34:57 2010">May 10, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>Hummmm, I am getting: E: Command line option 'l' -multilib<a href="http://code.google.com/p/chromium/w/edit/from">?</a> is not known when runing the command above<a href="http://code.google.com/p/chromium/w/edit/above">?</a><a href="http://code.google.com/p/chromium/wiki/LinuxBuildInstructionsPrerequisites#Ubuntu_Setup" rel="nofollow">http://code.google.com/p/chromium/wiki/LinuxBuildInstructionsPrerequisites#Ubuntu_Setup</a> under ubuntu 9.10 </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/cymraegish/">cymraegish</a>,
+ 
+ </span>
+ <span class="date" title="Thu Jun  3 20:03:27 2010">Jun 03, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>What does "a lot of memory" mean ? Is 2GB enough ? What can I expect to do with the build once I make it ?  </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/cela0811/">cela0811</a>,
+ 
+ </span>
+ <span class="date" title="Thu Jun 17 18:19:14 2010">Jun 17, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>How can I do this on OpenSolaris<a href="http://code.google.com/p/chromium/w/edit/OpenSolaris">?</a>? </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/tkjacobsen/">tkjacobsen</a>,
+ 
+ </span>
+ <span class="date" title="Sun Jun 20 04:41:24 2010">Jun 20, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>Missing cups-devel dependency for Fedora! </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/@VhZQQFBVABZHVgl0/">lmeye...@gmail.com</a>,
+ 
+ </span>
+ <span class="date" title="Mon Jun 21 18:05:10 2010">Jun 21, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>also missing 'curl-devel' for fedora 13... still trying to trying to make a build for a fresh system. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/melesse/">melesse</a>,
+ 
+ </span>
+ <span class="date" title="Thu Jul  1 02:28:13 2010">Jul 01, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>On Mandriva you must install libgnome-keyring-dev in order to compile </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/vladigusar/">vladigusar</a>,
+ 
+ </span>
+ <span class="date" title="Sat Jul  3 01:17:09 2010">Jul 03, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>there will always be an iso image that will be outdated. if you want up to date real time software, you get it from source  </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/phunehehe/">phunehehe</a>,
+ 
+ </span>
+ <span class="date" title="Thu Jul  8 23:13:28 2010">Jul 08, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>curl-devel is needed for ubuntu 10.04 also (indeed what I had to install was libcurl4-gnutls-dev) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/phunehehe/">phunehehe</a>,
+ 
+ </span>
+ <span class="date" title="Thu Jul  8 23:38:09 2010">Jul 08, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>I also have to install libcups2-dev (ubuntu 10.04) </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/chadsowald/">chadsowald</a>,
+ 
+ </span>
+ <span class="date" title="Thu Aug 19 14:12:23 2010">Aug 19, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>Hello - Please be more specific about "A lot of memory".  Another 
+comment above asks the same question but I don't see any answers. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/xdunlapx/">xdunlapx</a>,
+ 
+ </span>
+ <span class="date" title="Sat Aug 21 20:30:46 2010">Aug 21, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>The script for debian is missing. "The page you requested is invalid." </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/damien.lespiau/">damien.lespiau</a>,
+ 
+ </span>
+ <span class="date" title="Fri Sep 17 14:43:22 2010">Sep 17, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>FWIW, my ld takes 2.6GB of resident memory to link chrome. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/a.jansons/">a.jansons</a>,
+ 
+ </span>
+ <span class="date" title="Wed Sep 22 13:06:04 2010">Sep 22, 2010</span>
+ <div>
+<div class="commentcontent">
+<p>python2.5-dev -&gt; python2.7-dev (x)Ubuntu 10.10 Maverick </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+ 
+ <div class="artifactcomment">
+ 
+ 
+ 
+ 
+ 
+ 
+ <span class="author">Comment
+ 
+ by 
+ 
+ <a style="white-space: nowrap;" href="http://code.google.com/u/abpillai/">abpillai</a>,
+ 
+ </span>
+ <span class="date" title="Fri Oct 15 02:10:07 2010">Oct 15 (4 days ago)</span>
+ <div>
+<div class="commentcontent">
+<p>I have built chromium for rhel5, if someone wants help you can contact me, I can email detailed steps. </p>
+</div>
+ 
+ 
+ </div>
+ </div>
+ 
+
+</div>
+</div>
+
+ 
+
+
+ <script type="text/javascript">
+ function delComment(sequence_num, create_time, delete_mode) {
+ var f = document.forms["delcom"];
+ f.sequence_num.value = sequence_num;
+ f.create_time.value = create_time;
+ f.mode.value = delete_mode;
+ f.submit();
+ return false;
+ }
+ </script>
+
+
+ 
+ 
+ 
+ 
+ 
+ <div id="commentform">
+ <form action="../w/detail.do" method="post">
+ <table>
+ <tbody><tr><td class="vt">
+ <input name="pagename" value="LinuxBuildInstructionsPrerequisites" type="hidden">
+ <input name="token" value="83e32edf1ac2b0ff023c92cbe0eb07f8" type="hidden">
+ <div>Enter a comment:</div>
+ <textarea name="content" rows="6" cols="80"></textarea><br><br>
+ <input name="submit" value="Submit" type="submit">
+ </td>
+ <td class="vt">
+ <div id="whb" class="tip" style="width: 15em;">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner closed" id="entrybubble">
+ <a class="ifClosed" href="#whb" style="float: right;" onclick="_toggleHidden(this); document.getElementById('wikihelp').value='opened'">show</a>
+ <a class="ifOpened" href="#whb" style="float: right;" onclick="_toggleHidden(this); document.getElementById('wikihelp').value='closed'">hide</a>
+ <b>Wiki markup help</b>
+ <div class="ifOpened">
+ <div style="padding: 2px; font-size: 96%;">
+ =Heading1=<br>
+ ==Heading2==<br>
+ ===Heading3===<br>
+ <br>
+ *bold* &nbsp; &nbsp;
+ _italic_<br>
+ `inline code`<br>
+ escape: `*`<br>
+ <br>
+ Indent lists 2 spaces:<br>
+ &nbsp;&nbsp;* bullet item<br>
+ &nbsp;&nbsp;# numbered list<br>
+ <br>
+ {{{<br>
+ verbatim code block<br>
+ }}}<br>
+ <br>
+ Horizontal rule<br>
+ ----
+ <br>
+ <br>
+ WikiWordLink<br>
+ [http://domain/page&nbsp;label]<br>
+ http://domain/page<br>
+ <br>
+ || table || cells ||<br>
+ 
+ </div><br>
+ <a href="http://code.google.com/p/support/wiki/WikiSyntax" target="new">More
+ examples</a>
+ <a href="http://code.google.com/p/support/wiki/WikiSyntax" target="new"><img src="chrome-build-prereqs_files/tearoff_icon.gif" height="16" width="16"></a>
+ </div>
+ </div>
+ <div class="round1"></div>
+ <div class="round2"></div>
+ <div class="round4"></div>
+</div>
+<input name="wikihelp" id="wikihelp" value="closed" type="hidden">
+
+ </td></tr>
+ </tbody></table>
+ </form>
+ </div>
+ 
+ 
+ 
+
+<form name="delcom" action="../w/delComment.do" method="POST">
+ <input name="sequence_num" value="" type="hidden">
+ <input name="create_time" value="" type="hidden">
+ <input name="mode" value="" type="hidden">
+ <input name="pagename" value="LinuxBuildInstructionsPrerequisites" type="hidden">
+ <input name="token" value="83e32edf1ac2b0ff023c92cbe0eb07f8" type="hidden">
+</form>
+
+
+
+ <script src="chrome-build-prereqs_files/prettify.js"></script>
+ <script type="text/javascript">
+ prettyPrint();
+ </script>
+
+<script type="text/javascript" src="chrome-build-prereqs_files/dit_scripts.js"></script>
+
+
+
+  
+ 
+ <script type="text/javascript" src="chrome-build-prereqs_files/core_scripts_20081103.js"></script>
+ <script type="text/javascript" src="chrome-build-prereqs_files/codesite_product_dictionary_ph.js"></script>
+ </div>
+<div id="footer" dir="ltr">
+ 
+ <div class="text">
+ 
+ ©2010 Google -
+ <a href="http://code.google.com/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="http://code.google.com/p/support/">Project Hosting Help</a>
+ 
+ </div>
+</div>
+
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+ 
+ 
+
+
+ 
+ <div style="display: none;" id="menuDiv-projects-dropdown" class="menuDiv instance0"><b style="display: block;" class="categoryTitle projects">Projects</b><div class="menuCategory projects"><a href="http://code.google.com/p/cs267-spring2010-jiang-nick/" style="display: block;" class="menuItem">cs267-spring2010-jiang-nick</a></div><div class="menuCategory controls"><hr class="menuSeparator"><a href="http://code.google.com/more/" style="display: block;" class="menuItem">Find developer products...</a><a href="http://code.google.com/hosting/" style="display: block;" class="menuItem">Find open source projects...</a></div></div></body></html>

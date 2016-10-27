@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source ${PARSECDIR}/pkgs/libs/imagick/parsec/gcc.bldconf
+

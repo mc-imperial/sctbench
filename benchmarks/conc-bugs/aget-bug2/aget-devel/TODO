@@ -1,0 +1,14 @@
+EnderUNIX Aget 0.57 TODO:
+-------------------------
+
+KNOWN BUGS:
+* Resume code is still buggy on Solaris and BSD systems.
+* Logging out from FTP servers is not so graceful.
+
+* HTTP Proxy authentication
+* FreeBSD/NetBSD/OpenBSD Port/Package
+* Multiple downloads
+* Constructing libaget.so/libaget.a for IstanbulX project of acikkod.org
+
+Fri Nov 22 07:55:26 EET 2002
+http://www.enderunix.org/aget/

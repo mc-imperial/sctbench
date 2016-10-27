@@ -1,0 +1,416 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en-us" xmlns="http://www.w3.org/1999/xhtml" lang="en-us"><head>
+ 
+ 
+    <script type="text/javascript">var _starttime = new Date().getTime();</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="index,follow">
+<link rel="shortcut icon" href="https://developer.mozilla.org/skins/mozilla/Fox3/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="What's new feed" href="https://developer.mozilla.org/index.php?title=Special:Recentchanges&amp;feed=rss">
+<link rel="alternate" type="application/rss+xml" title="Page and subpages changes feed" href="https://developer.mozilla.org/index.php?title=Special:Article&amp;type=feed&amp;feedtype=subpagechanges&amp;pageid=18271">
+<link rel="alternate" type="application/rss+xml" title="Page changes feed" href="https://developer.mozilla.org/index.php?title=Special:Article&amp;type=feed&amp;pageid=18271">
+<meta name="generator" content="MindTouch  9.12.3">
+<link rel="search" type="application/opensearchdescription+xml" title="MDC Search" href="https://developer.mozilla.org/deki/gui/opensearch.php?type=description">    <title>Linux Prerequisites - MDC</title>
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="mozilla-build-prereqs_files/css_002.css"> <!--[if IE 7]><style type="text/css">@import "/skins/common/_ie7.css";</style><![endif]--><!--[if IE 6]><style type="text/css">@import "/skins/common/_ie.css";</style><![endif]-->    <script type="text/javascript" src="mozilla-build-prereqs_files/js.php"></script>
+        <link rel="stylesheet" type="text/css" media="screen,projection" href="mozilla-build-prereqs_files/css.css" title="Default Style">
+        <link rel="stylesheet" type="text/css" media="print" href="mozilla-build-prereqs_files/print.css">
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="mozilla-build-prereqs_files/jquery-ui-1.css">
+    
+    <script type="text/javascript" src="mozilla-build-prereqs_files/jquery-ui-1.js"></script>
+
+    <!--[if IE]><meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/skins/mozilla/Fox3/ie7.css" /><!endif]-->
+    <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/skins/mozilla/Fox3/ie6.css" /><![endif]-->
+
+    <script type="text/javascript">// <![CDATA[
+    if ('jQuery') { // None of this works without jQuery
+    
+      function siteToolsMenu() {
+        var sitetools = DekiWiki.$("#sitetools");
+        var toolslink = DekiWiki.$("#toolslink");
+        sitetools.hide().addClass("collapsed").insertAfter(toolslink);
+        toolslink.click(function() {
+          toolslink.toggleClass("menuopen").blur();
+          sitetools.toggle();
+          DekiWiki.$("#languages ul").hide();
+          return false;
+        });
+      }; // end siteToolsMenu
+		
+      function pageLanguageMenu() {
+        var langbox = DekiWiki.$("#languages");
+        var langhead = DekiWiki.$("#languages h5");
+        var langs = DekiWiki.$("#languages ul");
+        if (langbox) { // if the element exists
+          langs.hide();
+          langbox.toggleClass("collapsed");
+          langhead.click(function() {
+            langs.toggle();
+            DekiWiki.$("#sitetools").hide();
+            DekiWiki.$("#toolslink").removeClass("menuopen");
+            langs.css({	
+              top: langhead.offset().top,
+              left: langhead.offset().left
+            });
+          });
+        };
+      }; // end pageLanguageMenu
+    
+      DekiWiki.$(document).ready(function() {
+        siteToolsMenu(); // render the site tools menu
+        pageLanguageMenu(); // render the languages menu
+        DekiWiki.$(document).click(function(e) {
+          var node = e.target;
+          while (node && !node.id) {
+            node = node.offsetParent;
+          };
+          if (!node || (node.id != 'languages' && node.id != 'sitetools' && node.id != 'toolslink')) {
+            DekiWiki.$("#sitetools").hide();
+            DekiWiki.$("#toolslink").removeClass("menuopen");
+            if (DekiWiki.$("#languages")) { // if the element exists
+              DekiWiki.$("#languages ul").hide();
+            };
+          };
+        });
+        if ( document.getElementById("menuPageOptions") ) {
+          menuOff("menuPageOptions");
+        };
+      }); // end dom ready
+			
+    }; // end if jQuery
+
+    // ]]></script>
+	
+  	<script type="text/javascript">
+
+		Deki.BaseHref = 'https://developer.mozilla.org';
+Deki.PageId = 18271;
+Deki.PageTitle = 'En/Developer Guide/Build Instructions/Linux Prerequisites';
+Deki.PathTpl = '/skins/mozilla';
+Deki.PathSkin = '/skins/mozilla/Fox3';
+Deki.PathCommon = '/skins/common';
+Deki.UserName = 'Anonymous';
+Deki.Today = '2 Sep 2010';
+Deki.EditorStyles = [];
+Deki.EditorStyles.push('/skins/mozilla/_editor.css');
+Deki.EditorStyles.push('/skins/mozilla/Fox3/_content.css');
+Deki.EditorStyles.push('/skins/common/custom_css.php');
+
+		window.onbeforeunload = function() {
+			if ( Deki.Editor && Deki.Editor.IsChanged() ) {
+				return "You have made changes to the content without saving your changes. Are you sure you want to exit this page?";
+			}
+		};
+
+		var aLt = new Array();aLt["attach-no-description"] = 'No description'; aLt["cancel"] = 'Cancel'; aLt["close"] = 'Close'; aLt["comment-delete"] = 'Are you sure you want to delete this comment?'; aLt["error"] = 'Error'; aLt["gallery-close"] = 'close'; aLt["gallery-next"] = 'next'; aLt["gallery-prev"] = 'prev'; aLt["internal-error"] = 'Sorry, but there was an internal problem - please try again soon.'; aLt["js-label_cancel"] = 'Cancel'; aLt["js-label_save"] = 'Save'; aLt["js-tooltip_cancel"] = 'Exit Without Saving Changes'; aLt["js-tooltip_save"] = 'Save and Exit (Alt+S)'; aLt["ldap-provide-credentials"] = 'Please provide external service login credentials.'; aLt["loading"] = 'Loading...'; aLt["menu-confirm-delete"] = 'Are you sure you want to delete this file?'; aLt["menu-delete-file"] = 'Delete'; aLt["menu-edit-description"] = 'Edit description'; aLt["menu-move-file"] = 'Move'; aLt["menu-previous-versions"] = 'Previous versions'; aLt["menu-view-original"] = 'View original'; aLt["print-end-notes"] = 'Endnotes'; aLt["ready"] = 'Ready'; aLt["remove-tag"] = 'Remove tag'; aLt["restore-tag"] = 'Restore tag'; aLt["save"] = 'Save'; aLt["submit"] = 'Submit'; aLt["wikibits-attach-another"] = 'Attach another file'; aLt["wikibits-attach-file"] = 'Attach File'; aLt["wikibits-cant-attach-editing"] = 'Sorry, you can\'t attach files while editing a page. Please close the editor first.'; aLt["wikibits-edit-section"] = 'Edit section'; aLt["wikibits-remove-file"] = 'Remove file';  var wfMsg = function (key) { return aLt[key] ? aLt[key] : 'MISSING: ' + key; };
+	//hook in menu clicking events to the document's body
+	YAHOO.util.Event.addListener(document, "click", function () { DWMenu.BodyClick(); });
+	YAHOO.util.Event.onDOMReady(function () { new clientWindow });
+
+			
+
+			YAHOO.util.Event.onDOMReady(function() {
+			tb_init("a.lightbox, area.lightbox, input.lightbox, a[rel='awesomebox']");//pass where to apply thickbox
+			imgLoader = new Image();// preload image
+			imgLoader.src = tb_pathToImage;
+		});
+
+		YAHOO.util.Event.onDOMReady(function() {
+			MTComments.HookBehavior();
+		});
+		</script>
+  <link href="mozilla-build-prereqs_files/custom_css.css" rel="stylesheet" type="text/css"> 
+</head><body class="yui-skin-sam en ">
+<ul id="nav-access">
+  <li><a href="#pageContent">Skip to the main content</a></li>
+  <li><a href="#searchInput">Skip to the site search</a></li>
+</ul>
+
+
+	<div class="globalWrap">
+		<div class="header">
+			<div class="siteLogo">
+		    <h4><a href="https://developer.mozilla.org/" title="Go to the main page"><img src="mozilla-build-prereqs_files/mdc-logo.png" alt="Mozilla Developer Center"></a></h4>
+			</div>
+			
+      <div class="siteNav">
+        <ul>
+                  <li class="siteTools"><a class="" href="#sitetools" id="toolslink">Site tools</a><ul style="display: none;" id="sitetools" class="menu collapsed">
+      	<li class="siteRecentchanges"><a href="https://developer.mozilla.org/Special:Recentchanges" title="Recent changes">Recent changes</a></li>
+	<li class="siteListRss"><a href="https://developer.mozilla.org/Special:ListRss" title="RSS feeds">RSS feeds</a></li>
+	<li class="siteListusers"><a href="https://developer.mozilla.org/User:" title="Users">Users</a></li>
+	<li class="siteListTemplates"><a href="https://developer.mozilla.org/Template:" title="Templates">Templates</a></li>
+	<li class="siteSitemap"><a href="https://developer.mozilla.org/Special:Sitemap" title="Sitemap">Sitemap</a></li>
+	<li class="sitePopularpages"><a href="https://developer.mozilla.org/Special:Popularpages" title="Popular pages">Popular pages</a></li>
+	<li class="siteAbout"><a href="https://developer.mozilla.org/Special:About" title="About MDC">About MDC</a></li>
+</ul></li>
+          <li class="siteHelp"><a href="http://developer.mozilla.org/Project:en/Using_the_Mozilla_Developer_Center">Help</a></li>
+        </ul>
+        
+        		<div class="userAuth">		
+		  <a href="https://developer.mozilla.org/forums/ucp.php?mode=login">Log in to Developer Forums</a> | <a href="https://developer.mozilla.org/index.php?title=Special:Userlogin&amp;register=true" class="userLogin">Become an MDN member</a> | <a href="https://developer.mozilla.org/index.php?title=Special:Userlogin&amp;returntotitle=En%2FDeveloper+Guide%2FBuild+Instructions%2FLinux+Prerequisites" class="userLogin">Log in to docs wiki</a>		</div>
+	      </div>
+      
+      <p id="moztab"><a href="http://www.mozilla.com/" title="Go to mozilla.com">Mozilla.com</a></p>
+			
+				
+	<div class="siteSearch">
+		<form action="/Special:Search">
+			<fieldset class="search">
+	 			<input id="searchInput" class="inputText" name="search" type="text">
+				<input name="type" value="fulltext" type="hidden">
+		    <input name="go" class="inputSubmit" value="Search" type="submit">
+		  </fieldset>
+		</form>
+	</div>
+							
+              <div class="hierarchy">
+          <ol class="dw-hierarchy deki-hierarchy"><li class="first"><a href="https://developer.mozilla.org/" class="deki-ns">MDC</a></li>
+<li><a href="https://developer.mozilla.org/en" class="deki-ns">MDN</a></li>
+<li><a href="https://developer.mozilla.org/En/Developer_Guide" class="deki-ns">Developer Guide</a></li>
+<li><a href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions" class="deki-ns">Build Instructions</a></li>
+<li class="last"><a href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions/Linux_Prerequisites" class="deki-ns current">Linux Prerequisites</a></li></ol>        </div>
+      		
+      
+		</div><!-- end header -->
+		
+    
+    <div class="body">
+      <noscript><div id="noscript"><p>Some features of this site require JavaScript.</p></div></noscript>
+
+          <div class="pageBar">				
+        <ul class="pageTools">
+                  <li class="pagePrint"><a href="https://developer.mozilla.org/index.php?title=En/Developer_Guide/Build_Instructions/Linux_Prerequisites&amp;action=print" title="Print this page or save a PDF" onclick="return Print.open('/index.php?title=En/Developer_Guide/Build_Instructions/Linux_Prerequisites&amp;action=print');">Print page</a></li>
+                  <li class="pageHistory"><a href="https://developer.mozilla.org/index.php?title=En/Developer_Guide/Build_Instructions/Linux_Prerequisites&amp;action=history" title="Page history">History</a></li>
+          <li class="pageEdit"><a href="#" title="Edit page" onclick="return false" class="disabled"><span></span>Edit page</a></li>
+        	<li class="pageTalk"><a href="https://developer.mozilla.org/Talk:En/Developer_Guide/Build_Instructions/Linux_Prerequisites" onclick="menuOff('menuPageOptions');">Talk page</a></li>
+          <li class="pageMore"><a href="#menuPageOptions" title="More options for this page" id="moreopts" onclick="return menuPosition('menuPageOptions', this, 0, 0);">More options</a></li>        
+        </ul>
+      </div>
+    					
+    <div id="pageContent" class="pageContent PageDW-EnDeveloperGuideBuildInstructionsLinuxPrerequisites">
+    	
+      <div id="article-nav">
+              <div id="deki-page-alerts" class="disabled">
+				<div class="toggle">
+					<a href="https://developer.mozilla.org/index.php?title=Special:PageAlerts&amp;id=18271" class="off">
+						<span>Page Notifications</span>
+						<span class="status">Off</span>
+					</a>
+				</div></div><br>
+          <div class="pageToc"><h5>Table of contents</h5><ol style="list-style-type: none; margin-left: 0px; padding-left: 0px;"><li><span>1.</span> <a href="#Hardware" rel="internal">Hardware</a></li><li><span>2.</span> <a href="#Build_Tools_and_Dependencies" rel="internal">Build Tools and Dependencies</a><ol style="list-style-type: none; margin-left: 0px; padding-left: 15px;"><li><span>2.1.</span> <a href="#Debian.2fUbuntu" rel="internal">Debian/Ubuntu</a></li><li><span>2.2.</span> <a href="#openSUSE.2fSUSE_Linux_Enterprise" rel="internal">openSUSE/SUSE Linux Enterprise</a></li><li><span>2.3.</span> <a href="#RedHat_Enterprise_Linux_%28RHEL%29.2fCentOS.2fFedora" rel="internal">RedHat Enterprise Linux (RHEL)/CentOS/Fedora</a></li><li><span>2.4.</span> <a href="#All_other_systems" rel="internal">All other systems</a></li></ol></li><li><span>3.</span> <a href="#Additional_Information" rel="internal">Additional Information</a></li></ol></div>	<div class="suggestchannels">	</div>
+        <ul class="page-anchors">
+          <li class="anchor-tags"><a href="#page-tags" title="Jump to tags for this article">Tags</a></li>
+          <li class="anchor-files"><a href="#page-files" title="Jump to files for this article">Files</a></li>
+        </ul>
+      </div>
+    				
+          <div class="pageTitle">
+            <h1 id="title">Linux Prerequisites</h1>
+      </div>
+    				
+      <div id="page-update" class="pageStatus  hastoc">
+ 			   			</div>
+
+	 		<div id="page-top"><div id="pageToc"><div class="pageToc"><h5>Table of contents</h5><ol style="list-style-type: none; margin-left: 0px; padding-left: 0px;"><li><span>1.</span> <a href="#Hardware" rel="internal">Hardware</a></li><li><span>2.</span> <a href="#Build_Tools_and_Dependencies" rel="internal">Build Tools and Dependencies</a><ol style="list-style-type: none; margin-left: 0px; padding-left: 15px;"><li><span>2.1.</span> <a href="#Debian.2fUbuntu" rel="internal">Debian/Ubuntu</a></li><li><span>2.2.</span> <a href="#openSUSE.2fSUSE_Linux_Enterprise" rel="internal">openSUSE/SUSE Linux Enterprise</a></li><li><span>2.3.</span> <a href="#RedHat_Enterprise_Linux_%28RHEL%29.2fCentOS.2fFedora" rel="internal">RedHat Enterprise Linux (RHEL)/CentOS/Fedora</a></li><li><span>2.4.</span> <a href="#All_other_systems" rel="internal">All other systems</a></li></ol></li><li><span>3.</span> <a href="#Additional_Information" rel="internal">Additional Information</a></li></ol></div></div><div class="pageText" id="pageText">
+<p></p>
+<p>
+</p><div class="callout-box" style="text-align: left;"><a rel="internal" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions">Build Instructions</a>:
+<ul> <li><a rel="internal" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions#Build_prerequisites">Requirements</a></li> <li><a rel="internal" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions#Get_the_source">Source</a></li> <li><a rel="internal" href="https://developer.mozilla.org/en/Configuring_Build_Options">Configuration</a></li> <li><a rel="internal" href="https://developer.mozilla.org/en/Build_and_Install">Build</a></li> <li><a rel="internal" href="https://developer.mozilla.org/en/Mozilla_Build_FAQ">Frequently Asked Questions</a></li> <li><a rel="internal" href="https://developer.mozilla.org/Special:Tags?tag=Build_Documentation&amp;language=en">More...</a></li>
+</ul>
+</div>
+
+<div id="section_1"><span id="Hardware"></span><h3 class="editable">Hardware</h3>
+<ul> <li>512MB RAM with lots of available swap space. For static and 
+XULRunner builds, 1GB RAM minimum. Additional RAM will significantly 
+decrease build time.</li> <li>For debug builds: at least 2 GB free disk space (2.5 GB recommended)</li> <li>For optimized builds: at least 600 MB free disk space (1 GB recommended)</li>
+</ul>
+<p>&nbsp;</p>
+</div><div id="section_2"><span id="Build_Tools"></span><span id="Build_Tools_and_Dependencies"></span><h3 class="editable">Build Tools and Dependencies</h3>
+<div id="section_3"><span id="Debian.2fUbuntu"></span><h4 class="editable">Debian/Ubuntu</h4>
+<p>You can download and install all the prerequisites with two command (as root):</p>
+<pre>apt-get build-dep firefox
+apt-get install mercurial libasound2-dev libcurl4-openssl-dev libnotify-dev libxt-dev libiw-dev mesa-common-dev autoconf2.13 yasm
+</pre>
+<p>libcurl is required to build the crash reporter. If <code>apt-get</code> fails to install <code>libcurl4-openssl-dev</code>, try <code>libcurl-dev</code>, <code>libcurl4-gnutls-dev</code>, or <code>libcurl3-gnutls-dev</code>. Alternatively you can disable the crash reporter (using the config option <code>--disable-crashreporter</code>).</p>
+<p>If you are using Debian, you probably want to install Mercurial from the<a title="http://www.backports.org/" class="external" rel="external nofollow" href="http://www.backports.org/" target="_blank"> Debian Backports</a> repository as there are known problems with older Mercurial versions (e.g. the one that ships with Debian lenny).</p>
+</div><div id="section_4"><span id="openSUSE.2fSUSE_Linux_Enterprise"></span><h4 class="editable">openSUSE/SUSE Linux Enterprise</h4>
+<p>Execute the following command (as root):</p>
+<pre>zypper install \
+  make cvs mercurial zip gcc-c++ gtk2-devel xorg-x11-libXt-devel libidl-devel \
+  freetype2-devel fontconfig-devel pkg-config dbus-1-glib-devel \
+  libcurl-devel libnotify-devel alsa-devel autoconf213 libiw-devel yasm</pre>
+<p>If you use openSUSE 11.1 or older, you still need to install autoconf
+ 2.13 from source, see the section "All other systems" below for 
+instructions. Starting with openSUSE&nbsp;11.2, <code>autoconf213</code> is part of the standard repositories.</p>
+<p>On openSUSE 11.2 and older you also need to download, build and 
+install YASM, since the zypper YASM package is too old to build the VP8 
+assembly code. Uninstall any version you had installed with zypper 
+first.</p>
+<pre>zypper remove yasm # make sure you don't have the system package installed
+
+wget http://www.tortall.net/projects/yasm/releases/yasm-1.0.1.tar.gz
+tar -xzf yasm-1.0.1.tar.gz
+cd yasm-1.0.1/
+./configure &amp;&amp; make &amp;&amp;&nbsp;sudo make install
+</pre>
+</div><div id="section_5"><span id="RedHat_Enterprise_Linux_(RHEL).2fCentOS.2fFedora"></span><h4 class="editable">RedHat Enterprise Linux (RHEL)/CentOS/Fedora</h4>
+<p>Execute the following command (as root):</p>
+<pre>yum install \
+  cvs zip gcc-c++ glib2-devel gtk2-devel fontconfig-devel libnotify-devel \
+  libIDL-devel alsa-lib-devel libXt-devel freetype-devel pkgconfig \
+  dbus-glib-devel curl-devel autoconf213 xorg-x11-proto-devel libX11-devel \
+  libXau-devel libXext-devel wireless-tools-devel glibc-static yasm
+</pre>
+<p>RHEL/CentOS do not include Mercurial in their repositories. You can install a RPM&nbsp;package directly from&nbsp;RPMForge (<a title="http://packages.sw.be/mercurial/" class="external" rel="external nofollow" href="http://packages.sw.be/mercurial/" target="_blank">http://packages.sw.be/mercurial/</a>) using the following commands (replace VERSION with the right string for your version/architecture):</p>
+<pre>wget http://packages.sw.be/mercurial/mercurial-VERSION.rpm
+rpm -Uhv mercurial-VERSION.rpm</pre>
+<p>If you have already <a title="http://rpmrepo.org/RPMforge/Using" class="external" rel="external nofollow" href="http://rpmrepo.org/RPMforge/Using" target="_blank">added the RPMForge repositories to your system</a>, a simple <code>yum install mercurial</code> should work as well.</p>
+</div><div id="section_6"><span id="All_other_systems"></span><h4 class="editable">All other systems</h4>
+<p>On other systems, you can install the tools individually:</p>
+<ul> <li>A recent POSIX Shell</li> <li>A C++ compiler. <a class="external" rel="external nofollow" href="http://gcc.gnu.org/" title="http://gcc.gnu.org/" target="_blank">GCC 3.4</a> or higher is recommended, or your platform's native C/C++ compiler.</li> <li><a class="external" rel="external nofollow" href="http://www.perl.com/pub/language/info/software.html" title="http://www.perl.com/pub/language/info/software.html" target="_blank">Perl</a> 5.6 or higher. Older perl versions may work if you upgrade <a class="external" rel="external nofollow" href="http://search.cpan.org/%7Ekwilliams/File-Spec/" title="http://search.cpan.org/~kwilliams/File-Spec/" target="_blank">File::Spec</a> to version 0.8</li> <li><a class="external" rel="external nofollow" href="http://www.gnu.org/software/make/" title="http://www.gnu.org/software/make/" target="_blank">GNU make</a> 3.80 or higher. <em>Other varieties of "make" will not work.</em></li> <li><a class="external" rel="external nofollow" href="http://www.mozilla.org/cvs.html" title="http://www.mozilla.org/cvs.html" target="_blank">CVS</a> 1.11 or higher</li> <li>the <a class="external" rel="external nofollow" href="http://www.gtk.org/" title="http://www.gtk.org/" target="_blank">GTK2</a> widget toolkit, version 2.10 or higher</li> <li>libXt-devel for X11/Intrinsic.h, X11/Shell.h</li> <li>libIDL 0.6.3 or higher Source snapshots are available from Mozilla via <a class="link-ftp" rel="external nofollow" href="ftp://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/SRPMS/" title="ftp://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/SRPMS/" target="_blank">ftp</a>. If using the RPMs, you'll need both the regular rpm and the -devel rpm. If you already have <a class="external" rel="external nofollow" href="http://www.labs.redhat.com/orbit/" title="http://www.labs.redhat.com/orbit/" target="_blank">ORBit</a>
+ installed, then you do not need to install libIDL as ORBit bundles 
+libIDL. You may need to install the ORBit-devel package if you use 
+packages.</li> <li><a class="external" rel="external nofollow" href="http://www.info-zip.org/" title="http://www.info-zip.org/" target="_blank">zip</a> 2.3 (or higher)</li> <li><a class="external" rel="external nofollow" href="http://freetype.org/" title="http://freetype.org/" target="_blank">freetype</a> 2.1.0 (or higher)</li> <li><a class="external" rel="external nofollow" href="http://fontconfig.org/" title="http://fontconfig.org/" target="_blank">fontconfig</a></li> <li><a class="external" rel="external nofollow" href="http://pkgconfig.freedesktop.org/wiki/" title="http://pkgconfig.freedesktop.org/wiki/" target="_blank">pkg-config</a> 0.9.0 (or higher)</li> <li>dbus-1-glib-devel (Developer package for D-Bus/GLib bindings)</li> <li>libasound2-dev (needed for Ogg support)</li> <li>libnotify-dev</li> <li><a title="http://www.tortall.net/projects/yasm/" class=" external" rel="external nofollow" href="http://www.tortall.net/projects/yasm/" target="_blank">YASM</a> version 0.7.1 or later.</li> <li>autoconf-2.13 (requires <a class="external" rel="external nofollow" href="http://www.seindal.dk/rene/gnu/" title="http://www.seindal.dk/rene/gnu/" target="_blank">GNU m4</a>) - Autoconf 2.5x will <strong>not</strong> work. See 
+<a rel="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=104642" class="external" title="Unable to access bug's page. Try reloading this page to see bug's status and summary in this tooltip.">
+bug 
+104642</a>
+ for details.&nbsp;</li>
+</ul>
+<p>To install from source:&nbsp;</p>
+<pre>wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz
+tar -xvzf autoconf-2.13.tar.gz
+cd autoconf-2.13/
+./configure --program-suffix=2.13
+make
+sudo make install</pre>
+<p>You may need to <code>export AUTOCONF=autoconf2.13</code> in your environment (e.g. put it in .profile in your home directory) or add this line to your<code> .mozconfig</code> file:</p>
+<pre>mk_add_options AUTOCONF=autoconf2.13</pre>
+</div></div><div id="section_7"><span id="Additional_Information"></span><h3 class="editable">Additional Information</h3>
+<ul> <li>The default /bin/sh that comes with some older unices (notably 
+OSF/1) is known to be deficient. In that case, you should use 'gmake 
+SHELL=ksh'.</li> <li>The latest trunk code may cause an error referring 
+to '___tls_get_addr' if gcc is not the latest (past 4.1.2) or if 
+jemalloc isn't disabled (use mozconfig option "--disable-jemalloc").</li> <li>For errors pertaining to alsa/ogg support: <a title="http://developer.mozilla.org/en/docs/alsa" class="external" rel="external nofollow" href="http://developer.mozilla.org/en/docs/alsa" target="_blank">http://developer.mozilla.org/en/docs/alsa</a></li>
+</ul>
+<p></p></div></div></div><div class="printfooter" id="printfooter"><hr>
+<p>Retrieved from "<a href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions/Linux_Prerequisites">https://developer.mozilla.org/En/Developer_Guide/Build_Instructions/Linux_Prerequisites</a>"</p>
+</div>
+	 				
+	 			 		  <div class="collapsed" id="languages">
+	 		    <h5>Languages</h5>
+          <ul style="display: none;"><li><a rel="internal" href="https://developer.mozilla.org/es/Requerimientos_para_la_compilaci%c3%b3n_en_Linux">Español</a></li><li><a rel="internal" href="https://developer.mozilla.org/fr/Pr%c3%a9alables_%c3%a0_la_compilation_sous_Linux">Français</a></li><li><a rel="internal" href="https://developer.mozilla.org/it/Linux_Build_Prerequisites">Italiano</a></li><li><a rel="internal" href="https://developer.mozilla.org/ko/Linux_Build_Prerequisites">한국어</a></li><li><a rel="internal" href="https://developer.mozilla.org/cn/Linux_Build_Prerequisites">中文 (中国)</a></li><li><a rel="internal" href="https://developer.mozilla.org/ja/Linux_Build_Prerequisites">日本語</a></li></ul>				</div>
+									
+
+					
+				<p class="pageLastchange">Page last modified <a href="https://developer.mozilla.org/index.php?title=En/Developer_Guide/Build_Instructions/Linux_Prerequisites&amp;action=history" title="22:56, 10 Aug 2010">22:56, 10 Aug 2010</a> by <a href="https://developer.mozilla.org/User:Imphil" class="link-user" rel="internal">Imphil</a></p>
+    
+      </div><!-- end #pageContent -->
+      				
+            <div id="page-tags">
+        <strong class="tag-label">Tags:</strong> <div id="deki-page-tags"><div class="pageTagList"><div class="item taglist"><a href="https://developer.mozilla.org/Special:Tags?tag=Build+documentation" title="Build documentation">Build documentation</a>, <a href="https://developer.mozilla.org/Special:Tags?tag=Developing+Mozilla" title="Developing Mozilla">Developing Mozilla</a></div><div><a href="https://developer.mozilla.org/index.php?title=Special:Tags&amp;pageId=18271" class="disabled" onclick="return false;" id="deki-page-tags-toggleview">Edit tags</a></div></div></div>      </div>
+				
+      <div id="page-files" class="pageSection">
+        <h3 class="secTitle">Files <span class="unweight" id="fileCount">(0)</span></h3>
+              <div class="fileList">
+          <div id="pageFiles"><div class="nofiles">&nbsp;</div></div>        </div>
+      </div>
+			
+		
+
+  
+    </div><!-- end div.body -->
+
+      <div id="siteFooter">
+      <p id="license">Content is available under<a href="https://developer.mozilla.org/Project:Copyrights"> these licenses</a></p>
+      <p id="footabout"><a href="https://developer.mozilla.org/Project:en/About">About MDC</a></p>
+      <div class="poweredBy"><a href="http://www.mindtouch.com/" title="Powered by MindTouch Standard 2009">Powered by <span class="product">MindTouch Standard 2009</span></a></div>    
+          </div><!-- end #siteFooter -->
+  
+	</div><!-- end div.globalWrap -->
+
+<div id="popupMessage"></div> 
+<script type="text/javascript">var _endtime = new Date().getTime(); var _size = 27336;</script>
+<div id="popupMask">&nbsp;</div>
+
+<div id="popupContainer" class="inlinedialogue">
+	<div class="id-top"><div class="id-topinner">&nbsp;</div></div>
+	<div id="popupInner">
+		<div id="popupTitleBar" class="id-title"><div class="id-titleinner"><div id="popupTitle"></div></div></div>
+		<div class="id-body"><div class="id-bodyinner">
+		  <iframe src="mozilla-build-prereqs_files/loading.html" style="width: 100%; height: 100%; background-color: transparent;" id="popupFrame" name="popupFrame" frameborder="0" height="100%" scrolling="auto" width="100%"></iframe>
+		</div></div>
+	</div>
+</div>
+
+<ul style="display: none;" onclick="menuBubble=true;" class="menu" id="menuPageOptions">
+<li class="pageBacklinks"><a href="https://developer.mozilla.org/index.php?title=Special:Article&amp;type=backlinks&amp;pageid=18271">Pages that link here</a></li></ul>
+
+
+			
+<div class="ui-msg-wrap" id="MTMessage" style="display: none;">
+	<div class="ui-msg ui-errormsg" id="MTMessageStyle">
+		<div class="ui-msg-opt">
+			<ul>
+				<li><a href="#" class="dismiss" onclick="return MTMessage.Hide();">dismiss message</a></li>
+				<li><a href="#" class="details" id="MTMessageDetailsLink" onclick="return MTMessage.ShowDetails(this);">view details</a></li>
+			</ul>
+			<div class="ui-msg-autoclose">
+				<span id="MTMessageUnpaused" style="display: inline;">Message will close by itself in <span id="MTMessageTimer"></span> seconds</span>
+				<span id="MTMessagePaused" style="display: none;">Message timer has been stopped</span>
+			</div>
+		</div>
+		<div class="ui-msg-header" id="MTMessageHeader"></div>
+		<div class="ui-msg-desc" id="MTMessageDesc"></div>
+		<div class="ui-msg-desc" id="MTMessageDetails" style="display: none;">
+			<p>Viewing Details:</p>
+		</div>
+	</div>
+</div><div id="menuFiller"></div><div id="bodyHeight"></div>
+<!-- Served by pm-dekiwiki02.mozilla.org in 0.23 secs. -->
+<!--
+	Verb      Path                                              Time(ms)       API Stats
+	GET       /deki/site/settings                                   5.28       request-time-ms=3; mysql-queries=2; mysql-time-ms=1; cache-ratio=0.00; cache-hit=0; cache-miss=1; cache-del=0; cache-ins=1;
+	GET       /deki/users/=Anonymous                               10.51       request-time-ms=8; mysql-queries=7; mysql-time-ms=6; cache-ratio=0.30; cache-hit=3; cache-miss=7; cache-del=0; cache-ins=6;
+	GET       /deki/pages/18271/contents                          114.25       request-time-ms=112; mysql-queries=35; mysql-time-ms=45; cache-ratio=0.68; cache-hit=89; cache-miss=42; cache-del=0; cache-ins=42;
+	GET       /deki/pages/18271                                    34.10       request-time-ms=31; mysql-queries=16; mysql-time-ms=21; cache-ratio=0.48; cache-hit=15; cache-miss=16; cache-del=0; cache-ins=16;
+	GET       /deki/pagesubservice/subscriptions                   11.06       
+	GET       /deki/pages/18271/info                                5.99       request-time-ms=4; mysql-queries=4; mysql-time-ms=3; cache-ratio=0.25; cache-hit=2; cache-miss=6; cache-del=0; cache-ins=6;
+	GET       /deki/pages/18271/tags                                7.49       request-time-ms=6; mysql-queries=6; mysql-time-ms=4; cache-ratio=0.25; cache-hit=2; cache-miss=6; cache-del=0; cache-ins=6;
+	GET       /deki/license                                         5.38       request-time-ms=3; mysql-queries=2; mysql-time-ms=2; cache-ratio=0.25; cache-hit=1; cache-miss=3; cache-del=0; cache-ins=3;
+	GET       /deki/license                                         3.78       request-time-ms=2; mysql-queries=2; mysql-time-ms=1; cache-ratio=0.25; cache-hit=1; cache-miss=3; cache-del=0; cache-ins=3;
+	                                                             =======
+	                                                     Total:   197.84      
+	                                                     Ideal:   194.06      
+-->
+
+<!-- START OF SmartSource Data Collector TAG -->
+<!-- Copyright (c) 1996-2010 WebTrends Inc.  All rights reserved. -->
+<!-- Version: 8.6.2 -->
+<!-- Tag Builder Version: 3.0  -->
+<!-- Created: 4/23/2010 9:11:39 PM -->
+<script src="mozilla-build-prereqs_files/webtrends.js" type="text/javascript"></script>
+<!-- ----------------------------------------------------------------------------------- -->
+<!-- Warning: The two script blocks below must remain inline. Moving them to an external -->
+<!-- JavaScript include file can cause serious problems with cross-domain tracking.      -->
+<!-- ----------------------------------------------------------------------------------- -->
+<script type="text/javascript">
+//<![CDATA[
+var _tag=new WebTrends();
+_tag.dcsGetId();
+//]]>>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+// Add custom parameters here.
+//_tag.DCSext.param_name=param_value;
+_tag.dcsCollect();
+//]]>>
+</script>
+<noscript>
+<div><img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="http://statse.webtrendslive.com/dcs8yrjuavz5bdaun34r2o8bi_8o8x/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=8.6.2"/></div>
+</noscript>
+<!-- END OF SmartSource Data Collector TAG -->
+
+</body></html>

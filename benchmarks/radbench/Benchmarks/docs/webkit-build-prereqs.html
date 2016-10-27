@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  
+  
+
+  
+
+
+  
+
+  
+    <title>
+      BuildingQtOnLinux – WebKit
+    </title>
+        <link rel="search" href="http://trac.webkit.org/search">
+        <link rel="help" href="http://trac.webkit.org/wiki/TracGuide">
+        <link rel="alternate" href="http://trac.webkit.org/wiki/BuildingQtOnLinux?format=txt" type="text/x-trac-wiki" title="Plain Text">
+        <link rel="start" href="http://trac.webkit.org/wiki">
+        <link rel="stylesheet" href="webkit-build-prereqs_files/trac.css" type="text/css"><link rel="stylesheet" href="webkit-build-prereqs_files/wiki.css" type="text/css">
+        <link rel="shortcut icon" href="http://trac.webkit.org/chrome/common/trac.ico" type="image/x-icon">
+        <link rel="icon" href="http://trac.webkit.org/chrome/common/trac.ico" type="image/x-icon">
+      <link type="application/opensearchdescription+xml" rel="search" href="http://trac.webkit.org/search/opensearch" title="Search WebKit">
+    <script type="text/javascript" src="webkit-build-prereqs_files/jquery.js"></script><script type="text/javascript" src="webkit-build-prereqs_files/trac.js"></script><script type="text/javascript" src="webkit-build-prereqs_files/search.js"></script>
+    <!--[if lt IE 7]>
+    <script type="text/javascript" src="/chrome/common/js/ie_pre7_hacks.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $("#content").find("h1,h2,h3,h4,h5,h6").addAnchor("Link to this section");
+      });
+    </script>
+  <style type="text/css">
+	a.mail-link .icon {
+		background: none;
+		padding: inherit;
+        }
+	#overview .message ul li, dd.changeset ul li, #info .message ul li {
+		white-space: pre;
+	}
+	#metanav {
+		text-align: right;
+	}
+  </style>
+ </head><body>
+    <div id="banner">
+      <div id="header">
+        <a id="logo" href="http://www.webkit.org/"><img src="webkit-build-prereqs_files/icon.png" alt="WebKit" height="100" width="124"></a>
+      </div>
+      <form id="search" action="/search" method="get">
+        <div>
+          <label for="proj-search">Search:</label>
+          <input id="proj-search" name="q" size="18" accesskey="f" type="text">
+          <input value="Search" type="submit">
+        </div>
+      </form>
+      <div id="metanav">
+    <a href="http://trac.webkit.org/auth/register" title="Register">Register</a> |
+    <a href="http://trac.webkit.org/auth/password/lost/" title="Lost Password">Lost Password</a> |
+    <a href="http://trac.webkit.org/auth/login" title="Login">Login</a>
+ </div>
+    </div>
+    <div id="mainnav" class="nav">
+    <ul>
+      <li class="first active"><a accesskey="1" href="http://trac.webkit.org/wiki">Wiki</a></li><li><a accesskey="2" href="http://trac.webkit.org/timeline">Timeline</a></li><li><a href="http://trac.webkit.org/browser">Browse Source</a></li><li class="last"><a accesskey="4" href="http://trac.webkit.org/search">Search</a></li>
+    </ul>
+  </div>
+    <div id="main">
+      <div id="ctxtnav" class="nav">
+        <h2>Context Navigation</h2>
+          <ul>
+              <li class="first"><a href="http://trac.webkit.org/wiki/WikiStart">Start Page</a></li><li><a href="http://trac.webkit.org/wiki/TitleIndex">Index</a></li><li><a href="http://trac.webkit.org/wiki/BuildingQtOnLinux?action=history">History</a></li><li class="last"><a href="http://trac.webkit.org/wiki/BuildingQtOnLinux?action=diff&amp;version=44">Last Change</a></li>
+          </ul>
+        <hr>
+      </div>
+    <div id="content" class="wiki">
+      <div class="wikipage searchable">
+        
+          <p>
+</p><div class="wiki-toc"><ol><li><a href="#BuildingtheQtportonLinux">Building the Qt port on Linux</a><ol><li><a href="#Dependencies">Dependencies</a></li><li>
+<a href="#BuildWebKit">Build WebKit</a></li><li>
+<a href="#DebuggingWebCore">Debugging WebCore</a></li><li>
+<a href="#Testingtheport">Testing the port</a></li><li>
+<a href="#CommonBuildErrors">Common Build Errors</a><ol><li><a href="#UsingQt4.2">Using Qt 4.2</a></li><li>
+<a href="#Missinggperf">Missing gperf</a></li><li>
+<a href="#MissingSQLitedevelopmentpackage">Missing SQLite development package</a></li><li>
+<a href="#Missingflex">Missing flex</a></li><li>
+<a href="#Incompatibleversionofbison">Incompatible version of bison</a></li><li>
+<a href="#MissingPhonon">Missing Phonon</a></li><li>
+<a href="#Missingfontconfig">Missing fontconfig</a></li></ol></li><li>
+<a href="#DependenciesforspecificLinuxdistributions">Dependencies for specific Linux distributions</a><ol><li><a href="#InstallingdependenciesonDebianUbuntu">Installing dependencies on Debian/Ubuntu</a></li><li>
+<a href="#InstallingdependenciesonArkLinux">Installing dependencies on Ark Linux</a></li><li>
+<a href="#InstallingdependenciesonOpenSUSELinux">Installing dependencies on OpenSUSE Linux</a></li><li>
+<a href="#InstallingdependenciesonFedoraLinux">Installing dependencies on Fedora Linux</a></li></ol></li></ol></li></ol></div><p>
+</p>
+<h1 id="BuildingtheQtportonLinux">Building the Qt port on Linux<a title="Link to this section" href="#BuildingtheQtportonLinux" class="anchor"> ¶</a></h1>
+<p>
+These instructions apply to Linux in general with source packages.
+</p>
+<h2 id="Dependencies">Dependencies<a title="Link to this section" href="#Dependencies" class="anchor"> ¶</a></h2>
+<p>
+The code should be easily built on any Linux distribution which has development packages for Qt installed.
+</p>
+<p>
+The Qt port requires <strong>Qt version 4.6 or later.</strong>
+</p>
+<p>
+The Qt port requires gperf.
+</p>
+<p>
+The Qt port requires sqllite.
+</p>
+<p>
+The Qt port requires bison.
+</p>
+<p>
+The Qt port requires <strong>flex version 2.5.33 or later.</strong>
+</p>
+<p>
+The Qt port requires xrender-dev
+</p>
+<p>
+The Qt port requires libphonon-dev
+</p>
+<h2 id="BuildWebKit">Build WebKit<a title="Link to this section" href="#BuildWebKit" class="anchor"> ¶</a></h2>
+<p>
+First follow the instructions <a class="wiki" href="http://trac.webkit.org/wiki/QtWebKitContrib">there to get the sources</a>. The Qt port is part of the WebKit source tree, so you don't need anything extra.
+</p>
+<p>
+Finally, set the QTDIR environment variable to Qt 4.x's installation 
+path and make sure Qt 4.x's qmake is the first qmake in your PATH 
+(typically by running <tt>export PATH=$QTDIR/bin:$PATH</tt>). If your qmake binary has a different name, e.g. when using Debian, use the --qmake= option to specify the name.
+</p>
+<p>
+Build WebKit and the Qt test browser with
+</p>
+<pre class="wiki">WebKit/WebKitTools/Scripts/build-webkit --qt
+</pre><p>
+<tt>build-webkit</tt> (see above) also supports special variable for specifying the OBJDIR directory, as well as some configure and build arguments
+</p>
+<pre class="wiki">WEBKITOUTPUTDIR=`pwd`/qtbuild  WebKit/WebKitTools/Scripts/build-webkit --qt --makeargs="-j20 -s" --no-video --debug
+</pre><h2 id="DebuggingWebCore">Debugging WebCore<a title="Link to this section" href="#DebuggingWebCore" class="anchor"> ¶</a></h2>
+<p>
+If you are debugging WebCore from a Qt build you will want to open up 
+WebCore/WebCore.pro and edit the following section as instructed:
+</p>
+<pre class="wiki">CONFIG(QTDIR_build) {
+    # Remove the following 2 lines if you want debug information in WebCore
+    CONFIG -= separate_debug_info
+    CONFIG += no_debug_info
+}
+</pre><h2 id="Testingtheport">Testing the port<a title="Link to this section" href="#Testingtheport" class="anchor"> ¶</a></h2>
+<p>
+A very simple test browser is built along with the port and can be executed with
+</p>
+<pre class="wiki">WebKit/WebKitTools/Scripts/run-launcher --qt
+</pre><h2 id="CommonBuildErrors">Common Build Errors<a title="Link to this section" href="#CommonBuildErrors" class="anchor"> ¶</a></h2>
+<h3 id="UsingQt4.2">Using Qt 4.2<a title="Link to this section" href="#UsingQt4.2" class="anchor"> ¶</a></h3>
+<pre class="wiki">../../../WebKitQt/Api/qwebnetworkinterface_p.h:134: error: ‘QSslError’ 
+was not declared in this scope
+../../../WebKitQt/Api/qwebnetworkinterface_p.h:134: error: template 
+argument 1 is invalid
+../../../WebKitQt/Api/qwebnetworkinterface_p.h:135: error: 
+‘QAuthenticator’ has not been declared
+../../../WebKitQt/Api/qwebnetworkinterface_p.h:136: error: expected ‘,’ 
+or ‘...’ before ‘&amp;’ token
+../../../WebKitQt/Api/qwebnetworkinterface_p.h:136: error: ISO C++ 
+forbids declaration of ‘QNetworkProxy’ with no type
+make[1]: *** [tmp/ResourceHandleQt.o] Error 1
+</pre><p>
+This error is caused by not having the minimum version of Qt installed.  Install the minimum version of Qt, set the
+'QTDIR' environment variable pointing to this version and try building WebKit again.
+</p>
+<h3 id="Missinggperf">Missing gperf<a title="Link to this section" href="#Missinggperf" class="anchor"> ¶</a></h3>
+<pre class="wiki">../../../WebCore/html/HTMLDocument.cpp: In member function 'virtual void WebCore::HTMLDocument::determineParseMode(const WebCore::String&amp;)':
+../../../WebCore/html/HTMLDocument.cpp:389: error: expected initializer before '*' token
+../../../WebCore/html/HTMLDocument.cpp:390: error: 'doctypeEntry' was not declared in this scope
+../../../WebCore/html/HTMLDocument.cpp:398: error: 'doctypeEntry' was not declared in this scope
+../../../WebCore/html/HTMLDocument.cpp:401: error: 'PubIDInfo' has not been declared
+../../../WebCore/html/HTMLDocument.cpp:405: error: 'PubIDInfo' has not been declared
+</pre><p>
+This error is typically caused by not having <tt>gperf</tt> installed.  Install <tt>gperf</tt>, run <tt>touch WebCore/html/DocTypeStrings.gperf</tt> and try building WebKit again.
+</p>
+<h3 id="MissingSQLitedevelopmentpackage">Missing SQLite development package<a title="Link to this section" href="#MissingSQLitedevelopmentpackage" class="anchor"> ¶</a></h3>
+<pre class="wiki">../../../WebCore/loader/icon/SQLDatabase.cpp:30:21: error: sqlite3.h: No such file or directory
+../../../WebCore/loader/icon/SQLDatabase.cpp:36: error: "SQLITE_ERROR" was not declared in this scope
+../../../WebCore/loader/icon/SQLDatabase.cpp:37: error: "SQLITE_DONE" was not declared in this scope
+../../../WebCore/loader/icon/SQLDatabase.cpp:38: error: "SQLITE_OK" was not declared in this scope
+../../../WebCore/loader/icon/SQLDatabase.cpp:39: error: "SQLITE_ROW" was not declared in this scope
+</pre><p>
+This error is typically caused by not having the development component of <tt>libsqlite3</tt> installed.  Install the development package and try building WebKit again.
+</p>
+<h3 id="Missingflex">Missing flex<a title="Link to this section" href="#Missingflex" class="anchor"> ¶</a></h3>
+<pre class="wiki">.../WebKitBuild/Release/lib/libWebKitQt.so: undefined reference to `WebCore::CSSParser::lex()'
+</pre><p>
+This error is typically caused by not having <tt>flex</tt> installed.  Install <tt>flex</tt>, run <tt>touch WebCore/css/tokenizer.flex</tt> and try building WebKit again.
+</p>
+<h3 id="Incompatibleversionofbison">Incompatible version of bison<a title="Link to this section" href="#Incompatibleversionofbison" class="anchor"> ¶</a></h3>
+<pre class="wiki">bison -d -p kjsyy JavaScriptCore/kjs/grammar.y -o grammar.tab.c &amp;&amp; mv grammar.tab.c tmp/grammar.cpp &amp;&amp; mv grammar.tab.h tmp/grammar.h
+JavaScriptCore/kjs/grammar.y:364.3-366.9: type clash (`node' `') on default action
+JavaScriptCore/kjs/grammar.y:366.10: parse error, unexpected ":", expecting ";" or "|"
+</pre><p>
+This error is caused by having an incompatible version of <tt>bison</tt> installed.  The single reported case of this error occurred with <tt>bison</tt> 1.75, and was resolved by updating to <tt>bison</tt> 2.3.
+</p>
+<h3 id="MissingPhonon">Missing Phonon<a title="Link to this section" href="#MissingPhonon" class="anchor"> ¶</a></h3>
+<pre class="wiki">In file included from ../../../WebCore/platform/graphics/MediaPlayer.cpp:46:
+../../../WebCore/platform/graphics/qt/MediaPlayerPrivatePhonon.h:27:29:
+error: phononnamespace.h: No such file or directory
+In file included from ../../../WebCore/platform/graphics/MediaPlayer.cpp:46:
+../../../WebCore/platform/graphics/qt/MediaPlayerPrivatePhonon.h:120:
+error: ‘Phonon::State’ has not been declared
+../../../WebCore/platform/graphics/qt/MediaPlayerPrivatePhonon.h:120:
+error: ‘Phonon::State’ has not been declared
+</pre><p>
+This error is caused by not having Phonon installed. Install the development version to resolve.
+</p>
+<h3 id="Missingfontconfig">Missing fontconfig<a title="Link to this section" href="#Missingfontconfig" class="anchor"> ¶</a></h3>
+<pre class="wiki">error: fontconfig/fontconfig.h: No such file or directory
+</pre><p>
+Install fontconfig-dev (libfontconfig-dev).
+</p>
+<h2 id="DependenciesforspecificLinuxdistributions">Dependencies for specific Linux distributions<a title="Link to this section" href="#DependenciesforspecificLinuxdistributions" class="anchor"> ¶</a></h2>
+<h3 id="InstallingdependenciesonDebianUbuntu">Installing dependencies on Debian/Ubuntu<a title="Link to this section" href="#InstallingdependenciesonDebianUbuntu" class="anchor"> ¶</a></h3>
+<p>
+To install required dependencies on Debian/Ubuntu, do
+</p>
+<pre class="wiki">sudo aptitude install bison flex libqt4-dev libqt4-opengl-dev libphonon-dev libicu-dev libsqlite3-dev libxext-dev libxrender-dev gperf libfontconfig1-dev libphonon-dev
+</pre><h3 id="InstallingdependenciesonArkLinux">Installing dependencies on Ark Linux<a title="Link to this section" href="#InstallingdependenciesonArkLinux" class="anchor"> ¶</a></h3>
+<p>
+On Ark Linux, install the required dependencies using
+</p>
+<pre class="wiki">apt-get install devel-core qt4-devel qmake gperf bison sqlite-devel
+</pre><p>
+Alternatively, install the needed packages (see list above) through Mission Control -&gt; Install Software.
+</p>
+<h3 id="InstallingdependenciesonOpenSUSELinux">Installing dependencies on OpenSUSE Linux<a title="Link to this section" href="#InstallingdependenciesonOpenSUSELinux" class="anchor"> ¶</a></h3>
+<p>
+This was tested on openSUSE 11.1
+</p>
+<pre class="wiki">sudo zypper in libqt4-devel gperf bison libicu-devel sqlite-devel
+</pre><h3 id="InstallingdependenciesonFedoraLinux">Installing dependencies on Fedora Linux<a title="Link to this section" href="#InstallingdependenciesonFedoraLinux" class="anchor"> ¶</a></h3>
+<p>
+This was tested on Fedora 13
+</p>
+<pre class="wiki">sudo yum install gcc-c++ bison flex gperf phonon-devel qt-devel sqlite-devel libXrender-devel fontconfig-devel libicu-devel libXext-devel
+</pre>
+        
+        
+      </div>
+    </div>
+    <div id="altlinks">
+      <h3>Download in other formats:</h3>
+      <ul>
+        <li class="last first">
+          <a rel="nofollow" href="http://trac.webkit.org/wiki/BuildingQtOnLinux?format=txt">Plain Text</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+    <div id="footer" xml:lang="en" lang="en"><hr>
+      <a id="tracpowered" href="http://trac.edgewall.org/"><img src="webkit-build-prereqs_files/trac_logo_mini.png" alt="Trac Powered" height="30" width="107"></a>
+      <p class="left">
+        Powered by <a href="http://trac.webkit.org/about"><strong>Trac 0.11.7</strong></a><br>
+        By <a href="http://www.edgewall.org/">Edgewall Software</a>.
+      </p>
+      <p class="right">Hosted by <a href="http://www.apple.com/">Apple</a></p>
+    </div>
+  </body></html>

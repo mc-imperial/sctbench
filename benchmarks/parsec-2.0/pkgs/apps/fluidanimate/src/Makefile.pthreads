@@ -1,0 +1,20 @@
+TARGET   = fluidanimate
+OBJS     = pthreads.o parsec_barrier.o
+CXXFLAGS += -pthread
+
+all: pthreads cmp
+
+pthreads: $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) -o $(TARGET)
+
+%.o : %.cpp
+	$(CXX) $(CXXFLAGS) -D_GNU_SOURCE -c $<
+
+cmp: cmp.cpp
+	rm -rf cmp
+	$(CXX) cmp.cpp -o cmp
+
+clean:
+	rm -rf $(TARGET)
+	rm -rf cmp
+

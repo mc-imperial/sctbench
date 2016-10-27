@@ -1,0 +1,1684 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Commandline option parser</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="index.html" title="GLib Reference Manual">
+<link rel="up" href="glib-utilities.html" title="GLib Utilities">
+<link rel="prev" href="glib-Shell-related-Utilities.html" title="Shell-related Utilities">
+<link rel="next" href="glib-Glob-style-pattern-matching.html" title="Glob-style pattern matching">
+<meta name="generator" content="GTK-Doc V1.7 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="glib.html" title="GLib Overview">
+<link rel="chapter" href="glib-fundamentals.html" title="GLib Fundamentals">
+<link rel="chapter" href="glib-core.html" title="GLib Core Application Support">
+<link rel="chapter" href="glib-utilities.html" title="GLib Utilities">
+<link rel="chapter" href="glib-data-types.html" title="GLib Data Types">
+<link rel="chapter" href="tools.html" title="GLib Tools">
+<link rel="index" href="ix01.html" title="Index">
+<link rel="index" href="ix02.html" title="Index of deprecated symbols">
+<link rel="index" href="ix03.html" title="Index of new symbols in 2.2">
+<link rel="index" href="ix04.html" title="Index of new symbols in 2.4">
+<link rel="index" href="ix05.html" title="Index of new symbols in 2.6">
+<link rel="index" href="ix06.html" title="Index of new symbols in 2.8">
+<link rel="index" href="ix07.html" title="Index of new symbols in 2.10">
+<link rel="index" href="ix08.html" title="Index of new symbols in 2.12">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="glib-Shell-related-Utilities.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="glib-utilities.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GLib Reference Manual</th>
+<td><a accesskey="n" href="glib-Glob-style-pattern-matching.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts"><nobr><a href="#id3130689" class="shortcut">Top</a>
+                  &#160;|&#160;
+                  <a href="#id3131727" class="shortcut">Description</a></nobr></td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="glib-Commandline-option-parser"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2>
+<a name="id3130689"></a><span class="refentrytitle">Commandline option parser</span>
+</h2>
+<p>Commandline option parser &#8212; parses commandline options</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+
+#include &lt;glib.h&gt;
+
+
+enum                <a href="glib-Commandline-option-parser.html#GOptionError">GOptionError</a>;
+#define             <a href="glib-Commandline-option-parser.html#G-OPTION-ERROR:CAPS">G_OPTION_ERROR</a>
+<a href="glib-Basic-Types.html#gboolean">gboolean</a>            (<a href="glib-Commandline-option-parser.html#GOptionArgFunc">*GOptionArgFunc</a>)                   (const <a href="glib-Basic-Types.html#gchar">gchar</a> *option_name,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *value,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data,
+                                                         <a href="glib-Error-Reporting.html#GError">GError</a> **error);
+                    <a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a>;
+<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a>*     <a href="glib-Commandline-option-parser.html#g-option-context-new">g_option_context_new</a>                (const <a href="glib-Basic-Types.html#gchar">gchar</a> *parameter_string);
+void                <a href="glib-Commandline-option-parser.html#g-option-context-set-summary">g_option_context_set_summary</a>        (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *summary);
+const <a href="glib-Basic-Types.html#gchar">gchar</a>*        <a href="glib-Commandline-option-parser.html#g-option-context-get-summary">g_option_context_get_summary</a>        (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);
+void                <a href="glib-Commandline-option-parser.html#g-option-context-set-description">g_option_context_set_description</a>    (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *description);
+const <a href="glib-Basic-Types.html#gchar">gchar</a>*        <a href="glib-Commandline-option-parser.html#g-option-context-get-description">g_option_context_get_description</a>    (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);
+const <a href="glib-Basic-Types.html#gchar">gchar</a>*        (<a href="glib-Commandline-option-parser.html#GTranslateFunc">*GTranslateFunc</a>)                   (const <a href="glib-Basic-Types.html#gchar">gchar</a> *str,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data);
+void                <a href="glib-Commandline-option-parser.html#g-option-context-set-translate-func">g_option_context_set_translate_func</a> (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Commandline-option-parser.html#GTranslateFunc">GTranslateFunc</a> func,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data,
+                                                         <a href="glib-Datasets.html#GDestroyNotify">GDestroyNotify</a> destroy_notify);
+void                <a href="glib-Commandline-option-parser.html#g-option-context-set-translation-domain">g_option_context_set_translation_domain</a>
+                                                        (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *domain);
+void                <a href="glib-Commandline-option-parser.html#g-option-context-free">g_option_context_free</a>               (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);
+<a href="glib-Basic-Types.html#gboolean">gboolean</a>            <a href="glib-Commandline-option-parser.html#g-option-context-parse">g_option_context_parse</a>              (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Basic-Types.html#gint">gint</a> *argc,
+                                                         <a href="glib-Basic-Types.html#gchar">gchar</a> ***argv,
+                                                         <a href="glib-Error-Reporting.html#GError">GError</a> **error);
+void                <a href="glib-Commandline-option-parser.html#g-option-context-set-help-enabled">g_option_context_set_help_enabled</a>   (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Basic-Types.html#gboolean">gboolean</a> help_enabled);
+<a href="glib-Basic-Types.html#gboolean">gboolean</a>            <a href="glib-Commandline-option-parser.html#g-option-context-get-help-enabled">g_option_context_get_help_enabled</a>   (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);
+void                <a href="glib-Commandline-option-parser.html#g-option-context-set-ignore-unknown-options">g_option_context_set_ignore_unknown_options</a>
+                                                        (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Basic-Types.html#gboolean">gboolean</a> ignore_unknown);
+<a href="glib-Basic-Types.html#gboolean">gboolean</a>            <a href="glib-Commandline-option-parser.html#g-option-context-get-ignore-unknown-options">g_option_context_get_ignore_unknown_options</a>
+                                                        (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);
+enum                <a href="glib-Commandline-option-parser.html#GOptionArg">GOptionArg</a>;
+enum                <a href="glib-Commandline-option-parser.html#GOptionFlags">GOptionFlags</a>;
+#define             <a href="glib-Commandline-option-parser.html#G-OPTION-REMAINING:CAPS">G_OPTION_REMAINING</a>
+                    <a href="glib-Commandline-option-parser.html#GOptionEntry">GOptionEntry</a>;
+void                <a href="glib-Commandline-option-parser.html#g-option-context-add-main-entries">g_option_context_add_main_entries</a>   (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         const <a href="glib-Commandline-option-parser.html#GOptionEntry">GOptionEntry</a> *entries,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *translation_domain);
+                    <a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a>;
+void                <a href="glib-Commandline-option-parser.html#g-option-context-add-group">g_option_context_add_group</a>          (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group);
+void                <a href="glib-Commandline-option-parser.html#g-option-context-set-main-group">g_option_context_set_main_group</a>     (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group);
+<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a>*       <a href="glib-Commandline-option-parser.html#g-option-context-get-main-group">g_option_context_get_main_group</a>     (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);
+<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a>*       <a href="glib-Commandline-option-parser.html#g-option-group-new">g_option_group_new</a>                  (const <a href="glib-Basic-Types.html#gchar">gchar</a> *name,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *description,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *help_description,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> user_data,
+                                                         <a href="glib-Datasets.html#GDestroyNotify">GDestroyNotify</a> destroy);
+void                <a href="glib-Commandline-option-parser.html#g-option-group-free">g_option_group_free</a>                 (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group);
+void                <a href="glib-Commandline-option-parser.html#g-option-group-add-entries">g_option_group_add_entries</a>          (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         const <a href="glib-Commandline-option-parser.html#GOptionEntry">GOptionEntry</a> *entries);
+<a href="glib-Basic-Types.html#gboolean">gboolean</a>            (<a href="glib-Commandline-option-parser.html#GOptionParseFunc">*GOptionParseFunc</a>)                 (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data,
+                                                         <a href="glib-Error-Reporting.html#GError">GError</a> **error);
+void                <a href="glib-Commandline-option-parser.html#g-option-group-set-parse-hooks">g_option_group_set_parse_hooks</a>      (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionParseFunc">GOptionParseFunc</a> pre_parse_func,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionParseFunc">GOptionParseFunc</a> post_parse_func);
+void                (<a href="glib-Commandline-option-parser.html#GOptionErrorFunc">*GOptionErrorFunc</a>)                 (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data,
+                                                         <a href="glib-Error-Reporting.html#GError">GError</a> **error);
+void                <a href="glib-Commandline-option-parser.html#g-option-group-set-error-hook">g_option_group_set_error_hook</a>       (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionErrorFunc">GOptionErrorFunc</a> error_func);
+void                <a href="glib-Commandline-option-parser.html#g-option-group-set-translate-func">g_option_group_set_translate_func</a>   (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         <a href="glib-Commandline-option-parser.html#GTranslateFunc">GTranslateFunc</a> func,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data,
+                                                         <a href="glib-Datasets.html#GDestroyNotify">GDestroyNotify</a> destroy_notify);
+void                <a href="glib-Commandline-option-parser.html#g-option-group-set-translation-domain">g_option_group_set_translation_domain</a>
+                                                        (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *domain);
+
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="id3131727"></a><h2>Description</h2>
+<p>
+The GOption commandline parser is intended to be a simpler replacement for the
+popt library. It supports short and long commandline options, as shown in the 
+following example:
+</p>
+<p>
+<code class="literal">testtreemodel -r 1 --max-size 20 --rand --display=:1.0 -vb -- file1 file2</code>
+</p>
+<p>
+The example demonstrates a number of features of the GOption commandline parser
+</p>
+<div class="itemizedlist"><ul type="disc">
+<li><p>
+  Options can be single letters, prefixed by a single dash. Multiple
+  short options can be grouped behind a single dash.
+</p></li>
+<li><p>
+  Long options are prefixed by two consecutive dashes.
+</p></li>
+<li><p>
+  Options can have an extra argument, which can be a number, a string or a filename.
+  For long options, the extra argument can be appended with an equals sign after the
+  option name.
+</p></li>
+<li><p>
+  Non-option arguments are returned to the application as rest arguments.
+</p></li>
+<li><p>
+  An argument consisting solely of two dashes turns off further parsing, any remaining
+  arguments (even those starting with a dash) are returned to the application as rest 
+  arguments.
+</p></li>
+</ul></div>
+<p>
+</p>
+<p>
+Another important feature of GOption is that it can automatically generate nicely
+formatted help output. Unless it is explicitly turned off with 
+<a href="glib-Commandline-option-parser.html#g-option-context-set-help-enabled"><code class="function">g_option_context_set_help_enabled()</code></a>, GOption will recognize the 
+<code class="option">--help</code>, <code class="option">-?</code>, <code class="option">--help-all</code>
+and <code class="option">--help-</code><em class="replaceable"><code>groupname</code></em> options 
+(where <em class="replaceable"><code>groupname</code></em> is the name of a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a>) 
+and write a text similar to the one shown in the following example to stdout.
+</p>
+<div class="informalexample"><pre class="screen">
+Usage:
+  testtreemodel [OPTION...] - test tree model performance
+
+Help Options:
+  -?, --help               Show help options
+  --help-all               Show all help options
+  --help-gtk               Show GTK+ Options
+
+Application Options:
+  -r, --repeats=N          Average over N repetitions
+  -m, --max-size=M         Test up to 2^M items
+  --display=DISPLAY        X display to use
+  -v, --verbose            Be verbose
+  -b, --beep               Beep when done   
+  --rand                   Randomize the data
+</pre></div>
+<p>
+GOption groups options in <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a>s, which makes it easy to
+incorporate options from multiple sources. The intended use for this is
+to let applications collect option groups from the libraries it uses,
+add them to their <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>, and parse all options by a single call
+to <a href="glib-Commandline-option-parser.html#g-option-context-parse"><code class="function">g_option_context_parse()</code></a>. See <code class="function">gtk_get_option_group()</code> for an example.
+</p>
+<p>
+If an option is declared to be of type string or filename, GOption takes
+care of converting it to the right encoding; strings are returned in UTF-8,
+filenames are returned in the GLib filename encoding.
+</p>
+<p>
+Here is a complete example of setting up GOption to parse the example
+commandline above and produce the example help output.
+</p>
+<div class="informalexample"><pre class="programlisting">
+static gint repeats = 2;
+static gint max_size = 8;
+static gboolean verbose = FALSE;
+static gboolean beep = FALSE;
+static gboolean rand = FALSE;
+
+static GOptionEntry entries[] = 
+{
+  { "repeats", 'r', 0, G_OPTION_ARG_INT, &amp;repeats, "Average over N repetitions", "N" },
+  { "max-size", 'm', 0, G_OPTION_ARG_INT, &amp;max_size, "Test up to 2^M items", "M" },
+  { "verbose", 'v', 0, G_OPTION_ARG_NONE, &amp;verbose, "Be verbose", NULL },
+  { "beep", 'b', 0, G_OPTION_ARG_NONE, &amp;beep, "Beep when done", NULL },
+  { "rand", 0, 0, G_OPTION_ARG_NONE, &amp;rand, "Randomize the data", NULL },
+  { NULL }
+};
+
+int 
+main (int argc, char *argv[])
+{
+  GError *error = NULL;
+  GOptionContext *context;
+
+  context = g_option_context_new ("- test tree model performance");
+  g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
+  g_option_context_add_group (context, gtk_get_option_group (TRUE));
+  g_option_context_parse (context, &amp;argc, &amp;argv, &amp;error);
+  
+  /* ... */
+
+}
+</pre></div>
+</div>
+<div class="refsect1" lang="en">
+<a name="id3131942"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="id3131953"></a><h3>
+<a name="GOptionError"></a>enum GOptionError</h3>
+<a class="indexterm" name="id3131966"></a><pre class="programlisting">typedef enum
+{
+  G_OPTION_ERROR_UNKNOWN_OPTION,
+  G_OPTION_ERROR_BAD_VALUE,
+  G_OPTION_ERROR_FAILED
+} GOptionError;
+</pre>
+<p>
+Error codes returned by option parsing.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><a name="G-OPTION-ERROR-UNKNOWN-OPTION:CAPS"></a><code class="literal">G_OPTION_ERROR_UNKNOWN_OPTION</code></span></td>
+<td>An option was not known to the parser.
+  This error will only be reported, if the parser hasn't been instructed
+  to ignore unknown options, see <a href="glib-Commandline-option-parser.html#g-option-context-set-ignore-unknown-options"><code class="function">g_option_context_set_ignore_unknown_options()</code></a>.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-ERROR-BAD-VALUE:CAPS"></a><code class="literal">G_OPTION_ERROR_BAD_VALUE</code></span></td>
+<td>A value couldn't be parsed.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-ERROR-FAILED:CAPS"></a><code class="literal">G_OPTION_ERROR_FAILED</code></span></td>
+<td>A <a href="glib-Commandline-option-parser.html#GOptionArgFunc"><span class="type">GOptionArgFunc</span></a> callback failed.
+
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3132078"></a><h3>
+<a name="G-OPTION-ERROR:CAPS"></a>G_OPTION_ERROR</h3>
+<a class="indexterm" name="id3132091"></a><pre class="programlisting">#define G_OPTION_ERROR (g_option_error_quark ())
+</pre>
+<p>
+Error domain for option parsing. Errors in this domain will
+be from the <a href="glib-Commandline-option-parser.html#GOptionError"><span class="type">GOptionError</span></a> enumeration. See <a href="glib-Error-Reporting.html#GError"><span class="type">GError</span></a> for information on 
+error domains.
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3132124"></a><h3>
+<a name="GOptionArgFunc"></a>GOptionArgFunc ()</h3>
+<a class="indexterm" name="id3132137"></a><pre class="programlisting"><a href="glib-Basic-Types.html#gboolean">gboolean</a>            (*GOptionArgFunc)                   (const <a href="glib-Basic-Types.html#gchar">gchar</a> *option_name,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *value,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data,
+                                                         <a href="glib-Error-Reporting.html#GError">GError</a> **error);</pre>
+<p>
+The type of function to be passed as callback for <a href="glib-Commandline-option-parser.html#G-OPTION-ARG-CALLBACK:CAPS"><code class="literal">G_OPTION_ARG_CALLBACK</code></a>
+options.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>option_name</code></em>&#160;:</span></td>
+<td>The name of the option being parsed. This will be either a 
+  single dash followed by a single letter (for a short name) or two dashes
+  followed by a long option name.
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>value</code></em>&#160;:</span></td>
+<td>The value to be parsed.
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>data</code></em>&#160;:</span></td>
+<td>User data added to the <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a> containing the option when it
+  was created with <a href="glib-Commandline-option-parser.html#g-option-group-new"><code class="function">g_option_group_new()</code></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>error</code></em>&#160;:</span></td>
+<td>A return location for errors. The error code <a href="glib-Commandline-option-parser.html#G-OPTION-ERROR-FAILED:CAPS"><code class="literal">G_OPTION_ERROR_FAILED</code></a>
+  is intended to be used for errors in <a href="glib-Commandline-option-parser.html#GOptionArgFunc"><span class="type">GOptionArgFunc</span></a> callbacks.
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td>
+<a href="glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the option was successfully parsed, <a href="glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if an error 
+  occurred, in which case <em class="parameter"><code>error</code></em> should be set with <a href="glib-Error-Reporting.html#g-set-error"><code class="function">g_set_error()</code></a>
+
+
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3132353"></a><h3>
+<a name="GOptionContext"></a>GOptionContext</h3>
+<a class="indexterm" name="id3132366"></a><pre class="programlisting">typedef struct _GOptionContext GOptionContext;</pre>
+<p>
+A <span class="structname">GOptionContext</span> struct defines which options
+are accepted by the commandline option parser. The struct has only private 
+fields and should not be directly accessed.
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3132388"></a><h3>
+<a name="g-option-context-new"></a>g_option_context_new ()</h3>
+<a class="indexterm" name="id3132403"></a><pre class="programlisting"><a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a>*     g_option_context_new                (const <a href="glib-Basic-Types.html#gchar">gchar</a> *parameter_string);</pre>
+<p>
+Creates a new option context. 
+</p>
+<p>
+The <em class="parameter"><code>parameter_string</code></em> can serve multiple purposes. It can be used
+to add descriptions for "rest" arguments, which are not parsed by
+the <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>, typically something like "FILES" or
+"FILE1 FILE2...". If you are using <a href="glib-Commandline-option-parser.html#G-OPTION-REMAINING:CAPS"><span class="type">G_OPTION_REMAINING</span></a> for
+collecting "rest" arguments, GLib handles this automatically by
+using the <em class="parameter"><code>arg_description</code></em> of the corresponding <a href="glib-Commandline-option-parser.html#GOptionEntry"><span class="type">GOptionEntry</span></a> in
+the usage summary.
+</p>
+<p>
+Another usage is to give a short summary of the program
+functionality, like " - frob the strings", which will be displayed
+in the same line as the usage. For a longer description of the
+program functionality that should be displayed as a paragraph
+below the usage line, use <a href="glib-Commandline-option-parser.html#g-option-context-set-summary"><code class="function">g_option_context_set_summary()</code></a>.
+</p>
+<p>
+Note that the <em class="parameter"><code>parameter_string</code></em> is translated (see 
+<a href="glib-Commandline-option-parser.html#g-option-context-set-translate-func"><code class="function">g_option_context_set_translate_func()</code></a>).</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>parameter_string</code></em>&#160;:</span></td>
+<td> a string which is displayed in
+   the first line of <code class="option">--help</code> output, after the
+   usage summary 
+   <code class="literal"><em class="replaceable"><code>programname</code></em> [OPTION...]</code>
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> a newly created <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>, which must be
+   freed with <a href="glib-Commandline-option-parser.html#g-option-context-free"><code class="function">g_option_context_free()</code></a> after use.
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3132590"></a><h3>
+<a name="g-option-context-set-summary"></a>g_option_context_set_summary ()</h3>
+<a class="indexterm" name="id3132606"></a><pre class="programlisting">void                g_option_context_set_summary        (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *summary);</pre>
+<p>
+Adds a string to be displayed in <code class="option">--help</code> output
+before the list of options. This is typically a summary of the
+program functionality. 
+</p>
+<p>
+Note that the summary is translated (see 
+<a href="glib-Commandline-option-parser.html#g-option-context-set-translate-func"><code class="function">g_option_context_set_translate_func()</code></a>).</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>summary</code></em>&#160;:</span></td>
+<td> a string to be shown in <code class="option">--help</code> output 
+ before the list of options, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.12
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3132730"></a><h3>
+<a name="g-option-context-get-summary"></a>g_option_context_get_summary ()</h3>
+<a class="indexterm" name="id3132745"></a><pre class="programlisting">const <a href="glib-Basic-Types.html#gchar">gchar</a>*        g_option_context_get_summary        (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);</pre>
+<p>
+Returns the summary. See <a href="glib-Commandline-option-parser.html#g-option-context-set-summary"><code class="function">g_option_context_set_summary()</code></a>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> the summary
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.12
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3132834"></a><h3>
+<a name="g-option-context-set-description"></a>g_option_context_set_description ()</h3>
+<a class="indexterm" name="id3132850"></a><pre class="programlisting">void                g_option_context_set_description    (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *description);</pre>
+<p>
+Adds a string to be displayed in <code class="option">--help</code> output
+after the list of options. This text often includes a bug reporting
+address.
+</p>
+<p>
+Note that the summary is translated (see 
+<a href="glib-Commandline-option-parser.html#g-option-context-set-translate-func"><code class="function">g_option_context_set_translate_func()</code></a>).</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>description</code></em>&#160;:</span></td>
+<td> a string to be shown in <code class="option">--help</code> output 
+  after the list of options, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.12
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3132973"></a><h3>
+<a name="g-option-context-get-description"></a>g_option_context_get_description ()</h3>
+<a class="indexterm" name="id3132988"></a><pre class="programlisting">const <a href="glib-Basic-Types.html#gchar">gchar</a>*        g_option_context_get_description    (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);</pre>
+<p>
+Returns the description. See <a href="glib-Commandline-option-parser.html#g-option-context-set-description"><code class="function">g_option_context_set_description()</code></a>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> the description
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.12
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3133077"></a><h3>
+<a name="GTranslateFunc"></a>GTranslateFunc ()</h3>
+<a class="indexterm" name="id3133090"></a><pre class="programlisting">const <a href="glib-Basic-Types.html#gchar">gchar</a>*        (*GTranslateFunc)                   (const <a href="glib-Basic-Types.html#gchar">gchar</a> *str,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data);</pre>
+<p>
+The type of functions which are used to translate user-visible
+strings, for <code class="option">--help</code> output.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>str</code></em>&#160;:</span></td>
+<td>the untranslated string
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>data</code></em>&#160;:</span></td>
+<td>user data specified when installing the function, e.g.
+  in <a href="glib-Commandline-option-parser.html#g-option-group-set-translate-func"><code class="function">g_option_group_set_translate_func()</code></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td>a translation of the string for the current locale.
+  The returned string is owned by GLib and must not be freed.
+
+
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3133189"></a><h3>
+<a name="g-option-context-set-translate-func"></a>g_option_context_set_translate_func ()</h3>
+<a class="indexterm" name="id3133205"></a><pre class="programlisting">void                g_option_context_set_translate_func (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Commandline-option-parser.html#GTranslateFunc">GTranslateFunc</a> func,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data,
+                                                         <a href="glib-Datasets.html#GDestroyNotify">GDestroyNotify</a> destroy_notify);</pre>
+<p>
+Sets the function which is used to translate the contexts 
+user-visible strings, for <code class="option">--help</code> output. 
+If <em class="parameter"><code>func</code></em> is <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, strings are not translated.
+</p>
+<p>
+Note that option groups have their own translation functions, 
+this function only affects the <em class="parameter"><code>parameter_string</code></em> (see <code class="function">g_option_context_nex()</code>), 
+the summary (see <a href="glib-Commandline-option-parser.html#g-option-context-set-summary"><code class="function">g_option_context_set_summary()</code></a>) and the description 
+(see <a href="glib-Commandline-option-parser.html#g-option-context-set-description"><code class="function">g_option_context_set_description()</code></a>).
+</p>
+<p>
+If you are using <code class="function">gettext()</code>, you only need to set the translation
+domain, see <code class="function">g_context_group_set_translation_domain()</code>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>func</code></em>&#160;:</span></td>
+<td> the <a href="glib-Commandline-option-parser.html#GTranslateFunc"><span class="type">GTranslateFunc</span></a>, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> 
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>data</code></em>&#160;:</span></td>
+<td> user data to pass to <em class="parameter"><code>func</code></em>, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>destroy_notify</code></em>&#160;:</span></td>
+<td> a function which gets called to free <em class="parameter"><code>data</code></em>, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.12
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3133483"></a><h3>
+<a name="g-option-context-set-translation-domain"></a>g_option_context_set_translation_domain ()</h3>
+<a class="indexterm" name="id3133499"></a><pre class="programlisting">void                g_option_context_set_translation_domain
+                                                        (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *domain);</pre>
+<p>
+A convenience function to use <code class="function">gettext()</code> for translating
+user-visible strings.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>domain</code></em>&#160;:</span></td>
+<td> the domain to use
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.12
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3133598"></a><h3>
+<a name="g-option-context-free"></a>g_option_context_free ()</h3>
+<a class="indexterm" name="id3133613"></a><pre class="programlisting">void                g_option_context_free               (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);</pre>
+<p>
+Frees context and all the groups which have been 
+added to it.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a> 
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3133679"></a><h3>
+<a name="g-option-context-parse"></a>g_option_context_parse ()</h3>
+<a class="indexterm" name="id3133695"></a><pre class="programlisting"><a href="glib-Basic-Types.html#gboolean">gboolean</a>            g_option_context_parse              (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Basic-Types.html#gint">gint</a> *argc,
+                                                         <a href="glib-Basic-Types.html#gchar">gchar</a> ***argv,
+                                                         <a href="glib-Error-Reporting.html#GError">GError</a> **error);</pre>
+<p>
+Parses the command line arguments, recognizing options
+which have been added to <em class="parameter"><code>context</code></em>. A side-effect of 
+calling this function is that <a href="glib-Miscellaneous-Utility-Functions.html#g-set-prgname"><code class="function">g_set_prgname()</code></a> will be
+called.
+</p>
+<p>
+If the parsing is successful, any parsed arguments are
+removed from the array and <em class="parameter"><code>argc</code></em> and <em class="parameter"><code>argv</code></em> are updated 
+accordingly. A '--' option is stripped from <em class="parameter"><code>argv</code></em>
+unless there are unparsed options before and after it, 
+or some of the options after it start with '-'. In case 
+of an error, <em class="parameter"><code>argc</code></em> and <em class="parameter"><code>argv</code></em> are left unmodified. 
+</p>
+<p>
+If automatic <code class="option">--help</code> support is enabled
+(see <a href="glib-Commandline-option-parser.html#g-option-context-set-help-enabled"><code class="function">g_option_context_set_help_enabled()</code></a>), and the 
+<em class="parameter"><code>argv</code></em> array contains one of the recognized help options,
+this function will produce help output to stdout and
+call <code class="literal">exit (0)</code>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>argc</code></em>&#160;:</span></td>
+<td> a pointer to the number of command line arguments.
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>argv</code></em>&#160;:</span></td>
+<td> a pointer to the array of command line arguments.
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>error</code></em>&#160;:</span></td>
+<td> a return location for errors 
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> <a href="glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the parsing was successful, 
+              <a href="glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if an error occurred
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3133947"></a><h3>
+<a name="g-option-context-set-help-enabled"></a>g_option_context_set_help_enabled ()</h3>
+<a class="indexterm" name="id3133963"></a><pre class="programlisting">void                g_option_context_set_help_enabled   (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Basic-Types.html#gboolean">gboolean</a> help_enabled);</pre>
+<p>
+Enables or disables automatic generation of <code class="option">--help</code> 
+output. By default, <a href="glib-Commandline-option-parser.html#g-option-context-parse"><code class="function">g_option_context_parse()</code></a> recognizes
+<code class="option">--help</code>, <code class="option">-?</code>, <code class="option">--help-all</code>
+and <code class="option">--help-</code><em class="replaceable"><code>groupname</code></em> and creates
+suitable output to stdout.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>help_enabled</code></em>&#160;:</span></td>
+<td> <a href="glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> to enable <code class="option">--help</code>, <a href="glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> to disable it
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3134106"></a><h3>
+<a name="g-option-context-get-help-enabled"></a>g_option_context_get_help_enabled ()</h3>
+<a class="indexterm" name="id3134123"></a><pre class="programlisting"><a href="glib-Basic-Types.html#gboolean">gboolean</a>            g_option_context_get_help_enabled   (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);</pre>
+<p>
+Returns whether automatic <code class="option">--help</code> generation
+is turned on for <em class="parameter"><code>context</code></em>. See <a href="glib-Commandline-option-parser.html#g-option-context-set-help-enabled"><code class="function">g_option_context_set_help_enabled()</code></a>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> <a href="glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if automatic help generation is turned on.
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3134230"></a><h3>
+<a name="g-option-context-set-ignore-unknown-options"></a>g_option_context_set_ignore_unknown_options ()</h3>
+<a class="indexterm" name="id3134248"></a><pre class="programlisting">void                g_option_context_set_ignore_unknown_options
+                                                        (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Basic-Types.html#gboolean">gboolean</a> ignore_unknown);</pre>
+<p>
+Sets whether to ignore unknown options or not. If an argument is 
+ignored, it is left in the <em class="parameter"><code>argv</code></em> array after parsing. By default, 
+<a href="glib-Commandline-option-parser.html#g-option-context-parse"><code class="function">g_option_context_parse()</code></a> treats unknown options as error.
+</p>
+<p>
+This setting does not affect non-option arguments (i.e. arguments 
+which don't start with a dash). But note that GOption cannot reliably
+determine whether a non-option belongs to a preceding unknown option.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>ignore_unknown</code></em>&#160;:</span></td>
+<td> <a href="glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> to ignore unknown options, <a href="glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> to produce
+   an error when unknown options are met
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3134383"></a><h3>
+<a name="g-option-context-get-ignore-unknown-options"></a>g_option_context_get_ignore_unknown_options ()</h3>
+<a class="indexterm" name="id3134399"></a><pre class="programlisting"><a href="glib-Basic-Types.html#gboolean">gboolean</a>            g_option_context_get_ignore_unknown_options
+                                                        (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);</pre>
+<p>
+Returns whether unknown options are ignored or not. See
+<a href="glib-Commandline-option-parser.html#g-option-context-set-ignore-unknown-options"><code class="function">g_option_context_set_ignore_unknown_options()</code></a>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> <a href="glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if unknown options are ignored.
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3134499"></a><h3>
+<a name="GOptionArg"></a>enum GOptionArg</h3>
+<a class="indexterm" name="id3134511"></a><pre class="programlisting">typedef enum
+{
+  G_OPTION_ARG_NONE,
+  G_OPTION_ARG_STRING,
+  G_OPTION_ARG_INT,
+  G_OPTION_ARG_CALLBACK,
+  G_OPTION_ARG_FILENAME,
+  G_OPTION_ARG_STRING_ARRAY,
+  G_OPTION_ARG_FILENAME_ARRAY,
+  G_OPTION_ARG_DOUBLE,
+  G_OPTION_ARG_INT64
+} GOptionArg;
+</pre>
+<p>
+The <a href="glib-Commandline-option-parser.html#GOptionArg"><span class="type">GOptionArg</span></a> enum values determine which type of extra argument the
+options expect to find. If an option expects an extra argument, it
+can be specified in several ways; with a short option:
+<code class="option">-x arg</code>, with a long option: <code class="option">--name arg</code>
+or combined in a single argument: <code class="option">--name=arg</code>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><a name="G-OPTION-ARG-NONE:CAPS"></a><code class="literal">G_OPTION_ARG_NONE</code></span></td>
+<td>No extra argument. This is useful for simple flags.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-ARG-STRING:CAPS"></a><code class="literal">G_OPTION_ARG_STRING</code></span></td>
+<td>The option takes a string argument.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-ARG-INT:CAPS"></a><code class="literal">G_OPTION_ARG_INT</code></span></td>
+<td>The option takes an integer argument.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-ARG-CALLBACK:CAPS"></a><code class="literal">G_OPTION_ARG_CALLBACK</code></span></td>
+<td>The option provides a callback to parse the
+  extra argument.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-ARG-FILENAME:CAPS"></a><code class="literal">G_OPTION_ARG_FILENAME</code></span></td>
+<td>The option takes a filename as argument.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-ARG-STRING-ARRAY:CAPS"></a><code class="literal">G_OPTION_ARG_STRING_ARRAY</code></span></td>
+<td>The option takes a string argument, multiple
+  uses of the option are collected into an array of strings.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-ARG-FILENAME-ARRAY:CAPS"></a><code class="literal">G_OPTION_ARG_FILENAME_ARRAY</code></span></td>
+<td>The option takes a filename as argument, 
+  multiple uses of the option are collected into an array of strings.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-ARG-DOUBLE:CAPS"></a><code class="literal">G_OPTION_ARG_DOUBLE</code></span></td>
+<td>The option takes a double argument. The argument
+  can be formatted either for the user's locale or for the "C" locale. Since 2.12
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-ARG-INT64:CAPS"></a><code class="literal">G_OPTION_ARG_INT64</code></span></td>
+<td>The option takes a 64-bit integer. Like <a href="glib-Commandline-option-parser.html#G-OPTION-ARG-INT:CAPS"><code class="literal">G_OPTION_ARG_INT</code></a>
+  but for larger numbers. The number can be in decimal base, or in hexadecimal
+  (when prefixed with <code class="literal">0x</code>, for example, <code class="literal">0xffffffff</code>).
+  Since 2.12
+
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3134793"></a><h3>
+<a name="GOptionFlags"></a>enum GOptionFlags</h3>
+<a class="indexterm" name="id3134805"></a><pre class="programlisting">typedef enum
+{
+  G_OPTION_FLAG_HIDDEN		= 1 &lt;&lt; 0,
+  G_OPTION_FLAG_IN_MAIN		= 1 &lt;&lt; 1,
+  G_OPTION_FLAG_REVERSE		= 1 &lt;&lt; 2,
+  G_OPTION_FLAG_NO_ARG		= 1 &lt;&lt; 3,
+  G_OPTION_FLAG_FILENAME	= 1 &lt;&lt; 4,
+  G_OPTION_FLAG_OPTIONAL_ARG    = 1 &lt;&lt; 5,
+  G_OPTION_FLAG_NOALIAS	        = 1 &lt;&lt; 6
+} GOptionFlags;
+</pre>
+<p>
+Flags which modify individual options.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><a name="G-OPTION-FLAG-HIDDEN:CAPS"></a><code class="literal">G_OPTION_FLAG_HIDDEN</code></span></td>
+<td>The option doesn't appear in <code class="option">--help</code>
+   output.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-FLAG-IN-MAIN:CAPS"></a><code class="literal">G_OPTION_FLAG_IN_MAIN</code></span></td>
+<td>The option appears in the main section of the
+   <code class="option">--help</code> output, even if it is defined in a group.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-FLAG-REVERSE:CAPS"></a><code class="literal">G_OPTION_FLAG_REVERSE</code></span></td>
+<td>For options of the <a href="glib-Commandline-option-parser.html#G-OPTION-ARG-NONE:CAPS"><code class="literal">G_OPTION_ARG_NONE</code></a> kind, this flag
+   indicates that the sense of the option is reversed.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-FLAG-NO-ARG:CAPS"></a><code class="literal">G_OPTION_FLAG_NO_ARG</code></span></td>
+<td>For options of the <a href="glib-Commandline-option-parser.html#G-OPTION-ARG-CALLBACK:CAPS"><code class="literal">G_OPTION_ARG_CALLBACK</code></a> kind,
+   this flag indicates that the callback does not take any argument
+   (like a <a href="glib-Commandline-option-parser.html#G-OPTION-ARG-NONE:CAPS"><code class="literal">G_OPTION_ARG_NONE</code></a> option). Since 2.8
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-FLAG-FILENAME:CAPS"></a><code class="literal">G_OPTION_FLAG_FILENAME</code></span></td>
+<td>For options of the <a href="glib-Commandline-option-parser.html#G-OPTION-ARG-CALLBACK:CAPS"><code class="literal">G_OPTION_ARG_CALLBACK</code></a>
+   kind, this flag indicates that the argument should be passed to the
+   callback in the GLib filename encoding rather than UTF-8. Since 2.8
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-FLAG-OPTIONAL-ARG:CAPS"></a><code class="literal">G_OPTION_FLAG_OPTIONAL_ARG</code></span></td>
+<td>For options of the <a href="glib-Commandline-option-parser.html#G-OPTION-ARG-CALLBACK:CAPS"><code class="literal">G_OPTION_ARG_CALLBACK</code></a> 
+   kind, this flag indicates that the argument supply is optional. If no argument
+   is given then data of <a href="glib-Commandline-option-parser.html#GOptionParseFunc"><code class="literal">GOptionParseFunc</code></a> will be set to NULL. Since 2.8
+</td>
+</tr>
+<tr>
+<td><span class="term"><a name="G-OPTION-FLAG-NOALIAS:CAPS"></a><code class="literal">G_OPTION_FLAG_NOALIAS</code></span></td>
+<td>This flag turns off the automatic conflict resolution
+   which prefixes long option names with <code class="literal">groupname-</code> if 
+   there is a conflict. This option should only be used in situations where
+   aliasing is necessary to model some legacy commandline interface. It is
+   not safe to use this option, unless all option groups are under your 
+   direct control. Since 2.8.
+
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3135084"></a><h3>
+<a name="G-OPTION-REMAINING:CAPS"></a>G_OPTION_REMAINING</h3>
+<a class="indexterm" name="id3135100"></a><pre class="programlisting">#define G_OPTION_REMAINING ""
+</pre>
+<p>
+If a long option in the main group has this name, it is not treated as a 
+regular option. Instead it collects all non-option arguments which would
+otherwise be left in <code class="literal">argv</code>. The option must be of type
+<a href="glib-Commandline-option-parser.html#G-OPTION-ARG-STRING-ARRAY:CAPS"><code class="literal">G_OPTION_ARG_STRING_ARRAY</code></a> or <a href="glib-Commandline-option-parser.html#G-OPTION-ARG-FILENAME-ARRAY:CAPS"><code class="literal">G_OPTION_ARG_FILENAME_ARRAY</code></a>.
+</p>
+<p>
+Using <a href="glib-Commandline-option-parser.html#G-OPTION-REMAINING:CAPS"><span class="type">G_OPTION_REMAINING</span></a> instead of simply scanning <code class="literal">argv</code>
+for leftover arguments has the advantage that GOption takes care of 
+necessary encoding conversions for strings or filenames.
+</p>
+<p class="since">Since 2.6
+
+
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3135176"></a><h3>
+<a name="GOptionEntry"></a>GOptionEntry</h3>
+<a class="indexterm" name="id3135188"></a><pre class="programlisting">typedef struct {
+  const gchar *long_name;
+  gchar        short_name;
+  gint         flags;
+
+  GOptionArg   arg;
+  gpointer     arg_data;
+  
+  const gchar *description;
+  const gchar *arg_description;
+} GOptionEntry;
+</pre>
+<p>
+A <span class="structname">GOptionEntry</span> defines a single option.
+To have an effect, they must be added to a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a> with
+<a href="glib-Commandline-option-parser.html#g-option-context-add-main-entries"><code class="function">g_option_context_add_main_entries()</code></a> or <a href="glib-Commandline-option-parser.html#g-option-group-add-entries"><code class="function">g_option_group_add_entries()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term">const&#160;<a href="glib-Basic-Types.html#gchar">gchar</a>&#160;*<em class="structfield"><code>long_name</code></em>;</span></td>
+<td>The long name of an option can be used to specify it
+  in a commandline as --<em class="replaceable"><code>long_name</code></em>. Every
+  option must have a long name. To resolve conflicts if multiple
+  option groups contain the same long name, it is also possible to
+  specify the option as 
+  --<em class="replaceable"><code>groupname</code></em>-<em class="replaceable"><code>long_name</code></em>.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a href="glib-Basic-Types.html#gchar">gchar</a>&#160;<em class="structfield"><code>short_name</code></em>;</span></td>
+<td>If an option has a short name, it can be specified
+  -<em class="replaceable"><code>short_name</code></em> in a commandline. <em class="parameter"><code>short_name</code></em> must be 
+  a printable ASCII character different from '-', or zero if the option has no
+  short name.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a href="glib-Basic-Types.html#gint">gint</a>&#160;<em class="structfield"><code>flags</code></em>;</span></td>
+<td>Flags from <a href="glib-Commandline-option-parser.html#GOptionFlags"><span class="type">GOptionFlags</span></a>.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a href="glib-Commandline-option-parser.html#GOptionArg">GOptionArg</a>&#160;<em class="structfield"><code>arg</code></em>;</span></td>
+<td>The type of the option, as a <a href="glib-Commandline-option-parser.html#GOptionArg"><span class="type">GOptionArg</span></a>.
+</td>
+</tr>
+<tr>
+<td><span class="term"><a href="glib-Basic-Types.html#gpointer">gpointer</a>&#160;<em class="structfield"><code>arg_data</code></em>;</span></td>
+<td> If the <em class="parameter"><code>arg</code></em> type is <a href="glib-Commandline-option-parser.html#G-OPTION-ARG-CALLBACK:CAPS"><code class="literal">G_OPTION_ARG_CALLBACK</code></a>, then <em class="parameter"><code>arg_data</code></em> must 
+ point to a <a href="glib-Commandline-option-parser.html#GOptionArgFunc"><span class="type">GOptionArgFunc</span></a> callback function, which will be called to handle 
+ the extra argument. Otherwise, <em class="parameter"><code>arg_data</code></em> is a pointer to a location to store 
+ the value, the required type of the location depends on the <em class="parameter"><code>arg</code></em> type:
+  <div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><a href="glib-Commandline-option-parser.html#G-OPTION-ARG-NONE:CAPS"><code class="literal">G_OPTION_ARG_NONE</code></a></span></td>
+<td><p><a href="glib-Basic-Types.html#gboolean"><code class="literal">gboolean</code></a></p></td>
+</tr>
+<tr>
+<td><span class="term"><a href="glib-Commandline-option-parser.html#G-OPTION-ARG-STRING:CAPS"><code class="literal">G_OPTION_ARG_STRING</code></a></span></td>
+<td><p><a href="glib-Basic-Types.html#gchar"><code class="literal">gchar</code></a>*</p></td>
+</tr>
+<tr>
+<td><span class="term"><a href="glib-Commandline-option-parser.html#G-OPTION-ARG-INT:CAPS"><code class="literal">G_OPTION_ARG_INT</code></a></span></td>
+<td><p><a href="glib-Basic-Types.html#gint"><code class="literal">gint</code></a></p></td>
+</tr>
+<tr>
+<td><span class="term"><a href="glib-Commandline-option-parser.html#G-OPTION-ARG-FILENAME:CAPS"><code class="literal">G_OPTION_ARG_FILENAME</code></a></span></td>
+<td><p><a href="glib-Basic-Types.html#gchar"><code class="literal">gchar</code></a>*</p></td>
+</tr>
+<tr>
+<td><span class="term"><a href="glib-Commandline-option-parser.html#G-OPTION-ARG-STRING-ARRAY:CAPS"><code class="literal">G_OPTION_ARG_STRING_ARRAY</code></a></span></td>
+<td><p><a href="glib-Basic-Types.html#gchar"><code class="literal">gchar</code></a>**</p></td>
+</tr>
+<tr>
+<td><span class="term"><a href="glib-Commandline-option-parser.html#G-OPTION-ARG-FILENAME-ARRAY:CAPS"><code class="literal">G_OPTION_ARG_FILENAME_ARRAY</code></a></span></td>
+<td><p><a href="glib-Basic-Types.html#gchar"><code class="literal">gchar</code></a>**</p></td>
+</tr>
+<tr>
+<td><span class="term"><a href="glib-Commandline-option-parser.html#G-OPTION-ARG-DOUBLE:CAPS"><code class="literal">G_OPTION_ARG_DOUBLE</code></a></span></td>
+<td><p><a href="glib-Basic-Types.html#gdouble"><code class="literal">gdouble</code></a></p></td>
+</tr>
+</tbody>
+</table></div>
+</td>
+</tr>
+<tr>
+<td><span class="term">const&#160;<a href="glib-Basic-Types.html#gchar">gchar</a>&#160;*<em class="structfield"><code>description</code></em>;</span></td>
+<td>the description for the option in <code class="option">--help</code>
+  output. The <em class="parameter"><code>description</code></em> is translated using the <em class="parameter"><code>translate_func</code></em> of the
+  group, see <a href="glib-Commandline-option-parser.html#g-option-group-set-translation-domain"><code class="function">g_option_group_set_translation_domain()</code></a>.
+</td>
+</tr>
+<tr>
+<td><span class="term">const&#160;<a href="glib-Basic-Types.html#gchar">gchar</a>&#160;*<em class="structfield"><code>arg_description</code></em>;</span></td>
+<td>The placeholder to use for the extra argument parsed
+  by the option in <code class="option">--help</code>
+  output. The <em class="parameter"><code>arg_description</code></em> is translated using the <em class="parameter"><code>translate_func</code></em> of the
+  group, see <a href="glib-Commandline-option-parser.html#g-option-group-set-translation-domain"><code class="function">g_option_group_set_translation_domain()</code></a>.
+
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3135742"></a><h3>
+<a name="g-option-context-add-main-entries"></a>g_option_context_add_main_entries ()</h3>
+<a class="indexterm" name="id3135759"></a><pre class="programlisting">void                g_option_context_add_main_entries   (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         const <a href="glib-Commandline-option-parser.html#GOptionEntry">GOptionEntry</a> *entries,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *translation_domain);</pre>
+<p>
+A convenience function which creates a main group if it doesn't 
+exist, adds the <em class="parameter"><code>entries</code></em> to it and sets the translation domain.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>entries</code></em>&#160;:</span></td>
+<td> a <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>-terminated array of <a href="glib-Commandline-option-parser.html#GOptionEntry"><span class="type">GOptionEntry</span></a>s
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>translation_domain</code></em>&#160;:</span></td>
+<td> a translation domain to use for translating
+   the <code class="option">--help</code> output for the options in <em class="parameter"><code>entries</code></em>
+   with <code class="function">gettext()</code>, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3135926"></a><h3>
+<a name="GOptionGroup"></a>GOptionGroup</h3>
+<a class="indexterm" name="id3135939"></a><pre class="programlisting">typedef struct _GOptionGroup GOptionGroup;</pre>
+<p>
+A <span class="structname">GOptionGroup</span> struct defines the options in a single
+group. The struct has only private fields and should not be directly accessed. 
+</p>
+<p>
+All options in a group share the same translation function. Libaries which
+need to parse commandline options are expected to provide a function for
+getting a <span class="structname">GOptionGroup</span> holding their options, which 
+the application can then add to its <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>.
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3135979"></a><h3>
+<a name="g-option-context-add-group"></a>g_option_context_add_group ()</h3>
+<a class="indexterm" name="id3135995"></a><pre class="programlisting">void                g_option_context_add_group          (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group);</pre>
+<p>
+Adds a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a> to the <em class="parameter"><code>context</code></em>, so that parsing with <em class="parameter"><code>context</code></em>
+will recognize the options in the group. Note that the group will
+be freed together with the context when <a href="glib-Commandline-option-parser.html#g-option-context-free"><code class="function">g_option_context_free()</code></a> is
+called, so you must not free the group yourself after adding it
+to a context.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>group</code></em>&#160;:</span></td>
+<td> the group to add
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3136116"></a><h3>
+<a name="g-option-context-set-main-group"></a>g_option_context_set_main_group ()</h3>
+<a class="indexterm" name="id3136132"></a><pre class="programlisting">void                g_option_context_set_main_group     (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group);</pre>
+<p>
+Sets a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a> as main group of the <em class="parameter"><code>context</code></em>. 
+This has the same effect as calling <a href="glib-Commandline-option-parser.html#g-option-context-add-group"><code class="function">g_option_context_add_group()</code></a>, 
+the only difference is that the options in the main group are 
+treated differently when generating <code class="option">--help</code> output.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>group</code></em>&#160;:</span></td>
+<td> the group to set as main group
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3136252"></a><h3>
+<a name="g-option-context-get-main-group"></a>g_option_context_get_main_group ()</h3>
+<a class="indexterm" name="id3136267"></a><pre class="programlisting"><a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a>*       g_option_context_get_main_group     (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context);</pre>
+<p>
+Returns a pointer to the main group of <em class="parameter"><code>context</code></em>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> the main group of <em class="parameter"><code>context</code></em>, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if <em class="parameter"><code>context</code></em> doesn't
+ have a main group. Note that group belongs to <em class="parameter"><code>context</code></em> and should
+ not be modified or freed.
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3136378"></a><h3>
+<a name="g-option-group-new"></a>g_option_group_new ()</h3>
+<a class="indexterm" name="id3136394"></a><pre class="programlisting"><a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a>*       g_option_group_new                  (const <a href="glib-Basic-Types.html#gchar">gchar</a> *name,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *description,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *help_description,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> user_data,
+                                                         <a href="glib-Datasets.html#GDestroyNotify">GDestroyNotify</a> destroy);</pre>
+<p>
+Creates a new <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>name</code></em>&#160;:</span></td>
+<td> the name for the option group, this is used to provide
+  help for the options in this group with <code class="option">--help-</code><em class="parameter"><code>name</code></em>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>description</code></em>&#160;:</span></td>
+<td> a description for this group to be shown in 
+  <code class="option">--help</code>. This string is translated using the translation
+  domain or translation function of the group
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>help_description</code></em>&#160;:</span></td>
+<td> a description for the <code class="option">--help-</code><em class="parameter"><code>name</code></em> option.
+  This string is translated using the translation domain or translation function
+  of the group
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>user_data</code></em>&#160;:</span></td>
+<td> user data that will be passed to the pre- and post-parse hooks,
+  the error hook and to callbacks of <a href="glib-Commandline-option-parser.html#G-OPTION-ARG-CALLBACK:CAPS"><code class="literal">G_OPTION_ARG_CALLBACK</code></a> options, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>destroy</code></em>&#160;:</span></td>
+<td> a function that will be called to free <em class="parameter"><code>user_data</code></em>, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td> a newly created option group. It should be added 
+  to a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a> or freed with <a href="glib-Commandline-option-parser.html#g-option-group-free"><code class="function">g_option_group_free()</code></a>.
+
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3136642"></a><h3>
+<a name="g-option-group-free"></a>g_option_group_free ()</h3>
+<a class="indexterm" name="id3136657"></a><pre class="programlisting">void                g_option_group_free                 (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group);</pre>
+<p>
+Frees a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a>. Note that you must <span class="emphasis"><em>not</em></span>
+free groups which have been added to a <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><span class="term"><em class="parameter"><code>group</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3136742"></a><h3>
+<a name="g-option-group-add-entries"></a>g_option_group_add_entries ()</h3>
+<a class="indexterm" name="id3136758"></a><pre class="programlisting">void                g_option_group_add_entries          (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         const <a href="glib-Commandline-option-parser.html#GOptionEntry">GOptionEntry</a> *entries);</pre>
+<p>
+Adds the options specified in <em class="parameter"><code>entries</code></em> to <em class="parameter"><code>group</code></em>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>group</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>entries</code></em>&#160;:</span></td>
+<td> a <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>-terminated array of <a href="glib-Commandline-option-parser.html#GOptionEntry"><span class="type">GOptionEntry</span></a>s
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3136876"></a><h3>
+<a name="GOptionParseFunc"></a>GOptionParseFunc ()</h3>
+<a class="indexterm" name="id3136889"></a><pre class="programlisting"><a href="glib-Basic-Types.html#gboolean">gboolean</a>            (*GOptionParseFunc)                 (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data,
+                                                         <a href="glib-Error-Reporting.html#GError">GError</a> **error);</pre>
+<p>
+The type of function that can be called before and after parsing. 
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td>The active <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>group</code></em>&#160;:</span></td>
+<td>The group to which the function belongs
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>data</code></em>&#160;:</span></td>
+<td>User data added to the <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a> containing the option when it
+  was created with <a href="glib-Commandline-option-parser.html#g-option-group-new"><code class="function">g_option_group_new()</code></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>error</code></em>&#160;:</span></td>
+<td>A return location for error details
+</td>
+</tr>
+<tr>
+<td><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></td>
+<td>
+<a href="glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if the function completed successfully, <a href="glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> if an error 
+  occurred, in which case <em class="parameter"><code>error</code></em> should be set with <a href="glib-Error-Reporting.html#g-set-error"><code class="function">g_set_error()</code></a>
+
+
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3137078"></a><h3>
+<a name="g-option-group-set-parse-hooks"></a>g_option_group_set_parse_hooks ()</h3>
+<a class="indexterm" name="id3137094"></a><pre class="programlisting">void                g_option_group_set_parse_hooks      (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionParseFunc">GOptionParseFunc</a> pre_parse_func,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionParseFunc">GOptionParseFunc</a> post_parse_func);</pre>
+<p>
+Associates two functions with <em class="parameter"><code>group</code></em> which will be called 
+from <a href="glib-Commandline-option-parser.html#g-option-context-parse"><code class="function">g_option_context_parse()</code></a> before the first option is parsed
+and after the last option has been parsed, respectively.
+</p>
+<p>
+Note that the user data to be passed to <em class="parameter"><code>pre_parse_func</code></em> and
+<em class="parameter"><code>post_parse_func</code></em> can be specified when constructing the group
+with <a href="glib-Commandline-option-parser.html#g-option-group-new"><code class="function">g_option_group_new()</code></a>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>group</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>pre_parse_func</code></em>&#160;:</span></td>
+<td> a function to call before parsing, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>post_parse_func</code></em>&#160;:</span></td>
+<td> a function to call after parsing, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3137272"></a><h3>
+<a name="GOptionErrorFunc"></a>GOptionErrorFunc ()</h3>
+<a class="indexterm" name="id3137284"></a><pre class="programlisting">void                (*GOptionErrorFunc)                 (<a href="glib-Commandline-option-parser.html#GOptionContext">GOptionContext</a> *context,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data,
+                                                         <a href="glib-Error-Reporting.html#GError">GError</a> **error);</pre>
+<p>
+The type of function to be used as callback when a parse error occurs.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></td>
+<td>The active <a href="glib-Commandline-option-parser.html#GOptionContext"><span class="type">GOptionContext</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>group</code></em>&#160;:</span></td>
+<td>The group to which the function belongs
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>data</code></em>&#160;:</span></td>
+<td>User data added to the <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a> containing the option when it
+  was created with <a href="glib-Commandline-option-parser.html#g-option-group-new"><code class="function">g_option_group_new()</code></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>error</code></em>&#160;:</span></td>
+<td>The <a href="glib-Error-Reporting.html#GError"><span class="type">GError</span></a> containing details about the parse error
+
+
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3137435"></a><h3>
+<a name="g-option-group-set-error-hook"></a>g_option_group_set_error_hook ()</h3>
+<a class="indexterm" name="id3137450"></a><pre class="programlisting">void                g_option_group_set_error_hook       (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         <a href="glib-Commandline-option-parser.html#GOptionErrorFunc">GOptionErrorFunc</a> error_func);</pre>
+<p>
+Associates a function with <em class="parameter"><code>group</code></em> which will be called 
+from <a href="glib-Commandline-option-parser.html#g-option-context-parse"><code class="function">g_option_context_parse()</code></a> when an error occurs.
+</p>
+<p>
+Note that the user data to be passed to <em class="parameter"><code>pre_parse_func</code></em> and
+<em class="parameter"><code>post_parse_func</code></em> can be specified when constructing the group
+with <a href="glib-Commandline-option-parser.html#g-option-group-new"><code class="function">g_option_group_new()</code></a>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>group</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>error_func</code></em>&#160;:</span></td>
+<td> a function to call when an error occurs
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3137584"></a><h3>
+<a name="g-option-group-set-translate-func"></a>g_option_group_set_translate_func ()</h3>
+<a class="indexterm" name="id3137600"></a><pre class="programlisting">void                g_option_group_set_translate_func   (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         <a href="glib-Commandline-option-parser.html#GTranslateFunc">GTranslateFunc</a> func,
+                                                         <a href="glib-Basic-Types.html#gpointer">gpointer</a> data,
+                                                         <a href="glib-Datasets.html#GDestroyNotify">GDestroyNotify</a> destroy_notify);</pre>
+<p>
+Sets the function which is used to translate user-visible
+strings, for <code class="option">--help</code> output. Different
+groups can use different <a href="glib-Commandline-option-parser.html#GTranslateFunc"><span class="type">GTranslateFunc</span></a>s. If <em class="parameter"><code>func</code></em>
+is <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>, strings are not translated.
+</p>
+<p>
+If you are using <code class="function">gettext()</code>, you only need to set the translation
+domain, see <a href="glib-Commandline-option-parser.html#g-option-group-set-translation-domain"><code class="function">g_option_group_set_translation_domain()</code></a>.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>group</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>func</code></em>&#160;:</span></td>
+<td> the <a href="glib-Commandline-option-parser.html#GTranslateFunc"><span class="type">GTranslateFunc</span></a>, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> 
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>data</code></em>&#160;:</span></td>
+<td> user data to pass to <em class="parameter"><code>func</code></em>, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>destroy_notify</code></em>&#160;:</span></td>
+<td> a function which gets called to free <em class="parameter"><code>data</code></em>, or <a href="glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id3137840"></a><h3>
+<a name="g-option-group-set-translation-domain"></a>g_option_group_set_translation_domain ()</h3>
+<a class="indexterm" name="id3137856"></a><pre class="programlisting">void                g_option_group_set_translation_domain
+                                                        (<a href="glib-Commandline-option-parser.html#GOptionGroup">GOptionGroup</a> *group,
+                                                         const <a href="glib-Basic-Types.html#gchar">gchar</a> *domain);</pre>
+<p>
+A convenience function to use <code class="function">gettext()</code> for translating
+user-visible strings.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><span class="term"><em class="parameter"><code>group</code></em>&#160;:</span></td>
+<td> a <a href="glib-Commandline-option-parser.html#GOptionGroup"><span class="type">GOptionGroup</span></a>
+</td>
+</tr>
+<tr>
+<td><span class="term"><em class="parameter"><code>domain</code></em>&#160;:</span></td>
+<td> the domain to use
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since  2.6
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+Ok, Here's a developer's primer for aget source:
+
+The code is splitted into several files:
+
+main.{c|h}
+	* starts a thread for handling signals.
+	* gets program options and decides the 
+	  program's behviour by setting a few 
+ 	  global variables.
+
+Aget.{c|h} 
+	* get() and resume_get() functions
+	  starts the download process. Depending on the
+	  protocol, necessary methods are called.
+	  
+	  resume_get() is for resume jobs. If the there 
+	  is a log file of a previous job, the values 
+	  are taken from it.
+
+Head.{c|h}
+	* Before the actual download, a head request
+	  is sent to the server to determine the current
+	  status of the file.
+          Some values like:
+		1. HTTP return code (e.g. 404, 206, 403, 200)
+		2. Content-length
+
+	  might be of interest there.
+
+Ftp.{c|h}
+       * ftp_get() function which is the thread runner for ftp
+ 	 downloads.
+
+Download.{c|h}
+	* Aget is no more %100 Posix compliant :(
+	  pwrite is from X_OPEN standarts. I had to do it, since I needed
+	  a way to simultaneously write to the same file without loosing
+	  any time while synchronising the threads.
+	  
+	  For the time, there is only http_get. When aget is ftp-aware
+  	  ftp_get will be in this file.
+
+
+Resume.{c|h}
+	* Methods about saving and restoring history files are in this
+	  file.
+
+Signal.{c|h}
+	* Signal Handling functions.
+
+Misc.{c|h}
+	* Other functions which do not fit any of the general categories
+ 	  are stored here. These are generally helper functions...
+
+
+For more information read the aget source, and you may contact
+murat at enderunix dot org.
+
+
+Fri Nov 22 07:51:04 EET 2002

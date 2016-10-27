@@ -1,0 +1,10 @@
+*~
+obj/
+inst/
+log/
+*.db
+*.out
+run/
+run_race/
+
+

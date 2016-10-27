@@ -1,0 +1,39 @@
+Index: tm/js/src/jscntxt.cpp
+===================================================================
+--- tm.orig/js/src/jscntxt.cpp	2009-03-10 15:39:43.000000000 +0100
++++ tm/js/src/jscntxt.cpp	2009-03-10 15:57:32.000000000 +0100
+@@ -296,26 +296,28 @@ js_NewContext(JSRuntime *rt, size_t stac
+                        1024,  /* FIXME: bug 421435 */
+                        sizeof(jsdouble), &cx->scriptStackQuota);
+ 
+     js_InitRegExpStatics(cx);
+     JS_ASSERT(cx->resolveFlags == 0);
+ 
+     JS_LOCK_GC(rt);
+     for (;;) {
+-        first = (rt->contextList.next == &rt->contextList);
++        /*
++         * Ensure that we don't race with the GC on other threads, bug 478336.
++         */
++        js_WaitForGC(rt);
+         if (rt->state == JSRTS_UP) {
+-            JS_ASSERT(!first);
+-
+-            /* Ensure that it is safe to update rt->contextList below. */
+-            js_WaitForGC(rt);
++            JS_ASSERT(!JS_CLIST_IS_EMPTY(&rt->contextList));
++            first = JS_FALSE;
+             break;
+         }
+         if (rt->state == JSRTS_DOWN) {
+-            JS_ASSERT(first);
++            JS_ASSERT(JS_CLIST_IS_EMPTY(&rt->contextList));
++            first = JS_TRUE;
+             rt->state = JSRTS_LAUNCHING;
+             break;
+         }
+         JS_WAIT_CONDVAR(rt->stateChange, JS_NO_TIMEOUT);
+     }
+     JS_APPEND_LINK(&cx->link, &rt->contextList);
+     JS_UNLOCK_GC(rt);
+ 

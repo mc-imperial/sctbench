@@ -1,0 +1,28 @@
+diff -u jscntxt.c jscntxt.c
+--- jscntxt.c	11 Mar 2009 21:05:30 -0000
++++ jscntxt.c	11 Mar 2009 21:11:13 -0000
+@@ -239,16 +239,18 @@
+ 
+     JS_LOCK_GC(rt);
+     for (;;) {
+-        first = (rt->contextList.next == &rt->contextList);
++        /*
++         * Ensure that we don't race with the GC on other threads, bug 478336.
++         */
++        js_WaitForGC(rt);
+         if (rt->state == JSRTS_UP) {
+-            JS_ASSERT(!first);
+-
+-            /* Ensure that it is safe to update rt->contextList below. */
+-            js_WaitForGC(rt);
++            JS_ASSERT(!JS_CLIST_IS_EMPTY(&rt->contextList));
++            first = JS_FALSE;
+             break;
+         }
+         if (rt->state == JSRTS_DOWN) {
+-            JS_ASSERT(first);
++            JS_ASSERT(JS_CLIST_IS_EMPTY(&rt->contextList));
++            first = JS_TRUE;
+             rt->state = JSRTS_LAUNCHING;
+             break;
+         }

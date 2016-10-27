@@ -1,0 +1,307 @@
+diff -ruN src-original/jsapi.cpp src-with-semaphores/jsapi.cpp
+--- src-original/jsapi.cpp	2009-09-09 00:46:40.000000000 -0400
++++ src-with-semaphores/jsapi.cpp	2009-09-09 03:34:55.000000000 -0400
+@@ -86,6 +86,8 @@
+ #include "jsstaticcheck.h"
+ #include "jsvector.h"
+ 
++extern void my_sem_init(JSRuntime * rt);
++
+ #if JS_HAS_FILE_OBJECT
+ #include "jsfile.h"
+ #endif
+@@ -782,7 +784,7 @@
+     JS_INIT_CLIST(&rt->contextList);
+     JS_INIT_CLIST(&rt->trapList);
+     JS_INIT_CLIST(&rt->watchPointList);
+-
++	my_sem_init(rt);
+     if (!js_InitDtoa())
+         goto bad;
+     if (!js_InitGC(rt, maxbytes))
+diff -ruN src-original/jscntxt.cpp src-with-semaphores/jscntxt.cpp
+--- src-original/jscntxt.cpp	2009-09-09 00:46:40.000000000 -0400
++++ src-with-semaphores/jscntxt.cpp	2009-09-09 13:47:11.000000000 -0400
+@@ -70,6 +70,15 @@
+ #include "jsstr.h"
+ #include "jstracer.h"
+ 
++struct my_sem sem1;
++struct my_sem sem2;
++struct my_sem sem3;
++struct my_sem sem4;
++static int entered = 0;
++extern void my_sem_set_tid(struct my_sem * sp, int tid1, int tid2);
++extern int my_sem_post(struct my_sem * sp, int cur_tid);
++extern int my_sem_wait(struct my_sem * sp, int cur_tid);
++
+ static void
+ FreeContext(JSContext *cx);
+ 
+@@ -378,6 +387,16 @@
+     js_OnVersionChange(cx);
+ }
+ 
++int
++js_ContextNum(JSRuntime *rt, JSContext *cx)
++{
++	JSContext* iter = NULL;
++    int count = 0;
++    while(js_ContextIterator(rt, JS_FALSE, &iter))
++        count ++;
++	return count;
++}
++
+ JSContext *
+ js_NewContext(JSRuntime *rt, size_t stackChunkSize)
+ {
+@@ -613,6 +632,8 @@
+     JSContextCallback cxCallback;
+     JSBool last;
+ 
++usleep(100000);
++
+     rt = cx->runtime;
+ #ifdef JS_THREADSAFE
+     /*
+@@ -643,12 +664,24 @@
+     }
+ 
+     JS_LOCK_GC(rt);
++	printf("DestroyContext tid %d in critical region, js_ContextNum %d\n", pthread_self(), js_ContextNum(rt, cx));
++	if (js_ContextNum(rt, cx) == 2) {
++		my_sem_set_tid(&sem1, pthread_self(), 0);
++		my_sem_set_tid(&sem2, 0, pthread_self());
++	}
++	else if (entered == 0 && js_ContextNum(rt, cx) == 1) {
++		my_sem_set_tid(&sem1, 0, pthread_self());
++		my_sem_set_tid(&sem2, pthread_self(), 0);
++		entered = 1;
++	}
++	my_sem_wait(&sem1, pthread_self());
+     JS_ASSERT(rt->state == JSRTS_UP || rt->state == JSRTS_LAUNCHING);
+ #ifdef JS_THREADSAFE
+     /*
+      * Typically we are called outside a request, so ensure that the GC is not
+      * running before removing the context from rt->contextList, see bug 477021.
+      */
++     printf("Tid %d js_WaitForGC in js_DestroyContext\n", pthread_self());
+     if (cx->requestDepth == 0)
+         js_WaitForGC(rt);
+ #endif
+@@ -724,6 +757,7 @@
+                 rt->scriptFilenameTable->nentries == 0) {
+                 js_FinishRuntimeScriptState(rt);
+             }
++			my_sem_post(&sem2, pthread_self());
+ 
+             /* Take the runtime down, now that it has no contexts or atoms. */
+             JS_LOCK_GC(rt);
+@@ -878,6 +912,7 @@
+     JS_ASSERT_IF(rt->gcRunning, rt->gcLevel > 0);
+     if (rt->gcRunning && rt->gcThread->id != js_CurrentThreadId()) {
+         do {
++			printf("Tid %d js_WaitForGC\n", pthread_self());
+             JS_AWAIT_GC_DONE(rt);
+         } while (rt->gcRunning);
+     }
+diff -ruN src-original/jscntxt.h src-with-semaphores/jscntxt.h
+--- src-original/jscntxt.h	2009-09-09 00:46:40.000000000 -0400
++++ src-with-semaphores/jscntxt.h	2009-09-09 01:35:26.000000000 -0400
+@@ -58,6 +58,8 @@
+ #include "jsutil.h"
+ #include "jsarray.h"
+ #include "jstask.h"
++#include <pthread.h>
++#include <semaphore.h>
+ 
+ JS_BEGIN_EXTERN_C
+ 
+@@ -380,6 +382,14 @@
+     JSSetSlotRequest    *next;          /* next request in GC worklist */
+ };
+ 
++struct my_sem {
++	// tid1 happens before tid2.
++	int tid1;
++	int tid2;
++	sem_t sem;
++	int sem_id;
++};
++
+ struct JSRuntime {
+     /* Runtime state, synchronized by the stateChange/gcLock condvar/lock. */
+     JSRuntimeState      state;
+diff -ruN src-original/jsgc.cpp src-with-semaphores/jsgc.cpp
+--- src-original/jsgc.cpp	2009-09-09 00:46:40.000000000 -0400
++++ src-with-semaphores/jsgc.cpp	2009-09-09 03:48:43.000000000 -0400
+@@ -79,6 +79,14 @@
+ #include "jstask.h"
+ #include "jstracer.h"
+ 
++extern struct my_sem sem1;
++extern struct my_sem sem2;
++extern struct my_sem sem3;
++extern struct my_sem sem4;
++extern void my_sem_set_tid(struct my_sem * sp, int tid1, int tid2);
++extern int my_sem_post(struct my_sem * sp, int cur_tid);
++extern int my_sem_wait(struct my_sem * sp, int cur_tid);
++
+ #if JS_HAS_XML_SUPPORT
+ #include "jsxml.h"
+ #endif
+@@ -3339,6 +3347,7 @@
+         JS_CLEAR_WEAK_ROOTS(&cx->weakRoots);
+     }
+ 
++printf("enter js_GC tid %d, rt state %d, gcLevel %d\n", pthread_self(), rt->state, rt->gcLevel);
+     /*
+      * Don't collect garbage if the runtime isn't up, and cx is not the last
+      * context in the runtime.  The last context must force a GC, and nothing
+@@ -3347,6 +3356,8 @@
+      */
+     if (rt->state != JSRTS_UP && gckind != GC_LAST_CONTEXT)
+         return;
++	my_sem_post(&sem1, pthread_self());
++	my_sem_wait(&sem2, pthread_self());
+ 
+   restart_at_beginning:
+     /*
+diff -ruN src-original/jslock.cpp src-with-semaphores/jslock.cpp
+--- src-original/jslock.cpp	2009-09-09 00:46:41.000000000 -0400
++++ src-with-semaphores/jslock.cpp	2009-09-09 02:51:04.000000000 -0400
+@@ -57,6 +57,11 @@
+ #include "jsscope.h"
+ #include "jsstr.h"
+ 
++extern struct my_sem sem1;
++extern struct my_sem sem2;
++extern struct my_sem sem3;
++extern struct my_sem sem4;
++
+ #define ReadWord(W) (W)
+ 
+ #if !defined(__GNUC__)
+@@ -1256,6 +1261,84 @@
+     PR_Unlock(rt->rtLock);
+ }
+ 
++int my_sem_init(JSRuntime *rt)
++{
++	// This semaphore is just shared among threads in the same process, and the init value is 0.
++	if (sem_init(&sem1.sem, 0, 0) != 0) {
++     		return -1;
++	}
++	if (sem_init(&sem2.sem, 0, 0) != 0) {
++     		return -1;
++	}
++	if (sem_init(&sem3.sem, 0, 0) != 0) {
++     		return -1;
++	}
++	if (sem_init(&sem4.sem, 0, 0) != 0) {
++     		return -1;
++	}
++	
++	sem1.tid1 = -1;
++	sem1.tid2 = -1;
++
++	sem2.tid1 = -1;
++	sem2.tid2 = -1;
++
++	sem3.tid1 = -1;
++	sem3.tid2 = -1;
++
++	sem4.tid1 = -1;
++	sem4.tid2 = -1;
++
++	sem1.sem_id = 1;
++	sem2.sem_id = 2;
++	sem3.sem_id = 3;
++	sem4.sem_id = 4;
++	return 0;
++}
++
++void my_sem_set_sem_id(struct my_sem *sp, int sem_id)
++{
++	sp->sem_id = sem_id;
++}
++
++void my_sem_set_tid(struct my_sem *sp, int tid1, int tid2)
++{
++	if (tid1 != 0) {
++		printf("Tid %d sets %d to sem %d tid1\n", pthread_self(), tid1, sp->sem_id);
++		sp->tid1 = tid1;
++	}
++	if (tid2 != 0) {
++		printf("Tid %d sets %d to sem %d tid2\n", pthread_self(), tid2, sp->sem_id);
++		sp->tid2 = tid2;
++	}
++}
++
++int my_sem_wait(struct my_sem *sp, int cur_tid)
++{
++	// tid1 happens before tid2.
++	if (cur_tid != sp->tid2) {
++		return 0;
++	}
++
++	printf("Tid %d wait on sem %d\n", cur_tid, sp->sem_id);
++	sem_wait(&sp->sem);
++	printf("Tid %d wakes up on sem %d\n", cur_tid, sp->sem_id);
++	return 0;
++}
++
++int my_sem_post(struct my_sem *sp, int cur_tid)
++{
++	// tid1 happens before tid2.
++	if (cur_tid != sp->tid1) {
++		return 0;
++	}
++
++	printf("Tid %d post on sem %d\n", cur_tid, sp->sem_id);
++	sem_post(&sp->sem);
++	return 0;
++}
++
++
+ void
+ js_LockTitle(JSContext *cx, JSTitle *title)
+ {
+diff -ruN src-original/jsscript.cpp src-with-semaphores/jsscript.cpp
+--- src-original/jsscript.cpp	2009-09-09 00:46:41.000000000 -0400
++++ src-with-semaphores/jsscript.cpp	2009-09-09 03:47:19.000000000 -0400
+@@ -1050,6 +1050,7 @@
+ void
+ js_FinishRuntimeScriptState(JSRuntime *rt)
+ {
++printf("Tid %d destroy js_FinishRuntimeScriptState\n", pthread_self());
+     if (rt->scriptFilenameTable) {
+         JS_HashTableDestroy(rt->scriptFilenameTable);
+         rt->scriptFilenameTable = NULL;
+@@ -1267,9 +1268,11 @@
+     JSCList *head, *link;
+     ScriptFilenamePrefix *sfp;
+ 
+-    if (!rt->scriptFilenameTable)
++   printf("Tid %d js_MarkScriptFilenames\n", pthread_self());
++    if (!rt->scriptFilenameTable) {
++	printf("Tid %d js_MarkScriptFilenames NUUUUUUUL, will CRASH without the scriptFilenameTable check! %d\n", pthread_self(), keepAtoms);
+         return;
+-
++	}
+     if (keepAtoms) {
+         JS_HashTableEnumerateEntries(rt->scriptFilenameTable,
+                                      js_script_filename_marker,
+@@ -1297,8 +1300,10 @@
+ void
+ js_SweepScriptFilenames(JSRuntime *rt)
+ {
+-    if (!rt->scriptFilenameTable)
+-        return;
++    if (!rt->scriptFilenameTable) {
++	printf("Tid %d js_SweepScriptFilenames NUUUUUUUL, will CRASH without the scriptFilenameTable check!\n", pthread_self());
++         return;
++    }
+ 
+     JS_HashTableEnumerateEntries(rt->scriptFilenameTable,
+                                  js_script_filename_sweeper,

@@ -1,0 +1,4 @@
+test01.c: seems to do nothing related to pthreads. In fact its computations look completely useless full stop.
+swarm_isort64.comb.c: it is possible to control the number of threads created via the command line using -t <val>. The default setting is 8. 
+SKIP for now. This uses many busy-wait loops. Uses try-lock. For some reason, this does not terminate in race detection mode after a few minutes, even though it only takes a few seconds natively.
+

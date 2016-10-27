@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: Examples of ImageMagick Usage</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="examples, of, imagemagick, usage, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../index.html"><img id="titlebar-west" src="../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="1258599828"><img id="titlebar-west" src="../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img src="../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img id="titlebar-east" src="../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../index.html">About ImageMagick</a>
+      <a href="../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="640639652" class="sub">Usage</a>
+      <a href="../www/api.html">Program Interfaces</a>
+      <a href="../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../Magick++/" target="799658433" class="sub">Magick++</a>
+      <a href="../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/install-source.html">Install from Source</a>
+      <a href="../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../www/binary-releases.html">Binary Releases</a>
+      <a href="../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/sitemap.html">Site Map</a>
+			<a href="../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../www/sponsors.html">Sponsors</a>
+  <a href="http://www.produkte24.com" class="sponsor" target="sponsor">Kataloge zum<br />Herunterladen</a><!-- 200910010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p>Here are a few examples of what you can do with an image using ImageMagick from the command line, a program interface, or script.  You can generate this image yourself with this <a href="../www/perl-magick.html">PerlMagick</a> script, <a href="../www/source/examples.pl" target="1389314648">examples.pl</a>.</p><br />
+
+<div class="viewport">
+  <img id="titlebar-west" src="../images/examples.jpg" alt="[ImageMagick]" width="734" height="2748" border="0" name="titlebar-west" />
+</div>
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="692142639">Discourse Server</a> &bull;
+    <a href="../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://www.imagemagick.org/MagickStudio/scripts/MagickStudio.cgi" target="1627965711">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

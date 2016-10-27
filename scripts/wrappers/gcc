@@ -1,0 +1,2 @@
+#!/bin/bash
+wrapper.py /usr/bin/gcc-4.4 $*

@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: MagickCore, C API for ImageMagick: Working with Image Lists</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="magickcore, c, api, for, imagemagick:, working, with, image, lists, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../../index.html"><img id="titlebar-west" src="../../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="1137354397"><img id="titlebar-west" src="../../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img src="../../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img id="titlebar-east" src="../../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../../index.html">About ImageMagick</a>
+      <a href="../../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="126529250" class="sub">Usage</a>
+      <a href="../../www/api.html">Program Interfaces</a>
+      <a href="../../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../../Magick++/" target="59885697" class="sub">Magick++</a>
+      <a href="../../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/install-source.html">Install from Source</a>
+      <a href="../../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../../www/binary-releases.html">Binary Releases</a>
+      <a href="../../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/sitemap.html">Site Map</a>
+			<a href="../../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../../www/sponsors.html">Sponsors</a>
+  <a href="http://www.hitflip.de/dvds/" class="sponsor" target="sponsor">Filme Tauschen</a><!-- 200802010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[ <a href="#AppendImageToList">AppendImageToList</a> | <a href="#CloneImageList">CloneImageList</a> | <a href="#CloneImages">CloneImages</a> | <a href="#DeleteImageFromList">DeleteImageFromList</a> | <a href="#DeleteImages">DeleteImages</a> | <a href="#DestroyImageList">DestroyImageList</a> | <a href="#GetFirstImageInList">GetFirstImageInList</a> | <a href="#GetImageFromList">GetImageFromList</a> | <a href="#GetImageIndexInList">GetImageIndexInList</a> | <a href="#GetImageListLength">GetImageListLength</a> | <a href="#GetLastImageInList">GetLastImageInList</a> | <a href="#GetNextImageInList">GetNextImageInList</a> | <a href="#GetPreviousImageInList">GetPreviousImageInList</a> | <a href="#ImageListToArray">ImageListToArray</a> | <a href="#InsertImageInList">InsertImageInList</a> | <a href="#NewImageList">NewImageList</a> | <a href="#PrependImageToList">PrependImageToList</a> | <a href="#RemoveImageFromList">RemoveImageFromList</a> | <a href="#RemoveFirstImageFromList">RemoveFirstImageFromList</a> | <a href="#RemoveLastImageFromList">RemoveLastImageFromList</a> | <a href="#ReplaceImageInList">ReplaceImageInList</a> | <a href="#ReverseImageList">ReverseImageList</a> | <a href="#SpliceImageIntoList">SpliceImageIntoList</a> | <a href="#SplitImageList">SplitImageList</a> ]</p>
+
+<div style="margin: auto;">
+  <h2><a name="AppendImageToList">AppendImageToList</a></h2>
+</div>
+
+<p>AppendImageToList() appends the second image list to the end of the first list.  The given image list pointer is left unchanged, unless it was empty.</p></ol>
+
+<p>The format of the AppendImageToList method is:</p>
+
+<pre class="code">
+  AppendImageToList(Image *images,const Image *image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list to be appended to.</p></ol>
+
+<h5>image</h5>
+<ol><p>The appended image or image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="CloneImageList">CloneImageList</a></h2>
+</div>
+
+<p>CloneImageList() returns a duplicate of the image list.</p></ol>
+
+<p>The format of the CloneImageList method is:</p>
+
+<pre class="code">
+  Image *CloneImageList(const Image *images,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="CloneImages">CloneImages</a></h2>
+</div>
+
+<p>CloneImages() clones one or more images from an image sequence, using a comma separated list of image numbers or ranges.</p></ol>
+
+<p>The numbers start at 0 for the first image in the list, while negative numbers refer to images starting counting from the end of the range. Images may be refered to multiple times to clone them multiple times. Images refered beyond the available number of images in list are ignored.</p></ol>
+
+<p>Images referenced may be reversed, and results in a clone of those images also being made with a reversed order.</p></ol>
+
+<p>The format of the CloneImages method is:</p>
+
+<pre class="code">
+  Image *CloneImages(const Image *images,const char *scenes,
+    ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image sequence.</p></ol>
+
+<h5>scenes</h5>
+<ol><p>This character string specifies which scenes to clone (e.g. 1,3-5,7-3,2).</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DeleteImageFromList">DeleteImageFromList</a></h2>
+</div>
+
+<p>DeleteImageFromList() deletes an image from the list. List pointer is moved to the next image, if one is present. See RemoveImageFromList().</p></ol>
+
+<p>The format of the DeleteImageFromList method is:</p>
+
+<pre class="code">
+  DeleteImageFromList(Image **images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DeleteImages">DeleteImages</a></h2>
+</div>
+
+<p>DeleteImages() deletes one or more images from an image sequence, using a comma separated list of image numbers or ranges.</p></ol>
+
+<p>The numbers start at 0 for the first image, while negative numbers refer to images starting counting from the end of the range. Images may be refered to multiple times without problems. Image refered beyond the available number of images in list are ignored.</p></ol>
+
+<p>If the referenced images are in the reverse order, that range will be completely ignored.  Unlike CloneImages().</p></ol>
+
+<p>The format of the DeleteImages method is:</p>
+
+<pre class="code">
+  DeleteImages(Image **images,const char *scenes,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image sequence.</p></ol>
+
+<h5>scenes</h5>
+<ol><p>This character string specifies which scenes to delete (e.g. 1,3-5,-2-6,2).</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DestroyImageList">DestroyImageList</a></h2>
+</div>
+
+<p>DestroyImageList() destroys an image list.</p></ol>
+
+<p>The format of the DestroyImageList method is:</p>
+
+<pre class="code">
+  Image *DestroyImageList(Image *image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image sequence.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetFirstImageInList">GetFirstImageInList</a></h2>
+</div>
+
+<p>GetFirstImageInList() returns a pointer to the first image in the list.</p></ol>
+
+<p>The format of the GetFirstImageInList method is:</p>
+
+<pre class="code">
+  Image *GetFirstImageInList(const Image *images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetImageFromList">GetImageFromList</a></h2>
+</div>
+
+<p>GetImageFromList() returns an image at the specified offset from the list.</p></ol>
+
+<p>The format of the GetImageFromList method is:</p>
+
+<pre class="code">
+  Image *GetImageFromList(const Image *images,const long index)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<h5>index</h5>
+<ol><p>The position within the list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetImageIndexInList">GetImageIndexInList</a></h2>
+</div>
+
+<p>GetImageIndexInList() returns the offset in the list of the specified image.</p></ol>
+
+<p>The format of the GetImageIndexInList method is:</p>
+
+<pre class="code">
+  long GetImageIndexInList(const Image *images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetImageListLength">GetImageListLength</a></h2>
+</div>
+
+<p>GetImageListLength() returns the length of the list (the number of images in the list).</p></ol>
+
+<p>The format of the GetImageListLength method is:</p>
+
+<pre class="code">
+  unsigned long GetImageListLength(const Image *images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetLastImageInList">GetLastImageInList</a></h2>
+</div>
+
+<p>GetLastImageInList() returns a pointer to the last image in the list.</p></ol>
+
+<p>The format of the GetLastImageInList method is:</p>
+
+<pre class="code">
+  Image *GetLastImageInList(const Image *images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetNextImageInList">GetNextImageInList</a></h2>
+</div>
+
+<p>GetNextImageInList() returns the next image in the list.</p></ol>
+
+<p>The format of the GetNextImageInList method is:</p>
+
+<pre class="code">
+  Image *GetNextImageInList(const Image *images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetPreviousImageInList">GetPreviousImageInList</a></h2>
+</div>
+
+<p>GetPreviousImageInList() returns the previous image in the list.</p></ol>
+
+<p>The format of the GetPreviousImageInList method is:</p>
+
+<pre class="code">
+  Image *GetPreviousImageInList(const Image *images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ImageListToArray">ImageListToArray</a></h2>
+</div>
+
+<p>ImageListToArray() is a convenience method that converts an image list to a sequential array.  For example,</p></ol>
+
+<p>group = ImageListToArray(images, exception); while (i = 0; group[i] != (Image *) NULL; i++) printf("s\n", group[i]->filename); printf("d images\n", i); group = RelinquishMagickMemory(group);</p></ol>
+
+<p>The format of the ImageListToArray method is:</p>
+
+<pre class="code">
+  Image **ImageListToArray(const Image *images,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image list.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="InsertImageInList">InsertImageInList</a></h2>
+</div>
+
+<p>InsertImageInList() inserts the second image or image list into the first image list immediatally after the image pointed to.  The given image list pointer is unchanged unless previously empty.</p></ol>
+
+<p>The format of the InsertImageInList method is:</p>
+
+<pre class="code">
+  InsertImageInList(Image **images,Image *image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list to insert into.</p></ol>
+
+<h5>image</h5>
+<ol><p>The image list to insert.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="NewImageList">NewImageList</a></h2>
+</div>
+
+<p>NewImageList() creates an empty image list.</p></ol>
+
+<p>The format of the NewImageList method is:</p>
+
+<pre class="code">
+  Image *NewImageList(void)
+</pre>
+
+<div style="margin: auto;">
+  <h2><a name="PrependImageToList">PrependImageToList</a></h2>
+</div>
+
+<p>PrependImageToList() prepends the image to the beginning of the list.</p></ol>
+
+<p>The format of the PrependImageToList method is:</p>
+
+<pre class="code">
+  PrependImageToList(Image *images,Image *image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="RemoveImageFromList">RemoveImageFromList</a></h2>
+</div>
+
+<p>RemoveImageFromList() removes and returns the image pointed to.</p></ol>
+
+<p>The given image list pointer is set to point to the next image in list if it exists, otherwise it is set to the previous image, or NULL if list was emptied.</p></ol>
+
+<p>The format of the RemoveImageFromList method is:</p>
+
+<pre class="code">
+  Image *RemoveImageFromList(Image **images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="RemoveFirstImageFromList">RemoveFirstImageFromList</a></h2>
+</div>
+
+<p>RemoveFirstImageFromList() removes and returns the first image in the list.</p></ol>
+
+<p>If the given image list pointer pointed to the removed first image, it is set to the new first image of list, or NULL if list was emptied, otherwise it is left as is.</p></ol>
+
+<p>The format of the RemoveFirstImageFromList method is:</p>
+
+<pre class="code">
+  Image *RemoveFirstImageFromList(Image **images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="RemoveLastImageFromList">RemoveLastImageFromList</a></h2>
+</div>
+
+<p>RemoveLastImageFromList() removes and returns the last image from the list.</p></ol>
+
+<p>If the given image list pointer pointed to the removed last image, it is set to the new last image of list, or NULL if list was emptied, otherwise it is left as is.</p></ol>
+
+<p>The format of the RemoveLastImageFromList method is:</p>
+
+<pre class="code">
+  Image *RemoveLastImageFromList(Image **images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ReplaceImageInList">ReplaceImageInList</a></h2>
+</div>
+
+<p>ReplaceImageInList() replaces an image in the list. Old image is destroyed. The given image list pointer is set to point to the just inserted image.</p></ol>
+
+<p>The format of the ReplaceImageInList method is:</p>
+
+<pre class="code">
+  ReplaceImageInList(Image **images,Image *image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ReverseImageList">ReverseImageList</a></h2>
+</div>
+
+<p>ReverseImageList() reverses the order of an image list. The list pointer is reset to that start of the re-ordered list.</p></ol>
+
+<p>The format of the ReverseImageList method is:</p>
+
+<pre class="code">
+  void ReverseImageList(Image **images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="SpliceImageIntoList">SpliceImageIntoList</a></h2>
+</div>
+
+<p>SpliceImageIntoList() removes 'length' images from the list and replaces them with the specified splice. Removed images are returned.</p></ol>
+
+<p>The format of the SpliceImageIntoList method is:</p>
+
+<pre class="code">
+  SpliceImageIntoList(Image **images,const unsigned unsigned long,
+    const Image *splice)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+<h5>length</h5>
+<ol><p>The length of the image list to remove.</p></ol>
+
+<h5>splice</h5>
+<ol><p>Replace the removed image list with this list.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="SplitImageList">SplitImageList</a></h2>
+</div>
+
+<p>SplitImageList() splits an image into two lists, after given image The list that was split off is returned, which may be empty.</p></ol>
+
+<p>The format of the SplitImageList method is:</p>
+
+<pre class="code">
+  Image *SplitImageList(Image *images)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list.</p></ol>
+
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="438069884">Discourse Server</a> &bull;
+    <a href="../../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://www.imagemagick.org/MagickStudio/scripts/MagickStudio.cgi" target="601862863">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+
+ "INTEL CONFIDENTIAL
+ Copyright (February 2011) Intel Corporation All Rights Reserved.
+ 
+ The source code contained or described herein and all documents
+ related to the source code ("Material") are owned by Intel Corporation
+ or its suppliers or licensors. Title to the Material remains with
+ Intel Corporation or its suppliers and licensors. The Material may
+ contain trade secrets and proprietary and confidential information of
+ Intel Corporation and its suppliers and licensors, and is protected by
+ worldwide copyright and trade secret laws and treaty provisions. No
+ part of the Material may be used, copied, reproduced, modified,
+ published, uploaded, posted, transmitted, distributed, or disclosed in
+ any way without Intel~Rs prior express written permission.  No
+ license under any patent, copyright, trade secret or other
+ intellectual property right is granted to or conferred upon you by
+ disclosure or delivery of the Materials, either expressly, by
+ implication, inducement, estoppel or otherwise. Any license under such
+ intellectual property rights must be express and approved by Intel in
+ writing.
+ 
+ Include any supplier copyright notices as supplier requires Intel to use.
+ 
+ Include supplier trademarks or logos as supplier requires Intel to
+ use, preceded by an asterisk. An asterisked footnote can be added as
+ follows: *Third Party trademarks are the property of their respective
+ owners.
+ 
+ Unless otherwise agreed by Intel in writing, you may not remove or
+ alter this notice or any other notice embedded in Materials by Intel
+ or Intel~Rs suppliers or licensors in any way."
+
+
+------------------------------
+Bug 1 (Bug #515403)
+------------------------------
+
+------------------------------
+Description
+------------------------------
+
+Firefox Javascript Bug--atomicity violation in garbage collector can result in
+null pointer dereference. See docs folder or
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=515403 
+
+for more information.
+
+**UPDATED**
+
+It looks like, despite the bug report, this bug cannot actually cause a NULL
+pointer dereference (at least with this test harness) as there is a NULL check.
+It is unclear from the bug report why the developers were concerned about this.
+The "buggy" interleaving can occur (that is, js_MarkScriptFilenames in
+js/src/jsscript.cpp) can be called with a NULL pointer but the NULL check
+prevents anything bad from happening.
+
+The default (and sleep builds) now print out a warning if
+js_MarkScriptFilenames is called with a NULL pointer.
+
+------------------------------
+Where is the source from?
+------------------------------
+
+The source in firefox-src-2009-09-09.tar.bz2 was retrieved by executing the
+following commands:
+
+$ hg clone http://hg.mozilla.org/releases/mozilla-1.9.2/ firefox-src
+$ cd firefox-src
+$ hg update -C -d 2009-09-09
+$ rm -rf .hg
+$ cd ..
+$ tar cjf firefox-src-2009-09-09.tar.bz2 firefox-src
+
+------------------------------
+Scripted Build
+------------------------------
+
+in the scripts/ folder contains:
+
+build-ff.sh: 
+build script to automate the firefox build.  Takes one parameter
+(sleep or default).  The sleep build will place sleep statements to make the
+bug more likely to occur.
+
+build-testharness.sh:
+build script for the test harness
+
+clean.sh:
+deletes testharness and firefox src and objects
+
+------------------------------
+Manual Build
+------------------------------
+
+1) Configure Build by moving src/.mozconfig to src/firefox-src/.mozconfig
+
+2) Build
+
+make -f client.mk build
+
+5) compile test client
+
+g++ test-js.cpp -o test-js -I firefox-src/obj-dbg/dist/include/ -L firefox-src/obj-dbg/dist/lib/ -lpthread -lmozjs
+
+------------------------------
+Troubleshooting
+------------------------------
+
+In Ubuntu 10.04, I had to modify the includes In the following files:
+
+toolkit/crashreporter/google-breakpad/src/common/linux/dump_symbols.cc
+toolkit/crashreporter/google-breakpad/src/client/linux/handler/exception_handler.cc
+toolkit/crashreporter/google-breakpad/src/client/linux/handler/minidump_generator.cc
+
+By Inserting:
+#include <stdio.h>
+#include <stdarg.h>
+

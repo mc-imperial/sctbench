@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: Command-line Tools: Stream</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="command-line, tools:, stream, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../index.html"><img id="titlebar-west" src="../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="1187574322"><img id="titlebar-west" src="../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img src="../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img id="titlebar-east" src="../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../index.html">About ImageMagick</a>
+      <a href="../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="1218212405" class="sub">Usage</a>
+      <a href="../www/api.html">Program Interfaces</a>
+      <a href="../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../Magick++/" target="569852134" class="sub">Magick++</a>
+      <a href="../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/install-source.html">Install from Source</a>
+      <a href="../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../www/binary-releases.html">Binary Releases</a>
+      <a href="../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/sitemap.html">Site Map</a>
+			<a href="../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../www/sponsors.html">Sponsors</a>
+  <a href="http://www.onevital.com" class="sponsor" target="sponsor">Blog Network</a><!-- 200801010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[<a href="#usage">Example Usage</a> &bull; <a href="#options">Option Summary</a>]</p>
+
+<p><kbd>Stream</kbd> is a lightweight tool to stream one or more pixel components of the image or portion of the image to your choice of storage formats.  It writes the pixel components as they are read from the input image a row at a time making <kbd>stream</kbd> desirable when working with large images or when you require raw pixel components.</p>
+
+<div style="margin: auto;">
+  <h2><a name="usage"></a>Example Usage</h2>
+</div>
+
+<p>We list a few examples of the <kbd>stream</kbd> command here to illustrate its usefulness and ease of use. To get started, lets stream the red, green, blue components of a 640x480 JPEG image to disk as unsigned characters:</p>
+
+<pre class="text">
+  stream -map rgb -storage-type char image.jpg pixels.dat
+  display -depth 8 -size 640x480 rgb:pixels.dat
+</pre>
+
+<p>Here we extract a 100x100 region from a TIFF image in the grayscale format as doubles:</p>
+
+<pre class="text">
+  stream -map i -storage-type double -extract 100x100+30+40 image.tif gray.raw
+</pre>
+
+<p>You can also associate the region to extract with the image filename:</p>
+
+<pre class="text">
+  stream -map i -storage-type double 'image.tif[100x100+30+40]' gray.raw
+</pre>
+
+<div style="margin: auto;">
+  <h2><a name="options"></a>Option Summary</h2>
+</div>
+
+<p>The <kbd>stream</kbd> command recognizes these options.  Click on an option to get more details about how that option works.</p>
+
+<table id="table" cellpadding="2" cellspacing="0" style="width: 93%">
+  <tbody>
+  <tr>
+    <th align="left">Option</th>
+    <th align="left">Description</th>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#authenticate" target="magick-options">-authenticate <em class="option">value</em></a></td>
+    <td valign="top">decrypt image with this password</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#channel" target="magick-options">-channel <em class="option">type</em></a></td>
+    <td valign="top">apply option to select image channels</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#colorspace" target="magick-options">-colorspace <em class="option">type</em></a></td>
+    <td valign="top">set image colorspace</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#debug" target="magick-options">-debug <em class="option">events</em></a></td>
+    <td valign="top">display copious debugging information</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#define" target="magick-options">-define <em class="option">format:option</em></a></td>
+    <td valign="top">define one or more image format options</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#density" target="magick-options">-density <em class="option">geometry</em></a></td>
+    <td valign="top">horizontal and vertical density of the image</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#depth" target="magick-options">-depth <em class="option">value</em></a></td>
+    <td valign="top">image depth</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#extract" target="magick-options">-extract <em class="option">geometry</em></a></td>
+    <td valign="top">extract area from image</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#help" target="magick-options">-help</a></td>
+    <td valign="top">print program options</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#interlace" target="magick-options">-interlace <em class="option">type</em></a></td>
+    <td valign="top">type of image interlacing scheme</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#interpolate">-interpolate <em class="option">method</em></a></td>
+    <td valign="top">pixel color interpolation method</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#limit" target="magick-options">-limit <em class="option">type value</em></a></td>
+    <td valign="top">pixel cache resource limit</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#list" target="magick-options">-list <em class="option">type</em></a></td>
+    <td valign="top">Color, Configure, Delegate, Format, Magic, Module, Resource, or Type</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#log" target="magick-options">-log <em class="option">format</em></a></td>
+    <td valign="top">format of debugging information</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#stream-map" target="magick-options">-map <em class="option">components</em></a></td>
+    <td valign="top">store pixels in this format.</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#monitor" target="magick-options">-monitor</a></td>
+    <td valign="top">monitor progress</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#quantize" target="magick-options">-quantize <em class="option">colorspace</em></a></td>
+    <td valign="top">reduce image colors in this colorspace</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#quiet" target="magick-options">-quiet</a></td>
+    <td valign="top">suppress all warning messages</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#regard-warnings" target="magick-options">-regard-warnings</a></td>
+    <td valign="top">pay attention to warning messages.</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#sampling-factor" target="magick-options">-sampling-factor <em class="option">geometry</em></a></td>
+    <td valign="top">horizontal and vertical sampling factor</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#seed" target="magick-options">-seed <em class="option">value</em></a></td>
+    <td valign="top">seed a new sequence of pseudo-random numbers</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#set" target="magick-options">-set <em class="option">attribute value</em></a></td>
+    <td valign="top">set an image attribute</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#size" target="magick-options">-size <em class="option">geometry</em></a></td>
+    <td valign="top">width and height of image</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#storage-type" target="magick-options">-storage-type <em class="option">type</em></a></td>
+    <td valign="top">store pixels with this storage type.</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#transparent-color" target="magick-options">-transparent-color <em class="option">color</em></a></td>
+    <td valign="top">transparent color</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#verbose" target="magick-options">-verbose</a></td>
+    <td valign="top">print detailed information about the image</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#version" target="magick-options">-version</a></td>
+    <td valign="top">print version information</td>
+  </tr>
+
+  <tr>
+    <td valign="top"><a href="../www/command-line-options.html#virtual-pixel" target="magick-options">-virtual-pixel <em class="option">method</em></a></td>
+    <td valign="top">access method for pixels outside the boundaries of the image</td>
+  </tr>
+
+  </tbody>
+</table>
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="1442049316">Discourse Server</a> &bull;
+    <a href="../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://www.imagemagick.org/MagickStudio/scripts/MagickStudio.cgi" target="467534509">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+EnderUNIX Aget ChangeLog
+
+  - extern int errno's replaced with #include <errno.h> directives
+    for newer Linux versions compatibility.
+  - Patch by Patrick MARIE mycroft virgaria.org>, which initializes
+    struct request pointer.
+  - Patch by Gurer Ozen <madcat at e-kolay.net> to avoid
+    excessive CPU consuming while downloading from very
+    slow sites.
+  - HTTP Proxy support (without authorization)
+  - progress bar is now in one line.
+  - RC file support. Some configuration parameters can be set
+    in the .agetrc file which will be placed on the user's home
+    directory.
+  - Ftp downloads utilize the first head connection
+  - Naveen N. Rao becomes the second developer for aget.
+  - Aget supports ftp downloads now. (Passive only).
+  - Thread exit status evaluation. Automatic restarting
+    of threads. 
+  - Heavy changes on Signal Handling 
+  - Log file is now created in the user's home directory.
+  - Progress bar is actived via alarm(2) now. 
+
+
+* Sat Nov 23 
+  - MaxOSX support 
+  - get() and resume_get() functions are
+    replaced with startHTTP(), startFTP,
+    resumeHTTP() and resumeFTP() respectively.
+
+
+* Fri Nov 22 07:44:20 EET 2002
+  Version 0.4 adds/changes the following:
+  - Fixed bugs in Resume code.
+
+  - Fixed miscalculations in the progress indicator 
+
+* Fri Sep 20 18:11:11 EEST 2002
+  Version 0.39 adds/changes the following:
+  - Hafiye is not 100 % POSIX compliant now.
+    pread/pwrite functions are now used to 
+    simultaneously write to the local file.
+
+  - Because of pwrite, the local file is not
+    assembled at the end now, it's assembled
+    at the same time. This speeds up large
+    downloads; since previously lots of I/O was used
+    to assemble the file. This is now decreased by
+    at least fifty percent.
+    
+  - Solaris bug fixed.
+
+  - Resume support. 
+
+  - Some more options:
+    -p	[port number to connect to]
+    -l  [local file name, if different from the remote file]
+    -f  [force use of suggested number of threads]
+
+  - A progress indicator has been added.
+
+  - Can guess the number of threads needed depending on file size
+
+  - Code has been re-arranged. Since aget starts
+    to become larger, that was a need.
+
+  - A README-Developer has been added for
+    developers who want to contribute to aget.
+
+
+* Fri May  3 23:25:08 EEST 2002
+  Version 0.2p1 adds/changes the following:
+  - getopt() problem is now solved,
+    The program should really run on Posix systems.
+    I've tested it on Linux, FreeBSD ans Solaris.
+
+  - If no thread number is supplied, it is defaulted to 1.
+
+  - A Solaris Makefile is added to the tarball.
+
+* Wed May  1 18:15:32 EEST 2002
+  Version 0.2 adds/changes the following:
+  - File is now created seperately in each thread
+    and later, it is assembled. 
+    Thus, some overhead from locking and unlocking of
+    the mutex has been decreased.
+
+
+* Wed May  1 10:43:44 EEST 2002
+  First Public Release: 0.1

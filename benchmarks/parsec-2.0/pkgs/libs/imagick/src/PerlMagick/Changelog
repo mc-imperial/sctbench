@@ -1,0 +1,26 @@
+2007-09-12  6.3.5-9 Cristy  <quetzlzacatenango@image...>
+  * Added GetPixel()/SetPixel() methods.
+
+2007-06-22  6.3.4-2 grafman <grafman@graphcomp.com>
+  * Add GetImagePixels to return C pointer for image cache.
+  * Add SyncImagePixels to sync image cache.
+  * Add Quantum parameter to Get API to return Quantum-Depth.
+
+2007-06-21  6.3.4-1 Cristy  <quetzlzacatenango@image...>
+  * Add Distort.
+
+2007-03-20  6.3.3-3 Cristy  <quetzlzacatenango@image...>
+  * Add vector-graphics parameter to the Draw() method.
+
+    blob length was not being set properly).
+2007-03-11  6.3.3-2 Cristy  <quetzlzacatenango@image...>
+  * Read(blob=>$blob) and Ping(blob=>$blob) sometimes failed because the
+    blob length was not being set properly).
+
+2007-01-23  cristy  <cristy@virgi...>
+
+  * Add parameters fill-pattern and stroke-pattern to Annotate() and Draw().
+
+2005-01-10  cristy  <cristy@virgi...>
+  * Added normalize parameter to GetPixels().  Use normalize=>'true' to return
+    normalized pixel values.

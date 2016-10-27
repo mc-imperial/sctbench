@@ -1,0 +1,165 @@
+ divert(-1)
+define(NEWPROC,) dnl
+
+define(BARRIER, `{
+#if 0
+    asm("sfence");
+#endif
+    int lsense = ($1).gsense;
+    while (1) {
+	int oldcount = ($1).count;
+	int newcount = oldcount + lsense;
+	int updatedcount;
+	asm("lock cmpxchg %1,%2" : 
+	    "=a" (updatedcount) : 
+	    "r" (newcount), "m" (($1).count), "0a" (oldcount) );
+	if (updatedcount == oldcount) {
+	    if ((newcount == ($2) && lsense == 1) || (newcount == 0 && lsense == -1))
+		($1).gsense = -lsense;
+	    break;
+	}
+    }
+    while (($1).gsense == lsense)
+	;
+#if 0
+    asm("lfence");
+#endif
+}
+')
+define(BARDEC, `barrier_t ($1);')
+define(BARINIT, `{
+		($1).gsense=1;
+		($1).count=0;
+		}')
+
+define(GSDEC, `int ($1);')
+define(GSINIT, `{ ($1) = 0; }')
+define(GETSUB, `{ 
+  if (($1)<=($3)) 
+    ($2) = ($1)++; 
+  else { 
+    ($2) = -1; 
+    ($1) = 0; 
+  }
+}')
+
+define(NU_GSDEC, `int ($1);')
+define(NU_GSINIT, `{ ($1) = 0; }')
+define(NU_GETSUB, `GETSUB($1,$2,$3,$4)')
+
+define(ADEC, `int ($1);')
+define(AINIT, `{;}')
+define(PROBEND, `{;}')
+
+define(LOCKDEC, `pthread_mutex_t ($1);')
+define(LOCKINIT, `{pthread_mutex_init(&($1), NULL);}')
+define(LOCK, `{pthread_mutex_lock(&($1));}')
+define(UNLOCK, `{pthread_mutex_unlock(&($1));}')
+
+define(NLOCKDEC, `int ($1);')
+define(NLOCKINIT, `{;}')
+define(NLOCK, `{;}')
+define(NUNLOCK, `{;}')
+
+define(ALOCKDEC, `pthread_mutex_t ($1)[($2)];')
+define(ALOCKINIT, `{int i; for (i = 0; i < ($2); i++)
+		  pthread_mutex_init(&(($1)[i]), NULL);}')
+define(ALOCK, `{pthread_mutex_lock(&($1)[($2)]);}')
+define(ASARLOCK, `{pthread_mutex_lock(&($1)[($2)]);}')
+define(AULOCK, `{pthread_mutex_unlock(&($1)[($2)]);}')
+define(AUNLOCK, `{pthread_mutex_unlock(&($1)[($2)]);}')
+define(ASLOCK, `LOCK($1)')
+define(ASUNLOCK, `UNLOCK($1)')
+define(ASALOCK, `ALOCK($1,$2)')
+define(ASAUNLOCK, `AULOCK($1,$2)')
+define(ASAULOCK, `AULOCK($1,$2)')
+
+
+
+
+
+define(PAUSEDEC, `int ($1); ')
+define(PAUSEINIT, `{($1) = 0;}')
+define(CLEARPAUSE, `
+{
+  {($1) = 0;}
+}
+')
+define(SETPAUSE, `
+{
+  while (($1) == 1);
+  {($1) = 1;}
+}
+')
+define(EVENT, `{;}')
+define(WAITPAUSE, `
+{
+  while (($1) == 0);
+}
+')
+define(PAUSE, `{;}')
+
+define(AUG_ON, ` ')
+define(AUG_OFF, ` ')
+define(TRACE_ON, ` ')
+define(TRACE_OFF, ` ')
+define(REF_TRACE_ON, ` ')
+define(REF_TRACE_OFF, ` ')
+define(DYN_TRACE_ON, `;')
+define(DYN_TRACE_OFF, `;')
+define(DYN_REF_TRACE_ON, `;')
+define(DYN_REF_TRACE_OFF, `;')
+define(DYN_SIM_ON, `;')
+define(DYN_SIM_OFF, `;')
+define(DYN_SCHED_ON, `;')
+define(DYN_SCHED_OFF, `;')
+define(AUG_SET_LOLIMIT, `;')
+define(AUG_SET_HILIMIT, `;')
+
+define(MENTER, `{;}')
+define(DELAY, `{;}')
+define(CONTINUE, `{;}')
+define(MEXIT, `{;}')
+define(MONINIT, `{;}')
+
+define(WAIT_FOR_END, `{;}')
+
+define(CREATE, `{
+pthread_t t;
+pthread_create(&t, NULL, ($1), NULL);
+}')
+define(MAIN_INITENV, `{;}')
+define(MAIN_END, `{exit(0);}')
+define(MAIN_ENV,`
+#include <pthread.h>
+//#include "libittnotify.h"
+#ifndef BARRIER_T
+#define BARRIER_T
+ typedef struct {
+  volatile int gsense;
+  volatile long count;    /* the count of entered processors */
+} barrier_t;
+#endif
+')
+define(ENV, ` ')
+define(EXTERN_ENV, `MAIN_ENV')
+
+define(G_MALLOC, `malloc($1);')
+define(G_FREE, `;')
+define(G_MALLOC_F, `malloc($1)')
+define(NU_MALLOC, `malloc($1);')
+define(NU_FREE, `;')
+define(NU_MALLOC_F, `malloc($1)')
+
+define(GET_HOME, `{($1) = 0;}')
+define(GET_PID, `{($1) = 0;}')
+define(AUG_DELAY, `{sleep ($1);}')
+define(ST_LOG, `{;}')
+define(SET_HOME, `{;}')
+define(CLOCK, `{long time(); ($1) = time(0);}')
+divert(0)
+
+define(RABBIT_BEGIN, ` ')
+define(RABBIT_END, ` ')
+
+define(sesc_pseudoreset, ` ')

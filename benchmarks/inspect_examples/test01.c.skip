@@ -1,0 +1,21 @@
+
+int main()
+{
+  int x, y, z, a, b, c, d;
+
+/*   if ( x > y * z){ */
+/*     goto EndOptions; */
+/*   } */
+/*   else{ */
+/*     a ++; */
+/*     b = c+ d; */
+/*   } */
+
+
+ EndOptions:
+  z = x + 5;
+  
+  return 0;
+}
+  
+  

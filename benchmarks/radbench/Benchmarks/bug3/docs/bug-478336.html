@@ -1,0 +1,3126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  
+    <title>Bug 478336 – rt-&gt;state assertion failure in js_DestroyContext creating/destroying many contexts</title>
+
+
+<link rel="Top" href="https://bugzilla.mozilla.org/">
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree" href="https://bugzilla.mozilla.org/showdependencytree.cgi?id=478336&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph" href="https://bugzilla.mozilla.org/showdependencygraph.cgi?id=478336">
+
+      <link rel="Show" title="Votes (0)" href="https://bugzilla.mozilla.org/votes.cgi?action=show_bug&amp;bug_id=478336">
+
+      <link rel="Show" title="Bug Activity" href="https://bugzilla.mozilla.org/show_activity.cgi?id=478336">
+      <link rel="Show" title="Printer-Friendly Version" href="https://bugzilla.mozilla.org/show_bug.cgi?format=multiple&amp;id=478336">
+
+
+  
+    <link rel="Saved&nbsp;Searches" title="My Bugs" href="https://bugzilla.mozilla.org/buglist.cgi?bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;emailassigned_to1=1&amp;emailreporter1=1&amp;emailtype1=exact&amp;email1=naj5c%40virginia.edu&amp;field0-0-0=bug_status&amp;type0-0-0=notequals&amp;value0-0-0=UNCONFIRMED&amp;field0-0-1=reporter&amp;type0-0-1=equals&amp;value0-0-1=naj5c%40virginia.edu">
+
+
+    
+
+
+        <link rel="stylesheet" type="text/css" href="bug-478336_files/autocomplete.css">
+        <link rel="stylesheet" type="text/css" href="bug-478336_files/calendar.css">
+
+    
+      <link href="bug-478336_files/global_003.css" rel="stylesheet" type="text/css">
+      <link href="bug-478336_files/show_bug.css" rel="stylesheet" type="text/css">
+    <!--[if lte IE 7]>
+      
+      <link href="skins/standard/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+        <link href="bug-478336_files/global_003.css" rel="stylesheet" title="Classic" type="text/css">
+        <link href="bug-478336_files/show_bug.css" rel="stylesheet" title="Classic" type="text/css">
+      <!--[if lte IE 7]>
+      
+        <link href="skins/standard/IE-fixes.css"
+              rel="stylesheet"
+              title="Classic"
+              type="text/css">
+      <![endif]-->
+
+    
+        
+            <link href="bug-478336_files/global_004.css" rel="alternate stylesheet" title="BMO" type="text/css">
+            <link href="bug-478336_files/show_bug_004.css" rel="alternate stylesheet" title="BMO" type="text/css">
+        <!--[if lte IE 7]>
+          
+          <link href="skins/contrib/BMO/IE-fixes.css"
+                rel="alternate stylesheet"
+                title="BMO"
+                type="text/css">
+        <![endif]-->
+        
+            <link href="bug-478336_files/global.css" rel="alternate stylesheet" title="Dusk" type="text/css">
+            <link href="bug-478336_files/show_bug_003.css" rel="alternate stylesheet" title="Dusk" type="text/css">
+        <!--[if lte IE 7]>
+          
+          <link href="skins/contrib/Dusk/IE-fixes.css"
+                rel="alternate stylesheet"
+                title="Dusk"
+                type="text/css">
+        <![endif]-->
+
+    
+
+    
+        <link href="bug-478336_files/global_002.css" rel="stylesheet" type="text/css">
+        <link href="bug-478336_files/show_bug_002.css" rel="stylesheet" type="text/css">
+    <!--[if lte IE 7]>
+      
+      <link href="skins/custom/IE-fixes.css"
+            rel="stylesheet"
+            type="text/css">
+    <![endif]-->
+
+    
+    <script src="bug-478336_files/yahoo-dom-event.js" type="text/javascript"></script>
+    <script src="bug-478336_files/cookie-min.js" type="text/javascript"></script>
+    
+      <script type="text/javascript" src="bug-478336_files/json-min.js"></script>
+      <script type="text/javascript" src="bug-478336_files/connection-min.js"></script>
+      <script type="text/javascript" src="bug-478336_files/datasource-min.js"></script>
+      <script type="text/javascript" src="bug-478336_files/autocomplete-min.js"></script>
+      <script type="text/javascript" src="bug-478336_files/calendar-min.js"></script>
+
+    <script src="bug-478336_files/global.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+    <!--
+        YAHOO.namespace('bugzilla');
+        if (YAHOO.env.ua.gecko) {
+            YAHOO.util.Event._simpleRemove(window, "unload", 
+                                           YAHOO.util.Event._unload);
+        }
+        
+        function unhide_language_selector() { 
+            YAHOO.util.Dom.removeClass(
+                'lang_links_container', 'bz_default_hidden'
+            ); 
+        } 
+        YAHOO.util.Event.onDOMReady(unhide_language_selector);
+
+        
+        var BUGZILLA = {
+            param: {
+                cookiepath: '\/',
+                maxusermatches: 100
+            },
+
+            string: {
+                attach_desc_required:
+                    'You must enter a Description for this attachment.'
+            }
+        };
+    // -->
+    </script>
+
+        <script src="bug-478336_files/util.js" type="text/javascript"></script>
+        <script src="bug-478336_files/field.js" type="text/javascript"></script>
+
+    
+
+
+    
+    <link rel="search" type="application/opensearchdescription+xml" title="Bugzilla@Mozilla" href="https://bugzilla.mozilla.org/search_plugin.cgi">
+    <link rel="shortcut icon" href="https://bugzilla.mozilla.org/skins/custom/images/bugzilla.png">
+  </head><body onload="" class="bugzilla-mozilla-org bz_bug bz_status_RESOLVED bz_product_Core bz_component_JavaScript_Engine bz_bug_478336 yui-skin-sam">
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<table id="titles" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <td id="title">
+      <p>Bugzilla@Mozilla – Bug&nbsp;478336</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">rt-&gt;state assertion failure in js_DestroyContext creating/destroying many contexts</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2009-09-11 09:33:32 PDT</p>
+    </td>
+</tr>
+</tbody></table>
+
+<table id="lang_links_container" cellpadding="0" cellspacing="0"><tbody><tr><td>
+</td></tr></tbody></table>
+<ul class="links">
+  <li><a href="https://bugzilla.mozilla.org/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://bugzilla.mozilla.org/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://bugzilla.mozilla.org/describecomponents.cgi">Browse</a></li>
+  <li><span class="separator">| </span><a href="https://bugzilla.mozilla.org/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="buglist.cgi" method="get" onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" id="quicksearch_top" name="quicksearch" type="text">
+    <input class="btn" value="Search" id="find_top" type="submit"></form>
+  <a href="https://bugzilla.mozilla.org/page.cgi?id=quicksearch.html" title="Quicksearch Help">[?]</a></li>
+
+  <li><span class="separator">| </span><a href="https://bugzilla.mozilla.org/report.cgi">Reports</a></li>
+
+  <li>
+      <span class="separator">| </span>
+        <a href="https://bugzilla.mozilla.org/request.cgi?requester=naj5c%40virginia.edu&amp;requestee=naj5c%40virginia.edu&amp;do_union=1&amp;group=type&amp;action=queue">My Requests</a></li>
+
+    <li><span class="separator">| </span><a href="https://bugzilla.mozilla.org/userprefs.cgi">Preferences</a></li>
+<li>
+        <span class="separator">| </span>
+        <a href="http://www.bugzilla.org/docs/3.6/en/html/bug_page.html" target="_blank">Help</a>
+      </li>
+
+    <li>
+      <span class="separator">| </span>
+        <a href="https://bugzilla.mozilla.org/index.cgi?logout=1">Log&nbsp;out</a>
+        naj5c@virginia.edu</li>
+</ul>
+</div> 
+
+<div id="bugzilla-body">
+<!-- <div style="border: 2px dotted red;">
+<p style="padding: 5px; margin: 0px; color: red; text-align: center;">Bugzilla will be offline for up to 30 minutes starting at 6pm PDT (0100 UTC) for a kernel update and RAM upgrade on its master database server.</p>
+</div>
+<br> -->
+
+<div class="navigation">
+  
+  <i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+</div>
+<script type="text/javascript">
+  <!--
+  
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id, real_id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+        document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                       id + ',' + real_id + '); return false;">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id, real_id) {
+      var prefix = "(In reply to comment #" + id + ")\n";
+      var replytext = "";
+        /* pre id="comment_name_N" */
+        var text_elem = document.getElementById('comment_text_'+id);
+        var text = getText(text_elem);
+
+        /* make sure we split on all newlines -- IE or Moz use \r and \n
+         * respectively.
+         */
+        text = text.split(/\r|\n/);
+
+        for (var i=0; i < text.length; i++) {
+            replytext += "> " + text[i] + "\n"; 
+        }
+
+        replytext = prefix + replytext + "\n";
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  //-->
+  </script>
+
+<form name="changeform" method="post" action="process_bug.cgi">
+
+  <input name="delta_ts" value="2009-09-11 09:33:32" type="hidden">
+  <input name="longdesclength" value="30" type="hidden">
+  <input name="id" value="478336" type="hidden">
+  <input name="token" value="1283449733-f04976e1e364102b20b70f66ccb6233f" type="hidden">
+<div class="bz_alias_short_desc_container edit_form">
+    <span class="last_comment_link">
+      <a href="#c29" accesskey="l"><b>L</b>ast Comment</a>
+    </span>
+     <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336"><b>Bug&nbsp;478336</b></a> -<span id="summary_alias_container"> 
+      <span id="short_desc_nonedit_display">rt-&gt;state assertion failure in js_DestroyContext creating/destroying many contexts</span>
+     </span>
+  
+       
+    <div class="bz_default_hidden" id="summary_alias_input">
+      <table id="summary"> 
+          <tbody><tr>
+            <td colspan="2">
+          </td>
+        </tr> 
+        
+        <tr>
+          <td>
+            <label accesskey="s" for="short_desc"><u>S</u>ummary</label>:
+          </td>
+          <td><span title="rt-&gt;state assertion failure in js_DestroyContext creating/destroying many contexts">rt-&gt;state assertion failure in js_DestroyContext creating/destroying many con...
+        </span>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+  </div>
+  <script type="text/javascript">
+    hideAliasAndSummary('rt->state assertion failure in js_DestroyContext creating\/destroying many contexts', '');
+  </script>
+  <table class="edit_form">
+    <tbody><tr>
+      
+      <td id="bz_show_bug_column_1" class="bz_show_bug_column">     
+        <table class="bz_show_bug_column_table">
+          <tbody><tr>
+    <td class="field_label">
+      <b><a href="https://bugzilla.mozilla.org/page.cgi?id=fields.html#status">Status</a></b>:
+    </td>
+    <td id="bz_field_status">
+      <span id="static_bug_status">RESOLVED
+          FIXED
+      </span>
+    </td>
+  </tr>
+    <tr>
+      <td class="field_label">
+        <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+      </td><td colspan="2">fixed-in-tracemonkey  
+  </td>
+    </tr>
+  
+    <tr>
+      <td class="field_label">
+        <label for="keywords" accesskey="k">
+          <b><a href="https://bugzilla.mozilla.org/describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+      </td>
+      <td class="field_value" colspan="2">fixed1.9.0.11, fixed1.9.1
+      </td>
+    </tr>
+          <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+          <tr><th class="field_label " id="field_label_product">
+        <a href="https://bugzilla.mozilla.org/describecomponents.cgi">Product:</a>
+  </th>
+
+<td class="field_value " id="field_container_product">Core</td>
+    </tr>
+        
+    
+    
+    <tr>
+      <td class="field_label">
+        <label for="component" accesskey="m">
+          <b><a href="https://bugzilla.mozilla.org/describecomponents.cgi?product=Core">
+            Co<u>m</u>ponent</a>:
+          </b>
+        </label>
+      </td><td>JavaScript Engine
+  </td>
+    </tr>
+    <tr>
+      <td class="field_label">
+        <label for="version"><b>Version</b></label>:
+      </td>
+<td>unspecified
+  </td>
+    </tr>
+        
+    
+        
+    <tr>
+      <td class="field_label">
+        <label for="rep_platform" accesskey="h"><b>Platform</b></label>:
+      </td>
+      <td class="field_value">x86
+       Linux
+       <script type="text/javascript">
+         assignToDefaultOnChange(['product', 'component']);
+       </script>
+      </td>
+    </tr>
+          <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+          
+          <tr>
+      <td class="field_label">
+        <label for="priority" accesskey="i">
+          <b><a href="https://bugzilla.mozilla.org/page.cgi?id=fields.html#importance"><u>I</u>mportance</a></b></label>:
+      </td>
+      <td>--
+       normal
+          <span id="votes_container">    
+          (<a href="https://bugzilla.mozilla.org/votes.cgi?action=show_user&amp;bug_id=478336#vote_478336">vote</a>)
+          </span>  
+      </td>
+    </tr>
+
+      <tr>
+        <td class="field_label">
+          <label for="target_milestone">
+              <a href="https://bugzilla.mozilla.org/page.cgi?id=fields.html#target_milestone">
+            Target&nbsp;Milestone</a></label>:
+        </td><td>---
+  </td>
+      </tr>            
+          
+          <tr>
+      <td class="field_label">
+        <b><a href="https://bugzilla.mozilla.org/page.cgi?id=fields.html#assigned_to">Assigned To</a></b>:
+      </td>
+      <td><span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="field_label">
+        <label for="qa_contact" accesskey="q"><b><u>Q</u>A Contact</b></label>:
+      </td>
+      <td><span class="vcard"><a class="email" href="mailto:general@spidermonkey.bugs" title="general@spidermonkey.bugs">general@spidermonkey.bugs</a>
+</span>
+      </td>
+    </tr>
+          <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+          <tr>
+    <td class="field_label">
+      <label for="bug_file_loc" accesskey="u"><b>
+          <u>U</u>RL</b></label>:
+    </td>
+    <td>
+      <span id="bz_url_input_area">
+          <a href=""></a>
+      </span>
+    </td>
+  </tr>
+          <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+          
+          <tr><th class="field_label">
+    <label for="dependson">Depends&nbsp;on</label>:
+  </th>
+  <td>    
+    <span id="dependson_input_area">
+    </span>
+    <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=477021" title="RESOLVED FIXED - JSRuntime.contextList mutations must not happen when GC is running">477021</a></span> 
+  </td>
+  </tr>
+  
+  <tr><th class="field_label">
+    <label for="blocked" accesskey="b"><u>B</u>locks</label>:
+  </th>
+  <td>    
+    <span id="blocked_input_area">
+    </span>
+    <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=428420" title="NEW - SpiderMonkey 1.8 source release">js1.8src</a> 
+  </td>
+  
+  </tr><tr>
+    <th>&nbsp;</th>
+  
+    <td colspan="2" id="show_dependency_tree_or_graph" align="left">
+      Show dependency <a href="https://bugzilla.mozilla.org/showdependencytree.cgi?id=478336&amp;hide_resolved=1">tree</a>
+  
+        /&nbsp;<a href="https://bugzilla.mozilla.org/showdependencygraph.cgi?id=478336">graph</a>
+    </td>
+  </tr>
+          
+            <tr>
+              <td colspan="2"><div class="knob-buttons">
+      <input value="Save Changes" id="commit_top" type="submit">
+    </div>
+              </td>
+            </tr>
+        </tbody></table>
+      </td>
+      <td>
+        <div class="bz_column_spacer">&nbsp;</div>
+      </td>
+      
+      <td id="bz_show_bug_column_2" class="bz_show_bug_column">
+        <table class="bz_show_bug_column_table" cellpadding="3" cellspacing="1">
+        <tbody><tr>
+    <td class="field_label">
+      <b>Reported</b>:
+    </td>
+    <td>2009-02-12 19:33 PST by <span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+    </td>
+  </tr>
+  
+  <tr>
+    <td class="field_label">
+      <b> Modified</b>:
+    </td>
+    <td>2009-09-11 09:33 PDT 
+      (<a href="https://bugzilla.mozilla.org/show_activity.cgi?id=478336">History</a>)
+    </td>
+  
+  </tr>
+         <tr>
+      <td class="field_label">
+        <label for="newcc" accesskey="a"><b>CC List</b>:</label>
+      </td>
+      <td>
+            <input id="addselfcc" name="addselfcc" checked="checked" type="checkbox">
+            <label for="addselfcc">Add me to CC list</label>
+            <br> 10 
+          users
+        <span id="cc_edit_area_showhide_container">
+          (<a href="#" id="cc_edit_area_showhide">edit</a>)
+            <div id="cc_list_num_users">
+              <ul class="cc_list_display"> 
+                  <li>bclary@bclary.com</li>
+                  <li>brendan@mozilla.org</li>
+                  <li>fullmetaljacket.xp+bugmail@gmail.com</li>
+                  <li>igor@mir2.org</li>
+                  <li>jorendorff@mozilla.com</li>
+                  <li>mook.moz+mozbz@gmail.com</li>
+                  <li>ryanvm@gmail.com</li>
+                  <li>samuel.sidler+old@gmail.com</li>
+                  <li>sayrer@gmail.com</li>
+                  <li>wes@page.ca</li>
+              </ul>
+            </div>
+        </span>
+        <div class="bz_default_hidden" id="cc_edit_area">
+            <div>
+              <div><label for="cc"><b>Add</b></label></div><div class="yui-ac" id="newcc_autocomplete">  
+  <input autocomplete="off" class="yui-ac-input" name="newcc" size="30" id="newcc">
+    <div class="yui-ac-container" id="newcc_autocomplete_container"><div style="display: none;" class="yui-ac-content"><div style="display: none;" class="yui-ac-hd"></div><div class="yui-ac-bd"><ul><li style="display: none;"></li><li style="display: none;"></li><li style="display: none;"></li><li style="display: none;"></li><li style="display: none;"></li><li style="display: none;"></li><li style="display: none;"></li><li style="display: none;"></li><li style="display: none;"></li><li style="display: none;"></li></ul></div><div style="display: none;" class="yui-ac-ft"></div></div></div>
+    </div>  
+    <script type="text/javascript">
+      if( typeof(YAHOO.bugzilla.userAutocomplete) !== 'undefined' 
+          && YAHOO.bugzilla.userAutocomplete != null){
+        YAHOO.bugzilla.userAutocomplete.init( "newcc", 
+                    "newcc_autocomplete_container", true);        
+      }
+    </script>
+            </div>
+            <select id="cc" name="cc" multiple="multiple" size="5">
+                <option value="bclary@bclary.com">bclary@bclary.com</option>
+                <option value="brendan@mozilla.org">brendan@mozilla.org</option>
+                <option value="fullmetaljacket.xp+bugmail@gmail.com">fullmetaljacket.xp+bugmail@gmail.com</option>
+                <option value="igor@mir2.org">igor@mir2.org</option>
+                <option value="jorendorff@mozilla.com">jorendorff@mozilla.com</option>
+                <option value="mook.moz+mozbz@gmail.com">mook.moz+mozbz@gmail.com</option>
+                <option value="ryanvm@gmail.com">ryanvm@gmail.com</option>
+                <option value="samuel.sidler+old@gmail.com">samuel.sidler+old@gmail.com</option>
+                <option value="sayrer@gmail.com">sayrer@gmail.com</option>
+                <option value="wes@page.ca">wes@page.ca</option>
+            </select>
+              <br>
+              <input id="removecc" name="removecc" type="checkbox"><label for="removecc">Remove selected CCs</label>
+              <br>
+        </div>
+        <script type="text/javascript">
+          hideEditableField( 'cc_edit_area_showhide_container', 
+                             'cc_edit_area', 
+                             'cc_edit_area_showhide', 
+                             '', 
+                             '');  
+        </script>
+      </td>
+    </tr>
+         <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+<tr>
+      <td class="field_label flags_label">
+        <label><b>Flags:</b></label>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"><script type="text/javascript" src="bug-478336_files/flag.js"></script>
+
+<table id="flags">
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <tbody><tr>
+        <td>sayrer:
+        </td>
+        <td>
+          <label title="Flag for wanted (but not blocking) bugs for the 1.9.1 release." for="flag-295906">wanted1.9.1</label>
+        </td>
+        <td>
+          <select id="flag-295906" name="flag-295906" title="Flag for wanted (but not blocking) bugs for the 1.9.1 release." onchange="toggleRequesteeField(this);" class="flag_select flag_type-417">
+            
+              <option value="X"></option>
+              <option value="+" selected="selected">+</option>
+          </select>
+        </td>
+      </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<tr>
+    <td>&nbsp;</td>
+    <td>
+
+      <label title="flag to mark bugs as highly desired for Fennec 1.0, but not blocking final release" for="flag_type-422">wanted‑fennec1.0</label>
+    </td>
+    <td>
+      <select id="flag_type-422" name="flag_type-422" title="flag to mark bugs as highly desired for Fennec 1.0, but not blocking final release" onchange="toggleRequesteeField(this);" class="flag_select flag_type-422">
+        <option selected="selected" value="X"></option>
+          <option value="?">?</option>
+      </select>
+    </td>
+  </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <tr>
+        <td>bclary:
+        </td>
+        <td>
+          <label title="Whether the bug has a testcase in the test suite or not. Set it to &quot;in-testsuite?&quot; if the bug needs a testcase (only set this if the bug actually &lt;em&gt;needs&lt;/em&gt; a testcase &amp;mdash; not all bugs do, even layout bugs!), set it to &quot;in-testsuite+&quot; if the bug has an appropriate testcase, and set it to &quot;in-testsuite-&quot; if the bug doesn't need an explicit testcase (e.g. for code cleanup bugs). Only QA actively working on test cases in the component should use this keyword." for="flag-296608">in‑testsuite</label>
+        </td>
+        <td>
+          <select id="flag-296608" name="flag-296608" title="Whether the bug has a testcase in the test suite or not. Set it to &quot;in-testsuite?&quot; if the bug needs a testcase (only set this if the bug actually &lt;em&gt;needs&lt;/em&gt; a testcase &amp;mdash; not all bugs do, even layout bugs!), set it to &quot;in-testsuite+&quot; if the bug has an appropriate testcase, and set it to &quot;in-testsuite-&quot; if the bug doesn't need an explicit testcase (e.g. for code cleanup bugs). Only QA actively working on test cases in the component should use this keyword." onchange="toggleRequesteeField(this);" class="flag_select flag_type-37">
+            
+              <option value="X"></option>
+                <option value="?">?</option>
+                <option value="+">+</option>
+                <option value="-" selected="selected">-</option>
+          </select>
+        </td>
+      </tr>
+    
+    
+    
+    
+    
+    
+<tr>
+    <td>&nbsp;</td>
+    <td>
+
+      <label title="Whether the bug has a testcase in the Litmus test suite or not. Set it to &quot;in-litmus?&quot; if the bug needs a testcase (only set this if the bug actually &lt;em&gt;needs&lt;/em&gt; a testcase &amp;mdash; not all bugs do, even layout bugs!), set it to &quot;in-litmus+&quot; if the bug has an appropriate Litmus testcase, and set it to &quot;in-litmus-&quot; if the bug doesn't need an explicit testcase (e.g. for code cleanup bugs). Only QA actively working on test cases in the component should use this keyword." for="flag_type-325">in‑litmus</label>
+    </td>
+    <td>
+      <select id="flag_type-325" name="flag_type-325" title="Whether the bug has a testcase in the Litmus test suite or not. Set it to &quot;in-litmus?&quot; if the bug needs a testcase (only set this if the bug actually &lt;em&gt;needs&lt;/em&gt; a testcase &amp;mdash; not all bugs do, even layout bugs!), set it to &quot;in-litmus+&quot; if the bug has an appropriate Litmus testcase, and set it to &quot;in-litmus-&quot; if the bug doesn't need an explicit testcase (e.g. for code cleanup bugs). Only QA actively working on test cases in the component should use this keyword." onchange="toggleRequesteeField(this);" class="flag_select flag_type-325">
+        <option selected="selected" value="X"></option>
+          <option value="?">?</option>
+          <option value="+">+</option>
+          <option value="-">-</option>
+      </select>
+    </td>
+  </tr>
+
+  
+</tbody></table>
+      </td>
+    </tr>
+<tr><th class="field_label " id="field_label_see_also">
+        <a href="https://bugzilla.mozilla.org/page.cgi?id=fields.html#see_also">See Also:</a>
+  </th>
+
+<td class="field_value " id="field_container_see_also"></td>
+    </tr> 
+         <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+<tr><th class="field_label " id="field_label_cf_blocking_fennec">blocking-fennec:
+  </th>
+
+<td class="field_value " id="field_container_cf_blocking_fennec" colspan="2">---</td>
+    </tr>
+    <tr><th class="field_label " id="field_label_cf_blocking_20">blocking2.0:
+  </th>
+
+<td class="field_value " id="field_container_cf_blocking_20" colspan="2">---</td>
+    </tr>
+    <tr><th class="field_label " id="field_label_cf_status_20">status2.0:
+  </th>
+
+<td class="field_value " id="field_container_cf_status_20" colspan="2">---</td>
+    </tr>
+    <tr><th class="field_label " id="field_label_cf_blocking_192">blocking1.9.2:
+  </th>
+
+<td class="field_value " id="field_container_cf_blocking_192" colspan="2">---</td>
+    </tr>
+    <tr><th class="field_label " id="field_label_cf_status_192">status1.9.2:
+  </th>
+
+<td class="field_value " id="field_container_cf_status_192" colspan="2">---</td>
+    </tr>
+    <tr><th class="field_label " id="field_label_cf_blocking_191">blocking1.9.1:
+  </th>
+
+<td class="field_value " id="field_container_cf_blocking_191" colspan="2">---</td>
+    </tr>
+    <tr><th class="field_label " id="field_label_cf_status_191">status1.9.1:
+  </th>
+
+<td class="field_value " id="field_container_cf_status_191" colspan="2">---</td>
+    </tr>
+         
+
+        </tbody></table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+          <hr id="bz_top_half_spacer">
+      </td>
+    </tr>
+  </tbody></table>
+
+  <table id="bz_big_form_parts" cellpadding="0" cellspacing="0"><tbody><tr>
+  <td>
+
+    
+<script type="text/javascript">
+<!--
+function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    // Store current height for scrolling later
+    var originalHeight = table.offsetHeight;
+    var rows = YAHOO.util.Dom.getElementsByClassName(
+        'bz_tr_obsolete', 'tr', table);
+
+    for (var i = 0; i < rows.length; i++) {
+        bz_toggleClass(rows[i], 'bz_default_hidden');
+    }
+
+    if (YAHOO.util.Dom.hasClass(rows[0], 'bz_default_hidden')) {
+        link.innerHTML = "Show Obsolete";
+    }
+    else {
+        link.innerHTML = "Hide Obsolete";
+    }
+
+    var newHeight = table.offsetHeight;
+    // This scrolling makes the window appear to not move at all.
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+}
+//-->
+</script>
+
+<br>
+<table id="attachment_table" cellpadding="4" cellspacing="0">
+  <tbody><tr>
+    <th colspan="3" align="left">
+      <a name="a0" id="a0">Attachments</a>
+    </th>
+  </tr>
+
+
+      <tr class="bz_contenttype_text_plain bz_patch">
+        <td valign="top">
+            <a name="a1" href="https://bugzilla.mozilla.org/attachment.cgi?id=366564" title="View the content of the attachment">
+          <b>v1</b></a>
+
+          <span class="bz_attach_extra_info">
+              (1.36 KB,
+                patch)
+
+            <br>
+            <a href="#attach_366564" title="Go to the comment associated with the attachment">2009-03-10 08:08 PDT</a>,
+<span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">brendan:
+                review+
+                <br>
+          </td>
+
+        <td valign="top">
+          <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366564&amp;action=edit">Details</a>
+            | <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366564&amp;action=diff">Diff</a>
+        </td>
+      </tr>
+      <tr class="bz_contenttype_text_plain bz_patch bz_tr_obsolete bz_default_hidden">
+        <td valign="top">
+            <a name="a2" href="https://bugzilla.mozilla.org/attachment.cgi?id=366581" title="View the content of the attachment">
+          <b><span class="bz_obsolete">v1 for SM1.8</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (4.55 KB,
+                patch)
+
+            <br>
+            <a href="#attach_366581" title="Go to the comment associated with the attachment">2009-03-10 08:49 PDT</a>,
+<span class="vcard"><a class="email" href="mailto:jorendorff@mozilla.com" title="Jason Orendorff &lt;jorendorff@mozilla.com&gt;"> <span class="fn">Jason Orendorff</span></a>
+</span>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366581&amp;action=edit">Details</a>
+            | <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366581&amp;action=diff">Diff</a>
+        </td>
+      </tr>
+      <tr class="bz_contenttype_text_plain">
+        <td valign="top">
+            <a name="a3" href="https://bugzilla.mozilla.org/attachment.cgi?id=366731" title="View the content of the attachment">
+          <b>Output showing build process leading to SEGV of comment 10</b></a>
+
+          <span class="bz_attach_extra_info">
+              (27.41 KB,
+                text/plain)
+
+            <br>
+            <a href="#attach_366731" title="Go to the comment associated with the attachment">2009-03-10 18:17 PDT</a>,
+<span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366731&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="bz_contenttype_application_x-shellscript bz_tr_obsolete bz_default_hidden">
+        <td valign="top">
+            <a name="a4" href="https://bugzilla.mozilla.org/attachment.cgi?id=366737" title="View the content of the attachment">
+          <b><span class="bz_obsolete">Scriptified version of commands from comment 13</span></b></a>
+
+          <span class="bz_attach_extra_info">
+              (1.32 KB,
+                application/x-shellscript)
+
+            <br>
+            <a href="#attach_366737" title="Go to the comment associated with the attachment">2009-03-10 18:59 PDT</a>,
+<span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366737&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="bz_contenttype_application_x-shellscript">
+        <td valign="top">
+            <a name="a5" href="https://bugzilla.mozilla.org/attachment.cgi?id=366741" title="View the content of the attachment">
+          <b>Scriptified version of commands from comment 13</b></a>
+
+          <span class="bz_attach_extra_info">
+              (1.69 KB,
+                application/x-shellscript)
+
+            <br>
+            <a href="#attach_366741" title="Go to the comment associated with the attachment">2009-03-10 19:55 PDT</a>,
+<span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">
+              <i>no flags</i>
+          </td>
+
+        <td valign="top">
+          <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366741&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr class="bz_contenttype_text_plain bz_patch">
+        <td valign="top">
+            <a name="a6" href="https://bugzilla.mozilla.org/attachment.cgi?id=366912" title="View the content of the attachment">
+          <b>backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2</b></a>
+
+          <span class="bz_attach_extra_info">
+              (901 bytes,
+                patch)
+
+            <br>
+            <a href="#attach_366912" title="Go to the comment associated with the attachment">2009-03-11 14:14 PDT</a>,
+<span class="vcard"><a class="email" href="mailto:jorendorff@mozilla.com" title="Jason Orendorff &lt;jorendorff@mozilla.com&gt;"> <span class="fn">Jason Orendorff</span></a>
+</span>
+          </span>
+        </td>
+
+          <td class="bz_attach_flags" valign="top">dveditz:
+                approval1.9.0.11+
+                <br>
+          </td>
+
+        <td valign="top">
+          <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366912&amp;action=edit">Details</a>
+            | <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366912&amp;action=diff">Diff</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="3">
+        <span class="bz_attach_view_hide">
+            <a href="#a0" onclick="return toggle_display(this);">Show
+              Obsolete</a> (2)
+            <a href="https://bugzilla.mozilla.org/attachment.cgi?bugid=478336&amp;action=viewall">View All</a>
+        </span>
+      <a href="https://bugzilla.mozilla.org/attachment.cgi?bugid=478336&amp;action=enter">Add an attachment</a>
+      (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</tbody></table>
+<br>
+
+  </td>
+  <td>
+  </td>
+  </tr></tbody></table>
+
+  
+
+  
+  <div id="comments"><script type="text/javascript">
+  <!--
+  function updateCommentPrivacy(checkbox, id) {
+    var comment_elem = document.getElementById('comment_text_'+id).parentNode;
+    if (checkbox.checked) {
+      if (!comment_elem.className.match('bz_private')) {
+        comment_elem.className = comment_elem.className.concat(' bz_private');
+      }
+    }
+    else {
+      comment_elem.className =
+        comment_elem.className.replace(/(\s*|^)bz_private(\s*|$)/, '$2');
+    }
+  }
+
+  /* The functions below expand and collapse comments  */
+
+  function toggle_comment_display(link, comment_id) {
+    var comment = document.getElementById('comment_text_' + comment_id);
+    var re = new RegExp(/\bcollapsed\b/);
+    if (comment.className.match(re))
+        expand_comment(link, comment);
+    else
+        collapse_comment(link, comment);
+  }
+
+  function toggle_all_comments(action) {
+    var num_comments = 30;
+
+    // If for some given ID the comment doesn't exist, this doesn't mean
+    // there are no more comments, but that the comment is private and
+    // the user is not allowed to view it.
+
+    for (var id = 0; id < num_comments; id++) {
+        var comment = document.getElementById('comment_text_' + id);
+        if (!comment)
+            continue;
+
+        var link = document.getElementById('comment_link_' + id);
+        if (action == 'collapse')
+            collapse_comment(link, comment);
+        else
+            expand_comment(link, comment);
+    }
+  }
+
+  function collapse_comment(link, comment) {
+    link.innerHTML = "[+]";
+    link.title = "Expand the comment.";
+    YAHOO.util.Dom.addClass(comment, 'collapsed');
+  }
+
+  function expand_comment(link, comment) {
+    link.innerHTML = "[-]";
+    link.title = "Collapse the comment";
+    YAHOO.util.Dom.removeClass(comment, 'collapsed');
+  }
+
+  /* This way, we are sure that browsers which do not support JS
+   * won't display this link  */
+
+  function addCollapseLink(count) {
+    document.write(' <a href="#" class="bz_collapse_comment"' +
+                   ' id="comment_link_' + count +
+                   '" onclick="toggle_comment_display(this, ' +  count +
+                   '); return false;" title="Collapse the comment.">[-]<\/a> ');
+  }
+  //-->
+  </script>
+
+
+
+
+
+
+
+
+
+
+<!-- This auto-sizes the comments and positions the collapse/expand links 
+     to the right. -->
+<table class="bz_comment_table" cellpadding="0" cellspacing="0"><tbody><tr>
+<td>
+<div class="bz_comment bz_first_comment">
+
+      <div class="bz_first_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(0, 3972006);
+              addCollapseLink(0); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(0,3972006); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_0" onclick="toggle_comment_display(this, 0); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c0" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c0">Description</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-02-12 19:33:48 PST
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_0">User-Agent:       Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.5)
+Gecko/2009010509 Gentoo Firefox/3.0.5
+Build Identifier: Current tip
+
+I have a multi-threaded application that periodically crashes, giving the
+following assertion error:
+
+$ ./a.out 
+Assertion failure: rt-&gt;state == JSRTS_UP || rt-&gt;state == JSRTS_LAUNCHING, at
+jscntxt.cpp:465
+
+I've attached a test program which demonstrates this (see below). The program
+spawns many threads, each of which create and then destroy a context before
+exiting. I'd expect the number of contexts active at any time to range between
+[0..THREADS], possibly transitioning between 0 and non-zero values many times
+and showing a race condition in the code?
+
+Reproducible: Always
+
+Steps to Reproduce:
+Below is a simple application that exhibits the problem 90+% of the time (for
+me) when run directly from the command line:
+
+8&lt;----
+
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+
+#include "jsapi.h"
+
+static JSRuntime *rt;
+
+#define THREADS 100
+
+static void * testfunc(void *ignored) {
+
+    JSContext *cx = JS_NewContext(rt, 0x1000);
+    if (cx) {
+        JS_BeginRequest(cx);
+        JS_DestroyContext(cx);
+    }
+
+    return NULL;
+}
+
+int main(void) {
+
+    rt = JS_NewRuntime(0x100000);
+    if (rt == NULL)
+        return 1;
+
+    /* Uncommenting this to guarantee there's always at least
+     * one context in the runtime prevents this problem. */
+//  JSContext *cx = JS_NewContext(rt, 0x1000);
+
+    int i;
+    pthread_t thread[THREADS];
+    for (i = 0; i &lt; THREADS; i++) {
+        pthread_create(&amp;thread[i], NULL, testfunc, NULL);
+    }
+
+    for (i = 0; i &lt; THREADS; i++) {
+        pthread_join(thread[i], NULL);
+    }
+
+    return 0;
+}
+
+8&lt;----
+
+It seems to be very sensitive to timings as I have trouble reproducing the
+issue in gdb. For me to trigger it there I just need create/destroy more
+contexts per thread, but YMMV.
+
+8&lt;----
+
+static void * testfunc(void *ignored) {
+
+    int i = 0;
+    for (i = 0; i &lt; 100; ++i) {
+        JSContext *cx = JS_NewContext(rt, 0x1000);
+        if (cx) {
+            JS_BeginRequest(cx);
+            JS_DestroyContext(cx);
+        }
+    }
+
+    return NULL;
+}
+
+8&lt;----
+Actual Results:  
+(gdb) run
+Starting program: a.out 
+[Thread debugging using libthread_db enabled]
+[New Thread 0xb7aed6d0 (LWP 15658)]
+[New Thread 0xb7aecb90 (LWP 15661)]
+[New Thread 0xb72ebb90 (LWP 15662)]
+[New Thread 0xb6aeab90 (LWP 15663)]
+[New Thread 0xb62e9b90 (LWP 15664)]
+[New Thread 0xb58ffb90 (LWP 15665)]
+[New Thread 0xb50feb90 (LWP 15666)]
+Assertion failure: rt-&gt;state == JSRTS_UP || rt-&gt;state == JSRTS_LAUNCHING, at
+jscntxt.cpp:465
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+[Switching to Thread 0xb6aeab90 (LWP 15663)]
+JS_Assert (s=0xb7f3ed18 "rt-&gt;state == JSRTS_UP || rt-&gt;state ==
+JSRTS_LAUNCHING", 
+    file=0xb7f3e971 "jscntxt.cpp", ln=465) at jsutil.cpp:63
+63          abort();
+Current language:  auto; currently c++
+(gdb) bt
+#0  JS_Assert (s=0xb7f3ed18 "rt-&gt;state == JSRTS_UP || rt-&gt;state ==
+JSRTS_LAUNCHING", 
+    file=0xb7f3e971 "jscntxt.cpp", ln=465) at jsutil.cpp:63
+#1  0xb7dda629 in js_DestroyContext (cx=0xb5918a50, mode=JSDCM_FORCE_GC)
+    at jscntxt.cpp:465
+#2  0xb7dc11ff in JS_DestroyContext (cx=0xb5918a50) at jsapi.cpp:1082
+#3  0x08048653 in testfunc (ignored=0x0) at test.c:17
+#4  0xb7c48192 in start_thread () from /lib/libpthread.so.0
+#5  0xb7d1e20e in clone () from /lib/libc.so.6
+(gdb) up
+#1  0xb7dda629 in js_DestroyContext (cx=0xb5918a50, mode=JSDCM_FORCE_GC)
+    at jscntxt.cpp:465
+465         JS_ASSERT(rt-&gt;state == JSRTS_UP || rt-&gt;state == JSRTS_LAUNCHING);
+(gdb) p rt-&gt;state
+$1 = JSRTS_LANDING
+
+
+Expected Results:  
+The program shouldn't crash :)
+
+I can work around the issue by always ensuring one context exists (stopping the
+number of contexts/runtime going zero, non-zero, zero, non-zero etc); but
+presumably I shouldn't *have* to do this?</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(1, 3972016);
+              addCollapseLink(1); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(1,3972016); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_1" onclick="toggle_comment_display(this, 1); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c1" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c1">Comment 1</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-02-12 19:49:02 PST
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_1">Oh, this also happens regardless of whether or not I call JS_BeginRequest
+before the JS_DestroyContext (I know there's been a lot of discussion around
+that recently).</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(2, 3978067);
+              addCollapseLink(2); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(2,3978067); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_2" onclick="toggle_comment_display(this, 2); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c2" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c2">Comment 2</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-02-17 16:11:16 PST
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_2">For completeness I've also detailed some findings in the mailing list; see
+<a href="http://groups.google.com/group/mozilla.dev.tech.js-engine/browse_thread/thread/0be80cf2fb9ce305">http://groups.google.com/group/mozilla.dev.tech.js-engine/browse_thread/thread/0be80cf2fb9ce305</a>
+
+In particular the test program runs without any problem in SpiderMonkey 1.7.0
+but always encounters SEGVs when running against TraceMonkey rev &lt; 24662
+(whether or not the number of contexts is allowed to dip to zero).
+
+Beginning with rev 24662 (a patch for <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=477021" title="RESOLVED FIXED - JSRuntime.contextList mutations must not happen when GC is running">bug 477021</a></span>) the program no longer crashes
+if the number of contexts remains &gt; 0; and now asserts failures and aborts
+(instead of silently crashing with a SEGV) if the number of contexts is allowed
+to dip to zero.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(3, 4007618);
+              addCollapseLink(3); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(3,4007618); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_3" onclick="toggle_comment_display(this, 3); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c3" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c3">Comment 3</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-09 15:02:32 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_3">Following the announcement of SpiderMonkey 1.8 Release Candidate 1 I thought I
+would re-test the test case above.
+
+Running with many threads (&gt; 2 on my dual-core laptop) I now get the following
+assertion regularly:
+
+Assertion failure: JS_PROPERTY_CACHE(cx).disabled &gt;= 0, at jsinterp.c:509
+
+but no longer see the rt-&gt;state assertion in the title. The assertions still
+trigger even if I have at least one context always present (unlike before); but
+don't trigger if I run with THREADS set to 1.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(4, 4007669);
+              addCollapseLink(4); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(4,4007669); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_4" onclick="toggle_comment_display(this, 4); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c4" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c4">Comment 4</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:jorendorff@mozilla.com" title="Jason Orendorff &lt;jorendorff@mozilla.com&gt;"> <span class="fn">Jason Orendorff</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-09 15:23:27 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_4">In hg tip, the test program now gives me this:
+
+#0  JS_Assert (s=0x3d3fb8 "op == JS_DHASH_LOOKUP || RECURSION_LEVEL(table) ==
+0", file=0x3d3e32 "../jsdhash.cpp", ln=602) at ../jsutil.cpp:68
+#1  0x002740ae in JS_DHashTableOperate (table=0x34be4, key=0xb1df4e90,
+op=JS_DHASH_ADD) at ../jsdhash.cpp:602
+#2  0x00264e6e in js_AtomizeString (cx=0x5131c0, str=0xb1df4e90, flags=9) at
+../jsatom.cpp:677
+#3  0x00265304 in js_Atomize (cx=0x5131c0, bytes=0x3d2b9b "TypeError",
+length=9, flags=1) at ../jsatom.cpp:783
+#4  0x002653b5 in js_InitCommonAtoms (cx=0x5131c0) at ../jsatom.cpp:488
+#5  0x00267184 in js_NewContext (rt=0x24000, stackChunkSize=4096) at
+../jscntxt.cpp:334
+#6  0x002506c0 in JS_NewContext (rt=0x24000, stackChunkSize=4096) at
+../jsapi.cpp:1083
+#7  0x00001e93 in testfunc (ignored=0x0) at
+/Users/jason/dev/moz/spidermonkey-1.8/testapp.cpp:13
+#8  0x9169b6f5 in _pthread_start ()
+#9  0x9169b5b2 in thread_start ()
+
+with all 99 other threads in jscntxt.cpp, not jsdhash.  I can also get these
+crashes to happen:
+
+0x0029b1ca in js_TraceContext (trc=0xb0e36e84, acx=0x75ff) at ../jsgc.cpp:3016
+3016            FREE_OLD_ARENAS(acx-&gt;stackPool);
+(gdb) bt
+#0  0x0029b1ca in js_TraceContext (trc=0xb0e36e84, acx=0x75ff) at
+../jsgc.cpp:3016
+#1  0x0029ba54 in js_TraceRuntime (trc=0xb0e36e84, allAtoms=0) at
+../jsgc.cpp:3153
+#2  0x0029c259 in js_GC (cx=0x50f070, gckind=GC_NORMAL) at ../jsgc.cpp:3562
+#3  0x00266e77 in js_DestroyContext (cx=0x50f070, mode=JSDCM_FORCE_GC) at
+../jscntxt.cpp:541
+#4  0x002506db in JS_DestroyContext (cx=0x50f070) at ../jsapi.cpp:1089
+#5  0x00001eb2 in testfunc (ignored=0x0) at
+/Users/jason/dev/moz/spidermonkey-1.8/testapp.cpp:16
+#6  0x9169b6f5 in _pthread_start ()
+#7  0x9169b5b2 in thread_start ()
+
+#0  JS_Assert (s=0x3d6e44 "rt-&gt;gcMarkingTracer == trc", file=0x3d60dc
+"../jsgc.cpp", ln=2682) at ../jsutil.cpp:68
+#1  0x00299e26 in JS_CallTracer (trc=0xb0bace84, thing=0x39088, kind=2) at
+../jsgc.cpp:2682
+#2  0x00264aca in js_pinned_atom_tracer (table=0x34be4, hdr=0x80fe00, number=0,
+arg=0xb0bace84) at ../jsatom.cpp:551
+#3  0x00274548 in JS_DHashTableEnumerate (table=0x34be4, etor=0x264a12
+&lt;js_pinned_atom_tracer&gt;, arg=0xb0bace84) at ../jsdhash.cpp:742
+#4  0x00264b52 in js_TraceAtomState (trc=0xb0bace84, allAtoms=0) at
+../jsatom.cpp:566
+#5  0x0029ba23 in js_TraceRuntime (trc=0xb0bace84, allAtoms=0) at
+../jsgc.cpp:3147
+#6  0x0029c259 in js_GC (cx=0x50e6c0, gckind=GC_NORMAL) at ../jsgc.cpp:3562
+#7  0x00266e77 in js_DestroyContext (cx=0x50e6c0, mode=JSDCM_FORCE_GC) at
+../jscntxt.cpp:541
+#8  0x002506db in JS_DestroyContext (cx=0x50e6c0) at ../jsapi.cpp:1089
+#9  0x00001eb2 in testfunc (ignored=0x0) at
+/Users/jason/dev/moz/spidermonkey-1.8/testapp.cpp:16
+#10 0x9169b6f5 in _pthread_start ()
+#11 0x9169b5b2 in thread_start ()</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(5, 4007912);
+              addCollapseLink(5); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(5,4007912); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_5" onclick="toggle_comment_display(this, 5); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c5" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c5">Comment 5</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-09 17:47:12 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_5">At least one problem that I can see from the code is that js_GC does the check:
+
+if (rt-&gt;state != JSRTS_UP &amp;&amp; gckind != GC_LAST_CONTEXT)
+    return;
+
+outside the GC lock. Now suppose there are 3 threads, A, B, C. Threads A and B
+calls js_DestroyContext and thread C calls js_NewContext. 
+
+First thread A removes its context from the runtime list. That context is not
+the last one so thread does not touch rt-&gt;state and eventually calls js_GC. The
+latter skips the above check and tries to to take the GC lock.
+
+Before this moment the thread B takes the lock, removes its context from the
+runtime list, discovers that it is the last, sets rt-&gt;state to LANDING, runs
+the-last-context-cleanup, runs the GC and then sets rt-&gt;state to DOWN.
+
+At this stage the thread A gets the GC lock, setup itself as the thread that
+runs the GC and releases the GC lock to proceed with the GC when rt-&gt;state is
+DOWN.
+
+Now the thread C enters the picture. It discovers under the GC lock in
+js_NewContext that the newly allocated context is the first one. Since
+rt-&gt;state is DOWN, it releases the GC lock and starts the first context
+initialization procedure. That procedure includes the allocation of the initial
+atoms and it will happen when the thread A runs the GC. This may lead precisely
+to the first stack trace from the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c4">comment 4</a>.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(6, 4008707);
+              addCollapseLink(6); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(6,4008707); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_6" onclick="toggle_comment_display(this, 6); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c6" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c6">Comment 6</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 07:55:37 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_6">With the test program on 64-bit Linux I could not reproduce the bug from the
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c4">comment 4</a> but I do see assert from the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c0">comment 0</a> after bumping the number of
+threads to 1000. The assert is indeed rare, about 2-3% of all runs and I could
+not reproduce it under GDB. On the other hand, good old printfs have shown what
+was going on. The problem comes from the following code in js_NewContext:
+
+   JS_LOCK_GC(rt);
+    for (;;) {
+        first = (rt-&gt;contextList.next == &amp;rt-&gt;contextList);
+        if (rt-&gt;state == JSRTS_UP) {
+            JS_ASSERT(!first);
+
+            /* Ensure that it is safe to update rt-&gt;contextList below. */
+            js_WaitForGC(rt);
+            break;
+        }
+...
+        JS_WAIT_CONDVAR(rt-&gt;stateChange, JS_NO_TIMEOUT);
+    }
+    JS_APPEND_LINK(&amp;cx-&gt;link, &amp;rt-&gt;contextList);
+    JS_UNLOCK_GC(rt);
+
+Here, when rt-&gt;state is up, the code waits for a possible GC on another thread
+after setting the "first" flag. But this is wrong as during the wait not only
+that GC may finish, but also yet another thread may execute js_DestroyContext
+for the last context. Then, when the thread finally wakes up, it would leave
+the lock with the "first" flag set to false while having the context as the
+first added to the runtime list.
+
+When this thread later enters js_DestroyContext, it can see both LANDING and
+DOWN as rt-&gt;state depending on its race with that third thread for the previous
+last context.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(7, 4008723);
+              addCollapseLink(7); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(7,4008723); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_7" onclick="toggle_comment_display(this, 7); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c7" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c7">Comment 7</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 08:08:44 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_7">Created <span class=""><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366564&amp;action=diff" name="attach_366564" title="v1">attachment 366564</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366564&amp;action=edit" title="v1">[details]</a></span>
+v1
+
+The fix is to move js_WaitForGC before the code reads the state to set the
+"first" flag. It should should fix both scenarios from <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c5">comment 5</a> and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c6">comment 6</a>. 
+
+The patch does not address that issue when the GC for the last context may
+delegate its job to the GC from another thread, but that at worst may lead to a
+leak and can be addressed in another bug.
+
+To Jason: could you test if the patch indeed fixes the asserts and segfaults
+you have observed?</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(8, 4008775);
+              addCollapseLink(8); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(8,4008775); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_8" onclick="toggle_comment_display(this, 8); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c8" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c8">Comment 8</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:jorendorff@mozilla.com" title="Jason Orendorff &lt;jorendorff@mozilla.com&gt;"> <span class="fn">Jason Orendorff</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 08:32:56 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_8">Silly mistake--though I was building against JS_THREADSAFE sources, I was
+running the test program against a non-threadsafe library.  So the stacks in
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c4">comment 4</a> are bogus.
+
+Using the threadsafe library now, I can reproduce the assertions Igor sees (in
+hg tip, under gdb, pretty reliably).  I just run 4 threads, each looping 1000
+times.
+
+#0  JS_Assert (s=0x3e6edc "rt-&gt;state == JSRTS_UP || rt-&gt;state ==
+JSRTS_LAUNCHING", file=0x3e6db8 "../jscntxt.cpp", ln=464) at ../jsutil.cpp:68
+#1  0x002758dc in js_DestroyContext (cx=0x821a00, mode=JSDCM_FORCE_GC) at
+../jscntxt.cpp:464
+#2  0x0025bc49 in JS_DestroyContext (cx=0x821a00) at ../jsapi.cpp:1089
+#3  0x00001ec6 in testfunc (ignored=0x0) at
+/Users/jason/dev/moz/spidermonkey-1.8/testapp.cpp:16
+#4  0x9169b6f5 in _pthread_start ()
+#5  0x9169b5b2 in thread_start ()
+
+With hg tip + the patch, no crashes.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(9, 4008819);
+              addCollapseLink(9); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(9,4008819); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_9" onclick="toggle_comment_display(this, 9); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c9" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c9">Comment 9</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:jorendorff@mozilla.com" title="Jason Orendorff &lt;jorendorff@mozilla.com&gt;"> <span class="fn">Jason Orendorff</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 08:49:07 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_9">Created <span class="bz_obsolete"><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366581&amp;action=diff" name="attach_366581" title="v1 for SM1.8">attachment 366581</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366581&amp;action=edit" title="v1 for SM1.8">[details]</a></span>
+v1 for SM1.8
+
+Applying this patch to SpiderMonkey 1.8 RC 1 fixes the assertions for me.  If
+v1 gets r+ I'll request that this be landed in the branch.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(10, 4009572);
+              addCollapseLink(10); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(10,4009572); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_10" onclick="toggle_comment_display(this, 10); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c10" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c10">Comment 10</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 13:57:57 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_10">Like Jason I was unable to reproduce the problem with Igor's patch against the
+current tip; so thanks for that.
+
+However, after applying the SpiderMonkey 1.8 RC 1 patch I got SEGVs almost
+every time I ran my test case above; doing one JS_NewContext/JS_DestroyContext
+per thread:
+
+$ while true; do ./a.out &amp;&amp; echo -n . || echo -n X; done 2&gt;/dev/null
+.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXXX.XXXX.X.XXXXX.XXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXX.XX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXX.XXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXX.XXXXXXX.XX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.XXX.XXXXXXXXXXXXXXXXXXXXXX.
+XXXXXXX..XXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXX..XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.XX.XXX.XXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.XXXXX.XXXXXXXXXXXXXXXXXXXX.XXXXXXX.XXXXXXXXXXXXXXX
+XX.XXXXXXXX.^C
+
+each X being a SEGV. To trigger the program under GDB I needed to do the extra
+loops for thread again; then I was able to get the following:
+
+Program received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0xb5c74b90 (LWP 13031)]
+0xb7eda74d in js_TraceContext (trc=0xb5c742d0, acx=0x8084730) at jsgc.c:2768
+2768            if (a == acx-&gt;stackPool.first.next &amp;&amp;
+(gdb) bt
+#0  0xb7eda74d in js_TraceContext (trc=0xb5c742d0, acx=0x8084730) at
+jsgc.c:2768
+#1  0xb7edad56 in js_TraceRuntime (trc=0xb5c742d0, allAtoms=0) at jsgc.c:2875
+#2  0xb7edb7c1 in js_GC (cx=0x804d000, gckind=GC_NORMAL) at jsgc.c:3235
+#3  0xb7eaaed6 in js_DestroyContext (cx=0x804d000, mode=JSDCM_FORCE_GC) at
+jscntxt.c:443
+#4  0xb7e958e8 in JS_DestroyContext (cx=0x804d000) at jsapi.c:1035
+#5  0x08048673 in testfunc (ignored=0x0) at test.c:17
+#6  0xb7ce61b2 in start_thread () from /lib/libpthread.so.0
+#7  0xb7dc2a5e in clone () from /lib/libc.so.6
+(gdb) p acx
+$1 = (JSContext *) 0x8084730
+(gdb) p acx-&gt;stackPool
+$2 = {first = {next = 0x0, base = 134760308, limit = 134760308, avail =
+134760308}, current = 0x8084764, arenasize = 4096, mask = 3, 
+  quotap = 0x808475c}
+(gdb) list
+2763            /*
+2764             * Release stackPool here, if it has been in existence for
+longer than
+2765             * the limit specified by gcStackPoolLifespan.
+2766             */
+2767            a = acx-&gt;stackPool.current;
+2768            if (a == acx-&gt;stackPool.first.next &amp;&amp;
+2769                a-&gt;avail == a-&gt;base + sizeof(int64)) {
+2770                age = JS_Now() - *(int64 *) a-&gt;base;
+2771                if (age &gt; (int64) acx-&gt;runtime-&gt;gcStackPoolLifespan * 1000)
+2772                    JS_FinishArenaPool(&amp;acx-&gt;stackPool);
+(gdb) p a
+$3 = (JSArena *) 0x0
+(gdb)
+
+so deferencing a-&gt;avail triggered the SEGV. Any thoughts/comments?
+
+Is there a trail of other patches that need to be included (I presume the fix
+for my other <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=476934" title="RESOLVED FIXED - JS_GC can dereference a NULL pointer (in a multi-threaded app using JS_ClearContextThread)">bug 476934</a></span> isn't in 1.8 or js_WaitForGC wouldn't only now be
+included in this patch for instance)? or should I just wait for 1.8.1?</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(11, 4010043);
+              addCollapseLink(11); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(11,4010043); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_11" onclick="toggle_comment_display(this, 11); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c11" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c11">Comment 11</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:brendan@mozilla.org" title="Brendan Eich &lt;brendan@mozilla.org&gt;"> <span class="fn">Brendan Eich</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 17:18:43 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_11">Paul, sorry if this is all wrong, but did you clobber by hand? Until the new
+autoconf build system unified Makefile.ref and Makefile.in, there was no
+automatic dependency inference for Makefile.ref. Again, apologies if I'm
+barking up the wrong tree.
+
+I know of no way to cause the crash you're seeing, if you have a consistent
+build. Someone will have to reproduce and debug, or you could try remote
+debugger buddyign. Stop by #jsapi on irc.mozilla.org and call for help if you
+can get things in gdb.
+
+/be</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(12, 4010115);
+              addCollapseLink(12); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(12,4010115); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_12" onclick="toggle_comment_display(this, 12); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c12" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c12">Comment 12</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:brendan@mozilla.org" title="Brendan Eich &lt;brendan@mozilla.org&gt;"> <span class="fn">Brendan Eich</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 18:10:23 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_12">Comment on <span class=""><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366564&amp;action=diff" name="attach_366564" title="v1">attachment 366564</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366564&amp;action=edit" title="v1">[details]</a></span>
+v1
+
+All this goes back a ways:
+
+revision 3.65
+date: 2002/04/02 04:23:12;  author: brendan%mozilla.org;  state: Exp;  lines:
++14 -7
+branches:  3.65.2;
+Fix next-to-last vs. last context GC race, plus ClaimScope vs.
+js_DestroyContext race; removed js_ForceGC from the FRIEND JS API (133773,
+sr=jband&amp;shaver, a=asa).
+
+Thanks for finally fixing it.
+
+/be</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(13, 4010125);
+              addCollapseLink(13); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(13,4010125); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_13" onclick="toggle_comment_display(this, 13); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c13" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c13">Comment 13</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 18:17:56 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_13">Created <span class=""><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366731" name="attach_366731" title="Output showing build process leading to SEGV of comment 10">attachment 366731</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366731&amp;action=edit" title="Output showing build process leading to SEGV of comment 10">[details]</a></span>
+Output showing build process leading to SEGV of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c10">comment 10</a>
+
+Brendan, I can reproduce the problem with the following commands:
+
+$ mkdir /tmp/<span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336" title="RESOLVED FIXED - rt-&gt;state assertion failure in js_DestroyContext creating/destroying many contexts">bug478336</a></span>
+$ cd $_
+$ wget <a href="http://ftp.mozilla.org/pub/mozilla.org/js/js-1.8.0-rc1.tar.gz">http://ftp.mozilla.org/pub/mozilla.org/js/js-1.8.0-rc1.tar.gz</a>
+$ gunzip -c js-1.8.0-rc1.tar.gz | tar xf -
+$ cd js/src
+$ wget -O- <a href="https://bug478336.bugzilla.mozilla.org/attachment.cgi?id=366581">https://bug478336.bugzilla.mozilla.org/attachment.cgi?id=366581</a> |
+patch -p0
+$ LD=gcc XCFLAGS="$(nspr-config --cflags)" XLDFLAGS="$(nspr-config --libs)"
+JS_THREADSAFE=1 make -f Makefile.ref
+$ cat &gt; test.c &lt;&lt;!
+<span class="quote">&gt;      (test app)
+&gt; !</span>
+$ gcc -g -DXP_UNIX -DJS_THREADSAFE -I. -I Linux_All_DBG.OBJ/ test.c -L
+Linux_All_DBG.OBJ/ -ljs
+$ export LD_LIBRARY_PATH=Linux_All_DBG.OBJ/
+$ ./a.out
+
+ie, using a fresh copy of the RC1 distribution and patch file. The output of
+running the commands above (followed by gdb) is attached. I'll try and get on
+#jsapi shortly unless someone can see something immediately wrong with the
+above..</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(14, 4010160);
+              addCollapseLink(14); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(14,4010160); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_14" onclick="toggle_comment_display(this, 14); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c14" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c14">Comment 14</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 18:59:20 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_14">Created <span class="bz_obsolete"><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366737" name="attach_366737" title="Scriptified version of commands from comment 13">attachment 366737</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366737&amp;action=edit" title="Scriptified version of commands from comment 13">[details]</a></span>
+Scriptified version of commands from <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c13">comment 13</a></pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(15, 4010208);
+              addCollapseLink(15); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(15,4010208); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_15" onclick="toggle_comment_display(this, 15); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c15" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c15">Comment 15</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 19:55:32 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_15">Created <span class=""><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366741" name="attach_366741" title="Scriptified version of commands from comment 13">attachment 366741</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366741&amp;action=edit" title="Scriptified version of commands from comment 13">[details]</a></span>
+Scriptified version of commands from <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c13">comment 13</a>
+
+Updated version of the script to include downloading, compiling and building
+against a fresh version of NSPR, as per Brendan's request on IRC.
+
+Works under Linux; YMMV -- but should be easy to tweak if needed.
+
+I still get a SEGV from the last line..
+
+./doit.sh: line 78:  5264 Segmentation fault      LD_LIBRARY_PATH=. ../a.out</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(16, 4010291);
+              addCollapseLink(16); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(16,4010291); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_16" onclick="toggle_comment_display(this, 16); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c16" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c16">Comment 16</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-10 21:40:08 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_16">I should probably also mention that the script and built application work fine
+for me with 1.7.0.
+
+Tested with the minor modifications shown below:
+
+$ diff doit.sh.original doit.sh
+23,24c23,24
+&lt; wget <a href="http://ftp.mozilla.org/pub/mozilla.org/js/js-1.8.0-rc1.tar.gz">http://ftp.mozilla.org/pub/mozilla.org/js/js-1.8.0-rc1.tar.gz</a>
+&lt; gunzip -c js-1.8.0-rc1.tar.gz | tar xf -
+---
+<span class="quote">&gt; wget <a href="http://ftp.mozilla.org/pub/mozilla.org/js/js-1.7.0.tar.gz">http://ftp.mozilla.org/pub/mozilla.org/js/js-1.7.0.tar.gz</a>
+&gt; gunzip -c js-1.7.0.tar.gz | tar xf -</span>
+26d25
+&lt; wget -O- <a href="https://bug478336.bugzilla.mozilla.org/attachment.cgi?id=366581">https://bug478336.bugzilla.mozilla.org/attachment.cgi?id=366581</a> |
+patch -p0
+
+doit.sh.original (1.8.0 RC 1 + patch) causes SEGVs; the modified doit.sh
+(1.7.0) is fine.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(17, 4010563);
+              addCollapseLink(17); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(17,4010563); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_17" onclick="toggle_comment_display(this, 17); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c17" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c17">Comment 17</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-11 03:56:45 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_17">landed to TM - <a href="http://hg.mozilla.org/tracemonkey/rev/e0a0a14fd1d3">http://hg.mozilla.org/tracemonkey/rev/e0a0a14fd1d3</a></pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(18, 4010574);
+              addCollapseLink(18); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(18,4010574); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_18" onclick="toggle_comment_display(this, 18); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c18" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c18">Comment 18</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-11 04:07:11 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_18">(In reply to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c9">comment #9</a>)
+<span class="quote">&gt; Created an attachment (id=366581) [details]
+&gt; v1 for SM1.8</span>
+
+This does not include the full backport of the patch from the <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=477021" title="RESOLVED FIXED - JSRuntime.contextList mutations must not happen when GC is running">bug 477021</a></span>.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(19, 4010595);
+              addCollapseLink(19); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(19,4010595); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_19" onclick="toggle_comment_display(this, 19); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c19" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c19">Comment 19</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-11 04:19:12 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_19">I suspect that to fully fix the issue for JS18 release it would be necessary to
+backport to the 1.9.0 branch not only this bug, but also <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=476934" title="RESOLVED FIXED - JS_GC can dereference a NULL pointer (in a multi-threaded app using JS_ClearContextThread)">bug 476934</a></span> and <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=477021" title="RESOLVED FIXED - JSRuntime.contextList mutations must not happen when GC is running">bug
+477021</a></span>.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(20, 4011801);
+              addCollapseLink(20); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(20,4011801); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_20" onclick="toggle_comment_display(this, 20); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c20" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c20">Comment 20</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:jorendorff@mozilla.com" title="Jason Orendorff &lt;jorendorff@mozilla.com&gt;"> <span class="fn">Jason Orendorff</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-11 14:14:14 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_20">Created <span class=""><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366912&amp;action=diff" name="attach_366912" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2">attachment 366912</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366912&amp;action=edit" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2">[details]</a></span>
+backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(21, 4011811);
+              addCollapseLink(21); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(21,4011811); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_21" onclick="toggle_comment_display(this, 21); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c21" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c21">Comment 21</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:jorendorff@mozilla.com" title="Jason Orendorff &lt;jorendorff@mozilla.com&gt;"> <span class="fn">Jason Orendorff</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-11 14:17:34 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_21">Paul, please test this stack of patches:
+
+  first apply <span class="bz_obsolete"><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366871&amp;action=diff" name="attach_366871" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release)">attachment 366871</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366871&amp;action=edit" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release)">[details]</a></span> (for <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=476934" title="RESOLVED FIXED - JS_GC can dereference a NULL pointer (in a multi-threaded app using JS_ClearContextThread)">bug 476934</a></span>)
+   then apply <span class=""><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366884&amp;action=diff" name="attach_366884" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release)">attachment 366884</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366884&amp;action=edit" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release)">[details]</a></span> (for <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=467441" title="RESOLVED FIXED - unnecessary js_AddRoot for regex statics">bug 467441</a></span>)
+   then apply <span class="bz_obsolete"><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366905&amp;action=diff" name="attach_366905" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2">attachment 366905</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366905&amp;action=edit" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2">[details]</a></span> (for <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=477021" title="RESOLVED FIXED - JSRuntime.contextList mutations must not happen when GC is running">bug 477021</a></span>)
+   then apply <span class=""><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366912&amp;action=diff" name="attach_366912" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2">attachment 366912</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366912&amp;action=edit" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2">[details]</a></span> (for this bug)</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(22, 4011912);
+              addCollapseLink(22); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(22,4011912); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_22" onclick="toggle_comment_display(this, 22); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c22" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c22">Comment 22</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:sayrer@gmail.com" title="Robert Sayre &lt;sayrer@gmail.com&gt;"> <span class="fn">Robert Sayre</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-11 14:44:46 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_22"><a href="http://hg.mozilla.org/mozilla-central/rev/e0a0a14fd1d3">http://hg.mozilla.org/mozilla-central/rev/e0a0a14fd1d3</a></pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(23, 4011944);
+              addCollapseLink(23); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(23,4011944); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_23" onclick="toggle_comment_display(this, 23); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c23" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c23">Comment 23</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:paul.barnetta@smx.co.nz" title="paul.barnetta@smx.co.nz">paul.barnetta@smx.co.nz</a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-11 14:52:38 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_23">Hi Jason, these patches apply cleanly and fix both my bugs for me :) Many
+thanks for gathering them together for the 1.8 release (and to Igor for the
+initial fixes).</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(24, 4039433);
+              addCollapseLink(24); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(24,4039433); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_24" onclick="toggle_comment_display(this, 24); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c24" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c24">Comment 24</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:jorendorff@mozilla.com" title="Jason Orendorff &lt;jorendorff@mozilla.com&gt;"> <span class="fn">Jason Orendorff</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-31 06:49:58 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_24">Comment on <span class=""><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366912&amp;action=diff" name="attach_366912" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2">attachment 366912</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366912&amp;action=edit" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2">[details]</a></span>
+backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2
+
+Patch 4/4 to fix a crashing bug for embedders that blocks the SpiderMonkey 1.8
+source release.  See <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c21" title="RESOLVED FIXED - rt-&gt;state assertion failure in js_DestroyContext creating/destroying many contexts">bug 478336 comment 21</a></span> for the full list.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(25, 4040581);
+              addCollapseLink(25); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(25,4040581); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_25" onclick="toggle_comment_display(this, 25); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c25" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c25">Comment 25</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:sayrer@gmail.com" title="Robert Sayre &lt;sayrer@gmail.com&gt;"> <span class="fn">Robert Sayre</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-03-31 16:37:55 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_25"><a href="http://hg.mozilla.org/releases/mozilla-1.9.1/rev/b9a14065180d">http://hg.mozilla.org/releases/mozilla-1.9.1/rev/b9a14065180d</a></pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(26, 4057599);
+              addCollapseLink(26); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(26,4057599); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_26" onclick="toggle_comment_display(this, 26); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c26" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c26">Comment 26</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:dveditz@mozilla.com" title="Daniel Veditz &lt;dveditz@mozilla.com&gt;"> <span class="fn">Daniel Veditz</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-04-13 15:10:28 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_26">Comment on <span class=""><a href="https://bugzilla.mozilla.org/attachment.cgi?id=366912&amp;action=diff" name="attach_366912" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2">attachment 366912</a> <a href="https://bugzilla.mozilla.org/attachment.cgi?id=366912&amp;action=edit" title="backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2">[details]</a></span>
+backport to 1.9.0 (for SpiderMonkey 1.8 source release) v2
+
+Approved for 1.9.0.10, a=dveditz for release-drivers</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(27, 4065286);
+              addCollapseLink(27); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(27,4065286); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_27" onclick="toggle_comment_display(this, 27); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c27" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c27">Comment 27</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-04-18 01:29:23 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_27">landed to 1.9.0:
+
+Checking in jscntxt.c;
+/cvsroot/mozilla/js/src/jscntxt.c,v  &lt;--  jscntxt.c
+new revision: 3.140; previous revision: 3.139
+done</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(28, 4065316);
+              addCollapseLink(28); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(28,4065316); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_28" onclick="toggle_comment_display(this, 28); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c28" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c28">Comment 28</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-04-18 02:11:23 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_28">Backed out from 1.9.0 - the landed patch depends on the patch from <span class="bz_closed"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=476934" title="RESOLVED FIXED - JS_GC can dereference a NULL pointer (in a multi-threaded app using JS_ClearContextThread)">bug 476934</a></span>
+that has caused compilation error on Windows.</pre>
+    </div>
+  <div class="bz_comment">
+
+      <div class="bz_comment_head">
+
+          <span class="bz_comment_actions">
+            <script type="text/javascript"><!--
+              addReplyLink(29, 4070325);
+              addCollapseLink(29); // -->
+            </script>[<a href="#add_comment" onclick="replyToComment(29,4070325); return false;">reply</a>] <a href="#" class="bz_collapse_comment" id="comment_link_29" onclick="toggle_comment_display(this, 29); return false;" title="Collapse the comment.">[-]</a> 
+          </span>
+
+
+        <span class="bz_comment_number">
+          <a name="c29" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478336#c29">Comment 29</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><a class="email" href="mailto:igor@mir2.org" title="Igor Bukanov &lt;igor@mir2.org&gt;"> <span class="fn">Igor Bukanov</span></a>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2009-04-22 00:54:10 PDT
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" id="comment_text_29">landed to 1.9.0:
+
+Checking in jscntxt.c;
+/cvsroot/mozilla/js/src/jscntxt.c,v  &lt;--  jscntxt.c
+new revision: 3.144; previous revision: 3.143
+done</pre>
+    </div>
+  
+
+  
+
+</td>
+<td>
+    <ul class="bz_collapse_expand_comments">
+      <li><a href="#" onclick="toggle_all_comments('collapse'); 
+                               return false;">Collapse All Comments</a></li>
+      <li><a href="#" onclick="toggle_all_comments('expand');
+                               return false;">Expand All Comments</a></li>
+    </ul>
+</td>
+</tr></tbody></table>
+  </div>
+
+    <hr><div class="bz_section_additional_comments">
+    <a name="add_comment"></a>
+      <label for="comment" accesskey="c"><b>Additional 
+        <u>C</u>omments</b></label>:
+
+
+      <!-- This table keeps the submit button aligned with the box. -->
+      <table><tbody><tr><td><textarea name="comment" id="comment" rows="10" cols="80"></textarea>
+        <br><div class="knob-buttons">
+      <input value="Save Changes" id="commit" type="submit">
+    </div>
+
+        <table class="status" cellpadding="0" cellspacing="0">
+          <tbody><tr>
+            <td class="field_label">
+              <b><a href="https://bugzilla.mozilla.org/page.cgi?id=fields.html#status">Status</a></b>:
+            </td>
+            <td>
+              <a name="bug_status_bottom"></a><div id="status">RESOLVED
+
+    <noscript><br>resolved&nbsp;as&nbsp;</noscript>
+
+  <span id="resolution_settings">FIXED
+  </span>
+
+</div>
+
+<script type="text/javascript">
+  var close_status_array = [
+      'RESOLVED'
+  ];
+  YAHOO.util.Dom.removeClass('dup_id_discoverable', 'bz_default_hidden');
+  hideEditableField( "dup_id_container", "dup_id", 'dup_id_edit_action',
+                     'dup_id', '' )
+  showHideStatusItems( "",  ['',
+                             'RESOLVED']);
+  YAHOO.util.Event.addListener( 'bug_status', "change", showHideStatusItems,
+                                ['',
+                                 'RESOLVED']);
+  YAHOO.util.Event.addListener( 'resolution', "change", showDuplicateItem);
+  YAHOO.util.Event.addListener( 'dup_id_discoverable_action',
+                                'click',
+                                setResolutionToDuplicate,
+                                'RESOLVED');
+  YAHOO.util.Event.addListener( window, 'load',  showHideStatusItems,
+                              ['',
+                               'RESOLVED'] );
+
+</script>
+            </td>
+          </tr>
+        </tbody></table>
+      </td></tr></tbody></table>
+
+    
+  </div>
+
+</form>
+
+<hr>
+<ul class="related_actions">
+    <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?format=multiple&amp;id=478336">Format For Printing</a></li>
+    <li>&nbsp;-&nbsp;<a href="https://bugzilla.mozilla.org/show_bug.cgi?ctype=xml&amp;id=478336">XML</a></li>
+    <li>&nbsp;-&nbsp;<a href="https://bugzilla.mozilla.org/enter_bug.cgi?cloned_bug_id=478336">Clone This Bug</a></li>
+    
+    <li>&nbsp;-&nbsp;<a href="#">Top of page </a></li>
+    </ul>        
+
+
+<div class="navigation">
+  
+  <i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">No search results available</font></i>
+</div>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions"><ul class="links">
+  <li><a href="https://bugzilla.mozilla.org/">Home</a></li>
+  <li><span class="separator">| </span><a href="https://bugzilla.mozilla.org/enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="https://bugzilla.mozilla.org/describecomponents.cgi">Browse</a></li>
+  <li><span class="separator">| </span><a href="https://bugzilla.mozilla.org/query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="buglist.cgi" method="get" onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" id="quicksearch_bottom" name="quicksearch" type="text">
+    <input class="btn" value="Search" id="find_bottom" type="submit"></form>
+  <a href="https://bugzilla.mozilla.org/page.cgi?id=quicksearch.html" title="Quicksearch Help">[?]</a></li>
+
+  <li><span class="separator">| </span><a href="https://bugzilla.mozilla.org/report.cgi">Reports</a></li>
+
+  <li>
+      <span class="separator">| </span>
+        <a href="https://bugzilla.mozilla.org/request.cgi?requester=naj5c%40virginia.edu&amp;requestee=naj5c%40virginia.edu&amp;do_union=1&amp;group=type&amp;action=queue">My Requests</a></li>
+
+    <li><span class="separator">| </span><a href="https://bugzilla.mozilla.org/userprefs.cgi">Preferences</a></li>
+<li>
+        <span class="separator">| </span>
+        <a href="http://www.bugzilla.org/docs/3.6/en/html/bug_page.html" target="_blank">Help</a>
+      </li>
+
+    <li>
+      <span class="separator">| </span>
+        <a href="https://bugzilla.mozilla.org/index.cgi?logout=1">Log&nbsp;out</a>
+        naj5c@virginia.edu</li>
+</ul>
+  </li>
+
+  
+    
+    <li id="links-saved">
+      <ul class="links">
+          <li><a href="https://bugzilla.mozilla.org/buglist.cgi?bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;emailassigned_to1=1&amp;emailreporter1=1&amp;emailtype1=exact&amp;email1=naj5c%40virginia.edu&amp;field0-0-0=bug_status&amp;type0-0-0=notequals&amp;value0-0-0=UNCONFIRMED&amp;field0-0-1=reporter&amp;type0-0-1=equals&amp;value0-0-1=naj5c%40virginia.edu">My Bugs</a></li>
+
+      </ul>
+    </li>
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+</body></html>

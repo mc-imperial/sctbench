@@ -1,0 +1,74 @@
+NATIVE TIME 
+
+{ time ../../Sources/scripts/utility/run_for_iterations.sh 5 ./scripts/runme.sh; } 2>&1 | tee  out
+
+NATIVE PROB
+
+{ time ../../Sources/scripts/utility/run_for_iterations.sh 100 ./scripts/runme.sh; } 2>&1 | tee  out
+
+PIN TIME 
+
+{ time ../../Sources/scripts/utility/run_for_iterations.sh 5 './scripts/runme.sh "pin -follow_execv --"'; } 2>&1 | tee out
+
+PIN PROB
+
+{ time ../../Sources/scripts/utility/run_for_iterations.sh 100 './scripts/runme.sh "pin -follow_execv --"'; } 2>&1 | tee out
+
+
+SHARED APPROX GRAPH
+$ { echo "spidermonkey-1"; python shapprox_graph.py ../../../../Experiments/16-11-2010/bug2/shmem/run-*.ips; } > out
+$ { echo "nspr-1"; python shapprox_graph.py ../../../../Experiments/16-11-2010/bug4/shmem/run-*.ips; } >> out
+$ { echo "mysql"; python shapprox_graph.py ../../../../Experiments/16-11-2010/bug15/shmem/run-*.ips; } >> out
+$ { echo "apache-1"; python shapprox_graph.py ../../../../Experiments/16-11-2010/bug10/shmem/run-*.ips; } >> out
+$ { echo "chromium-1"; python shapprox_graph.py ../../../../Experiments/16-11-2010/bug7/shmem/run-*.ips; } >> out
+
+
+
+
+------------------------------
+Bug Mapping
+------------------------------
+
+Paper Name                      Benchmark Name
+
+SpiderMonkey-1                  bug2
+SpiderMonkey-2                  bug3
+NSPR-1                          bug4
+NSPR-2                          bug5
+NSPR-3                          bug6
+Memcached                       bug8
+Chromium-1                      bug7
+Chromium-2                      bug9
+Apache-1                        bug10
+Apache-2                        bug11
+Chromium-3                      bug12
+Chromium-4                      bug13
+Chromium-5                      bug14
+MySQL                           bug15
+
+
+------------------------------
+Working
+------------------------------
+
+Paper Name                      Benchmark Name
+
+SpiderMonkey-1                  bug2
+SpiderMonkey-2                  bug3
+NSPR-1                          bug4
+NSPR-2                          bug5
+NSPR-3                          bug6
+Chromium-1                      bug7 
+Memcached                       bug8
+Apache-1                        bug10
+Apache-2                        bug11
+Chromium-3                      bug12 
+Chromium-5                      bug14
+MySQL                           bug15 
+
+
+------------------------------
+Broke
+------------------------------
+Chromium-2                      bug9 (uses gtest automation, not sure how to launch chrome with arbitrary commands like "pin --")
+Chromium-4                      bug13 (shutdown bug, make a better test case like chromium-1)

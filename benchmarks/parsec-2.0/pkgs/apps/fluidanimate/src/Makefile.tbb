@@ -1,0 +1,18 @@
+TARGET  = fluidanimate
+SRC     = tbb.cpp 
+CSRC    = $(SRC)
+CXXFLAGS += -DTBB_VERSION
+LIBS	+= -ltbb
+
+all:	tbb cmp
+
+tbb: $(CSRC)
+	$(CXX) $(CXXFLAGS) $(CSRC) $(LDFLAGS) $(LIBS) -o $(TARGET)
+
+cmp: cmp.cpp
+	rm -rf cmp
+	$(CXX) cmp.cpp -o cmp
+
+clean:
+	rm -rf $(TARGET)
+	rm -rf cmp

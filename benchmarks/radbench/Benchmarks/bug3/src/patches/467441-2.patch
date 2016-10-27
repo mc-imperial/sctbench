@@ -1,0 +1,137 @@
+diff -u jscntxt.c jscntxt.c
+--- jscntxt.c	11 Mar 2009 19:40:23 -0000
++++ jscntxt.c	11 Mar 2009 20:17:21 -0000
+@@ -260,10 +260,7 @@
+     JS_INIT_ARENA_POOL(&cx->tempPool, "temp", 1024, sizeof(jsdouble),
+                        &cx->scriptStackQuota);
+ 
+-    if (!js_InitRegExpStatics(cx, &cx->regExpStatics)) {
+-        js_DestroyContext(cx, JSDCM_NEW_FAILED);
+-        return NULL;
+-    }
++    js_InitRegExpStatics(cx);
+ 
+     /*
+      * If cx is the first context on this runtime, initialize well-known atoms,
+@@ -379,13 +376,8 @@
+         JS_ClearAllWatchPoints(cx);
+     }
+ 
+-    /*
+-     * Remove more GC roots in regExpStatics, then collect garbage.
+-     * XXX anti-modularity alert: we rely on the call to js_RemoveRoot within
+-     * XXX this function call to wait for any racing GC to complete, in the
+-     * XXX case where JS_DestroyContext is called outside of a request on cx
+-     */
+-    js_FreeRegExpStatics(cx, &cx->regExpStatics);
++    /* Remove more GC roots in regExpStatics, then collect garbage. */
++    JS_ClearRegExpRoots(cx);
+ 
+ #ifdef JS_THREADSAFE
+     /*
+@@ -422,6 +414,7 @@
+     }
+ 
+     /* Free the stuff hanging off of cx. */
++    js_FreeRegExpStatics(cx);
+     JS_FinishArenaPool(&cx->stackPool);
+     JS_FinishArenaPool(&cx->tempPool);
+ 
+diff -u jsgc.c jsgc.c
+--- jsgc.c	11 Mar 2009 19:40:24 -0000
++++ jsgc.c	11 Mar 2009 20:17:21 -0000
+@@ -2835,6 +2835,8 @@
+ 
+     if (acx->sharpObjectMap.depth > 0)
+         js_TraceSharpMap(trc, &acx->sharpObjectMap);
++
++    js_TraceRegExpStatics(trc, acx);
+ }
+ 
+ void
+only in patch2:
+unchanged:
+--- jsregexp.c	22 Jan 2009 03:04:00 -0000	3.201
++++ jsregexp.c	11 Mar 2009 20:17:22 -0000
+@@ -3696,31 +3696,40 @@ enum regexp_static_tinyid {
+     REGEXP_STATIC_INPUT         = -1,
+     REGEXP_STATIC_MULTILINE     = -2,
+     REGEXP_STATIC_LAST_MATCH    = -3,
+     REGEXP_STATIC_LAST_PAREN    = -4,
+     REGEXP_STATIC_LEFT_CONTEXT  = -5,
+     REGEXP_STATIC_RIGHT_CONTEXT = -6
+ };
+ 
+-JSBool
+-js_InitRegExpStatics(JSContext *cx, JSRegExpStatics *res)
++void
++js_InitRegExpStatics(JSContext *cx)
+ {
+     JS_ClearRegExpStatics(cx);
+-    return js_AddRoot(cx, &res->input, "res->input");
+ }
+ 
+ void
+-js_FreeRegExpStatics(JSContext *cx, JSRegExpStatics *res)
++js_TraceRegExpStatics(JSTracer *trc, JSContext *acx)
++{
++    JSRegExpStatics *res = &acx->regExpStatics;
++
++    if (res->input)
++        JS_CALL_STRING_TRACER(trc, res->input, "res->input");
++}
++
++void
++js_FreeRegExpStatics(JSContext *cx)
+ {
++    JSRegExpStatics *res = &cx->regExpStatics;
++
+     if (res->moreParens) {
+         JS_free(cx, res->moreParens);
+         res->moreParens = NULL;
+     }
+-    js_RemoveRoot(cx->runtime, &res->input);
+ }
+ 
+ static JSBool
+ regexp_static_getProperty(JSContext *cx, JSObject *obj, jsval id, jsval *vp)
+ {
+     jsint slot;
+     JSRegExpStatics *res;
+     JSString *str;
+only in patch2:
+unchanged:
+--- jsregexp.h	13 Nov 2007 22:18:17 -0000	3.30
++++ jsregexp.h	11 Mar 2009 20:17:22 -0000
+@@ -126,25 +126,24 @@ js_DestroyRegExp(JSContext *cx, JSRegExp
+  * Execute re on input str at *indexp, returning null in *rval on mismatch.
+  * On match, return true if test is true, otherwise return an array object.
+  * Update *indexp and cx->regExpStatics always on match.
+  */
+ extern JSBool
+ js_ExecuteRegExp(JSContext *cx, JSRegExp *re, JSString *str, size_t *indexp,
+                  JSBool test, jsval *rval);
+ 
+-/*
+- * These two add and remove GC roots, respectively, so their calls must be
+- * well-ordered.
+- */
+-extern JSBool
+-js_InitRegExpStatics(JSContext *cx, JSRegExpStatics *res);
++extern void
++js_InitRegExpStatics(JSContext *cx);
++
++extern void
++js_TraceRegExpStatics(JSTracer *trc, JSContext *acx);
+ 
+ extern void
+-js_FreeRegExpStatics(JSContext *cx, JSRegExpStatics *res);
++js_FreeRegExpStatics(JSContext *cx);
+ 
+ #define JSVAL_IS_REGEXP(cx, v)                                                \
+     (JSVAL_IS_OBJECT(v) && JSVAL_TO_OBJECT(v) &&                              \
+      OBJ_GET_CLASS(cx, JSVAL_TO_OBJECT(v)) == &js_RegExpClass)
+ 
+ extern JSClass js_RegExpClass;
+ 
+ extern JSObject *

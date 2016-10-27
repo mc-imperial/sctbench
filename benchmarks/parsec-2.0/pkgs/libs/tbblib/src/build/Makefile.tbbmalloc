@@ -1,0 +1,124 @@
+# Copyright 2005-2008 Intel Corporation.  All Rights Reserved.
+#
+# This file is part of Threading Building Blocks.
+#
+# Threading Building Blocks is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public License
+# version 2 as published by the Free Software Foundation.
+#
+# Threading Building Blocks is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+# of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Threading Building Blocks; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+#
+# As a special exception, you may use this file as part of a free software
+# library without restriction.  Specifically, if other files instantiate
+# templates or use macros or inline functions from this file, or you compile
+# this file and link it with other files to produce an executable, this
+# file does not by itself cause the resulting executable to be covered by
+# the GNU General Public License.  This exception does not however
+# invalidate any other reasons why the executable file might be covered by
+# the GNU General Public License.
+
+tbb_root ?= $(TBB21_INSTALL_DIR)
+BUILDING_PHASE=1
+include $(tbb_root)/build/common.inc
+DEBUG_SUFFIX=$(findstring _debug,_$(cfg))
+
+# default target
+default_malloc: malloc malloc_test
+
+MALLOC_ROOT ?= $(tbb_root)/src/tbbmalloc
+MALLOC_SOURCE_ROOT ?= $(MALLOC_ROOT)
+
+VPATH = $(tbb_root)/src/tbb/$(ASSEMBLY_SOURCE) $(tbb_root)/src/tbb $(tbb_root)/src/test
+VPATH += $(MALLOC_ROOT) $(MALLOC_SOURCE_ROOT)
+
+KNOWN_NOSTRICT = test_ScalableAllocator_STL.$(OBJ) #test_malloc_compliance.$(OBJ)
+KNOWN_WARNINGS = test_malloc_compliance.$(OBJ)
+
+include $(tbb_root)/build/common_rules.inc
+
+#------------------------------------------------------
+# Define rules for making the TBBMalloc shared library.
+#------------------------------------------------------
+
+# Object files that gmake up TBBMalloc
+MALLOC_CPLUS.OBJ = tbbmalloc.$(OBJ)
+MALLOC_CUSTOM.OBJ += tbb_misc_malloc.$(OBJ)
+MALLOC_ASM.OBJ = $(TBB_ASM.OBJ)
+
+# MALLOC_CPLUS.OBJ is built in two steps due to Intel Compiler Tracker # C69574
+MALLOC.OBJ := $(MALLOC_CPLUS.OBJ) $(MALLOC_ASM.OBJ) $(MALLOC_CUSTOM.OBJ) MemoryAllocator.$(OBJ)
+MALLOC_CPLUS.OBJ += MemoryAllocator.$(OBJ)
+M_CPLUS_FLAGS := $(subst $(WARNING_KEY),,$(M_CPLUS_FLAGS)) $(DEFINE_KEY)__TBB_BUILD=1
+M_INCLUDES = $(INCLUDES) $(INCLUDE_KEY)$(MALLOC_ROOT) $(INCLUDE_KEY)$(MALLOC_SOURCE_ROOT)
+
+# Suppress superfluous warnings for TBBmalloc compilation
+$(MALLOC.OBJ): M_CPLUS_FLAGS += $(WARNING_SUPPRESS)
+
+$(MALLOC_CPLUS.OBJ): %.$(OBJ): %.cpp
+	$(CPLUS) $(COMPILE_ONLY) $(M_CPLUS_FLAGS) $(PIC_KEY) $(M_INCLUDES) $<
+
+tbb_misc_malloc.$(OBJ): tbb_misc.cpp version_string.tmp
+	$(CPLUS) $(COMPILE_ONLY) $(subst -strict_ansi,-ansi,$(M_CPLUS_FLAGS)) $(PIC_KEY) $(OUTPUTOBJ_KEY)$@ $(INCLUDE_KEY). $(INCLUDES) $<
+
+ifneq (,$(MALLOC.DEF))
+tbbmalloc.def: $(MALLOC.DEF)
+	$(CMD) "$(CPLUS) $(PREPROC_ONLY) $(MALLOC.DEF) $(filter $(DEFINE_KEY)%,$(CPLUS_FLAGS)) >tbbmalloc.def 2>$(NUL) || exit 0"
+
+LIB_LINK_FLAGS += $(EXPORT_KEY)tbbmalloc.def
+$(MALLOC.DLL): tbbmalloc.def
+endif
+
+$(MALLOC.DLL): BUILDING_LIBRARY = $(MALLOC.DLL)
+$(MALLOC.DLL): $(MALLOC.OBJ) $(TBBMALLOC.RES) $(MALLOC_NO_VERSION.DLL)
+	$(LIB_LINK_CMD) $(LIB_OUTPUT_KEY)$(MALLOC.DLL) $(MALLOC.OBJ) $(TBBMALLOC.RES) $(LIB_LINK_LIBS) $(LIB_LINK_FLAGS)
+	$(AR) rcs libtbbmalloc.a $(MALLOC.OBJ)
+	$(RANLIB) libtbbmalloc.a
+
+ifneq (,$(MALLOC_NO_VERSION.DLL))
+$(MALLOC_NO_VERSION.DLL):
+	echo "INPUT ($(MALLOC.DLL))" > $(MALLOC_NO_VERSION.DLL)
+endif
+
+malloc: $(MALLOC.DLL)
+
+#------------------------------------------------------
+# End of rules for making the TBBMalloc shared library
+#------------------------------------------------------
+
+#------------------------------------------------------
+# Define rules for making the TBBMalloc unit tests
+#------------------------------------------------------
+
+add_debug=$(basename $(1))_debug$(suffix $(1))
+cross_suffix=$(if $(crosstest),$(if $(DEBUG_SUFFIX),$(subst _debug,,$(1)),$(call add_debug,$(1))),$(1))
+
+MALLOC_MAIN_TESTS = test_ScalableAllocator.exe test_ScalableAllocator_STL.exe test_malloc_compliance.exe
+MALLOC_C_TESTS = test_malloc_pure_c.exe
+
+$(MALLOC_MAIN_TESTS): %.exe: %.$(OBJ) $(call cross_suffix,$(MALLOC.LIB))
+	$(CPLUS) $(OUTPUT_KEY)$@ $(CPLUS_FLAGS) $^ $(LIBS) $(LINK_FLAGS)
+$(MALLOC_C_TESTS): %.exe: %.$(OBJ) $(call cross_suffix,$(MALLOC.LIB))
+	$(CPLUS) $(OUTPUT_KEY)$@ $(CPLUS_FLAGS) $(INCLUDES) $^ $(LIBS) $(LINK_FLAGS)
+
+malloc_test: $(call cross_suffix,$(MALLOC.DLL)) $(MALLOC_MAIN_TESTS) $(MALLOC_C_TESTS)
+ifndef norun
+malloc_test:
+	$(TEST_LAUNCHER) ./test_malloc_compliance.exe
+	./test_ScalableAllocator.exe
+	./test_ScalableAllocator_STL.exe
+	./test_malloc_pure_c.exe
+endif # norun
+
+#------------------------------------------------------
+# End of rules for making the TBBMalloc unit tests
+#------------------------------------------------------
+
+# Include automatically generated dependences
+-include *.d

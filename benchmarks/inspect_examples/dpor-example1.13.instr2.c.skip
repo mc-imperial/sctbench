@@ -1,0 +1,114 @@
+#include <stdlib.h>
+#include <pthread.h>
+
+// testing ./dpor1....
+//  Summmary :
+//    totally  4096 runs !
+// 64.377u 26.044s 1:45.59 85.6%   0+0k 0+0io 0pf+0w
+
+
+// with -O2
+// testing ./dpor1....
+//  Summmary :
+//    totally  4096 runs !
+// 26.523u 28.007s 1:11.87 75.8%   0+0k 0+0io 0pf+0w
+
+#define SIZE 128
+#define MAX   4
+#define NUM_THREADS  13
+
+
+int table[SIZE];
+pthread_mutex_t  cas_mutex[SIZE];
+pthread_t  tids[NUM_THREADS];
+
+
+int cas(int * tab, int h, int val, int new_val)
+{
+  int ret_val = 0;
+  inspect_mutex_lock(&cas_mutex[h], LOCAL_STATE_CHANGED, 10);
+  
+  if ( tab[h] == val ) {
+    tab[h] = new_val;
+    ret_val = 1;
+    inspect_local_snapshot_begin();
+    inspect_local_int(ret_val);
+    inspect_local_snapshot_end();
+    
+    inspect_mutex_unlock(&cas_mutex[h], LOCAL_STATE_CHANGED, 20);
+
+  }
+  else
+
+    inspect_mutex_unlock(&cas_mutex[h], LOCAL_STATE_UNCHANGED, 25);
+
+  return ret_val;
+} 
+
+
+
+void * thread_routine(void * arg)
+{
+  inspect_thread_start("thread_routine");
+
+  int tid;
+  int m = 0, w = 0, h= 0;
+
+  tid = (int)arg;
+
+  while(1){
+    if ( m < MAX ){
+      w = (++m) * 11 + tid;
+    }
+    else{
+      inspect_thread_exit(NULL,3, 1);
+    }
+    
+    h = (w * 7) % SIZE;
+
+    while ( cas(table, h, 0, w) == 0){      
+      h = (h + 1) % SIZE;
+
+      inspect_local_snapshot_begin();
+      inspect_local_int(h);
+      inspect_local_snapshot_end();
+    }
+    
+    inspect_local_snapshot_begin();
+    inspect_local_int(m);
+    inspect_local_int(w);
+    inspect_local_int(h);
+    inspect_local_snapshot_end();
+  }
+
+  inspect_thread_end();
+}
+
+
+
+int main()
+{
+  int i;
+  inspect_start_sc_thread();
+  inspect_main_start();
+  
+  for(i = 0; i < SIZE; i++)
+    inspect_obj_reg((void*)&table[i], INT_OBJECT, CONTROL_OBJECT);
+  
+  for (i = 0; i < SIZE; i++)
+    inspect_mutex_init(&cas_mutex[i], NULL, LOCAL_STATE_UNCHANGED, 30);
+
+  for (i = 0; i < NUM_THREADS; i++){
+    inspect_thread_create(&tids[i], NULL,  thread_routine, (void*)(i),  LOCAL_STATE_UNCHANGED, 40);
+  }
+
+  for (i = 0; i < NUM_THREADS; i++){
+    inspect_thread_join(tids[i], NULL, LOCAL_STATE_UNCHANGED, 50);
+  }
+
+/*   for (i = 0; i < NUM_THREADS; i++){ */
+/*     inspect_mutex_destroy(&cas_mutex[i], 7, 1); */
+/*   } */
+
+  inspect_main_end();
+}

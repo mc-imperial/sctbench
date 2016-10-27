@@ -1,0 +1,2169 @@
+UNIVERSAL PARALLEL COMPUTING RESEARCH CENTER
+SPONSORED RESEARCH AND COLLABORATION AGREEMENT
+
+	
+This Sponsored Research and Collaboration Agreement (the “Agreement”), effective as of 
+December ____, 2007 (the "Effective Date"), is entered into by and between the Regents of the 
+University of California, Berkeley (hereinafter "University"), a public agency and instrumentality 
+of the State of California having a business address at 2150 Shattuck Avenue, Suite 950, Berkeley, 
+California 94704, USA, Microsoft Corporation (hereinafter "Microsoft"), a corporation organized 
+and existing under the laws of the State of Washington, and having its principal office at One 
+Microsoft Way, Redmond, Washington 98052, USA and Intel Corporation (hereinafter “Intel”), a 
+corporation organized and existing under the laws of the State of Delaware, and having its principal 
+office at 2200 Mission College Blvd., Santa Clara, CA 95052, USA. Intel and Microsoft will 
+collectively be known as “Sponsors”.  
+
+BACKGROUND
+
+As a result of recent focused discussions and close collaboration, Sponsors and University desire to 
+enter into an agreement to establish the Universal Parallel Computing Research Center (“UPCRC”) 
+on the campus of University. The UPCRC will focus on broad research themes as set forth in the 
+UPCRC Overview, Modified UPCRC Overview, and the UPCRC Continuation Proposal (as defined 
+below) and conducted pursuant to the terms and conditions set forth herein.  In consideration of the 
+mutual promises and agreements contained herein, the parties agree as follows:  
+
+AGREEMENT
+
+1.	DEFINITIONS
+
+1.1	“Affiliate” means an entity that is controlled by, or is under common control with 
+Microsoft, Intel, or University, as the case may be, where control is defined as direct or indirect 
+majority ownership, but only so long as such control exists; and for this purpose, “control” of a 
+corporation means the direct or indirect ownership of at least fifty percent (50%) of its voting 
+stock, and “control” of any other business entity means the direct or indirect ownership of at least a 
+fifty percent (50%) interest in the income of such entity.
+
+1.2	“Budget” means the budget for the UPCRC, which is attached as Attachment 2 to this 
+Agreement.
+
+1.3	“Joint Patent” means collectively Microsoft Joint Patents and Intel Joint Patents, as defined 
+in Section 4.2.
+
+1.4	“Principal Investigator” means the person or persons designated by University in the 
+Project Descriptions stated in the UPCRC Overview as having responsibility for supervising and 
+managing a given Project Description on behalf of University.   
+
+1.5	“Project Descriptions” means the specific research projects defined in the UPCRC 
+Overview, which take place under the Project Themes.
+
+1.6	“Project Themes” means the broad categories of research areas which the UPCRC will 
+focus on.  Project Descriptions are created for each Project Theme and can vary during the UPCRC 
+Term as stated in Section 2.
+
+1.7	“University Personnel” means the Principal Investigator(s) and those participating in the 
+UPCRC including, but not limited to, students, employees, representatives, contractors, visiting 
+faculty and agents of the University and any additional researchers employed or contracted by the 
+University.   
+ 
+1.8 	“UPCRC Director” means the person or persons appointed by University that manages the 
+University Personnel, Project Themes, and Project Descriptions and is responsible for the overall 
+day to day functions and work performed in the UPCRC.
+
+1.9	“UPCRC IP” means any and all of the following intellectual property rights, including 
+without limitation, all of the following: (i) procedures, registered designs, registered databases, 
+inventions, discoveries conceived in the performance of the Project Descriptions and during the 
+term of this Agreement and (a) reduced to practice (constructively or actually), or (b) otherwise 
+recorded in a tangible medium, in either case of (a) or (b), within one year after this Agreement 
+expires or terminates, and all United States and foreign patent applications, patents issues or 
+issuable thereon; and works of authorship, copyrights and other rights in works of authorship, mask 
+works, and trade secrets created in the performance of the Project Descriptions and during the term 
+of this Agreement.  The proceeding rights are granted on a worldwide basis, but exclude trademarks 
+or other forms of corporate or product identification developed by University under this Agreement 
+that does not result in a Joint Patent or Joint Copyright.  Notwithstanding the foregoing, any 
+copyright rights contained in an article submitted by University for publication pursuant to section 8 
+is not considered UPCRC IP. 
+
+1.10	“UPCRC Overview” means the document attached as Attachment 1 to this Agreement that 
+defines the initial Project Themes and initial Project Descriptions, and will be used as the basis for 
+the initial funding defined in Section 3.  To the extent that the UPCRC Overview is modified 
+through a Modified UPCRC Overview or continued through the UPCRC Continuation Proposal, 
+such documents will become part of the UPCRC Overview.
+
+1.11	“UPCRC Retreat” means the bi-annual meetings that all participants in the UPCRC 
+(including representatives from Sponsors) will attend.  Each UPCRC Retreat will be organized by 
+University and University will be responsible for all UPCRC Retreat agendas.  Sponsors and 
+University will use a portion of each UPCRC Retreat to review progress, budget, and any other 
+issues as defined in Sections 2.3 and 3.3 below.   
+
+1.12	“UPCRC Term” means the initial three (3) years which the University and Sponsors will 
+work together on the UPCRC as set forth in the UPCRC Overview.  Notwithstanding the foregoing, 
+the term can be extended for an additional two (2) years pursuant to Sections 2.6 and 9.1 and, if 
+extended, the additional years would be considered part of this definition.
+
+Other defined terms are as set forth below.
+
+2.	GENERAL GOVERNANCE
+	
+2.1	Governance.  There will be five (5) Special Interest Groups (“SIGs”) which correspond 
+with the Project Themes.   Each SIG will designate a chairperson who is responsible for the overall 
+function of their designated SIG.  The chairs of each SIG form the SIGBOARD (as stated in the 
+UPCRC Overview), which is responsible for the day to day management of the Project Themes of 
+the UPCRC.  The UPCRC Director will function as the chair and central voice for the SIGBOARD.  
+The SIGBOARD, once ratified by University, will define its own policies and procedures for the 
+duration of the UPCRC Term.  
+
+2.2	 Executive Committee.  Sponsors and University will form an executive committee 
+comprised of the following individuals: one (1) executive representative from each Sponsor and the 
+UPCRC Director (the “Executive Committee”).  The Executive Committee has responsibility for 
+the following: (a) approving any Modified UPCRC Overviews as set forth in Section 2.5; (b) 
+approving a UPCRC Continuation Proposal as set forth in Section 2.6; (c) approving any additional 
+third party funding and being informed of any changes to funding defined in Section 3; (d) being 
+informed of any change to the position of UPCRC Director; and (e) being informed of any change 
+that could potentially impact the scope or validity of licenses or other rights granted to Sponsors 
+herein.  The Executive Committee will provide a response to the UPCRC Director for any 
+submissions within sixty (60) days of the presentation or submission date.  The Executive 
+Committee will meet on an as-needed basis.  
+
+2.3	Joint Steering Committee.  Sponsors and University will form a committee consisting of at 
+least one (1) person appointed by each party (the “Joint Steering Committee” or “JSC”).  The JSC 
+has responsibility for the following: (a) reviewing and approving all information prior to submission 
+to the Executive Committee, including the Modified UPCRC Overviews and the UPCRC 
+Continuation Proposal prior to submissions to the Executive Committee; (b) the overall strategic 
+relationship with each SIG and acting as technical liaisons for the various SIGs; (c) discussing 
+research directions that may be of interest and benefit to the parties; and (d) reviewing progress on 
+research projects defined in the UPCRC Overview.  Meetings of the JSC will be at the bi-annual 
+UPCRC Retreats and otherwise on the times and in the manner agreed upon by the JSC members 
+(e.g., face-to-face, telephone conference, and/or video conference). 
+
+2.4	New or Revised Project Descriptions. The UPCRC Director may approve any revised 
+Project Descriptions or new Project Descriptions under existing Project Themes identified herein, 
+provided that if any new Necessary IP is to be identified and disclosed under Section 6 below, 
+Sponsors shall have the right to approve such new or revised Project Descriptions for any such 
+Necessary IP before they are added to the UPCRC.
+
+2.5	New or Modified Project Themes. Any proposed changes or additions to the Project Themes 
+submitted after the Effective Date (“Modified UPCRC Overview”) must be submitted to the Joint 
+Steering Committee for review and ratification and with final approval by the Executive 
+Committee.  The Modified UPCRC Overview must be approved by the mutual agreement of the 
+Executive Committee prior to inception.  Any approval of a Modified UPCRC Overview shall be 
+subject to the review and approval of the Sponsors of any Necessary IP as set forth in Section 6.
+
+2.6	UPCRC Continuation Proposal. In order for the UPCRC to continue past the initial UPCRC 
+Term, University must submit a new proposal outlining the Project Themes and Project Descriptions 
+for the continuance of the UPCRC for an additional two (2) years (“UPCRC Continuation 
+Proposal”) to the Joint Steering Committee for ratification and to the Executive Committee for final 
+approval.  The UPCRC Continuation Proposal must contain, at a minimum, the following: (a) 
+description of any new Project Themes and Project Descriptions; (b) a detailed report of any 
+ongoing projects that University wishes to continue; (c) the identity and background of the UPCRC 
+Director and Principal Investigator(s); and (d) any University Background IP (as defined below in 
+Section 6) or other materials or technologies that are subject to intellectual property dependencies. 
+If the UPCRC Continuation Proposal is approved, and accepted by the Executive Committee, this 
+Agreement shall be extended as set forth in Section 9.1. 
+	
+3.	UPCRC FUNDING
+
+In addition to the general governing provisions set forth in Section 2 above, the requirements in this 
+Section 3 will apply to the UPCRC and UPCRC Overview.
+
+3.1	UPCRC Funding.  
+
+	(a)	Payment Terms.   Each sponsor will provide University one million dollars 
+($1,000,000.00) annually (the “UPCRC Funding”) for the UPCRC and the research specified in 
+the UPCRC Overview subject to the terms of this Section 3.1.  The first payment of the UPCRC 
+Funding will be paid by each Sponsor prior to January 15, 2008 (“Payment Due Date”) and then 
+annually prior to each Payment Due Date.  All payments by Sponsors to University hereunder will 
+be made in U.S. dollars, to the following University financial contact: Cynthia J. Kane, Director, 
+Extramural Funds Accounting, 2195 Hearst Avenue, Room 130, MC1103, University of California, 
+Berkeley, CA 94720-1103. University will cooperate with Sponsors to set up accounts in Sponsors’ 
+respective accounts payable systems.  Sponsors will reference Agreement No. 20080469 and 
+UPCRC Director when submitting payment. 
+
+	(b)	Use of UPCRC Funding.  University will only use UPCRC Funding provided 
+hereunder for the UPCRC as set forth in the Budget (including overhead, as set forth in Section 
+3.1(c) below). University will maintain UPCRC Funding payments made by Sponsors and other 
+matching funds under Section 3.2 under this Agreement respectively in separate accounts. 
+University shall not use any UPCRC Funding to purchase hardware that will run non-Microsoft 
+operating systems, unless the Sponsors approve otherwise.  Title to all equipment acquired by 
+University to perform any research for the UPCRC and all equipment, materials, and other tangible 
+results of the research will vest in the University upon acquisition.
+
+	(c)	Overhead.  The overhead rate that will be charged against the UPCRC Funding 
+provided by Sponsors for indirect facilities and administrative expenses for research projects 
+hereunder will be fifty three percent (53%) for amounts provided by Sponsors prior to July 1, 
+2009, and will be fifty three point five percent (53.5%) for amounts provided by Sponsors on or 
+after July 1, 2009. There will be no overhead for UC or UC Discovery funding as set forth in 
+Section 3.2.
+
+3.2	Co-Funding by University and Third Parties.   University will use reasonable efforts to 
+obtain funds during the UPCRC Term from (a) the Industry/University Cooperative Research 
+Program for UC Discovery Grant Proposal dig07-10218, entitled “Universal Parallel Computing 
+Research Center,” equal to an amount up to $1,487,089.74 per year, (b) UC Berkeley campus at 
+$100,000 per year, (c) CITRIS/College of Engineering at $100,000 per year.  In addition, during the 
+UPCRC Term the EECS department of UC Berkeley will fund two (2) faculty research leaves each 
+year and two (2) graduate fellowships each year.  If University wants to obtain additional source(s) 
+of funding for the UPCRC from third parties, it may do so provided that the Executive Committee 
+is informed.  The Executive Committee shall have the right to review and approve any third party 
+funding that would affect the rights or obligations of the parties under this Agreement, including 
+any proposed departures from the intellectual property regime established in this Agreement that 
+would be necessary to allow such co-funding.  Sponsors acknowledge and agree that  intellectual 
+property rights created with the use of third party funding may be statutorily or contractually limited 
+but will be approved by the Executive Committee prior to any use.
+
+
+
+
+
+
+
+
+
+
+
+3.3	Reporting; Research Results.   
+       
+       (a)	Delivery of Research Results and Progress Reports.  Two (2) weeks prior to the date 
+of the UPCRC Retreats, University will deliver to the JSC any and all results of the research and a 
+brief written description of project progress, including but not limited to, data from tests and 
+experiments, software code, demos, and prototypes produced in connection with the relevant 
+research projects.  
+       
+	(b) 	Financial Management and Reporting.  Two (2) weeks prior to the date of any 
+UPCRC Retreats, but not less than twice annually, University will provide JSC with complete and 
+accurate reports detailing all funds received and expended under this agreement during the previous 
+six (6) month period. 
+
+	(c)	Sponsors agree to participate in brief annual surveys during and beyond the term of 
+this Agreement in compliance with the State of California’s requirement for assessment of the 
+impact of the Discovery Grant Program, as defined in Section 3.2 on the California economy.  
+University will provide Sponsors with adequate notice of any dues dates and information needed 
+for the annual surveys that the Sponsor must provide in order to meet the State of California’s 
+requirements. 
+
+3.4	Delivery of Materials.  For software tools, code, data, media, hardware, or other materials 
+that each party may provide to the other for use in the UPCRC that are not covered otherwise by 
+licenses under this Agreement, the terms of use for such tools will be provided separately in a 
+separate license agreement.  University shall not provide to Sponsors any research deliverables that 
+contain or are dependent on third party software unless Sponsors have approved such third party 
+software license terms in advance.  
+
+3.5	Reach-Through License.  In conducting the research in the UPCRC, University may use any 
+software code or tools in connection with research projects and deliverables, so long as in doing so 
+it does not combine, incorporate, or link to software code subject to a Reach-Through License, or 
+make any code developed in connection with a research project available under a Reach-Through 
+License.  A “Reach-Through License” means a license that requires, as a condition of the use, 
+modification, or distribution of software subject to the license, that such software and/or other 
+software combined and/or distributed with such software be: (a) disclosed or distributed in source 
+code form; (b) licensed for the purpose of making derivative works; or (c) redistributable at no 
+charge. 
+
+3.6	University Personnel.  University will ensure that it procures all rights necessary from 
+University Personnel and the UCPRC Director in order for University to perform its obligations and 
+grant to Sponsors the rights set forth in this Agreement.  University will also notify the JSC if any of 
+the University Personnel or the UCPRC Director will be modified or will depart within two (2) 
+weeks of any change or departure for any ongoing projects. 
+
+4.	INTELLECTUAL PROPERTY.
+
+4.1	UPCRC IP. 
+       
+       (a)	Ownership.  Subject to the license and other rights granted to Sponsors under this 
+Agreement, all right, title and interest in and to the UPCRC IP will vest solely in University.
+
+       (b)	License Grant.	University hereby grants to Sponsors and their Affiliates a perpetual, 
+irrevocable, non-exclusive, royalty-free, fully paid up, worldwide right and license to make, have 
+made, use, copy, reproduce, have reproduced, sell, have sold, import, display, distribute, license, 
+translate, publicly perform, create derivative works of, broadcast, transmit, rent, lease, lend and 
+otherwise exploit the UPCRC IP (and derivative works thereof), including the right to sublicense 
+any or all of the foregoing rights within each Sponsor’s distribution channel for its products, 
+customer combinations including its products, and services.
+
+       (c)	University Patent Applications.  For purposes hereof “University Patent” means all 
+domestic and foreign patents and patent applications, and any divisions, continuations, in whole or 
+in part, reissues, renewals, and extensions thereof, and pending applications therefore that claim 
+any invention in the UPCRC IP. University will have the first right, but not an obligation, to file and 
+prosecute, at University’s sole expense, domestic and/or foreign patent applications for potential 
+University Patents.  If University decides not to seek patent protection for such a University Patent, 
+and/or not to seek such protection in a particular jurisdiction, Sponsor(s) may determine and advise 
+University in writing whether it/they wish(es) a patent application to be made with respect to such 
+University Patent.   If Sponsor(s) determine(s) that it/they wish(es) an application to be made for a 
+University Patent, University, by counsel it selects to whom Sponsor has no reasonable objection, 
+in consultation with counsel appointed by Sponsor, will prepare, file and prosecute such application 
+in University 's name and in countries designated by Sponsor.  University will consult with and 
+provide Sponsor(s) with all information and documentation regarding the filing.  Sponsor(s) will 
+reimburse University for reasonable expenses it has incurred in so filing and prosecuting such 
+applications, including attorneys' fees and issue fees.  If Sponsor subsequently elects to abandon 
+the prosecution and maintenance of such application or patent at any time, it will give University 
+notice of such decision within a reasonable time in order to allow University to assume such 
+prosecution and maintenance (at University’s expense) without prejudice to University’s rights 
+under the application or patent. 
+  	
+	If University elects to license to third parties any University Patent for which Sponsor(s) 
+funded the patent application(s), then University will use one-half (1/2) of the license fees received 
+from such third parties to reimburse Sponsor(s) one-half (1/2) of the application’s costs paid by 
+Sponsors to the University.
+       
+4.2	Joint Intellectual Property.
+
+       (a)	Separate Inventions. Each party will own any and all inventions that it 
+independently invents in the course of UPCRC.  Each party will own any and all works of 
+authorship that it independently creates in connection with the UPCRC.
+
+       (b)	University-Microsoft Intellectual Property.
+
+       	(i)	University-Microsoft Patents. University and Microsoft will jointly own any 
+inventions that are jointly conceived  in the performance of Project Descriptions under this 
+Agreement by the University and Microsoft together, including all domestic and foreign pending 
+patent applications and issued patents resulting therefrom (“Microsoft Joint Patents”).   University 
+and Microsoft hereby agree (and shall be deemed to have consented) that each of University and 
+Microsoft have the right to make, have made, use, sell, have sold, import, license, rent, lease, lend, 
+and otherwise exploit any Microsoft Joint Patents without the approval of University and Microsoft, 
+and no party will be obligated to pay the other any royalties or other consideration, nor to account 
+to the other party for any royalties or other consideration it may receive; provided, however, that 
+Microsoft will have the option provided for in Section 5 below.  University and Microsoft hereby 
+grant to Intel and its Affiliates a perpetual, irrevocable, non-exclusive, royalty-free, fully paid up, 
+worldwide right and license to make, have made, use, sell, have sold, import, license, rent, lease, 
+lend and otherwise exploit the Microsoft Joint Patents, including the right to sublicense any or all of 
+the foregoing rights within Intel’s distribution channel for its products, customer combinations 
+including its products, and services.
+             
+             (ii)	University-Microsoft Copyrights. University and Microsoft will jointly own 
+any works of authorship that are jointly created by University and Microsoft as a result of joint 
+research activity in the performance of Project Descriptions under this Agreement (“Microsoft 
+Joint Copyrights”).  University and Microsoft will have all of the rights of a copyright owner as to 
+Joint Copyrights, with no duty to account to, pay royalties to, or obtain consent from, the other 
+party.  University and Microsoft hereby grant to Intel a perpetual, non-exclusive, non-transferable, 
+royalty-free, fully paid up license to reproduce, display, publicly perform, translate, distribute, 
+broadcast, transmit, modify, create derivative works of, and otherwise exploit all rights in and to the 
+Microsoft Joint Copyrights.  University will not grant to any third party rights in any University 
+Copyrights that are inconsistent with the rights granted to Sponsors in Section 5.
+
+       (c)	  University-Intel Intellectual Property. 
+
+             (i)	University-Intel Patents.  University and Intel will jointly own any 
+inventions that are jointly conceived  in the performance of Project Descriptions under this 
+Agreement by the University and Intel together, including all domestic and foreign pending patent 
+applications and issued patents resulting therefrom (“Intel Joint Patents”).  University and Intel 
+hereby agree (and shall be deemed to have consented) that each of University and Intel have the 
+right to make, have made, use, sell, have sold, import, license, rent, lease, lend and otherwise 
+exploit any Intel Joint Patents without the approval of University and Intel, and no party will be 
+obligated to pay the other any royalties or other consideration, nor to account to the other party for 
+any royalties or other consideration it may receive; provided, however, that Intel will have the 
+option provided for in Section 5 below. University and Intel hereby grant and will be deemed to 
+have granted to Microsoft and its Affiliates a perpetual, irrevocable, non-exclusive, royalty-free, 
+fully paid up, worldwide right and license to make, have made, use, sell, have sold, import, license, 
+rent, lease, lend and otherwise exploit the Intel Joint Patents, including the right to sublicense any or 
+all of the foregoing rights within Microsoft’s distribution channel for its products, customer 
+combinations including its products, and services.
+
+       	(ii)	University-Intel Copyrights. University and Intel will jointly own any works 
+of authorship that are jointly created by University and Intel as a result of joint research activity 
+(“Intel Joint Copyrights”).  University and Intel will have all of the rights of a copyright owner as 
+to Intel Joint Copyrights, with no duty to account to, pay royalties to, or obtain consent from, the 
+other party.  University and Intel hereby grant to Microsoft a perpetual, non-exclusive, non-
+transferable, royalty-free, fully paid up license to reproduce, display, publicly perform, translate, 
+distribute, broadcast, transmit, modify, create derivative works of, and otherwise exploit all rights in 
+and to the Intel Joint Copyrights. University will not grant to any third party rights in any University 
+Copyrights that are inconsistent with the rights granted to Sponsors in Section 5.
+
+       (d)	Other Terms Applicable to Joint IP.  As to patents, inventorship will be determined 
+in accordance with U.S. patent law.  As to copyrights, whether a work of authorship is 
+independently or jointly created will be determined by U.S. copyright law.  
+
+       (e)	No Other Joint IP. The parties agree that this Agreement does not intend for 
+intellectual property to be jointly created or conceived by (a) Microsoft and Intel, or (b) the three of 
+Microsoft, Intel, and University. The parties will use best efforts to prevent such joint intellectual 
+property from being created.  In the event that any such joint intellectual property is inadvertently 
+created or is anticipated to be created, the parties will negotiate in good faith the terms of a separate 
+agreement or amendment to address such joint intellectual property.
+
+	(f)	Patent Applications.  Microsoft or Intel, as the case may be, will have the first right, 
+but not an obligation, to file and prosecute United States and/or foreign patent applications claiming 
+Microsoft Joint Patents or Intel Joint Patents, respectively, as the case may be, in the names of both 
+University and Microsoft or Intel, as the case may be, by counsel it selects to whom University has 
+no reasonable objection, in consultation with counsel appointed by University, at its expense. 
+Microsoft or Intel, as the case may be, will consult with and provide University with all 
+information and documentation regarding the filing.  If a Sponsor decides not to seek patent 
+protection for a potential Joint Patent, or not to seek such protection in a given jurisdiction, such 
+Sponsor will provide University timely notice of such decision and University will have the right, 
+but not an obligation, to file a patent application therefore in the name of the University, with an 
+option to add the Sponsor, at University’s expense, in any jurisdiction University elects to file any 
+such application.  Each Sponsor and University will cooperate in good faith to execute and deliver 
+such instruments and take such other action as may be necessary for a Sponsor or University, as the 
+case may be, to undertake the filing, prosecution, and maintenance described herein.  No party has 
+an obligation to continue prosecuting or maintaining such Joint Patents for the life of the patent, but 
+if the party that originally led such prosecution or maintenance decides to abandon its prosecution 
+or maintenance, it will give the other party timely notice and allow it to assume such prosecution or 
+maintenance.  
+
+4.3	Terms and conditions governing University License Grants.  University licenses granted 
+under Section 4 of this Agreement shall be subject to the following terms and conditions:
+
+       (a)	Use of Names and Trademarks. University licenses granted under Section 4 of this 
+Agreement will not be construed as conferring any right to use in advertising, publicity or other 
+promotional activities any name, trademark, trade name, or other designation of either party hereto 
+by the other (including any contraction, abbreviation, or simulation of any of the foregoing).  
+Unless required by law the use, by licensees, of the name "The Regents of the University of 
+California" or the name of any University of California campus in advertising, publicity or other 
+promotional activities is expressly prohibited.
+       
+       (b)	Limited Warranties. 
+       
+             (i) University warrants to Sponsors that it has the lawful right to grant the University 
+licenses under Section 4 of this Agreement.
+             
+             (ii) University licenses granted under Section 4 of this Agreement and the associated 
+UPCRC IP are provided WITHOUT WARRANTY OF MERCHANTABILITY OR FITNESS FOR A 
+PARTICULAR PURPOSE OR ANY OTHER WARRANTY, EXPRESS OR IMPLIED.  
+UNIVERSITY MAKES NO REPRESENTATION OR WARRANTY THAT THE LICENSED 
+UPCRC IP WILL NOT INFRINGE ANY PATENT OR OTHER PROPRIETARY RIGHT.
+             
+             (iii) IN NO EVENT WILL UNIVERSITY BE LIABLE FOR ANY INCIDENTAL, 
+SPECIAL OR CONSEQUENTIAL DAMAGES RESULTING FROM EXERCISE OF UNIVERSITY 
+LICENSES GRANTED UNDER SECTION 4 OF THIS AGREEMENT OR THE USE OF THE 
+LICENSED UPCRC IP.
+             
+             (iv)  Nothing in this Agreement is or shall be construed as:
+                    
+                    1. A warranty or representation by University as to the validity, 
+enforceability or scope of any University patent rights; or
+                    
+                    2. An obligation to bring or prosecute actions or suits against third parties for 
+patent infringement; or
+                    4. Conferring by implication, estoppel, or otherwise any license or rights 
+under any University patents or copyrights other than UPCRC IP rights as defined herein, other than 
+as agreed to in Section 6.3 of this Agreement; or
+                    5. An obligation to furnish any know how other than through the reports and 
+interactions with Sponsors contemplated by this Agreement.
+       (c)	Indemnification. 
+       
+             (i)  Licensee agrees to defend, indemnify, and hold harmless University, its trustees, 
+officers, employees, students, and agents from any claims, demands, losses, costs and expenses 
+(including reasonable attorneys fees), or other damages which may result from personal injury, 
+death, or property damage resulting from the incorporation of the functionality of UPCRC IP in 
+Sponsors’ products or services (“University Claims”), provided that:  (i) Sponsors are notified 
+promptly of any University Claims; (ii) Sponsors have the sole right to control and defend or settle 
+any litigation within the scope of this indemnity, except that Sponsors may not admit wrongdoing or 
+liability of University without University’s prior written consent; and (iii) all indemnified parties 
+cooperate to the extent necessary in the defense of any University Claims; and further provided 
+that University Claims do not exceed $10,000,000.  
+             (ii)  University shall indemnify, defend and hold harmless Sponsors and their 
+affiliates from and against any and all claims, demands, losses, costs and expenses (including 
+reasonable attorneys’ fees) or other damages arising out of a material breach by University of its 
+representations and warranties (“Licensee Claims”), provided that: (i) University is notified 
+promptly of any Licensee Claims; (ii) University has the sole right to control and defend or settle 
+any litigation within the scope of this indemnity; and (iii) all indemnified parties cooperate to the 
+extent necessary in the defense of any Licensee Claims.  
+
+5.	OPTION FOR COVERED INVENTIONS.
+
+5.1	Discovery and Disclosure.  For purposes hereof a “Covered Invention” means (i) any 
+University Patent (as defined above in Section 4.1); and (ii) as to a co-inventing Sponsor of a Joint 
+Patent, University’s rights and interest in any Joint Patent.   University will ensure that all University 
+Personnel participating in a research project are under an obligation to promptly disclose in writing 
+and assign to University all new Covered Inventions that they conceive as a result of activities in 
+the UPCRC (“Invention Disclosure”).  Upon notification to University by University Personnel or 
+Sponsors, University will disclose any Covered Inventions to Sponsors within thirty (30) days after 
+such  notification and will deliver a copy of (a) any Invention Disclosure for a University Patent to 
+both Sponsors and (b) any Invention Disclosure for a Joint Patent to both Sponsors.  Sponsors will 
+keep confidential the content of such Invention Disclosures, for the sole purpose of preserving the 
+ability to obtain patent protection for such inventions, until the earlier of: (i) one (1) year following 
+the date of its receipt by such party; or (ii) the date University (or a Sponsor, where appropriate) 
+files an application for patent protection.  
+
+       5.2	Option for Exclusive License.  Each of Microsoft and Intel will have sixty (60) days 
+from the date it receives an Invention Disclosure from University (or from the date it provides 
+notice to University of a Joint Patent) (“Assessment Period”) to invoke its option to negotiate an 
+exclusive license to the University’s rights in the subject Covered Invention (“Option”). For 
+purposes of clarification, a non-inventing Sponsor will not have an exclusive license Option right to 
+a Joint Patent co-invented by the other Sponsor. If either or both Sponsors invoke an Option 
+available to it, it will have six (6) months from that day in which to negotiate an exclusive license to 
+the subject Covered Invention (“Option Period”).  During the Assessment Period and Option 
+Period (if either or both Sponsors invokes the option), University will negotiate in good faith 
+exclusively with Sponsor(s), and will not discuss intellectual property or licensing issues regarding 
+the Covered Invention with any third party.  The Option Period may be extended by the mutual 
+agreement in writing of University and Sponsor(s).  If, at the end of the Option Period, University 
+and Sponsors are unable to reach agreement on the terms of an exclusive license agreement, then 
+University shall be free to enter into a license agreement for any Covered Invention with any third 
+party; provided however, that University will not grant to any third party (a) rights in any University 
+Patents that are inconsistent with the rights granted to Sponsors in Section 4.1(b), (b) rights in any 
+University-Microsoft Patents that are inconsistent with the rights granted to Intel in Section 4.2(b)(i), 
+or rights in any University-Intel Patents that are inconsistent with the rights granted to Microsoft in 
+Section 4.2(c)(i).
+    
+
+5.3	Terms.   University and Sponsor will enter into a separate agreement that will outline the 
+specific commercially reasonable terms of the Exclusive License.  At a minimum, the terms of any 
+exclusive license will include the following: (a) the applicable Sponsor(s) will have an exclusive, 
+worldwide, perpetual, fully-paid up (a one-time license fee), sublicenseable license to commercially 
+exploit the subject Covered Invention; (b) the parties will negotiate field of use limitations, if any; 
+and (c) University may retain a personal, nontransferable right to practice the exclusively licensed 
+Covered Invention for noncommercial academic research and teaching purposes.  University will 
+not grant any third party any license rights in the Covered Inventions that are inconsistent with the 
+rights granted to Sponsor(s) under this Section 5.  The grant of an exclusive license shall be deemed 
+to include all substantial patent rights, including the right to sue and sublicense, and the right to sue 
+for past, present, and future infringement and the right to decide not to sue infringers.  
+Notwithstanding the foregoing, if either Sponsor takes the option for an exclusive license, the other 
+Sponsor will still enjoy the terms of the license granted in Section 4.1.  
+
+
+6.	BACKGROUND IP; THIRD PARTY IP 
+
+6.1	Definition. For purposes of this Agreement, “University Background IP” means any 
+University intellectual property which is invented or co-invented by University Personnel that is 
+owned or controlled by University and is  related to the UPCRC Overview work or deliverables 
+from the Project Themes or Project Descriptions. “Third Party IP” means any intellectual property 
+held by third parties (e.g., software code, patents, proprietary specifications, or any information that 
+requires a licensing obligation) that University Personnel propose to use in the performance of 
+Project Descriptions.  University Background IP and Third Party IP shall be referred to collectively 
+as “Background IP.”
+
+6.2	Disclosure. For the purposes of this Section 6, the obligation for University to “identify and 
+disclose” Background IP is for University to provide information about Background IP of which 
+University Personnel are, or become, aware after reasonable investigation. Within 60 days after the 
+Effective Date, University will identify and disclose, in writing, any such Background IP for the 
+Project Themes or Project Descriptions (“Pre-Center IP”).  Within nine (9) months of the Effective 
+Date, University Personnel will identify and disclose any Background IP of which the they are, or 
+become aware after reasonable investigation, for existing Project Themes and Project Descriptions.  
+Thereafter, identification and disclosure of Background IP will be on a yearly basis, or as deemed 
+necessary by the University. In addition, prior to (a) approval and adoption by the UPCRC Director 
+of any revised or new Project Descriptions, or (b) approval and adoption of any Modified UPCRC 
+Overview or UPCRC Continuation Proposal, University Personnel will also identify and disclose 
+any Background IP; Sponsors may disapprove of any adoption of any of the foregoing if the 
+Background IP would inhibit use of the research work of the UPCRC.
+
+6.3	Licenses. For University Background IP identified and disclosed pursuant to this Section 6, 
+to the extent University is not restricted by pre-existing statutory or contractual obligations, and has 
+the consent of inventors of University Background IP who are not University Personnel,  University 
+will offer Sponsors a non-exclusive license to such University Background IP on commercially 
+reasonable terms.  If University fails or neglects to identify or disclose to Sponsors any University 
+Background IP pursuant to this Section 6, University agrees that it will not assert its rights under 
+such University Background IP against Sponsors or any Sponsors licensees and sublicensees, 
+including but not limited to end users.  
+
+7.	CONFIDENTIAL INFORMATION
+
+7.1      Confidential Information.
+
+	(a)	What Is Included. “Confidential information” is non-public information, know-how 
+and trade secrets in any form that (i) are designated as “confidential”; or (ii) a reasonable person 
+knows or reasonably should understand to be confidential.
+
+	(b)	What Is Not Included.  The following types of information, however marked, are 
+not confidential information. Information that: (i) is, or becomes, publicly available without a 
+breach of this Agreement; (ii) was lawfully known to the receiver of the information without an 
+obligation to keep it confidential; (iii) is received from another source who can disclose it lawfully 
+and without an obligation to keep it confidential; (iv) is independently developed; or (v) is a 
+comment or suggestion one party volunteers about another’s business, products or services.
+
+7.2	Agreement. 
+
+	(a)	In General.  Subject to the other terms of this agreement, each party agrees (i) it will 
+not disclose any other party’s confidential information to third parties; and (ii) it will use and 
+disclose any other party’s confidential information only for the purposes of this Agreement.
+
+	(b)	Security Precautions.  The parties agree (i) to take steps at least as protective as 
+those taken to protect its own confidential information; (ii) to notify the affected party promptly 
+upon discovery of any unauthorized use or disclosure of confidential information; and (iii) to 
+cooperate with another party to help regain control of the confidential information and prevent 
+further unauthorized use or disclosure of it.
+
+	(c)	Sharing Confidential Information with Affiliates and Representatives.  A 
+“representative” is an employee, contractor, advisor or consultant of a party or one of its respective 
+Affiliates.  Each party may disclose the other’s confidential information to representatives only if 
+they have a need to know about it for purposes of the business relationship between the parties.  
+Before doing so, such party must (i) ensure that Affiliates and representatives are required to 
+protect the confidential information on terms consistent with this agreement; and (ii) accept 
+responsibility for each representative’s use of confidential information.  No party is required to 
+restrict work assignments of representatives who have had access to confidential information.  The 
+parties agree that use of information in representatives’ unaided memories in the development or 
+deployment of each party’s respective products or services does not create liability under this 
+agreement or trade secret law, and each agrees to limit what it discloses to the other accordingly.  
+
+	(d)	Disclosing Confidential Information if Required to By Law.  Each party may disclose 
+any other’s confidential information if required to comply with a court order or other government 
+demand that has the force of law.  Before doing so, such party will give the disclosing party prompt 
+notice, and will cooperate with the disclosing party, to provide the disclosing party a reasonable 
+chance to seek a protective order. 
+
+7.3	Length of Confidential Information Obligations.  Except as permitted above, no party will 
+use or disclose confidential information of any other party for five (5) years after receipt of such 
+confidential information.  The five (5) year time period does not apply if applicable law requires a 
+longer period.
+
+8.	PUBLICATION 
+
+8.1	Review of Publications.		Before submitting any proposed publication or 
+making any public presentation, University will need to ensure that such publication or presentation 
+does not contain any Confidential Information of either Microsoft or Intel or patentable subject 
+matter that would be required to be disclosed to either or both Sponsors under Section 5.1.  To that 
+end, at least thirty (30) calendar days prior to submission for publication or public presentation of a 
+manuscript or abstract describing any aspect of the UPCRC, University will send Sponsors a copy 
+of the manuscript or abstract to be submitted.  Each Sponsor will notify University in writing within 
+ten (10) days after the date of receipt whether the manuscript or abstract contains: (a) Sponsor’s 
+Confidential Information (if any has been provided by a Sponsor to University); or (b) such subject 
+matter for which patent protection should be sought prior to publication in order to protect an 
+invention made in the UPCRC.  If a Sponsor does not provide such notice within the ten (10) day 
+period, then as to that Sponsor, University will be free to submit the manuscript or abstract for 
+publication and to publish the disclosed research results in any manner consistent with academic 
+standards.  Notwithstanding this general freedom, nothing in this Section will constitute a waiver of 
+University’s other obligations under this Agreement with regard to confidential information and 
+Invention Disclosure.  
+ 
+8.2	Modifications.	Upon receipt of written notice from a Sponsor pursuant to Section 8.1(a) 
+above that the manuscript or abstract contains one or both Sponsors’ confidential information, 
+University will modify the manuscript or abstract accordingly and resubmit it to the affected 
+Sponsors according to the same process described above in Section 8.1.
+
+8.3	Delay of Publication.	Upon receipt of written notice from a Sponsor pursuant to Section 
+8.1(b) (regarding patentable subject matter), University will thereafter delay submission of the 
+manuscript for an additional period of up to sixty (60) days to permit the preparation and filing of a 
+patent application on the subject matter to be disclosed in such manuscript.  After expiration of 
+such sixty (60) day period, or the filing of a patent application on each such invention, whichever 
+occurs first, University will be free to submit the manuscript and to publish the disclosed results.
+
+8.4	Joint Publications.	With respect to manuscripts or abstracts that are jointly authored by 
+University and Microsoft or University and Intel, review under Section 8.1 is not required, provided 
+however, that no co-author party may publish or submit a jointly-authored manuscript or abstract 
+for publication until the other co-author party has given written consent thereto, of which consent 
+will not be reasonably withheld.  
+
+9.	TERM AND TERMINATION
+
+9.1	Term 	Unless earlier terminated pursuant to this Section 9, the term of this Agreement (the 
+“Term”) will commence on the Effective Date and remain in effect for three (3) years.  The Term 
+may be extended for another two (2) year period by the mutual written agreement of the parties as 
+set forth in Section 2.1.   
+
+9.2	Termination.  Any party may terminate this Agreement by written notice at any time if the 
+other party is in material breach of any material warranty, term, condition or covenant of this 
+Agreement.  Termination under this Section 9.2 will specify the nature of the breach and will 
+become effective thirty (30) calendar days following delivery of the notice to the breaching party 
+unless the breaching party cures the breach during said thirty (30) calendar day period.  Any party 
+can also terminate this Agreement without cause at each anniversary date of the Effective Date of 
+this Agreement provided that it has notified the other party of such intent in writing at least three (3) 
+months prior to such anniversary date, or any Research Project thereof without cause, upon notice 
+to the other party of such intent in writing at least two (2) months prior to the proposed termination 
+of such Research Project.
+
+9.3	Effect of Termination.  If a party terminates this Agreement pursuant to Section 9.2 above, 
+and upon such termination there is UPCRC Funding that remains unused, within sixty (60) days of 
+termination, University will promptly refund such unused UPCRC Funding to Sponsors in equal 
+amounts; provided that University will be entitled to retain funds to cover any commitment of 
+graduate student support for the duration of the academic year in which the Agreement is 
+terminated, or other previously-made financial commitments that may not be cancelled without 
+liability to University, which University will use reasonable efforts to minimize.  Sections 1, 4, 5, 6, 
+7, 8, 9.3, 10, and 11 hereof shall survive and remain in full force and effect after any termination 
+or expiration of this Agreement under Section 9.2.
+
+10.	REPRESENTATIONS/WARRANTIES/DISCLAIMERS/LIMITATIONS OF LIABILITY
+
+10.1	University’s Representations and Warranties.  University hereby represents and warrants to 
+Sponsors as follows:
+
+	(a)	University is duly organized, validly existing and in good standing under the laws of 
+the state in which it is organized.  University has been granted all requisite power and authority to 
+enter into and perform under this Agreement. 
+
+	(b)	University shall observe and comply with all applicable laws and regulations 
+regarding the subject matter of this Agreement.
+
+       (c)	There is no pending or threatened litigation involving University that would have 
+any material effect on this Agreement or on University's ability to perform its obligations 
+hereunder; further, University is not aware of any agreement to which University is bound that 
+would prohibit the execution and delivery by University of this Agreement or the performance or 
+observance by University of any term or condition of this Agreement.
+
+	(d)	University Personnel (including non-employees of University) will at all relevant 
+times be subject to an obligation to assign to University all their relevant rights, title and ownership 
+in the UPCRC IP.
+
+       (e)	University and its technology and licensing agents, office or entity, shall not 
+knowingly transfer to or grant to a third party any ownership of or rights or licenses to UPCRC IP 
+that may prevent the Sponsors from practicing or interfere with Sponsor’s full enjoyment of the 
+licenses granted to it in the Agreement.
+
+10.2	Sponsors’ Representations and Warranties.  Sponsors hereby represents and warrants to 
+University as follows:
+
+	(a)	Microsoft is duly organized, validly existing and in good standing under the laws of 
+the State of Washington.  Intel is duly organized, validly existing and in good standing under the 
+laws of the State of Delaware.   Sponsors have been granted all requisite power and authority to 
+enter into and perform under this Agreement. 
+
+	(b)	Sponsors will observe and comply with all applicable laws and regulations regarding 
+the subject matter of this Agreement.
+
+10.3	WARRANTY DISCLAIMER.  THE ABOVE WARRANTIES ARE THE ONLY 
+WARRANTIES MADE BY THE PARTIES HEREUNDER.  ALL OTHER WARRANTIES, 
+EXPRESS, IMPLIED OR STATUTORY, ORAL OR WRITTEN, AS TO ANY CONFIDENTIAL 
+INFORMATION, REPORTS, UPCRC IP, UNIVERSITY PATENTS, UNIVERSITY COPYRIGHTS, 
+COVERED INVENTIONS, UNIVERSITY BACKGROUND IP, BACKGROUND IP, JOINT 
+PATENTS, JOINT COPYRIGHTS OR ANY OTHER INFORMATION OR MATERIALS,  AND 
+INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS 
+FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT, ARE HEREBY 
+DISCLAIMED.   
+
+10.4	LIMITATION OF LIABILITY.  EXCEPT FOR BREACHES OF CONFIDENTIAL 
+INFORMATION, IN NO EVENT WILL ANY PARTY BE LIABLE FOR ANY INDIRECT, 
+INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR SPECIAL DAMAGES OF ANY KIND, 
+INCLUDING ECONOMIC DAMAGE OR INJURY TO PROPERTY OR LOST PROFITS, EVEN IF 
+SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  
+
+10.5	LIABILITY CAP/SOLE REMEDY.  EACH PARTY’S TOTAL LIABILITY, IN THE 
+AGGREGATE, FOR ANY CLAIMS OR DAMAGES WHATSOEVER RELATING TO OR 
+ARISING OUT OF A PARTICULAR RESEARCH PROJECT CONDUCTED UNDER THIS 
+AGREEMENT, WHETHER IN CONTRACT OR TORT, WILL BE LIMITED TO THE TOTAL 
+AMOUNTS PAID TO UNIVERSITY BY SPONSORS UNDER THIS AGREEMENT. 
+
+11.	MISCELLANEOUS
+
+11.1	Assignment.  Except as expressly provided in this Agreement, neither Sponsors nor 
+University will have the right to assign, delegate or transfer at any time to any party, in whole or in 
+part, any or all of the rights, duties and interest herein granted without first obtaining the written 
+consent of the other to such assignment.  Notwithstanding the above, however, a Sponsor may 
+assign any rights or obligations under this Agreement to an Affiliate of such Sponsor.
+
+11.2	Compliance with Law and Export Control.  In carrying out this Agreement, the parties will 
+comply with all local, state, and federal laws and regulations.  The parties further acknowledge and 
+agree that the transfer of certain commodities and technical data is subject to United States laws and 
+regulations controlling the export of such commodities and technical data, including the Export 
+Administration Regulations of the United States Department of Commerce. These laws and 
+regulations, among other things, prohibit or require a government license for the export of certain 
+types of technical data to certain specified countries or their nationals.  The parties hereby agree 
+that they will comply with all laws and regulations controlling the export of commodities and 
+technical data. 
+
+11.3	Construction.  If any provision, or portion thereof, of this Agreement is determined to be 
+invalid or void by a court of competent jurisdiction, that provision of the Agreement will be 
+enforced to the maximum extent permissible so as to effect the intent of the parties, and the 
+remainder of this Agreement will continue in full force and effect.  Failure by any party to enforce 
+any provision of this Agreement will not be deemed a waiver of future enforcement of that or any 
+other provision.  This Agreement has been negotiated by the parties and their respective counsel 
+and will be fairly interpreted in accordance with its terms and without any construction in favor or 
+against any party.
+
+11.4	Controlling Law. This Agreement shall be construed and controlled by the laws of the State 
+of New York, however, University will be entitled to all defenses available to it under California 
+law as a state entity, and the parties further consent to exclusive jurisdiction and venue in the courts 
+sitting in Manhattan, New York, New York. The parties waive all defenses of lack of personal 
+jurisdiction and forum nonconveniens, except for sovereign immunity.  Process may be served on 
+any party in the manner authorized by applicable law or court rule.  To the extent not prohibited by 
+law, questions affecting the construction and effect of any particular patent will be determined by 
+the law of the country in which the patent was granted. 
+
+11.5	Notices.  Any notices or requests in connection with this Agreement will be in writing 
+delivered by commercial overnight delivery or first class mail (air mail if not domestic), certified or 
+registered, return receipt requested, and addressed to the parties as follows (or to such other address 
+as the party to receive the notice or request so designates by written notice to the other):
+
+To University:	
+University of California, Berkeley
+Industry Alliances Office
+2150 Shattuck Avenue, Suite 950
+Berkeley, CA 94704-6701
+Attn: Director
+Fax: (510) 642-5723
+
+To Microsoft:	
+Microsoft Corporation
+Attn: Director of Technical Computing 
+One Microsoft Way
+Redmond, WA 98052
+
+With a copy to:	
+Legal & Corporate Affairs 
+Attention: Microsoft Research Legal Team
+Fax:  (425) 936-7409
+
+To Intel:
+Intel Corporation
+Attn:  General Counsel
+2200 Mission College Blvd.
+Santa Clara, CA 95052
+
+With a copy to: 
+Legal Department
+Attn: CTG Legal
+1211 NE 25th Avenue 
+JF3-402
+Hillsboro, OR 97224
+
+Notices and requests will be deemed given as of the date received.
+
+11.6	Publicity.  The parties shall mutually agree on a press plan and public announcements for 
+the initial announcements for the UPCRC, and no party shall individually made any press releases, 
+public statements, or other initial announcement related to the UPCRC without the prior consent 
+and approvals of each other party.  Sponsors and University agree that neither shall use the name of 
+the other in any advertising or publicity material, or make any form of representation or statement 
+in relation to the research conducted under this Agreement that would constitute an express or 
+implied endorsement of any commercial product or service, nor authorize others to do so, without 
+first having obtained the written permission from the other.
+
+11.7	Headings.  The descriptive headings contained in this Agreement are included for 
+convenience and reference only and will not be held to expand, modify or aid in the interpretation, 
+construction or meaning of this Agreement.
+
+11.8	No Agency or Partnership.  It is not the intent of the parties to create an employer-employee 
+relationship, a partnership or joint venture, or to assume partnership responsibility or liability.
+
+11.9	Entire Agreement.  This Agreement, its attachments, and an approved UPCRC Continuation 
+Proposal, along with any and all approved Modified UPCRC Overviews, constitute the entire 
+Agreement between the parties with respect to the subject matter hereof.  No variation, modification 
+of or changes to any of the terms or conditions hereof will be deemed valid except by a written 
+agreement dated subsequent to the date of this Agreement and signed by both parties hereto by their 
+duly authorized representatives.  
+
+11.10	Counterparts.  This Agreement may be executed in two (2) or more counterparts, all of 
+which, when taken together, will be regarded as one and the same instrument.  
+
+
+IN WITNESS WHEREOF, the parties hereto have entered into this Agreement as of the Effective 
+Date written above.
+
+
+University of California, Berkeley
+Microsoft Corporation
+By:  	
+Name:  
+Title:  
+Date: 	
+By:  	
+Name: 	
+Title:  	
+Date: 	
+						
+						    Intel Corporation
+		
+						     By:__________________________________
+	
+						     Name: _______________________________
+
+						     Title: ________________________________
+
+						     Date: ________________________________	
+							
+
+
+
+
+
+
+Attachment 1
+
+UPCRC Overview
+
+
+3. Research Themes
+Two years before this CFP, a multidisciplinary group of Berkeley researchers met weekly to discuss 
+the implications of the parallel revolution for applications, programming models, architecture, and 
+operating systems. These “Berkeley View” discussions created a synergistic environment that led to 
+this proposal. We decided on a fresh approach: to start top-down from applications; to innovate 
+across disciplinary boundaries by creating a culture that encourages interaction and cooperation; 
+and to create prototypes that can be quickly adapted to reflect multidisciplinary innovation.
+   To choose our applications, we first considered the two likely dominant future platforms:
+*	The datacenter. Google, Microsoft, and others are racing to construct buildings with 10,000 
+servers to run software as a service. We expect this trend to accelerate. 
+*	The mobile client (laptop/handheld). Dell already makes more profit from laptops than from 
+desktops, and laptop shipments will soon pass desktops. Millions of cell phones are shipped 
+each day and are increasing in functionality. We expect these trends to accelerate as well.
+In this re-imagining of client-server computing, the Par Lab is aimed at the mobile client. At home 
+or in the office, people will use large displays with their mobile device. For economic and technical 
+reasons, clients will not be continuously connected to the Internet, and so they must have 
+substantial computation and storage while running on batteries. 
+   When we explored our candidate large-scale client applications with our domain experts, we 
+made several critical observations. First, the applications are based on frameworks that support 
+components written in multiple languages, and use large libraries of reusable components drawn 
+from multiple sources. Second, all of our domain experts require very efficient execution (i.e., 
+optimized C or assembler) of at least some modules of their code even though many others are 
+written in scripting languages. Using a sequential programming model, composition of such a wide 
+variety of types of code is conceptually straightforward, if occasionally cumbersome in practice. 
+Using today’s parallel programming models, it is conceptually difficult and impossible in practice. 
+We believe composition lies at the heart of the parallel computing challenge. Without sane 
+composition, there can be no reuse. Without reuse, there is no software industry.
+   These observations also caused us to pause and reconsider our own pet language, compiler, and 
+architecture projects. Solving individual concurrency problems with a clever language feature, 
+compiler pass, or hardware widget will not lead to a pervasive parallel software industry (although it 
+is a proven path to research conference publication). Instead of trying to push technology nuggets 
+out to our users, we’ve instead taken an application-driven approach. We refocused our efforts on 
+providing the software and hardware infrastructure necessary to build, compose, and understand 
+large bodies of parallel software written in multiple languages, guided by the commonly recurring 
+patterns actually observed in application codes.
+    In the following, we describe the overarching research themes in our project. We list the details 
+of individual research projects associated with the themes only in Sections 4 and 5.
+
+
+3.1. Applications
+We selected applications to drive our research and provide concrete goals and metrics to evaluate 
+progress, both in performance (can they run as quickly as desired, e.g. in real-time, or scaling with 
+the number of cores?) and in productivity (can they be programmed easily by non-experts?). Each 
+application was selected based on the following 5 criteria:  1) Compelling in terms of likely market 
+or social impact, with short term feasibility and longer term potential. 2) Requires a significant 
+speed-up or smaller, more efficient platform to work as intended. 3) A committed expert 
+application partner will help design, use, and evaluate our technology. 4) Enables technology for 
+other applications. 5) Taken together, the applications should cover the possible platforms 
+(handheld, desktop, games) and markets (consumer, business, health) likely to dominate usage. We 
+will periodically reevaluate and adjust our application set to make sure we meet these criteria. 
+    Our generic approach is as follows. We will decompose each application into the productivity-
+level components discussed in other sections; we have already completed initial decompositions. 
+We will model performance (and eventually simulate and measure) of both the applications and 
+HW/SW components to measure progress towards the required performance and productivity gains. 
+We will also assess productivity gains by observing non-expert programmers. All this will provide 
+feedback to the HW and SW researchers, and provide progress metrics. We discuss each 
+application in turn, leaving details to the projects section.
+    
+Personalized Medicine, applied to Coronary Heart Disease (CHD). The seamless use of advanced 
+physiological modeling of 3D medical images is a new healthcare paradigm we call “virtual stress 
+testing” that will inform both doctor and patient about a patient’s medical condition in a way that is 
+scientifically accurate, intuitive, and compelling, and would help encourage healthy behavior and 
+reduce death rate. We have already developed and are commercializing this application for 
+osteoporosis, which we will use as a starting point. 
+
+Hearing and Music Augmentation. High performance signal processing in the right form factor 
+will permit much improved hearing aids (we are already working with a leading manufacturer, 
+Starkey Labs), sound delivery systems for concert halls, conference calls, and home sound systems 
+(using large microphone and speaker arrays, where Meyer Sound Labs is an industrial partner), 
+musical information retrieval, and composition systems (beyond keyboards).
+
+Speech Recognition. Dramatically improved automatic speech recognition performance in 
+moderately noisy and reverberant environments would greatly improve existing applications and 
+enable new ones like a real-time meeting transcriber with rewind and search. In recent NIST 
+evaluations on recognizing speech from meetings, the best system (ours) still generated word errors 
+40% of the time, and so there is much room for improvement. Progress depends on exploiting 
+greatly expanded signal and feature transformations.
+
+Context-Based Image Retrieval (CBIR). The size of large media or consumer-generated image 
+databases is growing so fast that their utility will depend on automated search, not manual labeling. 
+Current image classifiers are performance limited, both because low error rates depend on 
+processing very high dimensional feature spaces, and to limit user response time. We are using 
+Intel’s PIRO code-base, and will apply it to consumer and industrial image databases.
+
+Parallel Web Browser. The browser will be the largest and most important application on many 
+mobile devices. Future browser compute demands will grow with increasing connection speeds, 
+richer web pages, and better output devices. We will parallelize browser serial bottlenecks, mainly 
+parsing, layout/rendering, and script processing. Our goal is to make every website developer a 
+parallel programmer, by introducing an implicitly parallel web scripting language supporting 
+parallelized plug-ins.
+
+
+
+
+
+
+Dwarf
+E
+m
+b
+e
+d
+D
+e
+s
+k
+t
+o
+p
+G
+a
+m
+e
+s
+D
+B
+M
+L
+H
+P
+C
+H
+e
+a
+l
+t
+h
+I
+m
+a
+g
+e
+S
+p
+e
+e
+c
+h
+M
+u
+s
+i
+c
+B
+r
+o
+w
+s
+e
+r
+Dwarf
+D
+e
+s
+k
+t
+o
+p
+G
+a
+m
+e
+s
+D
+B
+M
+L
+H
+P
+C
+H
+e
+a
+l
+t
+h
+I
+m
+a
+g
+e
+S
+p
+e
+e
+c
+h
+M
+u
+s
+i
+c
+B
+r
+o
+w
+s
+e
+r
+1
+Finite State Mach.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  9 N-Body
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2
+Combinational
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+10 MapReduce
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3
+Graph Traversal
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+11 Backtrack/B&B
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4
+Structured Grid
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+12 Graphical Models
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+5
+Dense Matrix
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+13 Unstructured 
+Grid
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6
+Sparse Matrix
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Temperature Chart of Need
+DB = database
+7
+Spectral (FFT)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Hot
+Warm
+Med
+Cool
+ML = machine learning
+
+8
+Dynamic Prog
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+HPC = High Perf. Comp.
+
+
+3.2: Dwarfs: Lingua Franca, Anti-benchmarks, Enablers of Parallel Research
+We will effectively expand our applications coverage using the concept of a computational 
+“dwarf,” which is a pattern of communication and computation common across a set of 
+applications. The Berkeley View team showed that 13 dwarfs cover 6 app areas (1st 6 columns of 
+the table above), and while these 13 are not necessarily complete, they provide a set of essential 
+computational patterns that systems must support. The dwarfs actually play 4 roles: 1) They define 
+patterns for creating frameworks and libraries reusable across application domains (see Section 
+3.3); 2) They aid multidisciplinary discourse, in that they are simple enough and few enough so that 
+members of all SIGs understand them and we can rely on them for communication; 3) Dwarfs are 
+not tied to code or language artifacts--these “anti-benchmarks” encourage innovation in algorithms, 
+languages, data structures, and hardware; 4) They decouple research, allowing analysis of 
+programming support without waiting years for full application development (see Section 3.5). 
+    A natural question is what happens if we try to decompose the 5 apps above into the 13 
+dwarfs? We found that all 5 apps mapped neatly onto existing dwarfs, as illustrated by the next 5 
+columns in the table (for the browser, we illustrate the core code; plug-ins could look quite 
+different). We believe this mapping success is further strong evidence as to the effectiveness of the 
+dwarfs.
+
+3.3: Engineering Parallel Software with Productivity, Efficiency, and Correctness
+Our key research objective is to enable programmers to easily write programs that run efficiently on 
+manycore systems. We believe productivity, efficiency, and correctness are inextricably linked and 
+must be addressed together. We do not believe that these three objectives can be accomplished with 
+a single-point solution, such as one universal language. In our approach, efficiency will be 
+principally handled by the use of an efficiency layer (Section 3.3.1) that is targeted for expert 
+parallel programmers to develop optimized libraries and parallel programming frameworks. 
+Productivity is addressed in a complementary productivity layer (Section 3.3.2) that will use a 
+common composition and coordination language to glue libraries and parallel programming 
+frameworks into applications and reusable application frameworks. Both layers will come with a 
+comprehensive approach to correctness (Section 3.3.3). 
+
+   3.3.1: Efficiency layer:  Expert programmers work in the efficiency layer to develop highly 
+tuned parallel libraries and parallel programming frameworks for use in the productivity layer. Our 
+novel observation is that each dwarf can be expressed either as a library or as a framework.
+   
+   Parallel Libraries: A parallel library is a set of procedures and datatypes with serial interfaces 
+and hidden parallelism; such libraries have been successfully used in games, multimedia, and 
+scientific computing. The following dwarfs are amenable to encapsulation in a library: dense and 
+sparse matrix algorithms, spectral methods, graphical models, and combinatorial algorithms.
+   
+   Parallel Programming Frameworks: In some algorithms, parallelism cannot be easily hidden 
+behind a serial library interface because the parallel computation depends on the application. 
+Consider a parallel graph traversal: the work performed on nodes differs from application to 
+application. We believe that the remainder of the dwarfs all has this nature. To support them, we 
+will use programming frameworks, which are parallel libraries parameterizable with “plug-in” 
+components. The component inserted into the framework must obey certain restrictions: they will 
+have to have a serial interface and in some cases, they will have to be stateless. In the case of 
+parallel graph traversal, the plug-in may be a simple function computing weights, but it could also 
+be a parallel library or (recursively) another framework. The benefit of programming frameworks is 
+reuse of parallelism control patterns. Whereas libraries support function and data abstraction, 
+programming frameworks (under our definition) support parallel control abstraction. 
+   Our use of programming frameworks is based on our understanding of parallelism in our 
+applications, traditional software engineering architectural styles, and structural patterns that appear 
+in Mattson’s Patterns for Parallel Programming. We give three examples here: 1) MapReduce 
+algorithms involve independent parallelism followed by global combining algorithms. Two 
+variations include equal computational cost in the map operation, where a static assignment of work 
+to cores is appropriate, and one in which it varies (e.g., Google’s MapReduce), demanding a load 
+balancer. Both involve global communication primitives such as reductions and transposes. 2) 
+Divide-and-conquer parallelism is used in backtrack search and can make use of a task queue that 
+uses randomized load balancing (as in Cilk) or diffusion-based load balancing (if locality between 
+tasks is important). 3) For the most general graphs of an arbitrary task graph with unknown 
+structure as in factorization algorithms and completion procedures, coarse-grain software dataflow 
+scheduling has proven effective. This last case is very general, because it supports any kind of 
+parallelism pattern, but identifying special cases like 1), 2) and others are important for productivity 
+and efficiency.  
+   
+   Programming at the Efficiency Layer.  We offer two novel techniques for program synthesis 
+that shifts some of the burden of library and framework construction from human time to computer 
+time: Sketching allows programmers to specify the skeleton of an optimized algorithm and have the 
+sketching system correctly and verifiably fill in missing pieces relative to an executable 
+specification of the function. Autotuning uses performance feedback from models and experiments 
+to automatically search a space of proposed implementations for a given function and select the 
+one that is best for a given machine and problem class. Both of these are described in more detail in 
+the Projects section.  
+   Programs in the efficiency layer are written very close to the machine with the goal of allowing 
+the best possible algorithm to be written in the primitives of this layer. Unfortunately, existing 
+multicore and planned manycore systems do not offer a common low-level programming model for 
+parallel code. Using the idea of a software "Research Accelerator for Multi-Processors", we will 
+define a thin portability layer (software RAMP) that runs efficiently across single socket platforms 
+and has features for parallel job creation, synchronization, memory allocation, and bulk memory 
+access. To provide a common model of memory across machines with coherent caches, local 
+stores, and relatively slow off-chip memory, we will define an API based on the idea of logically 
+partitioned shared memory, inspired by our experience with Unified Parallel C (UPC), which 
+partitions memory between processors but currently not between on and off-chip (see Yelick bio). 
+This efficiency language may be implemented either as a set of runtime primitives or as a language 
+extension of C. It will be extensible with libraries to experiment with various architectural features, 
+such as transactions, dynamic multithreading, active messages, and collective communication. This 
+API will be implemented on some existing multicore and manycore platforms and our own 
+emulated manycore design.
+   
+   3.3.2 Productivity layer:  We believe the key to generating a successful software developer 
+community for manycore is to maximally leverage the efforts of parallel programming experts by 
+encapsulating their software for use by the programming masses. As mentioned above, we plan to 
+reuse expert work through parallel libraries and programming frameworks. Productivity layer 
+programmers will compose these into applications with the help of a composition and coordination 
+language. The language will be implicitly parallel (i.e., the composition will have serial semantics), 
+which means that the composed programs will be safe (e.g., race-free) and virtualized w.r.t. 
+processor resources. The language will document and check interface restrictions to avoid 
+concurrency bugs resulting from incorrect composition; for example, if instantiating a framework 
+with a stateful function when a stateless one is required. Finally, the language will support 
+definition of domain-specific abstractions to support construction of application frameworks, 
+offering a programming experience similar to that in MatLab, SQL, or Sawzall. Our audio and 
+browser applications both involve the construction and use of such domain-specific frameworks.
+   To illustrate the responsibilities of the composition language, consider a structured grid 
+framework, which may require independence of its plug-ins. The programmer writes a stencil 
+operation that reads a limited domain of one grid and writes to a single point in another grid. (The 
+unstructured grid framework is similar, but the data structure is an arbitrary graph.) The side-effect 
+properties of the stencil plug-in will be enforced by either (conceptually) copying input arguments, 
+or by supplying the framework with partition functions that are guaranteed to produce non-
+overlapping results. The partition operations may be simple array slices, or a graph partitioner that is 
+guaranteed to output non-overlapping partitions. Thus, a graph partitioner library would have 
+associated semantic properties (independence) with its output; these will be written in the 
+coordination language, although the library itself may be written in expert programmers’ languages 
+of choice.
+   The key problem in composing parallel code is correctness. To understand what restrictions we 
+place on composition to make correctness easier to achieve, it helps to consider two kinds of codes: 
+parallel (P) and serial (S). Their composition can be divided into four types: S-->S, S-->P, P-->S, and 
+P-->P. S-->S is well supported in existing languages, and S-->P is a common invocation of a parallel 
+library, so we focus on P-->S and P-->P composition. (Here the “-->” refers to a calling relationship, 
+i.e., S-->P means serial code calls parallel code.) We believe that P-->P is only for experts and is 
+only allowed in the efficiency layer. P-->S corresponds to parameterizing a parallel framework with 
+a component that has a serial interface.
+   The ability to compose parallel pieces also introduces potential performance problems, since it 
+involves combinations of parallel schedulers. For example, after composition, a scheduler designed 
+to carefully map a fixed set of computations on an equal number of cores may be end up being 
+used within the computations in a task-stealing framework. To allow for scheduler cooperation, 
+frameworks will be parameterized by their resource requirements so that they can adapt to the 
+context in which a framework is running. These requirements may change across program phases. 
+We will develop tools to custom-generate thread scheduling code from the coordination and 
+composition language.
+   3.3.3 A Comprehensive Approach to Program Correctness: Our approach to correctness 
+uses a combination of specification generation, modular verification, directed automated unit 
+testing (aka concolic testing), and runtime monitoring. Correctness is addressed differently at the 
+two layers: the productivity layer will be free from concurrency problems because the parallelism 
+models are very restricted and those restrictions will be enforced; the efficiency layer code will be 
+checked for subtle concurrency errors.  
+   A key challenge in verification is obtaining specifications for programs against which to verify. 
+Modular verification and automated unit test generation require the specification of high-level serial 
+semantic constraints on the behavior of the individual modules such as the parallel frameworks and 
+the parallel libraries. We will use executable sequential programs having the same behavior as a 
+parallel component, augmented with atomicity constraints on a task, predicate abstractions of the 
+interface of a module, or multiple ownership types. Programmers often find it difficult to specify 
+such high-level contracts of large modules; however, most programmers find it convenient to 
+specify local properties of programs using assert statements and type annotations. Often, local 
+assertions and type annotations can also be generated from implicit correctness requirements of a 
+program, such as data race and deadlock freedom and memory safety (see Necula bio). 
+Implications of these local assertions are propagated to the module boundaries by using a 
+combination of static verification and directed automated unit testing. The propagated implications 
+create serial contracts that specify how the modules, such as frameworks, can be correctly used. 
+Once the contracts for the parallel modules are in place, we will use static program verification to 
+check if the client code composed with the contracts is correct.   
+   Static program analysis in the presence of pointers and heap memory report many errors that 
+are not feasible. For restricted parallelism models with global synchronization, these problems 
+become more tractable (see Yelick bio) and a recent technique called directed automated testing or 
+concolic unit testing (see Sen bio), has shown promise to improve software quality through 
+automated test generation using a combination of static and dynamic analyses. We propose to 
+combine directed testing with model checking algorithms to unit test parallel frameworks and 
+libraries composed with serial contracts. Such techniques enable us to quickly test executions for 
+data races and deadlocks directly, since a combination of directed test input generation and model 
+checking hijacks the underlying scheduler and controls the synchronization primitives. Our 
+techniques will also provide deterministic replay and debugging capabilities at very low cost. For 
+scheduler hijacking, we will leverage hardware support. We propose to develop randomized 
+extensions of our directed testing techniques to build a probabilistic model of path coverage. The 
+probabilistic models will give a more realistic estimate of coverage of race and other concurrency 
+errors in parallel programs.
+   A critical aspect of our verification work is to ensure the techniques provide real value to 
+application developers. We will work with our application experts to determine the forms of 
+verification they require, and the level of annotation they are comfortable providing.
+       
+3.4: OS and Architecture: Composable Primitives not Packaged Solutions
+Our approach to both operating systems and hardware architecture is to deconstruct conventional 
+functionality into primitive mechanisms that software can compose to meet application needs.
+   A traditional OS is designed to multiplex a large number of sequential jobs onto a small number 
+of processors, with virtual machine monitors (VMMs) adding another layer of virtualization. We 
+instead propose a very thin hypervisor layer that exports spatial hardware partitions to application-
+level software. These “un-virtual” machines allow each parallel application to use custom processor 
+schedulers without fighting fixed policies in OS/VMM stacks. The hypervisor supports hierarchical 
+partitioning, with mechanisms to allow parent partitions to swap child partitions to memory, and 
+partitions can communicate either through protected shared memory or messaging. Traditional OS 
+functions are provided as unprivileged libraries or in separate partitions. For example, device 
+drivers run in separate partitions for robustness, and to isolate parallel program performance from 
+I/O service events. This deconstructed and distributed OS style improves both scalability and 
+resiliency to hardware and software faults. Our hardware architecture enforces partitioning of not 
+only of cores and on-chip/off-chip memory, but it also partitions the communication bandwidth 
+between these components, with QoS guarantees for system interconnect.  The resulting 
+performance predictability improves parallel program performance, simplifies code (auto)tuning 
+and dynamic load balancing, and supports real-time applications.
+   Our partitioned architecture allows software to directly use new low-level hardware primitives 
+to build customized parallel run-time systems, while protecting the larger system from bugs in any 
+partition. On-chip memory can be configured as either cache or scratchpad RAM, and user-
+programmable DMA engines move data efficiently through the memory hierarchy. Atomic fetch-
+and-op instructions provide efficient memory-side synchronization, including across partitions. 
+Barrier hardware provides rapid synchronization within a partition. As an example, the combination 
+of scratchpad RAM, DMA, and fast barriers, provides a simple and highly efficient run-time for 
+many dwarfs: structured grids, unstructured grids, dense matrices, sparse matrices, and spectral. 
+   More complex parallel run-time systems are built on user-level active messages, which provide 
+point-to-point synchronization between cores with direct register-to-register communication, and 
+user-level exception handlers. For example, software thread schedulers use active messages to 
+communicate dataflow synchronization and work stealing requests. We break cache coherence and 
+transactional memory “packaged solutions” into smaller hardware primitives. Per-partition 
+coherence hardware tracks read-write sharing and handles simpler private data caching in hardware, 
+but invokes software handlers when conflicts are detected. Handlers may in turn send active 
+messages to remote cores to resolve the conflict. This mechanism can be used by software for 
+conventional cache coherence, race detection, or transactional memory. Software is responsible for 
+creating state checkpoints, but hardware can optionally generate logs to support memory rollback or 
+deterministic replay. Hardware cache tags are accessible by software to support context swapping 
+of transaction read/write sets and logs.
+   A single application can be split across multiple partitions, with inter-partition communication 
+via protected shared memory. This is one way of quarantining legacy parallel libraries that require 
+their own concurrent run-time model.
+   The primitives are designed synergistically to allow arbitrary combinations. This enables new 
+forms of hybrid run-time system, but perhaps more importantly, supports composition of run-time 
+models in a single application. A code can switch thread scheduling policy (static versus dynamic) 
+and memory hierarchy (software-managed versus cached versus transactional) to match the current 
+phase of execution, and even run different policies in different subsets of a partition.
+   Such complex run-time strategies would be difficult to create manually, but can be 
+automatically synthesized from the coordination and composition language of the productivity-
+layer.
+
+3.5 Radical Collocation, Rapid Innovation, and Berkeley
+As we said at the beginning of Section 3, a key part of our fresh approach to parallelism is to 
+creating a culture that encourages multidisciplinary interaction and cooperation. Critical to our 
+multidisciplinary project culture has been our twice-a-year, three-day retreats, where everyone on 
+the project and industrial guests review progress and offer advice. (We can’t imagine how to 
+manage an integrated project without retreats, yet they remain rare outside Berkeley.) The first Par 
+Lab retreat will be January 9-11, 2008 at the Granlibakken Resort in Lake Tahoe and the second 
+will be June 4-6, 2008 in Santa Cruz. We will invite experts from Intel and Microsoft to our retreats 
+to give us feedback on the project, as is our tradition. (We will package the presentations, papers, 
+and financial records shown at retreats as our semiannual report.)
+   The second piece of this culture is to copy the success of the RAD Lab by moving Par Lab 
+faculty and students into a single, open space to accelerate innovation by living together and by 
+encouraging spontaneous multidisciplinary meetings. The 8 PIs will live in the physical Par Lab and 
+get the largest graduate student support. The 6 Co-PIs will retain their offices, and they will (co-) 
+supervise students or post-docs who work in the lab. Thus, we will interact daily, rather than just 
+before site visits. The space even helps with recruiting: head-to-head with MIT and Stanford, the 
+new space helped land a record 85% of the systems admits this year. We now believe “radical 
+collocation” is as important as retreats. (Once again, such radicalism is rare outside Berkeley.)
+   Because of the urgency in finding solutions, we are also conscious of trying to remove 
+dependencies that prevent research from occurring in parallel. For example, the dwarfs allow SIGs 
+to get started without waiting for the apps to be completed. We will purchase commercial computers 
+that approximate manycores to get the efficiency layer started without waiting for hardware RAMP. 
+Moreover, the efficiency layer will be done quickly to give us a parallel programming platform 
+ASAP.
+   Autotuning is one example of a prototype that can quickly be adapted in response to demands 
+from users. Hardware RAMP is another; by using FPGAs instead of custom hardware, we can 
+change the HW/SW interface every day and yet be fast enough to help SIGSOFT and SIGPLAN. 
+RAMP is also an example of how funding Berkeley can help the whole field directly since our 
+norm is to share technology. Six universities, 2 companies, and 12 researchers are developing 
+RAMP, and we will shortly make RAMP hardware and software widely available.
+   There are strong reasons to select Berkeley in addition to retreats, radical collocation, and 
+technology sharing. We are a team that is past the 9 to 12 month startup phase that any truly 
+multidisciplinary project must endure, so we’ll hit the floor running. The generous UC matching 
+support and low overhead allows your investment to attract 50 Berkeley-caliber PhD students and 
+postdocs to work on your problem, and the breadth of the 14 faculty ensures that this money will 
+be well spent. To help us with applications, we have leaders in almost any domain on the Berkeley 
+campus or in nearby Silicon Valley. We will continue to tap the local expertise in large-scale 
+parallelism from nearby Lawrence Berkeley National Labs (LBNL) and in embedded-parallelism at 
+the even-closer Berkeley Wireless Research Center (BWRC). Our existing relationships with 
+colleagues at Intel and Microsoft (see bios), the proximity of the Intel Research Berkeley and 
+Microsoft Research Silicon Valley, our open SIG organization, and our 20-year tradition of 
+biannual retreats ensure your heavy participation in our research. Of the “Final Four” directors, 
+Patterson is likely the most experienced and successful at leading such projects to help create new 
+multibillion-dollar industries and in transferring technology to existing companies, which is 
+different than transferring technology via startups. Berkeley has a time-honored tradition of 
+forming large, multidisciplinary teams to pursue aggressive new research agendas, so such 
+teamwork is natural and encouraged (see Patterson bio). Finally, the first parallel center will likely 
+set the pattern for future parallel centers, so the genuinely-integrated, radically-collocated Par Lab 
+seems like a better choice for others to emulate than options where collaboration may prove to be 
+more of an illusion than a reality.
+   
+
+4: List of Projects per Theme 
+The second part (section 5) goes into more technical detail, but the table below the project 
+titles, the PIs involved, and their relationships to the themes.
+
+Project title
+PIs
+Themes
+
+
+Ap
+ps
+Dw
+arf
+s
+En
+g. 
+|| 
+SW
+Pri
+mit
+ive
+s
+1. Personalized Medicine for Coronary 
+Heart Disease
+Keaveny, Demmel, Yelick
+ 
+ 
+ 
+ 
+2. Hearing and Music Augmentation
+Wessel, Wawrzynek, Lee
+ 
+ 
+ 
+ 
+3. Automatic Speech Recognition (ASR)
+Morgan, Asanovic
+ 
+ 
+ 
+ 
+4. Fast, Energy-Efficient Content-Based 
+Image Recognition (CBIR)
+Keutzer
+ 
+ 
+ 
+ 
+5. Parallel Web Browser 
+Bodik, Asanovic
+ 
+ 
+ 
+ 
+6. Coordination and Composition 
+Language for Productivity Programming 
+Yelick, Keutzer, Lee, Bodik, Sen, 
+Asanovic
+ 
+ 
+ 
+ 
+7. Software RAMP for Efficiency Level 
+Programming 
+Yelick, Asanovic, Bodik, 
+Kubiatowicz 
+ 
+ 
+ 
+ 
+8. Correctness in Parallel Programs
+Sen, Necula
+ 
+ 
+ 
+ 
+9. Automatic Performance Tuning 
+Demmel, Yelick, Asanovic, 
+Bodik, Patterson
+ 
+ 
+ 
+ 
+10. Programming by Sketching 
+Bodik, Necula, Sen, Yelick, 
+Demmel 
+ 
+
+ 
+ 
+11. Manycore Operating Systems
+Kubiatowicz, Asanovic
+ 
+ 
+ 
+ 
+12. ManyCore Architecture
+Asanovic, Kubiatowicz, 
+Patterson, Wawrzynek
+ 
+ 
+ 
+ 
+13. RAMP ManyCore System
+Wawrzynek, Asanovic, Patterson
+ 
+ 
+ 
+ 
+
+
+1. Project Title: Personalized Medicine for Coronary Heart Disease (CHD)
+Project Themes: Application-driven research, Dwarfs
+Principal Investigator: Keaveny, Demmel, Yelick 
+CHD accounts for over 400,000 deaths/year in the U.S. with 16M Americans currently suffering 
+symptoms and 72M having high blood pressure. Our goal is to enable physiologically realistic models of 
+blood flow through arteries based on a 3D medical image of the patient’s blood vessels during a patient 
+visit. This has the potential to profoundly alter the diagnosis and treatment of CHD. Local computation is 
+critical, since there are barriers to transferring medical images through hospital firewalls. Ultimately, 
+patients will own devices that perform computations to predict and assess their personalized health 
+benefits of treatment, diet, and exercise using daily monitoring of blood pressure, medication levels, and 
+other sensor devices. We will implement rapid, local analysis techniques for finite element-based 
+computational solid/fluid dynamics analyses on blood vessels, based on CT angiography exams. We will 
+use autotuning for sparse matrices and build on expertise in parallel simulations of large non-linear solid 
+problems (See Gordon Bell Prize 2004), clinical application of physiological (but simpler) models for 
+osteoporosis (see Keaveny and Demmel bios), and simulation of fluids with immersed elastic structures 
+(see Yelick bio). 
+Q3/Y1: Port our “bone code” to multicore, identifying bottlenecks and decomposing into dwarfs. Q4/Y1: 
+Implement non-linearly elastic behavior. 
+Q4/Y2: Using libraries, extend code for Newtonian, compressible fluid flow at low-to-intermediate 
+Reynolds numbers, for blood vessels assuming rigid boundaries. 
+Q4/Y3: Extend modeling to model blood flow in non-linearly elastic vessels.
+Q2/Y4: Performance tune using synthesis. (SM : running times in minutes for local clinical use.)
+Q1/Y5: Use productivity tools to make code easily extendible to broader set of medical analyses. (SM: 
+Code base easily usable by non-programming experts.)
+Q4/Y5: Extend code to analyze patient-specific scenarios of treatment, diet, and exercise.
+
+2. Project Title: Hearing and Music Augmentation
+Project Themes: Application-driven research, Dwarfs, and Engineering Parallel Software
+Principal Investigators: Wessel, Wawrzynek, Lee
+These compute-intensive audio and music applications share common software components, are 
+mappable to dwarfs, require real-time, low-latency I/O (<5ms), and high fault tolerance. Real-time is 
+needed to ensure that audio output samples are generated at a steady rate. If a sample is late, an artifact 
+(audio glitch or click) results. Reliability is critical, as failures cannot be tolerated in concert presentations 
+or consumer applications.
+Handsets for Hearing Augmentation (HA). Application will run on a many-core handset with wireless 
+connections to ear bud or hearing aid devices equipped with microphones. We implement dynamics 
+processing, multi-band compressors, noise reduction, source separation, and beam forming. These will 
+result in a hearing aid that responds dynamically to the changing context of the listener selecting optimal 
+settings for music, speech, television, car, and so forth.
+Large Microphone and Speaker Arrays. Dense arrays of speakers and microphones will enhance listener 
+experience in conference calls, living rooms, and in concert halls. Wavefield synthesis allows us to place 
+auditory images in fixed locations in a room. Beam-forming microphone arrays aid in location and 
+separation of sound sources. We have demonstrated success on a 120-channel speaker array and will 
+provide a 400-channel speaker and matched microphone array as a testbed.  
+Handsets and Laptops as Hosts for a Broad Class of Musical Instruments. Widely used graphical 
+languages for computer-based musical instruments, e.g., Max, and augmented traditional instruments, e.g. 
+Open Sound World (OSW), have demonstrated programmer productivity but have not been adapted to 
+multicore. We will combine our experience developing these languages with features of our manycore 
+programming layers to retarget the languages for manycore.
+Q4/Y1: Prototypes of parallel algorithms. Specification for applications; identify regions as dwarfs and 
+quantify impact (SM: >80% parallel). Define RAMP deadline scheduler requirements for audio.
+Q4/Y2: Measurement of deadline scheduler on RAMP (SM: < 5msec I/O throughput). Prototypes for apps 
+using major sections of parallel code (SM: Correctness)
+Q4/Y3: Refine prototype app code to full parallel capability. (SM: Effective utilization >60%).
+Q4/Y4: Optimize for target platforms. (SM: Real-time). 
+Q1/Y5: OSW-based visual parallel programming for music & audio (SM: Accessible to non-expert 
+programmers). 
+Q2/Y5: Demonstrate large-scale wavefield array (SM: > 500 channels).
+
+3. Project Title: Automatic Speech Recognition (ASR)
+Project Themes: Application-driven research, Dwarfs, and Engineering Parallel Software
+Principal Investigators: Morgan, Asanovic
+Conventional ASR systems have found limited acceptance because they work reliably only under good 
+acoustic situations. We will use the computational capabilities of manycore systems to implement novel 
+ASR systems that perform reliably in noisy environments, such as meetings and teleconferences. We will 
+use our own feature generation subsystems, including Quicknet and Feacalc. These systems are 
+frequently downloaded and we have used them in combination with SRI's DECIPHER ASR components 
+to produce a collaborative system that has been extremely successful at every NIST evaluation on 
+meeting speech. For this project we will use elements from a publicly available system such as 
+Cambridge's HTK (used at universities worldwide, and recently updated to include large vocabulary 
+enhancements) or IDIAP's Juicer (a newer system).
+Q3/Y1: Full dwarf-mapped “standard” ASR system (SM: >25% of theoretical speedup). 
+Q4/Y1: Test improvements on noisy database using ~16 streams (SM: WER reduction of 20% (relative) 
+over range of noise types for small vocabulary task)
+Q3/Y2: Dwarf mapping of 1st version noise robust system (SM: >40% of theoretical speedup). 
+Q4/Y2: Test improvements on noisy database using 128 streams (SM: WER reduction of 30% (relative) 
+for large vocabulary (meeting) task)
+Q4/Y3: Simulation of complete system, including robustness (SM: >60% of theoretical speedup, WER 
+reduction of 40% (relative) for large vocabulary (meeting) task)
+Q3/Y4: Modification of mappings for real hardware (SM: >50% of theoretical speedup).  
+Q4/Y4: Revision of algorithms to reflect the short-term experience (SM: WER reduction of 50% (relative) 
+for large vocabulary (meeting) task)
+Q4/Y5: Implementation of complete system: real-time meeting transcriber with rewind and search. (SM: 
+Real-time performance, maintaining robustness from year 4)
+ 
+4. Project Title: Fast, Energy-Efficient Content-Based Image Recognition (CBIR)
+Project Themes: Application-driven research, Dwarfs, Engineering Parallel Software
+Principal Investigators: Keutzer
+Useful search of large media databases is currently possible only using explicit tags from the user. CBIR 
+systems search large image databases based on implicit criteria generated from a set of positive and 
+negative examples. Such functionality is quickly becoming a necessity, since the value of an image 
+database depends on the ability to find relevant images. The system core is a set of feature extractors and 
+classifiers. The feature extraction routines analyze the images to create various signatures from the image, 
+while the classifiers learn boundaries separating useful and irrelevant images, and then classify the 
+remaining images in the database. The classifiers are based on support-vector machines and k-nearest 
+neighbor classifiers (both use matrix dwarfs). Current image classification systems are performance-
+limited, while manycore will enable more intelligent feature extraction and more precise queries, thereby 
+increasing search result relevance. We will leverage Intel’s PIRO code-base consisting of 35K lines of 
+code for the base content-based image retrieval system and ~165K lines of libraries for feature extraction 
+and other utilities. We have already performed a conceptual re-architecting of PIRO using a hierarchical 
+pipe-and-filter stream pattern at the top level. The feature-extractor is a filter is based on an agent-and-
+repository pattern and the classifier is a filter based on a map-reduce pattern. 
+Q3/Y1: Re-factor current code-base into library components for CBIR (extractors and classifiers).  
+Q4/Y1: Implement components on multiprocessor.
+Q3/Y2: Implement SVM training routines on 32 cores. (SM: Show speedup of at least 20x)
+Q4/Y2: Implement feature extraction routines on 32 cores. (SM: Show speedup of at least 25x)
+Q4/Y3: Demonstrate library productivity by creating specialized CBIR systems for consumer, medical, 
+and security system images. (SM: Show 10X productivity improvement.) 
+Q4/Y3: Implement SVM and feature extraction on RAMP-based manycore (~1000 core) processor (SM: 
+Show end application speed-up of 500X for 1000 processors.)
+Q4/Y4: Create prototype application-framework for image recognition leveraging existing code. 
+Q4/Y4: Use framework to create a broad variety of image recognizers simply by choosing from a library 
+of feature extractors and parameterizing the classifiers. 
+Q4/Y5: Demonstrate framework on a new image recognition problem such as recognizing foods on a 
+plate. (SM: Show significant (10X) productivity gains compared to handcrafting the application.)
+
+5. Project Title: Parallel Web Browser 	
+Project Themes: Application-driven research, Dwarfs, Engineering Parallel Software 
+Principal Investigators: Bodik, Asanovic
+With 4G networks and better output devices, building a parallel browser will be the last step to desktop-
+quality, AJAX-full browsing on an energy-limited handheld. Only a manycore handheld will provide the 
+cycles needed for parsing (including translation to DOM), rendering (including page layout), and 
+scripting—the three primary browser activities. Unfortunately, all three are considered nearly inherently 
+sequential. In this project, we will explore techniques to parallelize all three. Older discarded styles of 
+parsers appear promising for parallelization. Although irregular dependencies make parallelization of 
+rendering challenging (e.g., changing one letter may force re-layout of an entire page), rendering is a 
+dynamic programming dwarf composed with a graph traversal dwarf, and is parallelizable with some 
+software speculation. Our goal is to turn every website developer into a parallel programmer without 
+plaguing them with threads and/or locks. A transactional DOM has been proposed by others, but we think 
+we can do without threads and transactions, remaining entirely implicitly parallel thanks to a streaming 
+language, SkipJax (derived from BrownU’s FlapJax) that combines reactive and media programming.  
+Q4/Y1: Develop hand-written parallel parser and scanner (FSM dwarf).  
+Q4/Y1: Complete SkipJax and perform user study. (SM: naive programmers learn SkipJax twice as fast 
+as JavaScript/AJAX.)
+Q4/Y2: Parser rewritten as divide-and-conquer and sparse matrix dwarfs.
+Q4/Y2:  Implement simple parallel renderer as an application framework with SkipJax language.  
+Q4/Y3: Develop autotunable parser generator for manycore. (SM: 10x speedup over serial.) 
+Q4/Y3: Evaluate techniques (types, atomic sections, etc.) for non-interference in DOM updates. 
+Q4/Y4: Create browser plug-in architecture. (SM: Plug-ins run in parallel with browser and achieve 
+significant (~10X) speed-up)
+Q4/Y5: Implement browser UI in SkipJax. SM: Plug-ins run in parallel with browser and achieve 
+significant (~10X) speed-up)
+
+6. Project Title: Coordination and Composition Language for Productivity Programming
+Project Theme: Engineering Parallel Software  
+Principal Investigators: Yelick, Keutzer, Lee, Bodik, Sen, Asanovic
+We will develop a language for specifying high-level program composition and coordination to provide 
+programmers with a programming model that is safe and efficient. The language will include support for 
+parallelism patterns, such as divide-and-conquer, MapReduce, streams/pipe-and-filter, and data 
+parallelism. The language will also support the specification of side effects on functions and a rich set of 
+data partitioning operations for shared data structures. The research products will be a language 
+definition, analyses to ensure lack of concurrency errors, runtime techniques for composing schedulers 
+within various frameworks, and a prototype implementation that runs on existing multicore platforms and 
+our own manycore design. We will develop use the coordination and composition language to build 
+domain-specific application frameworks for our driving applications, e.g., a parallel streaming/pipe-and-
+filter environment for media applications (audio or image) with transformations based on spectral and 
+structured grid libraries.
+(SM: The overarching goal of the work described below is that we demonstrate the creation of multiple 
+application frameworks, which demonstrate 10X productivity improvements over hand-crafted parallel 
+implementations.)
+Q2/Y1: Identify all key parallelism patterns and dwarfs required by our driving applications. 
+Q4/Y1: Define initial language for side effect specification and data partitioning.
+Q2/Y2: Define language support for expressing key parallelism patterns (at least Q2/Y1 patterns)
+Q4/Y2: Develop side effect analysis for specifying and checking framework use.
+Q2/Y3: Implement algorithms to map virtualized (e.g., stream and data) parallelism to cores.
+Q4/Y3: Design and build application level framework for stream (image or audio) processing.
+Q4/Y4: Release coordination and composition language and implementation for application.
+Q4/Y5: Demonstrate full application in the productivity level with performance evaluation 
+
+7. Project Title: Software RAMP for Efficiency Level Programming
+Project Theme: Engineering Parallel Software, Dwarfs 
+Principal Investigators: Yelick, Asanovic, Bodik, Kubiatowicz 
+The goal of this project is to accelerate research by our own team and others in investigating programming 
+models, libraries and frameworks for programming multicore and manycore machines. Software RAMP 
+will be a programming model for existing multicore and future manycore systems. It will include a basic 
+shared address space programming language (extending UPC, see Yelick bio) with explicit non-blocking 
+DMA operations to move data from off-chip DRAM and (as needed) between local stores on a chip. The 
+language will include synchronization, atomic operations, and collective communication. There will be 
+variations of the language for static and dynamic threading models. Portability is critical for widespread 
+use, although some machine-specific features may be required to enable exploration of novel hardware. 
+We will incorporate our synthesis tools into use this language and build frameworks and libraries within 
+it. Code at this level will also create a test suite for correctness tools and for dynamic hardware and OS 
+features that help identify concurrency errors. (SM: The overarching goal of the work described below is 
+that by Q4/Y3 we have demonstrated that expert programmers can use SW RAMP to achieve results 
+within 20% of the performance (speed and power dissipation) of hand-crafted implementations.) 
+Q2/Y1: Design extension of UPC to reflect a partition between on- and off-chip memory.
+Q4/Y1: Implement initial set of primitives, including synchronization and communication.
+Q2/Y2: Implement transactional support and atomic memory operations.
+Q4/Y2: Build frameworks for the driving applications using SW RAMP. 
+Q2/Y3: Experiment with algorithms from the dwarfs using SW RAMP on multiple platforms.  
+Q4/Y3: Devise hybrid scheduling algorithms for composing frameworks.
+Q2/Y3: Release SW RAMP.  
+Q4/Y4: Experiment with mechanism for fault tolerance detection and handling.
+Q4/Y5: Evaluate SW RAMP primitives with implications for future hardware/software features
+(SM:  Metrics for Y4 and Y5 are that SW RAMP has been adopted for use in independent high-level 
+software projects and application frameworks.)
+
+8. Project Title: Correctness in Parallel Programs
+Project Theme: Engineering Parallel Software, Dwarfs 
+Principal Investigators: Sen, Necula
+The goal of this project is to build scalable tools to improve confidence in the correctness of parallel 
+programs. The specific objectives (SMs) are: 1) Demonstrate that automated unit testing of parallel 
+modules is no harder than their sequential counterparts are. 2) Demonstrate that modular verification of 
+the dwarfs is tractable. 3) Demonstrate that at least 60% of the serial contracts required for modular 
+verification and unit testing can be generated automatically. 4) Demonstrate that our verification and 
+testing tools can give more than 90% confidence in correctness.
+Q4/Y1: Combine directed automated unit testing with model checking. 
+Q4/Y2: 1) Prove decidability results for the restricted parallel patterns found in the dwarfs. 2) Build 
+verification tools and apply them to the dwarfs present in the applications.
+Q4/Y3: 1) Build tool to automatically generate serial contracts from local assertions and type annotations. 
+2) Apply the tool to the applications.
+Q4/Y4: Build techniques and tools for runtime monitoring of the properties that cannot be proved using 
+verification or testing.
+Q4/Y5: 1) Develop randomized extensions of the modular testing and verification tools. 2) Develop 
+statistical methods to build probabilistic models of coverage.
+
+9. Project Title: Automatic Performance Tuning (Autotuning)
+Project Theme: Engineering Parallel Software, Dwarfs
+Principal Investigators: Demmel, Yelick, Asanovic, Bodik, Patterson
+Autotuning uses a combination of empirical search and performance modeling to create highly optimized 
+libraries tailored to specific machines. We will identify critical libraries based on application needs and 
+build autotuners in the efficiency layer. We will also develop fundamental technology, including 
+optimization and code generation strategies for manycore, search algorithms, and performance models to 
+guide search and aid in identifying hardware bottlenecks. We will leverage existing autotuners from 
+ourselves and others, adding support for novel hardware features, and build new autotuners when none 
+exist. We will expand our tuning activities in the BeBOP and LAPACK groups in several dwarfs (dense 
+[Demmel 1] and sparse [Demmel 2, Yelick 4] linear algebra, regular [Yelick 5, Bodik 2] and irregular 
+meshes), as well as collective communication routines. Priorities will come from application needs, e.g., 
+the health application requires repeated sparse matrix-vector multiplies, which can be treated as a single 
+operation to save repeated reads of the matrix; the resulting code is very complicated, so we plan to use 
+sketching to fill in pieces of the optimized version. 
+Q2/Y1: Continue detailed decomposition of applications into dwarves. 
+Q4/Y1: Build manycore performance models to identify hardware limits.
+Q2/Y2: Port and measure existing libraries and autotuners to multicore platforms.
+Q4/Y2: Hand exploration of potential optimizations, using automation via sketching.
+Q2/Y3: Design of new libraries and autotuners based on application needs. 
+Q4/Y3: Integrate autotuned libraries into apps and evaluate. (SM: Best possible performance.)
+Q4/Y4: Incorporate novel HW features into search space; evaluate via RAMP. 
+Q4/Y5: Release of libraries and autotuners for manycore. (SM: Use in applications)
+
+10. Project Title: Programming by Sketching 
+Project Theme: Engineering Parallel Software
+Principal Investigators: Bodik, Demmel, Necula, Sen, Yelick
+Expert programmers will write highly optimized library implementations using sketching and autotuning. 
+Programmers may sketch sophisticated implementations, which will then be synthesized and autotuned. 
+Sketching serves as an alternative to optimizing compilers for the efficiency layer, and supports 
+optimizations that adapt to the application and hardware needs. For example, a data-structure-agnostic 
+sketch will be synthesized into a library module composable with the application data structures. We will 
+develop sketching for (i) grid operations that go beyond stencils, (ii) lock-free data structures, and (iii) 
+turning synchronous specifications into asynchronous implementations that use non-blocking memory 
+operations. We will add linguistic support for sketching into language(s) for programming in the 
+efficiency layer, develop synthesizers for completing holes in sketches, and build tool support for 
+sketching. The goals are to make sketching as natural as programming (with no formal systems training) 
+and to make synthesis scalable enough for high-performance implementations of most dwarfs. .
+(SM: The overall success metric for this work is that where Sketching is applied it will show a 10X 
+productivity improvement over developing parallel code by hand.)
+Q4/Y1: Sketching for the Structured Grid dwarf – already demonstrated for the sequential case). (SM: 
+Achieves within 20% of best performance.)
+Q4/Y2: Develop abstractions for reducing other dwarfs to SAT-based sketching.
+Q4/Y3: Demonstrate concolic sketching. Symbolic debugging of irresolvable sketches.
+Q4/Y4: Provide language support for hierarchical sketches (SM: demonstrate scalability of synthesis).  
+Q4/Y5: Build a compiler with sketching and autotuning (instead of with optimizations).
+
+11. Project Title: Manycore Operating Systems
+Project Themes: OS and Architecture
+Principal Investigators: Kubiatowicz, Asanovic
+The goal of this project to develop a functioning operating system for a manycore system. We will 
+simultaneously explore mechanisms to aid in parallel programming while investigating opportunities to 
+improve performance, fault-tolerance, and security. We exploit several key ideas:
+Spatial Partitioning: Groups of processors can be combined into protected “partitions”. Boundaries will 
+be enforced through hardware mechanisms restricting, among other things cross-partition shared memory. 
+Messaging between partitions will be restricted based on a flexible, tag-based access control mechanism. 
+OS functionality such as device drivers and file systems will be spatially distributed rather than time-
+multiplexed; we refer to this as “spatial deconstruction.”
+Minimalism: Only a thin “hypervisor” layer is resident on every processor. Many system facilities will be 
+linked at user level as a set of optional “systems libraries.” Fine-grained hardware protection mechanisms 
+will allow direct, user-level access to facilities such as networking and I/O. Parallel applications will be 
+given “bare metal” partitions of processors that are dedicated to the given application for sufficiently long 
+to provide performance predictability.
+User-Level Protected Messaging: Messages will be used to cross protection domains rather than more 
+traditional trap-based mechanisms. Through hardware mechanism and/or static analysis, applications will 
+have direct, user-level access to network interfaces and DMA. Further, fast exception handling and 
+hardware dispatch of active message handlers will permit low overhead communication without polling. 
+The OS will directly support user-level messages.
+Integrated Support for Checkpoint/Restart: Direct support for checkpoint and restart will be provided 
+to users. In cooperation with the compiler and execution frameworks, this will provide fault-tolerance that 
+is minimally invasive to the bulk of parallel programmers. We anticipate combining this mechanism with 
+dependency tracking for speculative execution.
+Q4/Y1: Develop hypervisor and spatial partitioning technology for use on existing multicores. 
+Q4/Y1: Implement traditional OS functionality via message passing by porting a more traditional OS 
+(such as Linux or Singularity) to run on a single-core partition within manycore system.
+Q4/Y1: Construct a simple runtime system to integrate with the basic execution models.
+Q4/Y2: Wrap device drivers to run in separate partitions and placing select functionality (such as the file 
+system) on its own core as a “server”. (SM: Less than 10% slowdown compared.) 
+Q4/Y2: Design to deliver interrupts as messages to free cores. 
+Q4/Y2: Integrate new runtime systems (in collaboration with efficiency layer development). Q4/Y2: 
+Specifying function of hypervisor in sufficient detail for verification.
+Q4/Y3: Port of hypervisor to run on HW RAMP with new manycore mechanisms. 
+Q4/Y3: Develop mechanism to for soft-realtime scheduling with QoS mechanisms. 
+Q4/Y4: Development of fault-containment and information taint mechanisms integrated with hardware 
+mechanism. (SM: System should be able to recover from failure of partitions.) 
+Q4/Y5: Recovery of applications should be transparent at productivity level. (SM: Demonstrate recovery 
+under simulated faults.)  
+Q4/Y5: Facilities for dynamic runtime checking integrated at language and efficiency layer.
+
+12. Project Title: Manycore Architecture
+Project Themes: OS and Architecture 
+Principal Investigators: Asanovic, Kubiatowicz, Patterson, Wawrzynek
+We will develop a new manycore architecture to support the needs of the efficiency layer. 1) A 
+dynamically reconfigurable memory hierarchy that can support both software-managed memories and 
+a cache-coherent or transactional memory (TM) system. (SM: Hybrid HW/SW TM system performs 
+within 20% of dedicated HW); 2) Synchronization primitives (barriers, active messages, atomic memory 
+operations (AMOs)) to support efficiency layer parallel run-time systems (SM: Threads can synchronize 
+every 100 instructions with <20% slowdown); 3) Efficient on-chip networks and protocols with support 
+for low-latency cross-chip communication and QoS guarantees (SM: Can send packet across chip with 
+<2X latency hit over optimized wire. Can run multiple real-time codes using >60% of system bandwidth); 
+4) Area and energy-efficient latency-tolerant execution core designs (SM: code using <5% of cores can 
+saturate available DRAM bandwidth with useful traffic). All designs will be implemented as emulations, 
+but with delay and power figures based on realistic future VLSI process parameters.
+Q4/Y1: Configurable scratchpad/pure hardware cache; barriers + active messages
+Q4/Y2: Hybrid TM; QoS network core-core, core-L2; AMOs; core design study complete
+Q4/Y3: Race detection; QoS network core-DRAM; low-latency router design complete
+Q4/Y4: Further co-development of primitives to support new efficiency layer design
+Q4/Y5: 1024-core reconfigurable SRAM/coherence/TM system with low-overhead syncs
+    
+13. Project Title: RAMP Manycore System
+Project Themes: OS and Architecture 
+Principal Investigators: Wawrzynek, Asanovic, Patterson
+Using the separately funded RAMP infrastructure, we will develop and support a RAMP emulation model 
+of our proposed Manycore architecture. This will support the OS and architecture projects by providing a 
+platform for experimentation with new hardware features, and support all other projects by providing a 
+standard, highly scalable, parameterizable, and observable platform for experimentation. (SM: 
+OS/architecture projects can change hardware design with single day turnaround; Emulation runs 
+parallelized applications faster than native serial code on contemporary laptop while keeping full 
+statistics.)
+Q4/Y1: 128 32-bit 100MHz cores running on 8 BEE3 boards, simple timing, and simple I/O
+Q4/Y2: 256 64-bit 100MHz cores running on 16 BEE3 boards, advanced tracing, scripted I/O
+Q4/Y3: 512-1024 64-bit 100-150MHz cores running on 32 BEE3-4 boards
+Q4/Y5: 2048 64-bit 150MHz cores running on 64 BEE4 board
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Attachment 2
+
+Budget
+
+Microsoft/Intel
+
+
+Year 1
+Year 2
+Year 3
+Year 4
+Year 5
+Total
+Salaries & Benefits
+
+
+
+
+
+
+Faculty
+$0
+$0
+$0
+$0
+$0
+$0
+Grad. Stud.
+$849,860
+$916,674
+$987,327
+$991,371
+$994,121
+$4,739,353
+Postdoc
+$0
+$0
+$0
+$0
+$0
+$0
+Other Career Staff
+$0
+$0
+$0
+$0
+$0
+$0
+Supplies
+$41,498
+$34,264
+$11,573
+$28,999
+$21,964
+$138,298
+Travel
+$0
+$0
+$0
+$0
+$0
+$0
+Overhead
+$472,419
+$503,997
+$529,417
+$540,795
+$538,525
+$2,585,153
+Tuition & Fees
+$336,223
+$345,065
+$371,683
+$438,835
+$445,390
+$1,937,196
+Equipment
+$300,000
+$200,000
+$100,000
+$0
+$0
+$600,000
+Total
+$2,000,000
+$2,000,000
+$2,000,000
+$2,000,000
+$2,000,000
+$10,000,000
+
+There are a total of 27 Graduate students assigned to the funding source.  The total amount of graduate 
+student will increase by 2 in year 3.   Then, it reduces 1 graduate each year to follow.  The ratio of 
+resident students to non-resident will be 22 vs. 5 per year.  Within Year 3, the amount of non-resident 
+student will reduce to 3, with more students establishing residency.  We will purchase 14 laptops and 
+desktops during the first year.  Then purchase an additional 14 laptops in year 2.  The additional supplies 
+will be used to support a project retreat each year at various outside site locations.  In Year 1, we plan to 
+renovate a new lab facility for the Par Lab.  Our estimated cost will be around $300K (based on the cost 
+of renovations to the new RAD Lab facility).  In Year 2, we plan to purchase a RAMP System at $200K.  
+In Year 3, we plan to purchase a GPU System at $100K.
+
+  Campus Matching Funds
+
+
+Year 1
+Year 2
+Year 3
+Year 4
+Year 5
+Total
+Salaries & Benefits
+
+
+
+
+
+
+Faculty
+$398,893
+$411,873
+$425,371
+$439,410
+$454,009
+$2,129,556
+Grad. Stud.
+$629,526
+$654,767
+$646,870
+$566,497
+$552,290
+$3,086,769
+Postdoc
+$193,373
+$201,108
+$209,153
+$217,518
+$226,220
+$1,047,372
+Other Career Staff
+$161,040
+$167,482
+$174,182
+$181,148
+$188,394
+$805,200
+Supplies
+$99,536
+$56,030
+$14,367
+$27,148
+$8,944
+$242,395
+Travel
+$79,600
+$23,200
+$6,800
+$23,400
+$13,400
+$146,200
+Overhead
+$0
+$0
+$0
+$0
+$0
+$0
+Tuition & Fees
+$301,823
+$332,274
+$276,243
+$287,290
+$302,126
+$1,493,544
+Equipment
+$0
+$0
+$0
+$0
+$0
+$0
+Total
+$1,863,791
+$1,846,464
+$1,752,986
+$1,742,412
+$1,745,383
+$8,951,036
+Waived Overhead 
+UC Funds
+($839,853)
+($814,673)
+($842,831)
+($752,782)
+($735,993)
+($3,986,132)
+
+Matching potential funding sources for the next three years are US Discovery, Campus, CITRIS, Research 
+Leave, and Fellowships.  There will 1 Director, 7 Principal Investigators, and 6 Co-Principal Investigators.  
+We have budgeted for approved research leaves for two faculties.  There are a total of 14 Graduate 
+students assigned to the funding sources.  The ratio of resident students to non-resident will be 9 vs. 5 per 
+year.  We plan to hire 2 Post doctoral appointees at a rate of $4,591 per month each.  We will also hire 1 
+Administrative staff at 100% and 2 Programmer Analysts at rate of $4,000 per month each.  We will 
+purchase an additional 10 laptops and desktops.  The additional supplies will be used to support project 
+retreats at various outside site locations.  We are planning on two trips per faculty and various students to 
+different conferences to discuss the Par Lab research project to various organizations. 
+
+  SM abbreviates “Success Metric” throughout this project section. Unless a timeline is otherwise 
+indicated stated success metrics will be achieved in Q4/Y3. 
+ 
+ 
+ 
+ 
+	
+	
+	Page 35 of 35

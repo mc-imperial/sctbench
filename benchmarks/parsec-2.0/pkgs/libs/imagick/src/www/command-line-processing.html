@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: Command-line Processing</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="command-line, processing, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../index.html"><img id="titlebar-west" src="../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="984215076"><img id="titlebar-west" src="../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img src="../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img id="titlebar-east" src="../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../index.html">About ImageMagick</a>
+      <a href="../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="150513512" class="sub">Usage</a>
+      <a href="../www/api.html">Program Interfaces</a>
+      <a href="../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../Magick++/" target="995831651" class="sub">Magick++</a>
+      <a href="../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/install-source.html">Install from Source</a>
+      <a href="../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../www/binary-releases.html">Binary Releases</a>
+      <a href="../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/sitemap.html">Site Map</a>
+			<a href="../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../www/sponsors.html">Sponsors</a>
+  <a href="http://www.hitflip.co.uk/books/" class="sponsor" target="sponsor">Swap Books</a><!-- 200802010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[<a href="#anatomy">The Anatomy of the Command Line</a> &bull; <a href="#input">Input Filename</a> &bull; <a href="#setting">Image Setting</a> &bull; <a href="#operator">Image Operator</a> &bull; <a href="#sequence">Image Sequence Operator</a> &bull; <a href="#stack">Image Stack</a> &bull; <a href="#output">Output Filename</a>]</p>
+
+<p>The ImageMagick command line can be as simple as</p>
+
+<pre class="text">
+  convert image.jpg image.png
+</pre>
+
+<p>or as complex as</p>
+
+<pre class="text">
+  convert label.gif +matte \
+    \( +clone  -shade 110x90 -normalize -negate +clone  -compose Plus -composite \) \
+    \( -clone 0 -shade 110x50 -normalize -channel BG -fx 0 +channel -matte \) \
+    -delete 0 +swap  -compose Multiply -composite  button.gif
+</pre>
+
+<p>Without knowing much about the ImageMagick command line, you can probably figure out that the first command converts an image in the JPEG format to one in the PNG format.  However, very few may realize the second, more complex command, gives a flat two-dimensional label a three-dimensional look with rich textures and simulated depth:</p>
+
+<p class="image">
+  <a href="../images/label.gif"><img src="../images/label.gif" width="78" height="53" align="middle" alt="label" /></a>
+  <img src="../images/right.gif" width="20" height="20" align="middle" alt="==>" />
+  <a href="../images/button.gif"><img src="../images/button.gif" width="78" height="53" align="middle" alt="button" /></a>
+</p>
+
+<p>In the next sections we dissect the anatomy of the ImageMagick command line.  Hopefully, after carefully reading and better understanding how the command line works, you should be able to accomplish complex image-processing tasks without resorting to the sometimes daunting <a href="../www/api.html">program interfaces</a>.</p>
+
+<p>See <a href="http://www.imagemagick.org/Usage/" target="957298418">Examples of ImageMagick Usage</a> for additional help when using ImageMagick from the command-line.</p>
+
+<div style="margin: auto;">
+  <h2><a name="anatomy"></a>The Anatomy of the Command Line</h2>
+</div>
+
+<p>The ImageMagick command line consists of</p>
+
+<ol>
+<li>one or more required input filenames.</li>
+<li>zero, one, or more image settings.</li>
+<li>zero, one, or more image operators.</li>
+<li>zero, one, or more image sequence operators.</li>
+<li>zero, one, or more image stacks.</li>
+<li>zero or one output image filenames (required by <a href="../www/convert.html">convert</a>, <a href="../www/composite.html">composite</a>, <a href="../www/montage.html">montage</a>, <a href="../www/compare.html">compare</a>, <a href="../www/import.html">import</a>, and <a href="../www/conjure.html">conjure</a>).</li>
+</ol>
+
+<p>You can find a detailed explanation of each of the constituent parts of the command line in the sections that follow.</p>
+
+<div style="margin: auto;">
+  <h2><a name="input"></a>Input Filename</h2>
+</div>
+
+<p>ImageMagick extends the concept of an input filename to include: 1) filename globbing; 2) an explicit image format; 3) using built-in images and patterns; 4) reading an image from <em>standard in</em>; 5) selecting certain frames from an image;  and 6) selecting a region of an image.  Each of these extensions are explained in the next few paragraphs.</p>
+
+<ul>
+<dt>Filename Globbing</dt>
+  <dd>In Unix shells, certain characters such as the asterisk (<kbd>*</kbd>) and question mark (<kbd>?</kbd>) automatically cause lists of filenames to be generated based on pattern matches. This feature is known as globbing.  ImageMagick supports filename globbing for systems, such as Windows, that does not natively support it.  For example, suppose you want to convert <kbd>1.jpg</kbd>, <kbd>2.jpg</kbd>, <kbd>3.jpg</kbd>, <kbd>4.jpg</kbd>, and <kbd>5.jpg</kbd> in your current directory to a GIF animation.  You can conveniently  refer to all of the JPEG files with this command:</dd>
+<pre class="text">
+  convert *.jpg images.gif
+</pre><br />
+<dt>Explicit Image Format</dt>
+  <dd>Images are stored in a mryiad of image formats including the better known JPEG, PNG, TIFF and others.  ImageMagick must know the format of the image before it can be read and processed.  Most formats have a signature within the image that uniquely identifies the format.  Failing that, ImageMagick leverages the filename extension to determine the format.  For example, <kbd>image.jpg</kbd> tells ImageMagick it is reading an image in the JPEG format.  In some cases the image may not contain a signature and/or the filename does not identify the image format.  In these cases an explicit image format must be specified.  For example, suppose our image is named <kbd>image</kbd> and contains raw red, green, and blue intensity values.  ImageMagick has no way to automagically determine the image format so we explicitly set one:</dd>
+<pre class="text">
+  convert -size 640x480 -depth 8 rgb:image image.png
+</pre><br />
+<dt>Built-in Images and Patterns</dt>
+  <dd>ImageMagick has a number of built-in <a href="../www/formats.html#builtin-images">images</a> and <a href="../www/formats.html#builtin-patterns">patterns</a>.  To utilize the checkerboard pattern, for example, use:</dd>
+<pre class="text">
+  convert -size 640x480 pattern:checkerboard checkerboard.png
+</pre><br />
+<dt>Standard In</dt>
+  <dd>Unix permits the output of one command to be piped to another.  ImageMagick permits piping one command to another with a filename of <kbd target="magick-option">-</kbd>.  In this example we pipe the output of <kbd>convert</kbd> to the <kbd>display</kbd> program:</dd>
+<pre class="text">
+  convert logo: gif:- &bull; display gif:-
+</pre>
+  <dd>Here the explicit format is optional.  The GIF image format has a unique signature within the image so ImageMagick can readily recognize the format as GIF.</dd><br />
+<dt>Selecting Frames</dt>
+  <dd>Some images formats contain more than one image frame.  Perhaps you only want the first image, or the last, or some number of images in-between.  You can specify which image frames to read by appending the image filename with the frame range enclosed in brackets.  Here our image contains more than one frame but we only want the first:</dd>
+<pre class="text">
+  convert images.gif[0] image.png
+</pre>
+  <dd>Unix shells generally interpret backets so we must enclose the filename in quotes:</dd>
+<pre class="text">
+  convert 'images.gif[0]' image.png
+</pre>
+  <dd>You can read more than one image from a sequence with a frame range.  For example, suppose you want the first four frames of an image sequence:</dd>
+<pre class="text">
+  convert 'images.gif[0-4]' images.mng
+</pre>
+  <dd>Finally, you can read more than one image from a sequence, out-of-order:</dd>
+<pre class="text">
+  convert 'images.gif[3,2,4]' images.mng
+</pre>
+	<dd>This reads the third image in the sequence, followed by the second, and then the fourth.</dd><br />
+<dt>Selecting an Image Region</dt>
+  <dd>Raw images are a sequence of color intensities without additional meta information such as width, height, or image signature.  With raw image formats, you must specify the image width and height but you can also specify a region of the image to read.  In our example, the image is in the raw 8-bit RGB format and is 6000 pixels wide and 4000 pixels high.  However, we only want a region of 600 by 400 near the center of the image:</dd>
+<pre class="text">
+  convert -size 6000x4000 -depth 8 'rgb:image[600x400+1900+2900]' image.jpg
+</pre>
+
+  <dd>You can get the same results with the <a href="../www/command-line-options.html#extract" target="magick-option">-extract</a> option:</dd>
+<pre class="text">
+  convert -size 6000x4000 -depth 8 -extract 600x400+1900+2900 rgb:image image.jpg
+</pre><br />
+<dt>Inline Image Resize</dt>
+  <dd>It is sometimes convenient to resize an image as they are read.  Suppose you have hundreds of large JPEG images you want to convert to a sequence of PNG thumbails:</dd>
+<pre class="text">
+  convert '*.jpg' -resize 120x120 thumbnail%03d.png
+</pre>
+<dd>Here <em>all</em> the images are read and subsequently resized.  It is faster and less resource intensive to resize each image as they are read:</dd>
+<pre class="text">
+  convert '*.jpg[120x120]' thumbnail%03d.png
+</pre><br />
+<dt>Inline Image Crop</dt>
+  <dd>It is sometimes convenient to crop an image as they are read.  Suppose you have hundreds of large JPEG images you want to convert to a sequence of PNG thumbails:</dd>
+<pre class="text">
+  convert '*.jpg' -crop 120x120+10+5 thumbnail%03d.png
+</pre>
+<dd>Here <em>all</em> the images are read and subsequently cropped.  It is faster and less resource intensive to crop each image as they are read:</dd>
+<pre class="text">
+  convert '*.jpg[120x120+10+5]' thumbnail%03d.png
+</pre><br />
+</ul>
+
+<div style="margin: auto;">
+  <h2><a name="setting"></a>Image Setting</h2>
+</div>
+
+<p>An image setting persists as it appears on the command line and may affect subsequent processing such as reading an image, an image operator, or when writing an image as appropriate.  An image setting stays in effect until it is reset or the command line terminates.  The image settings include:</p>
+
+<ul>
+<dd><a href="../www/command-line-options.html#adjoin" target="magick-option">-adjoin</a>&nbsp;
+<a href="../www/command-line-options.html#alpha" target="magick-option">-alpha</a>&nbsp;
+<a href="../www/command-line-options.html#antialias" target="magick-option">-antialias</a>&nbsp;
+<a href="../www/command-line-options.html#authenticate" target="magick-option">-authenticate</a>&nbsp;
+<a href="../www/command-line-options.html#background" target="magick-option">-background</a>&nbsp;
+<a href="../www/command-line-options.html#bias" target="magick-option">-bias</a>&nbsp;
+<a href="../www/command-line-options.html#black-point-compensation" target="magick-option">-black-point-compensation</a>&nbsp;
+<a href="../www/command-line-options.html#blue-primary" target="magick-option">-blue-primary</a>&nbsp;
+<a href="../www/command-line-options.html#blur" target="magick-option">-blur</a>&nbsp;
+<a href="../www/command-line-options.html#bordercolor" target="magick-option">-bordercolor</a>&nbsp;
+<a href="../www/command-line-options.html#box" target="magick-option">-box</a>&nbsp;
+<a href="../www/command-line-options.html#caption" target="magick-option">-caption</a>&nbsp;
+<a href="../www/command-line-options.html#channel" target="magick-option">-channel</a>&nbsp;
+<a href="../www/command-line-options.html#comment" target="magick-option">-comment</a>&nbsp;
+<a href="../www/command-line-options.html#compress" target="magick-option">-compress</a>&nbsp;
+<a href="../www/command-line-options.html#debug" target="magick-option">-debug</a>&nbsp;
+<a href="../www/command-line-options.html#define" target="magick-option">-define</a>&nbsp;
+<a href="../www/command-line-options.html#delay" target="magick-option">-delay</a>&nbsp;
+<a href="../www/command-line-options.html#density" target="magick-option">-density</a>&nbsp;
+<a href="../www/command-line-options.html#depth" target="magick-option">-depth</a>&nbsp;
+<a href="../www/command-line-options.html#display" target="magick-option">-display</a>&nbsp;
+<a href="../www/command-line-options.html#dispose" target="magick-option">-dispose</a>&nbsp;
+<a href="../www/command-line-options.html#dither" target="magick-option">-dither</a>&nbsp;
+<a href="../www/command-line-options.html#endian" target="magick-option">-endian</a>&nbsp;
+<a href="../www/command-line-options.html#encoding" target="magick-option">-encoding</a>&nbsp;
+<a href="../www/command-line-options.html#extract" target="magick-option">-extract</a>&nbsp;
+<a href="../www/command-line-options.html#family" target="magick-option">-family</a>&nbsp;
+<a href="../www/command-line-options.html#fill" target="magick-option">-fill</a>&nbsp;
+<a href="../www/command-line-options.html#filter" target="magick-option">-filter</a>&nbsp;
+<a href="../www/command-line-options.html#font" target="magick-option">-font</a>&nbsp;
+<a href="../www/command-line-options.html#format" target="magick-option">-format</a>&nbsp;
+<a href="../www/command-line-options.html#fuzz" target="magick-option">-fuzz</a>&nbsp;
+<a href="../www/command-line-options.html#geometry" target="magick-option">-geometry</a>&nbsp;
+<a href="../www/command-line-options.html#gravity" target="magick-option">-gravity</a>&nbsp;
+<a href="../www/command-line-options.html#interlace" target="magick-option">-interlace</a>&nbsp;
+<a href="../www/command-line-options.html#intent" target="magick-option">-intent</a>&nbsp;
+<a href="../www/command-line-options.html#interpolate" target="magick-option">-interpolate</a>&nbsp;
+<a href="../www/command-line-options.html#label" target="magick-option">-label</a>&nbsp;
+<a href="../www/command-line-options.html#limit" target="magick-option">-limit</a>&nbsp;
+<a href="../www/command-line-options.html#log" target="magick-option">-log</a>&nbsp;
+<a href="../www/command-line-options.html#loop" target="magick-option">-loop</a>&nbsp;
+<a href="../www/command-line-options.html#mask" target="magick-option">-mask</a>&nbsp;
+<a href="../www/command-line-options.html#mattecolor" target="magick-option">-mattecolor</a>&nbsp;
+<a href="../www/command-line-options.html#monitor" target="magick-option">-monitor</a>&nbsp;
+<a href="../www/command-line-options.html#orient" target="magick-option">-orient</a>&nbsp;
+<a href="../www/command-line-options.html#origin" target="magick-option">-origin</a>&nbsp;
+<a href="../www/command-line-options.html#page" target="magick-option">-page</a>&nbsp;
+<a href="../www/command-line-options.html#pointsize" target="magick-option">-pointsize</a>&nbsp;
+<a href="../www/command-line-options.html#preview" target="magick-option">-preview</a>&nbsp;
+<a href="../www/command-line-options.html#quality" target="magick-option">-quality</a>&nbsp;
+<a href="../www/command-line-options.html#quiet" target="magick-option">-quiet</a>&nbsp;
+<a href="../www/command-line-options.html#red-primary" target="magick-option">-red-primary</a>&nbsp;
+<a href="../www/command-line-options.html#region" target="magick-option">-region</a>&nbsp;
+<a href="../www/command-line-options.html#render" target="magick-option">-render</a>&nbsp;
+<a href="../www/command-line-options.html#repage" target="magick-option">-repage</a>&nbsp;
+<a href="../www/command-line-options.html#sampling-factor" target="magick-option">-sampling-factor</a>&nbsp;
+<a href="../www/command-line-options.html#scene" target="magick-option">-scene</a>&nbsp;
+<a href="../www/command-line-options.html#seed" target="magick-option">-seed</a>&nbsp;
+<a href="../www/command-line-options.html#size" target="magick-option">-size</a>&nbsp;
+<a href="../www/command-line-options.html#stroke" target="magick-option">-stroke</a>&nbsp;
+<a href="../www/command-line-options.html#stretch" target="magick-option">-stretch</a>&nbsp;
+<a href="../www/command-line-options.html#strokewidth" target="magick-option">-strokewidth</a>&nbsp;
+<a href="../www/command-line-options.html#style" target="magick-option">-style</a>&nbsp;
+<a href="../www/command-line-options.html#texture" target="magick-option">-texture</a>&nbsp;
+<a href="../www/command-line-options.html#tile" target="magick-option">-tile</a>&nbsp;
+<a href="../www/command-line-options.html#transparent-color" target="magick-option">-transparent-color</a>&nbsp;
+<a href="../www/command-line-options.html#treedepth" target="magick-option">-treedepth</a>&nbsp;
+<a href="../www/command-line-options.html#type" target="magick-option">-type</a>&nbsp;
+<a href="../www/command-line-options.html#undercolor" target="magick-option">-undercolor</a>&nbsp;
+<a href="../www/command-line-options.html#units" target="magick-option">-units</a>&nbsp;
+<a href="../www/command-line-options.html#verbose" target="magick-option">-verbose</a>&nbsp;
+<a href="../www/command-line-options.html#virtual-pixel" target="magick-option">-virtual-pixel</a>&nbsp;
+<a href="../www/command-line-options.html#weight" target="magick-option">-weight</a>&nbsp;</dd>
+</ul>
+
+<p>In this example, <em class="option">-channel</em> applies to each of the images since as we mentioned, settings persist:</p>
+<pre class="text">
+  convert -channel RGB wand.png wizard.png images.png
+</pre>
+
+<div style="margin: auto;">
+  <h2><a name="operator"></a>Image Operator</h2>
+</div>
+
+<p>An image operator differs from a setting in that it affects the image immediately as it appears on the command line.  An operator is any <a href="../www/command-line-options.html">command line option</a> not listed as a <a href="#setting">image setting</a> or <a href="#sequence">image sequence operator</a>.  Unlike an image setting, which persists until the command line terminates, an operator is applied to an image and forgotten.  Choose from these image operators:</p>
+
+<ul>
+<dd><a href="../www/command-line-options.html#affine" target="magick-option">-affine</a>&nbsp;
+<a href="../www/command-line-options.html#annotate" target="magick-option">-annotate</a>&nbsp;
+<a href="../www/command-line-options.html#black-threshold" target="magick-option">-black-threshold</a>&nbsp;
+<a href="../www/command-line-options.html#border" target="magick-option">-border</a>&nbsp;
+<a href="../www/command-line-options.html#charcoal" target="magick-option">-charcoal</a>&nbsp;
+<a href="../www/command-line-options.html#chop" target="magick-option">-chop</a>&nbsp;
+<a href="../www/command-line-options.html#clip" target="magick-option">-clip</a>&nbsp;
+<a href="../www/command-line-options.html#clip-path" target="magick-option">-clip-path</a>&nbsp;
+<a href="../www/command-line-options.html#clip-mask" target="magick-option">-clip-mask</a>&nbsp;
+<a href="../www/command-line-options.html#colors" target="magick-option">-colors</a>&nbsp;
+<a href="../www/command-line-options.html#colorize" target="magick-option">-colorize</a>&nbsp;
+<a href="../www/command-line-options.html#colorspace" target="magick-option">-colorspace</a>&nbsp;
+<a href="../www/command-line-options.html#compose" target="magick-option">-compose</a>&nbsp;
+<a href="../www/command-line-options.html#contrast" target="magick-option">-contrast</a>&nbsp;
+<a href="../www/command-line-options.html#convolve" target="magick-option">-convolve</a>&nbsp;
+<a href="../www/command-line-options.html#crop" target="magick-option">-crop</a>&nbsp;
+<a href="../www/command-line-options.html#cycle" target="magick-option">-cycle</a>&nbsp;
+<a href="../www/command-line-options.html#despeckle" target="magick-option">-despeckle</a>&nbsp;
+<a href="../www/command-line-options.html#draw" target="magick-option">-draw</a>&nbsp;
+<a href="../www/command-line-options.html#edge" target="magick-option">-edge</a>&nbsp;
+<a href="../www/command-line-options.html#emboss" target="magick-option">-emboss</a>&nbsp;
+<a href="../www/command-line-options.html#enhance" target="magick-option">-enhance</a>&nbsp;
+<a href="../www/command-line-options.html#equalize" target="magick-option">-equalize</a>&nbsp;
+<a href="../www/command-line-options.html#evaluate" target="magick-option">-evaluate</a>&nbsp;
+<a href="../www/command-line-options.html#extent" target="magick-option">-extent</a>&nbsp;
+<a href="../www/command-line-options.html#flip" target="magick-option">-flip</a>&nbsp;
+<a href="../www/command-line-options.html#flop" target="magick-option">-flop</a>&nbsp;
+<a href="../www/command-line-options.html#floodfill" target="magick-option">-floodfill</a>&nbsp;
+<a href="../www/command-line-options.html#frame" target="magick-option">-frame</a>&nbsp;
+<a href="../www/command-line-options.html#gamma" target="magick-option">-gamma</a>&nbsp;
+<a href="../www/command-line-options.html#gaussian" target="magick-option">-gaussian</a>&nbsp;
+<a href="../www/command-line-options.html#green-primary" target="magick-option">-green-primary</a>&nbsp;
+<a href="../www/command-line-options.html#implode" target="magick-option">-implode</a>&nbsp;
+<a href="../www/command-line-options.html#lat" target="magick-option">-lat</a>&nbsp;
+<a href="../www/command-line-options.html#level" target="magick-option">-level</a>&nbsp;
+<a href="../www/command-line-options.html#linewidth" target="magick-option">-linewidth</a>&nbsp;
+<a href="../www/command-line-options.html#map" target="magick-option">-map</a>&nbsp;
+<a href="../www/command-line-options.html#mask" target="magick-option">-mask</a>&nbsp;
+<a href="../www/command-line-options.html#median" target="magick-option">-median</a>&nbsp;
+<a href="../www/command-line-options.html#modulate" target="magick-option">-modulate</a>&nbsp;
+<a href="../www/command-line-options.html#monochrome" target="magick-option">-monochrome</a>&nbsp;
+<a href="../www/command-line-options.html#negate" target="magick-option">-negate</a>&nbsp;
+<a href="../www/command-line-options.html#noise" target="magick-option">-noise</a>&nbsp;
+<a href="../www/command-line-options.html#normalize" target="magick-option">-normalize</a>&nbsp;
+<a href="../www/command-line-options.html#opaque" target="magick-option">-opaque</a>&nbsp;
+<a href="../www/command-line-options.html#ordered-dither" target="magick-option">-ordered-dither</a>&nbsp;
+<a href="../www/command-line-options.html#paint" target="magick-option">-paint</a>&nbsp;
+<a href="../www/command-line-options.html#pen" target="magick-option">-pen</a>&nbsp;
+<a href="../www/command-line-options.html#posterize" target="magick-option">-posterize</a>&nbsp;
+<a href="../www/command-line-options.html#raise" target="magick-option">-raise</a>&nbsp;
+<a href="../www/command-line-options.html#profile" target="magick-option">-profile</a>&nbsp;
+<a href="../www/command-line-options.html#quiet" target="magick-option">-quiet</a>&nbsp;
+<a href="../www/command-line-options.html#radial-blur" target="magick-option">-radial-blur</a>&nbsp;
+<a href="../www/command-line-options.html#raise" target="magick-option">-raise</a>&nbsp;
+<a href="../www/command-line-options.html#random-threshold" target="magick-option">-random-threshold</a>&nbsp;
+<a href="../www/command-line-options.html#resample" target="magick-option">-resample</a>&nbsp;
+<a href="../www/command-line-options.html#resize" target="magick-option">-resize</a>&nbsp;
+<a href="../www/command-line-options.html#roll" target="magick-option">-roll</a>&nbsp;
+<a href="../www/command-line-options.html#rotate" target="magick-option">-rotate</a>&nbsp;
+<a href="../www/command-line-options.html#sample" target="magick-option">-sample</a>&nbsp;
+<a href="../www/command-line-options.html#scale" target="magick-option">-scale</a>&nbsp;
+<a href="../www/command-line-options.html#sepia-tone" target="magick-option">-sepia-tone</a>&nbsp;
+<a href="../www/command-line-options.html#segment" target="magick-option">-segment</a>&nbsp;
+<a href="../www/command-line-options.html#shade" target="magick-option">-shade</a>&nbsp;
+<a href="../www/command-line-options.html#shadow" target="magick-option">-shadow</a>&nbsp;
+<a href="../www/command-line-options.html#sharpen" target="magick-option">-sharpen</a>&nbsp;
+<a href="../www/command-line-options.html#shave" target="magick-option">-shave</a>&nbsp;
+<a href="../www/command-line-options.html#shear" target="magick-option">-shear</a>&nbsp;
+<a href="../www/command-line-options.html#sigmoidal-contrast" target="magick-option">-sigmoidal-contrast</a>&nbsp;
+<a href="../www/command-line-options.html#solarize" target="magick-option">-solarize</a>&nbsp;
+<a href="../www/command-line-options.html#splice" target="magick-option">-splice</a>&nbsp;
+<a href="../www/command-line-options.html#spread" target="magick-option">-spread</a>&nbsp;
+<a href="../www/command-line-options.html#stretch" target="magick-option">-stretch</a>&nbsp;
+<a href="../www/command-line-options.html#strip" target="magick-option">-strip</a>&nbsp;
+<a href="../www/command-line-options.html#support" target="magick-option">-support</a>&nbsp;
+<a href="../www/command-line-options.html#swirl" target="magick-option">-swirl</a>&nbsp;
+<a href="../www/command-line-options.html#threshold" target="magick-option">-threshold</a>&nbsp;
+<a href="../www/command-line-options.html#transparent" target="magick-option">-transparent</a>&nbsp;
+<a href="../www/command-line-options.html#thumbnail" target="magick-option">-thumbnail</a>&nbsp;
+<a href="../www/command-line-options.html#tint" target="magick-option">-tint</a>&nbsp;
+<a href="../www/command-line-options.html#transform" target="magick-option">-transform</a>&nbsp;
+<a href="../www/command-line-options.html#trim" target="magick-option">-trim</a>&nbsp;
+<a href="../www/command-line-options.html#unsharp" target="magick-option">-unsharp</a>&nbsp;
+<a href="../www/command-line-options.html#version" target="magick-option">-version</a>&nbsp;
+<a href="../www/command-line-options.html#wave" target="magick-option">-wave</a>&nbsp;
+<a href="../www/command-line-options.html#white-point" target="magick-option">-white-point</a>&nbsp;
+<a href="../www/command-line-options.html#white-threshold" target="magick-option">-white-threshold</a></dd>
+</ul>
+
+<p>In this example, <em class="option">-negate</em> negates the wand image but not the wizard:</p>
+<pre class="text">
+  convert wand.png -negate wizard.png images.png
+</pre>
+
+<div style="margin: auto;">
+  <h2><a name="sequence"></a>Image Sequence Operator</h2>
+</div>
+
+<p>An image sequence operator differs from a setting in that it affects an image sequence immediately as it appears on the command line.  Choose from these image sequence operators:</p>
+
+<ul>
+<dd><a href="../www/command-line-options.html#append" target="magick-option">-append</a>&nbsp;
+<a href="../www/command-line-options.html#average" target="magick-option">-average</a>&nbsp;
+<a href="../www/command-line-options.html#clut" target="magick-option">-clut</a>&nbsp;
+<a href="../www/command-line-options.html#coalesce" target="magick-option">-coalesce</a>&nbsp;
+<a href="../www/command-line-options.html#combine" target="magick-option">-combine</a>&nbsp;
+<a href="../www/command-line-options.html#composite" target="magick-option">-composite</a>&nbsp;
+<a href="../www/command-line-options.html#crop" target="magick-option">-crop</a>&nbsp;
+<a href="../www/command-line-options.html#desconstruct" target="magick-option">-deconstruct</a>&nbsp;
+<a href="../www/command-line-options.html#delete" target="magick-option">-delete</a>&nbsp;
+<a href="../www/command-line-options.html#flatten" target="magick-option">-flatten</a>&nbsp;
+<a href="../www/command-line-options.html#fx" target="magick-option">-fx</a>&nbsp;
+<a href="../www/command-line-options.html#insert" target="magick-option">-insert</a>&nbsp;
+<a href="../www/command-line-options.html#map" target="magick-option">-map</a>&nbsp;
+<a href="../www/command-line-options.html#morph" target="magick-option">-morph</a>&nbsp;
+<a href="../www/command-line-options.html#mosaic" target="magick-option">-mosaic</a>&nbsp;
+<a href="../www/command-line-options.html#process" target="magick-option">-process</a>&nbsp;
+<a href="../www/command-line-options.html#reverse" target="magick-option">-reverse</a>&nbsp;
+<a href="../www/command-line-options.html#separate" target="magick-option">-separate</a>&nbsp;
+<a href="../www/command-line-options.html#swap" target="magick-option">-swap</a>&nbsp;
+<a href="../www/command-line-options.html#write" target="magick-option">-write</a></dd>
+</ul>
+
+<div style="margin: auto;">
+  <h2><a name="stack"></a>Image Stack</h2>
+</div>
+
+<p>In school, your teacher probably permitted you to work on problems on a scrap of paper and then copy the results to your test paper.  An image stack is similar.  It permits you to work on an image or image sequence in isolation and subsequently introduce the results back into the command line.  The image stack is delineated with parenthesis.  Image operators only affect images in the current stack.  For example, we can limit the image rotation to just the wizard image like this:</p>
+<pre class="text">
+  convert wand.gif \( wizard.gif -rotate 30 \) +append images.gif
+</pre>
+
+<p>Notice the parenthesis are <em>escaped</em>.  That is there are preceded by a backslash.  This is required under Unix since parenthesis are special shell characters.  The backslash tells the shell not to interpret these characters and pass them to the ImageMagick command line.</p>
+
+<p>In addition to the image operators already discussed, these image operators are most useful when processing images in an image stack:</p>
+<ul>
+<dd><a href="../www/command-line-options.html#clone" target="magick-option">-clone</a>&nbsp;
+<a href="../www/command-line-options.html#delete" target="magick-option">-delete</a>&nbsp;
+<a href="../www/command-line-options.html#insert" target="magick-option">-insert</a>&nbsp;
+<a href="../www/command-line-options.html#swap" target="magick-option">-swap</a></dd>
+</ul>
+
+<p>The arguments to these operators are indexes into the image sequence by number, starting with zero, for the first image, and so on. However if you give a negative index, the images are indexed from the end (last image added). That is an index of -1 is the last image in the current image sequence, -2 for the second last and so on.</p>
+
+
+<div style="margin: auto;">
+  <h2><a name="output"></a>Output Filename</h2>
+</div>
+
+<p>ImageMagick extends the concept of an output filename to include:</p>
+
+<ol>
+<li>an explicit image format</li>
+<li>write to <em>standard out</em></li>
+<li>specify a TIFF tile size</li>
+</ol>
+
+<p>Each of these extensions are explained in the next few paragraphs.</p>
+
+<ul>
+<dt>Explicit Image Format</dt>
+  <dd>Images can be stored in a mryiad of image formats including the better known JPEG, PNG, TIFF and others.  ImageMagick must know the desired format of the image before it is written.  ImageMagick leverages the filename extension to determine the format.  For example, <kbd>image.jpg</kbd> tells ImageMagick to write the image in the JPEG format.  In some cases the filename does not identify the image format.  In these cases, the image is written in the format it was originally read unless an explicit image format is specified.  For example, suppose we want to write our image to a filename of <kbd>image</kbd> in the raw red, green, and blue intensity format:</dd>
+<pre class="text">
+  convert image.jpg rgb:image
+</pre><br />
+<dt>Standard Out</dt>
+  <dd>Unix permits the output of one command to be piped to another.  ImageMagick permits piping one command to another with a filename of <kbd>-</kbd>.  In this example we pipe the output of <a href="../www/convert.html" target="2096293051">convert</a> to the <a href="../www/display.html" target="1492756105">display</a> program:</dd>
+
+<pre class="text">
+  convert logo: gif:- | display gif:-
+</pre>
+
+  <dd>Here the explicit format is optional.  The GIF image format has a signiture that uniquely identifies it so ImageMagick can readily recognize the format as GIF.</dd><br />
+<dt>TIFF Tile Size</dt>
+  <dd>You can specify the TIFF tile size by appending the image filename with the tile width and height enclosed in brackets.  Here, we write image tiles that are 64 pixels wide and 64 pixels high with this command:</dd>
+<pre class="text">
+  convert wizard.png wizard.tif[64x64]
+</pre>
+  <dd>Unix shells generally interpret backets so we should enclose the filename in quotes:</dd>
+<pre class="text">
+  convert wizard.png 'wizard.tif[64x64]'
+</pre>
+</ul>
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="1492674255">Discourse Server</a> &bull;
+    <a href="../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://www.imagemagick.org/MagickStudio/scripts/MagickStudio.cgi" target="1377516703">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

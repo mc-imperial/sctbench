@@ -1,0 +1,176 @@
+Index: mozilla/nsprpub/pr/include/private/primpl.h
+===================================================================
+RCS file: /cvsroot/mozilla/nsprpub/pr/include/private/primpl.h,v
+retrieving revision 3.85
+diff -p -U8 -r3.85 primpl.h
+--- mozilla/nsprpub/pr/include/private/primpl.h	21 Oct 2005 18:21:41 -0000	3.85
++++ mozilla/nsprpub/pr/include/private/primpl.h	30 Nov 2006 19:37:01 -0000
+@@ -1787,22 +1787,24 @@ extern void _PR_InitCMon(void);
+ extern void _PR_InitIO(void);
+ extern void _PR_InitLog(void);
+ extern void _PR_InitNet(void);
+ extern void _PR_InitClock(void);
+ extern void _PR_InitLinker(void);
+ extern void _PR_InitAtomic(void);
+ extern void _PR_InitCPUs(void);
+ extern void _PR_InitDtoa(void);
++extern void _PR_InitTime(void);
+ extern void _PR_InitMW(void);
+ extern void _PR_InitRWLocks(void);
+ extern void _PR_NotifyCondVar(PRCondVar *cvar, PRThread *me);
+ extern void _PR_CleanupThread(PRThread *thread);
+ extern void _PR_CleanupCallOnce(void);
+ extern void _PR_CleanupMW(void);
++extern void _PR_CleanupTime(void);
+ extern void _PR_CleanupDtoa(void);
+ extern void _PR_ShutdownLinker(void);
+ extern void _PR_CleanupEnv(void);
+ extern void _PR_CleanupIO(void);
+ extern void _PR_CleanupNet(void);
+ extern void _PR_CleanupLayerCache(void);
+ extern void _PR_CleanupStacks(void);
+ #ifdef WINNT
+Index: mozilla/nsprpub/pr/src/misc/prinit.c
+===================================================================
+RCS file: /cvsroot/mozilla/nsprpub/pr/src/misc/prinit.c,v
+retrieving revision 3.44
+diff -p -U8 -r3.44 prinit.c
+--- mozilla/nsprpub/pr/src/misc/prinit.c	21 Oct 2005 18:21:43 -0000	3.44
++++ mozilla/nsprpub/pr/src/misc/prinit.c	30 Nov 2006 19:37:02 -0000
+@@ -236,16 +236,17 @@ static void _PR_InitStuff(void)
+ 
+     _PR_InitCMon();
+     _PR_InitIO();
+     _PR_InitNet();
+     _PR_InitLog();
+     _PR_InitLinker();
+     _PR_InitCallOnce();
+     _PR_InitDtoa();
++    _PR_InitTime();
+     _PR_InitMW();
+     _PR_InitRWLocks();
+ 
+     nspr_InitializePRErrorTable();
+ 
+ #if !defined(_PR_INET6) || defined(_PR_INET6_PROBE)
+ 	_pr_init_ipv6();
+ #endif
+@@ -415,16 +416,17 @@ PR_IMPLEMENT(PRStatus) PR_Cleanup()
+ 		_PR_MD_PRE_CLEANUP(me);
+ 		/*
+ 		 * The primordial thread must now be running on the primordial cpu
+ 		 */
+     	PR_ASSERT((_PR_IS_NATIVE_THREAD(me)) || (me->cpu->id == 0));
+ #endif
+ 
+         _PR_CleanupMW();
++        _PR_CleanupTime();
+         _PR_CleanupDtoa();
+         _PR_CleanupCallOnce();
+ 		_PR_ShutdownLinker();
+         /* Release the primordial thread's private data, etc. */
+         _PR_CleanupThread(me);
+ 
+         _PR_MD_STOP_INTERRUPTS();
+ 
+Index: mozilla/nsprpub/pr/src/misc/prtime.c
+===================================================================
+RCS file: /cvsroot/mozilla/nsprpub/pr/src/misc/prtime.c,v
+retrieving revision 3.24
+diff -p -U8 -r3.24 prtime.c
+--- mozilla/nsprpub/pr/src/misc/prtime.c	11 Apr 2006 18:57:07 -0000	3.24
++++ mozilla/nsprpub/pr/src/misc/prtime.c	30 Nov 2006 19:37:03 -0000
+@@ -542,31 +542,28 @@ PR_NormalizeTime(PRExplodedTime *time, P
+ #define MT_safe_localtime localtime_r
+ 
+ #else
+ 
+ #if defined(XP_MAC)
+ extern struct tm *Maclocaltime(const time_t * t);
+ #endif
+ 
++#define HAVE_LOCALTIME_MONITOR 1  /* We use 'monitor' to serialize our calls
++                                   * to localtime(). */
+ static PRLock *monitor = NULL;
+ 
+ static struct tm *MT_safe_localtime(const time_t *clock, struct tm *result)
+ {
+     struct tm *tmPtr;
+     int needLock = PR_Initialized();  /* We need to use a lock to protect
+                                        * against NSPR threads only when the
+                                        * NSPR thread system is activated. */
+ 
+-    if (needLock) {
+-        if (monitor == NULL) {
+-            monitor = PR_NewLock();
+-        }
+-        PR_Lock(monitor);
+-    }
++    if (needLock) PR_Lock(monitor);
+ 
+     /*
+      * Microsoft (all flavors) localtime() returns a NULL pointer if 'clock'
+      * represents a time before midnight January 1, 1970.  In
+      * that case, we also return a NULL pointer and the struct tm
+      * object pointed to by 'result' is not modified.
+      *
+      * Watcom C/C++ 11.0 localtime() treats time_t as unsigned long
+@@ -601,16 +598,33 @@ static struct tm *MT_safe_localtime(cons
+ 
+     if (needLock) PR_Unlock(monitor);
+ 
+     return result;
+ }
+ 
+ #endif  /* definition of MT_safe_localtime() */
+ 
++void _PR_InitTime(void)
++{
++#ifdef HAVE_LOCALTIME_MONITOR
++    monitor = PR_NewLock();
++#endif
++}
++
++void _PR_CleanupTime(void)
++{
++#ifdef HAVE_LOCALTIME_MONITOR
++    if (monitor) {
++        PR_DestroyLock(monitor);
++        monitor = NULL;
++    }
++#endif
++}
++
+ #if defined(XP_UNIX) || defined(XP_PC) || defined(XP_BEOS)
+ 
+ PR_IMPLEMENT(PRTimeParameters)
+ PR_LocalTimeParameters(const PRExplodedTime *gmt)
+ {
+ 
+     PRTimeParameters retVal;
+     struct tm localTime;
+Index: mozilla/nsprpub/pr/src/pthreads/ptthread.c
+===================================================================
+RCS file: /cvsroot/mozilla/nsprpub/pr/src/pthreads/ptthread.c,v
+retrieving revision 3.67
+diff -p -U8 -r3.67 ptthread.c
+--- mozilla/nsprpub/pr/src/pthreads/ptthread.c	7 Nov 2005 22:39:01 -0000	3.67
++++ mozilla/nsprpub/pr/src/pthreads/ptthread.c	30 Nov 2006 19:37:03 -0000
+@@ -933,16 +933,17 @@ PR_IMPLEMENT(PRStatus) PR_Cleanup(void)
+     if (me->state & PT_THREAD_PRIMORD)
+     {
+         PR_Lock(pt_book.ml);
+         while (pt_book.user > pt_book.this_many)
+             PR_WaitCondVar(pt_book.cv, PR_INTERVAL_NO_TIMEOUT);
+         PR_Unlock(pt_book.ml);
+ 
+         _PR_CleanupMW();
++        _PR_CleanupTime();
+         _PR_CleanupDtoa();
+         _PR_CleanupCallOnce();
+         _PR_ShutdownLinker();
+         _PR_LogCleanup();
+         _PR_CleanupNet();
+         /* Close all the fd's before calling _PR_CleanupIO */
+         _PR_CleanupIO();
+ 

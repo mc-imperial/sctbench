@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: MagickCore, C API for ImageMagick: Dealing with Image Layers</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="magickcore, c, api, for, imagemagick:, dealing, with, image, layers, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../../index.html"><img id="titlebar-west" src="../../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="1636743110"><img id="titlebar-west" src="../../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img src="../../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img id="titlebar-east" src="../../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../../index.html">About ImageMagick</a>
+      <a href="../../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="1257729249" class="sub">Usage</a>
+      <a href="../../www/api.html">Program Interfaces</a>
+      <a href="../../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../../Magick++/" target="278600747" class="sub">Magick++</a>
+      <a href="../../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/install-source.html">Install from Source</a>
+      <a href="../../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../../www/binary-releases.html">Binary Releases</a>
+      <a href="../../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/sitemap.html">Site Map</a>
+			<a href="../../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../../www/sponsors.html">Sponsors</a>
+  <a href="http://www.f1online.de" class="sponsor" target="sponsor">Bildagentur<br />F1 ONLINE</a><!-- 200801010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[ <a href="#CoalesceImages">CoalesceImages</a> | <a href="#DisposeImages">DisposeImages</a> | <a href="#CompareImageLayers">CompareImageLayers</a> | <a href="#DeconstructImages">DeconstructImages</a> | <a href="#OptimizeImageLayers">OptimizeImageLayers</a> | <a href="#OptimizeImagePlusLayers">OptimizeImagePlusLayers</a> | <a href="#OptimizeImageTransparency">OptimizeImageTransparency</a> | <a href="#RemoveDuplicateLayers">RemoveDuplicateLayers</a> | <a href="#RemoveZeroDelayLayers">RemoveZeroDelayLayers</a> | <a href="#CompositeLayers">CompositeLayers</a> ]</p>
+
+<div style="margin: auto;">
+  <h2><a name="CoalesceImages">CoalesceImages</a></h2>
+</div>
+
+<p>CoalesceImages() composites a set of images while respecting any page offsets and disposal methods.  GIF, MIFF, and MNG animation sequences typically start with an image background and each subsequent image varies in size and offset.  A new image sequence is returned with all images the same size as the first and composited with the next image in the sequence.</p></ol>
+
+<p>The format of the CoalesceImages method is:</p>
+
+<pre class="code">
+  Image *CoalesceImages(Image *image,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image sequence.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DisposeImages">DisposeImages</a></h2>
+</div>
+
+<p>DisposeImages() returns the coalesced frames of a GIF animation as it would appear after the GIF dispose method of that frame has been applied.  That is it returned the appearance of each frame before the next is overlaid.</p></ol>
+
+<p>The format of the DisposeImages method is:</p>
+
+<pre class="code">
+  Image *DisposeImages(Image *image,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image sequence.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="CompareImageLayers">CompareImageLayers</a></h2>
+</div>
+
+<p>CompareImageLayers() compares each image with the next in a sequence and returns the minimum bounding region of all the pixel differences (of the LayerType specified) it discovers.</p></ol>
+
+<p>Images do NOT have to be the same size, though it is best that all the images are 'coalesced' (images are all the same size, on a flattened canvas, so as to represent exactly how an specific frame should look).</p></ol>
+
+<p>No GIF dispose methods are applied, so GIF animations must be coalesced before applying this image operator to find differences to them.</p></ol>
+
+<p>The format of the CompareImageLayers method is:</p>
+
+<pre class="code">
+  Image *CompareImageLayers(const Image *images,
+    const MagickLayerMethod method,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>method</h5>
+<ol><p>The layers type to compare images with. Must be one of... CompareAnyLayer, CompareClearLayer, CompareOverlayLayer.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DeconstructImages">DeconstructImages</a></h2>
+</div>
+
+<p>DeconstructImages() compares each image with the next in a sequence and returns the minimum bounding region of all differences from the first image.</p></ol>
+
+<p>This function is depreciated in favor of the more universal CompareImageLayers() function.</p></ol>
+
+<p>The format of the DeconstructImages method is:</p>
+
+<pre class="code">
+  Image *DeconstructImages(const Image *images, ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="OptimizeImageLayers">OptimizeImageLayers</a></h2>
+</div>
+
+<p>OptimizeImageLayers() compares each image the GIF disposed forms of the previous image in the sequence.  From this it attempts to select the smallest cropped image to replace each frame, while preserving the results of the GIF animation.</p></ol>
+
+<p>The format of the OptimizeImageLayers method is:</p>
+
+<pre class="code">
+  Image *OptimizeImageLayers(const Image *image,
+           ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="OptimizeImagePlusLayers">OptimizeImagePlusLayers</a></h2>
+</div>
+
+<p>OptimizeImagePlusLayers() is exactly as OptimizeImageLayers(), but may also add or even remove extra frames in the animation, if it improves the total number of pixels in the resulting GIF animation.</p></ol>
+
+<p>The format of the OptimizePlusImageLayers method is:</p>
+
+<pre class="code">
+  Image *OptimizePlusImageLayers(const Image *image,
+           ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="OptimizeImageTransparency">OptimizeImageTransparency</a></h2>
+</div>
+
+<p>OptimizeImageTransparency() takes a frame optimized GIF animation, and compares the overlayed pixels against the disposal image resulting from all the previous frames in the animation.  Any pixel that does not change the disposal image (and thus does not effect the outcome of an overlay) is made transparent.</p></ol>
+
+<p>WARNING: This modifies the current images directly, rather than generate a new image sequence.</p></ol>
+
+<p>The format of the OptimizeImageTransperency method is:</p>
+
+<pre class="code">
+  void OptimizeImageTransperency(Image *image,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image sequence</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="RemoveDuplicateLayers">RemoveDuplicateLayers</a></h2>
+</div>
+
+<p>RemoveDuplicateLayers() removes any image that is exactly the same as the next image in the given image list.  Image size and virtual canvas offset must also match, though not the virtual canvas size itself.</p></ol>
+
+<p>No check is made with regards to image disposal setting, though it is the dispose setting of later image that is kept.  Also any time delays are also added together. As such coalesced image animations should still produce the same result, though with duplicte frames merged into a single frame.</p></ol>
+
+<p>The format of the RemoveDuplicateLayers method is:</p>
+
+<pre class="code">
+  void RemoveDuplicateLayers(Image **image, ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="RemoveZeroDelayLayers">RemoveZeroDelayLayers</a></h2>
+</div>
+
+<p>RemoveZeroDelayLayers() removes any image that as a zero delay time. Such images generally represent intermediate or partial updates in GIF animations used for file optimization.  They are not ment to be displayed to users of the animation.  Viewable images in an animation should have a time delay of 3 or more centi-seconds (hundredths of a second).</p></ol>
+
+<p>However if all the frames have a zero time delay, then either the animation is as yet incomplete, or it is not a GIF animation.  This is a non-sensible situation, so no image will be removed and a 'Zero Time Animation' warning (exception) given.</p></ol>
+
+<p>No warning will be given if no image was removed because all images had an appropriate non-zero time delay set.</p></ol>
+
+<p>Due to the special requirements of GIF disposal handling, GIF animations should be coalesced first, before calling this function, though that is not a requirement.</p></ol>
+
+<p>The format of the RemoveZeroDelayLayers method is:</p>
+
+<pre class="code">
+  void RemoveZeroDelayLayers(Image **image, ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>images</h5>
+<ol><p>The image list</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="CompositeLayers">CompositeLayers</a></h2>
+</div>
+
+<p>CompositeLayers() compose first image sequence (source) over the second image sequence (destination), using the given compose method and offsets.</p></ol>
+
+<p>The pointers to the image list does not have to be the start of that image list, but may start somewhere in the middle.  Each layer from the two image lists are composted together until the end of one of the image lists is reached.  The offset of each composition is also adjusted to match the virtual canvas offsets of each layer. As such the given offset is relative to the virtual canvas, and not the actual image.</p></ol>
+
+<p>No GIF disposal handling is performed, so GIF animations should be coalesced before use.  However this is not a requirement, and individual layer images may have any size or offset, for special compositions.</p></ol>
+
+<p>Special case:- If one of the image sequences is just a single image that image is repeatally composed with all the images in the other image list. Either the source or destination lists may be the single image, for this situation.</p></ol>
+
+<p>The destination list will be expanded as needed to match number of source image overlaid (from current position to end of list).</p></ol>
+
+<p>The format of the CompositeLayers method is:</p>
+
+<pre class="code">
+  void CompositeLayers(Image *destination,
+      const CompositeOperator compose, Image *source,
+      const long x_offset, const long y_offset,
+      ExceptionInfo *exception);
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>destination</h5>
+<ol><p>the destination images and results</p></ol>
+
+<h5>source</h5>
+<ol><p>source image(s) for the layer composition</p></ol>
+
+<h5>compose, x_offset, y_offset</h5>
+<ol><p>arguments passed on to CompositeImages()</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="1821415085">Discourse Server</a> &bull;
+    <a href="../../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://www.imagemagick.org/MagickStudio/scripts/MagickStudio.cgi" target="455662507">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+dnl These were provided by Nathan Tuck of UCSD.  It does not include the pause set of macros or wait_for_end
+
+divert(-1)
+define(NEWPROC,) dnl
+
+define(BARRIER, `{  
+int temp;
+
+  LOCK($1.entrylock);
+  temp = ++$1.entry_count;
+  if (temp < $2) {
+    UNLOCK($1.entrylock);
+    LOCK($1.waitlocks[temp-1]);
+    UNLOCK($1.waitlocks[temp]);
+  } else {
+    UNLOCK($1.waitlocks[0]);
+    LOCK($1.waitlocks[$2-1]);
+    $1.entry_count = 0;
+    UNLOCK($1.entrylock);
+  }
+}')
+define(BARDEC, `barrier $1;')
+define(BARINIT, `{
+  int i;
+
+  pthread_mutex_init(& $1.entrylock, NULL);
+  
+  $1.entry_count = 0;
+  for (i=0;i<8;i++) {
+    pthread_mutex_init(& $1.waitlocks[i], NULL);
+    LOCK($1.waitlocks[i]);
+  }
+}')
+
+define(GSDEC, `int ($1);')
+define(GSINIT, `{ ($1) = 0; }')
+define(GETSUB, `{ 
+  if (($1)<=($3)) 
+    ($2) = ($1)++; 
+  else { 
+    ($2) = -1; 
+    ($1) = 0; 
+  }
+}')
+
+define(NU_GSDEC, `int ($1);')
+define(NU_GSINIT, `{ ($1) = 0; }')
+define(NU_GETSUB, `GETSUB($1,$2,$3,$4)')
+
+define(ADEC, `int ($1);')
+define(AINIT, `{;}')
+define(PROBEND, `{;}')
+
+define(LOCKDEC, `pthread_mutex_t $1;')
+define(LOCKINIT, `{pthread_mutex_init(& $1, NULL);}')
+define(LOCK, {
+        pthread_mutex_lock(& $1);
+     	})
+define(BLK,`')
+define(UNLOCK, `{
+	pthread_mutex_unlock(& $1);}')
+
+define(NLOCKDEC, `int ($1);')
+define(NLOCKINIT, `{;}')
+define(NLOCK, `{;}')
+define(NUNLOCK, `{;}')
+
+define(ALOCKDEC, `pthread_mutex_t ($1[$2]);')
+define(ALOCKINIT, `{int i;
+	for (i=0;i<$2;i++) 
+		pthread_mutex_init(& $1[i], NULL); }')
+define(ALOCK, `{LOCK(($1[$2]))}')
+define(AULOCK, `{UNLOCK(($1[$2]))}')
+
+define(PAUSEDEC, ` ')
+define(PAUSEINIT, `{;}')
+define(CLEARPAUSE, `{;}')
+define(SETPAUSE, `{;}')
+define(EVENT, `{;}')
+define(WAITPAUSE, `{;}')
+define(PAUSE, `{;}')
+
+define(AUG_ON, ` ')
+define(AUG_OFF, ` ')
+define(TRACE_ON, ` ')
+define(TRACE_OFF, ` ')
+define(REF_TRACE_ON, ` ')
+define(REF_TRACE_OFF, ` ')
+define(DYN_TRACE_ON, `;')
+define(DYN_TRACE_OFF, `;')
+define(DYN_REF_TRACE_ON, `;')
+define(DYN_REF_TRACE_OFF, `;')
+define(DYN_SIM_ON, `;')
+define(DYN_SIM_OFF, `;')
+define(DYN_SCHED_ON, `;')
+define(DYN_SCHED_OFF, `;')
+define(AUG_SET_LOLIMIT, `;')
+define(AUG_SET_HILIMIT, `;')
+
+define(MENTER, `{;}')
+define(DELAY, `{;}')
+define(CONTINUE, `{;}')
+define(MEXIT, `{;}')
+define(MONINIT, `{;}')
+
+define(WAIT_FOR_END, `{;}')
+
+define(CREATE, `{  
+	pthread_t pt;
+	pthread_create(&pt, NULL, $1, NULL);
+}')
+
+define(TERMINATE,     `{  pthread_exit(NULL); }')
+
+
+define(MAIN_INITENV, `{;}')
+define(MAIN_END, `{exit(0);}')
+define(ENV, `
+#include <pthread.h>
+#ifndef _BARRIER_DEC
+#define _BARRIER_DEC 1
+typedef struct barrierTYP {
+	volatile unsigned	entry_count;
+	pthread_mutex_t entrylock;
+	pthread_mutex_t waitlocks[8];
+} barrier;
+#endif
+ ')
+define(MAIN_ENV, ENV())
+define(EXTERN_ENV, ` ENV()')
+
+define(G_MALLOC, `malloc($1);')
+define(G_FREE, `;')
+define(G_MALLOC_F, `malloc($1)')
+define(NU_MALLOC, `malloc($1);')
+define(NU_FREE, `;')
+define(NU_MALLOC_F, `malloc($1)')
+
+define(GET_HOME, `{($1) = 0;}')
+define(GET_PID, `{($1) = 0;}')
+define(AUG_DELAY, `{sleep ($1);}')
+define(ST_LOG, `{;}')
+define(SET_HOME, `{;}')
+define(CLOCK, `{time_t time(); ($1) = time(0);}')
+define(PRINTSIM,
+     `{asm volatile ("bis $BLK()31,0x3c,$BLK()31");}')
+divert(0)

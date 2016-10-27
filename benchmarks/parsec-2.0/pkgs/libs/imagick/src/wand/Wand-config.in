@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# Configure options script for re-calling MagickWand compilation options
+# required to use the MagickWand library.
+#
+usage="\
+Usage: Wand-config [--cflags] [--cppflags] [--exec-prefix] [--ldflags] [--libs] [--prefix] [--version]"
+
+if test $# -eq 0; then
+      echo "${usage}" 1>&2
+      echo "Example: gcc \`Wand-config --cflags --cppflags\` -o wand wand.c \`Wand-config --ldflags --libs\`" 1>&2
+      exit 1
+fi
+
+while test $# -gt 0; do
+  case $1 in
+    --prefix)
+      echo @PREFIX_DIR@
+      ;;
+    --exec-prefix)
+      echo @EXEC_PREFIX_DIR@
+      ;;
+    --version)
+      echo '@PACKAGE_VERSION@ Q@QuantumDepth@ @MAGICK_HDRI@'
+      ;;
+    --cflags)
+      echo '@MAGICK_CFLAGS@'
+      ;;
+    --cxxflags)
+      echo '@MAGICK_CXXFLAGS@'
+      ;;
+    --cppflags)
+      echo '@MAGICK_CPPFLAGS@'
+      ;;
+    --ldflags)
+      echo '@MAGICK_LDFLAGS@'
+      ;;
+    --libs)
+      echo '@MAGICK_LIBS@ -lWand -lMagick'
+      ;;
+    *)
+      echo "${usage}" 1>&2
+      exit 1
+      ;;
+  esac
+  shift
+done
+

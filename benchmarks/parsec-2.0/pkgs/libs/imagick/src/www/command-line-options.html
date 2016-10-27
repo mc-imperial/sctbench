@@ -1,0 +1,3858 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: Command-line Options</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="command-line, options, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../index.html"><img id="titlebar-west" src="../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="441316264"><img id="titlebar-west" src="../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img src="../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img id="titlebar-east" src="../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../index.html">About ImageMagick</a>
+      <a href="../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="1282888181" class="sub">Usage</a>
+      <a href="../www/api.html">Program Interfaces</a>
+      <a href="../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../Magick++/" target="1833770745" class="sub">Magick++</a>
+      <a href="../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/install-source.html">Install from Source</a>
+      <a href="../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../www/binary-releases.html">Binary Releases</a>
+      <a href="../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/sitemap.html">Site Map</a>
+			<a href="../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../www/sponsors.html">Sponsors</a>
+  <a href="http://www.onevital.com" class="sponsor" target="sponsor">Blog Network</a><!-- 200801010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[<a href="#adaptive-blur">-adaptive-blur</a> &bull; <a href="#adaptive-resize">-adaptive-resize</a> &bull; <a href="#adaptive-sharpen">-adaptive-sharpen</a> &bull; <a href="#adjoin">-adjoin</a> &bull; <a href="#affine">-affine</a> &bull; <a href="#alpha">-alpha</a> &bull; <a href="#annotate">-annotate</a> &bull; <a href="#antialias">-antialias</a> &bull; <a href="#append">-append</a> &bull; <a href="#attenuate">-attenuate</a> &bull; <a href="#authenticate">-authenticate</a> &bull; <a href="#auto-orient">-auto-orient</a> &bull; <a href="#average">-average</a> &bull; <a href="#backdrop">-backdrop</a> &bull; <a href="#background">-background</a> &bull; <a href="#bias">-bias</a> &bull; <a href="#black-point-compensation">-black-point-compensation</a> &bull; <a href="#black-threshold">-black-threshold</a> &bull; <a href="#blue-primary">-blue-primary</a> &bull; <a href="#blur">-blur</a> &bull; <a href="#border">-border</a> &bull; <a href="#bordercolor">-bordercolor</a> &bull; <a href="#borderwidth">-borderwidth</a> &bull; <a href="#cache">-cache</a> &bull; <a href="#channel">-channel</a> &bull; <a href="#charcoal">-charcoal</a> &bull; <a href="#chop">-chop</a> &bull; <a href="#clip">-clip</a> &bull; <a href="#clip-mask">-clip-mask</a> &bull; <a href="#clip-path">-clip-path</a> &bull; <a href="#clone">-clone</a> &bull; <a href="#clut">-clut</a> &bull; <a href="#coalesce">-coalesce</a> &bull; <a href="#colorize">-colorize</a> &bull; <a href="#colormap">-colormap</a> &bull; <a href="#colors">-colors</a> &bull; <a href="#colorspace">-colorspace</a> &bull; <a href="#combine">-combine</a> &bull; <a href="#comment">-comment</a> &bull; <a href="#compose">-compose</a> &bull; <a href="#composite">-composite</a> &bull; <a href="#compress">-compress</a> &bull; <a href="#contrast">-contrast</a> &bull; <a href="#contrast-stretch">-contrast-stretch</a> &bull; <a href="#convolve">-convolve</a> &bull; <a href="#crop">-crop</a> &bull; <a href="#cycle">-cycle</a> &bull; <a href="#debug">-debug</a> &bull; <a href="#deconstruct">-deconstruct</a> &bull; <a href="#define">-define</a> &bull; <a href="#delay">-delay</a> &bull; <a href="#delete">-delete</a> &bull; <a href="#density">-density</a> &bull; <a href="#depth">-depth</a> &bull; <a href="#descend">-descend</a> &bull; <a href="#despeckle">despeckle</a> &bull; <a href="#displace">-displace</a> &bull; <a href="#display">-display</a> &bull; <a href="#dispose">-dispose</a> &bull; <a href="#dissolve">-dissolve</a> &bull; <a href="#distort">-distort</a> &bull; <a href="#dither">-dither</a> &bull; <a href="#draw">-draw</a> &bull; <a href="#edge">-edge</a> &bull; <a href="#emboss">-emboss</a> &bull; <a href="#encoding">-encoding</a> &bull; <a href="#endian">-endian</a> &bull; <a href="#enhance">-enhance</a> &bull; <a href="#equalize">-equalize</a> &bull; <a href="#evaluate">-evaluate</a> &bull; <a href="#extent">-extent</a> &bull; <a href="#extract">-extract</a> &bull; <a href="#fill">-fill</a> &bull; <a href="#filter">-filter</a> &bull; <a href="#flatten">-flatten</a> &bull; <a href="#flip">-flip</a> &bull; <a href="#flop">-flop</a> &bull; <a href="#font">-font</a> &bull; <a href="#foreground">-foreground</a> &bull; <a href="#format">-format</a> &bull; <a href="#format">-format</a> &bull; <a href="#frame">-frame</a> &bull; <a href="#frame">-frame</a> &bull; <a href="#fuzz">-fuzz</a> &bull; <a href="#fx">-fx</a> &bull; <a href="#gamma">-gamma</a> &bull; <a href="#gaussian-blur">-gaussian-blur</a> &bull; <a href="#geometry">-geometry</a> &bull; <a href="#gravity">-gravity</a> &bull; <a href="#green-primary">-green-primary</a> &bull; <a href="#frame">-help</a> &bull; <a href="#iconGeometry">-iconGeometry</a> &bull; <a href="#iconic">-iconic</a> &bull; <a href="#identify"> -identify</a> &bull; <a href="#immutable">-immutable</a> &bull; <a href="#implode">-implode</a> &bull; <a href="#insert">-insert</a> &bull; <a href="#intent">-intent</a> &bull; <a href="#interlace">-interlace</a> &bull;  <a href="#interpolate">-interpolate</a> &bull; <a href="#label">-label</a> &bull; <a href="#lasso">-lasso</a> &bull; <a href="#lat">-lat</a> &bull; <a href="#layers">-layers</a> &bull; <a href="#level">-level</a> &bull; <a href="#limit">-limit</a> &bull; <a href="#linear-stretch">-linear-stretch</a> &bull; <a href="#linewidth">-linewidth</a> &bull; <a href="#list">-list</a> &bull; <a href="#log">-log</a> &bull; <a href="#loop">-loop</a> &bull; <a href="#magnify">-magnify</a> &bull; <a href="#map">-map</a> &bull; <a href="#map">-map</a> &bull; <a href="#mask">-mask</a> &bull; <a href="#mattecolor">-mattecolor</a> &bull; <a href="#mask">-mask</a> &bull; <a href="#median">-median</a> &bull; <a href="#metric">-metric</a> &bull; <a href="#mode">-mode</a> &bull; <a href="#modulate">-modulate</a> &bull; <a href="#monitor">-monitor</a>  &bull; <a href="#monochrome">-monochrome</a> &bull; <a href="#morph">-morph</a> &bull; <a href="#mosaic">-mosaic</a> &bull; <a href="#motion-blur">-motion-blur</a> &bull; <a href="#name">-name</a> &bull; <a href="#negate">-negate</a> &bull; <a href="#noise">-noise</a> &bull; <a href="#normalize">-normalize</a> &bull; <a href="#opaque">-opaque</a> &bull; <a href="#ordered-dither">-ordered-dither</a> &bull; <a href="#orient">-orient</a> &bull; <a href="#page">-page</a> &bull; <a href="#paint">-paint</a> &bull; <a href="#path">-path</a> &bull; <a href="#pause">-pause</a> &bull; <a href="#pause">-pause</a> &bull; <a href="#pen">-pen</a> &bull; <a href="#ping">-ping</a> &bull; <a href="#pointsize">-pointsize</a> &bull; <a href="#polaroid">-polaroid</a> &bull; <a href="#posterize">-posterize</a> &bull; <a href="#preview">-preview</a> &bull; <a href="#print">-print</a> &bull; <a href="#process">-process</a> &bull; <a href="#profile">-profile</a> &bull; <a href="#quality">-quality</a> &bull; <a href="#quantize">-quantize</a> &bull; <a href="#quiet">-quiet</a> &bull; <a href="#radial-blur">-radial-blur</a> &bull; <a href="#raise">-raise</a> &bull; <a href="#random-threshold">-random-threshold</a> &bull; <a href="#recolor">-recolor</a> &bull; <a href="#red-primary">-red-primary</a> &bull; <a href="#regard-warnings">-regard-warnings</a> &bull; <a href="#region">-region</a> &bull; <a href="#remote">-remote</a> &bull; <a href="#render">-render</a> &bull; <a href="#repage">-repage</a> &bull; <a href="#resample">-resample</a> &bull; <a href="#resize">-resize</a> &bull; <a href="#reverse">-reverse</a> &bull; <a href="#roll">-roll {</a> &bull; <a href="#rotate">-rotate</a> &bull; <a href="#sample">-sample</a> &bull; <a href="#sampling-factor">-sampling-factor</a> &bull; <a href="#scale">-scale</a> &bull; <a href="#scene">-scene</a> &bull; <a href="#scenes">-scenes</a> &bull; <a href="#screen">-screen</a> &bull; <a href="#seed">-seed</a> &bull; <a href="#segment">-segment</a> &bull; <a href="#separate">-separate</a> &bull; <a href="#sepia-tone">-sepia-tone</a> &bull; <a href="#set">-set</a> &bull; <a href="#shade">-shade</a> &bull; <a href="#shadow">-shadow</a> &bull; <a href="#shared-memory">-shared-memory</a> &bull; <a href="#sharpen">-sharpen</a> &bull; <a href="#shave">-shave</a> &bull; <a href="#shear">-shear</a> &bull; <a href="#sigmoidal-contrast">-sigmoidal-contrast</a> &bull; <a href="#silent">-silent</a> &bull; <a href="#size">-size</a> &bull; <a href="#sketch">-sketch</a> &bull; <a href="#snaps">-snaps</a> &bull; <a href="#solarize">-solarize</a> &bull; <a href="#splice">-splice</a> &bull; <a href="#spread">-spread</a> &bull; <a href="#stegano">-stegano</a> &bull; <a href="#stereo">-stereo</a> &bull; <a href="#storage-type">-storage-type</a> &bull; <a href="#strip">-strip</a> &bull; <a href="#stroke">-stroke</a> &bull; <a href="#strokewidth">-strokewidth</a> &bull; <a href="#support">-support</a> &bull; <a href="#swap">-swap</a> &bull; <a href="#swirl">-swirl</a> &bull; <a href="#text-font">-text-font</a> &bull; <a href="#texture">-texture</a> &bull; <a href="#threshold">-threshold</a> &bull; <a href="#thumbnail">-thumbnail</a> &bull; <a href="#tile">-tile</a> &bull; <a href="#tile-offset">-tile-offset</a> &bull; <a href="#tint">-tint</a> &bull; <a href="#title">-title</a> &bull; <a href="#transform">-transform</a> &bull; <a href="#transparent">-transparent</a> &bull; <a href="#transparent-color">-transparent-color</a> &bull; <a href="#transpose">-transpose</a> &bull; <a href="#transverse">-transverse</a> &bull; <a href="#treedepth">-treedepth</a> &bull; <a href="#trim">-trim</a> &bull; <a href="#type">-type</a> &bull; <a href="#undercolor">-undercolor</a> &bull; <a href="#unique-colors">-unique-colors</a> &bull; <a href="#units">-units</a> &bull; <a href="#unsharp">-unsharp</a> &bull; <a href="#update">-update</a> &bull; <a href="#verbose">-verbose</a> &bull; <a href="#version">-version</a> &bull; <a href="#view">-view</a> &bull; <a href="#vignette">-vignette</a> &bull; <a href="#virtual-pixel">-virtual-pixel</a> &bull; <a href="#visual">-visual</a> &bull; <a href="#watermark">-watermark</a> &bull; <a href="#wave">-wave</a> &bull; <a href="#white-point">-white-point</a> &bull; <a href="#white-threshold">-white-threshold</a> &bull; <a href="#window">-window</a> &bull; <a href="#window-group">-window-group</a> &bull; <a href="#write">-write</a>]</p>
+
+<p>Below is list of command-line options recognized by the ImageMagick <a href="../www/command-line-tools.html">command-line tools</a>. If you want a description of a particular option, click on the option name in the navigation bar above and you will go right to it.</p>
+
+<div style="margin: auto;">
+  <h4><a name="adaptive-blur" id="adaptive-blur"></a>-adaptive-blur <em class="option">radius</em>{x<em class="option">sigma</em>}</h4>
+</div>
+
+<p>adaptively blur pixels; descreasing its effect near edges.</p>
+
+<p>Use a Gaussian operator of the given radius and standard deviation (sigma).</p>
+
+<div style="margin: auto;">
+  <h4><a name="adaptive-resize" id="adaptive-resize"></a>-adaptive-resize <em class="option">geometry</em></h4>
+</div>
+
+<p>resize image with data dependent triangulation.</p>
+
+<p>See <a href="#resize">-resize</a> for details about the geometry specification. <a href="#adaptive-resize">-adaptive-resize</a> ignores the <a href="#filter">-filter</a> selection if the <a href="#filter">-filter</a> option is present. Offsets, if present in the geometry string, are ignored, and the <a href="#gravity">-gravity</a> option has no effect.</p>
+
+<div style="margin: auto;">
+  <h4><a name="adaptive-sharpen" id="adaptive-sharpen"></a>-adaptive-sharpen <em class="option">radius</em>{x<em class="option">sigma</em>}</h4>
+</div>
+
+<p>adaptively sharpen pixels; increasng its effect near edges.</p>
+
+<p>Use a Gaussian operator of the given radius and standard deviation (sigma).</p>
+
+<div style="margin: auto;">
+  <h4><a name="adjoin" id="adjoin"></a>-adjoin</h4>
+</div>
+
+<p>join images into a single multi-image file.</p>
+
+<p>Enabled by default. <a href="#adjoin">-adjoin</a> will try to save all images of an image sequence in the same file.  However, some formats (e.g.  JPEG) do not support more than one image and are saved to separate files. </p>
+
+<p>Use <a href="#adjoin">+adjoin</a> to force this behavior for all image format.</p>
+
+<div style="margin: auto;">
+  <h4><a name="affine" id="affine"></a>-affine <em class="option">matrix</em></h4>
+</div>
+
+<p>Set the drawing transformation matrix.</p>
+
+<p>This option provides a transformation matrix {<em class="option">s<sub>x</sub></em>, <em class="option">r<sub>x</sub></em>, <em class="option">r<sub>y</sub></em>, <em class="option">s<sub>y</sub></em>, <em class="option">t<sub>x</sub></em>, <em class="option">t<sub>y</sub></em>} for use by subsequent <a href="#draw">-draw</a> or <a href="#transform">-transform</a> options.</p>
+
+<p>The transformation matrix has 3x3 elements, but three of them are omitted from the input because they are constant. The new coordinate { <em class="option">x<sup>'</sup></em>, <em class="option">y<sup>'</sup></em> } of a pixel {<em class="option">x</em>, <em class="option">y</em>} in the transformed image is calculated using the following matrix equation:</p>
+
+<pre class="text">
+                                | s<sub>x</sub>  r<sub>x</sub>  0 |
+  { x<sup>'</sup>  y<sup>'</sup>  1 } = { x  y  1 } * | r<sub>y</sub>  s<sub>y</sub>  0 |
+                                | t<sub>x</sub>  t<sub>y</sub>  1 |
+</pre>
+
+<p>The size of the resulting image is set so that the rotated and scaled source image is exactly contained within the new image area.  The <em class="option">t<sub>x</sub></em> and <em class="option">t<sub>y</sub></em> parameters subsequently shift the image pixels so that those that are moved out of the image area are cut off.</p>
+
+<p>As do the pixel coordinates, the transform matrix uses a left-handed coordinate system (positive direction is rightward resp. downward; positive rotation is clockwise).</p>
+
+<p>Scaling by the factor <em class="option">s</em> is accomplished with the matrix:</p>
+
+<pre class="text">
+  {s, 0, 0, s, 0, 0}
+</pre>
+
+<p>Translation by a displacement {<em class="option">d<sub>x</sub></em>, <em class="option">d<sub>y</sub></em>} is accomplished with the matrix:</p>
+
+<pre class="text">
+  {1, 0, 0, 1, d<sub>x</sub>, d<sub>y</sub>}
+</pre>
+
+<p>Rotation clockwise about the origin by an angle <em class="option">a</em> is accomplished with the matrix:</p>
+
+<pre class="text">
+  {cos(a), sin(a), -sin(a), cos(a), 0, 0}
+</pre>
+
+<p>A series of operations can be accomplished by using a matrix that is the multiple of the matrices for each operation.</p>
+
+<div style="margin: auto;">
+  <h4><a name="alpha" id="alpha"></a>-alpha <em class="option">type</em></h4>
+</div>
+
+<p>control and special operations of the alpha/matte channel of an image</p>
+
+<p>Alpha sets a flag on an image indicating whether or not to use alpha channel data.  Choose from these options:</p>
+
+<pre class="text">
+   on
+   off
+   reset
+   set
+</pre>
+
+<p>Activate to to use alpha channel data or deactivate to ignore any existing
+alpha channel data.  Reset sets the alpha channel to fully opaque. Set sets
+the alpha channel to the intensity of the image.</p>
+
+<p>The obsoleted <a href="#matte" >-matte</a> operation is equivelent to a
+"<kbd><a href="#alpha" >-alpha</a> on</kbd>,  while the <a href="#matte"
+>+matte</a> operation is equivelent to the application of "<kbd><a
+href="#alpha" >-alpha</a> on  <a href="#alpha" >-alpha</a> reset</kbd>"
+operations.</p>
+
+<div style="margin: auto;">
+  <h4><a name="annotate" id="annotate"></a>-annotate <em class="option">x-rotate</em> <em class="option">text</em><br />-annotate <em class="option">x-rotate</em>x<em class="option">y-rotate</em>{+-}<em class="option">x</em>{+-}<em class="option">y text</em></h4>
+</div>
+
+<p>annotate an image with text.</p>
+
+<p>This is a convenience option for annotating your image with text. For more precise control over your text annotations, use <a href="#draw">-draw</a>.</p>
+
+<p><em class="option">X-rotate</em> and <em class="option">Y-rotate</em> give the angle of the text and <em class="option">x</em> and <em class="option">y</em> are offsets that give the location of the text relative to the upper left corner of the image.</p>
+
+<p>If the first character of <em class="option">text</em> is <kbd>@</kbd>, the text is read from a file titled by the remaining characters in the string.  Text  in a file are literal, no embedded formatting characters are recognized.</p>
+
+<div style="margin: auto;">
+  <h4><a name="antialias" id="antialias"></a>-antialias</h4>
+</div>
+
+<p>remove pixel aliasing.</p>
+
+<p>By default, objects are antialiased when drawn (e.g. lines, polygon, etc.).  Use <a href="#antialias">+antialias</a> to disable antialiasing.  Without antialiasing, you can avoid increasing the unique colors in an image, draw fixed width lines, or improve the rendering speed.</p>
+
+<div style="margin: auto;">
+  <h4><a name="append" id="append"></a>-append</h4>
+</div>
+
+<p>append a set of images.</p>
+
+<p>This option creates a single image where the images in the original set are stacked top-to-bottom. If they are not of the same width, any narrow images will be expanded to fit using the current <a href="#background">-background</a> color setting. Use <a href="#append">+append</a> to stack images left-to-right. The set of images is terminated by the appearance of any option. If the <a href="#append">-append</a> option appears after all of the input images, all images are appended.</p>
+
+<div style="margin: auto;">
+  <h4><a name="attenuate" id="attenuate"></a>-attenuate <em class="option">value</em></h4>
+</div>
+
+<p>lessen (or intensify) when adding noise to an image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="authenticate" id="authenticate"></a>-authenticate <em class="option">string</em></h4>
+</div>
+
+<p>decrypt image with this password.</p>
+
+<p>Use this option to supply a password for decrypting an image or an image sequence, if it is being read from a format such as PDF that supports encryption. Encrypting images being written is not supported.</p>
+
+<div style="margin: auto;">
+  <h4><a name="auto-orient" id="auto-orient"></a>-auto-orient</h4>
+</div>
+
+<p>automatically orient (rotate) image from a digital camera.</p>
+
+<div style="margin: auto;">
+  <h4><a name="average" id="average"></a>-average</h4>
+</div>
+
+<p>average a set of images.</p>
+
+<p>The set of images is terminated by the appearance of any option. If the <a href="#average">-average</a> option appears after all of the input images, all images are averaged.</p>
+
+<div style="margin: auto;">
+  <h4><a name="backdrop" id="backdrop"></a>-backdrop <em class="option">color</em></h4>
+</div>
+
+<p>display the image centered on a backdrop.</p>
+
+<p>This backdrop covers the entire workstation screen and is useful for hiding other X window activity while viewing the image. The color of the backdrop is specified as the background color. The color is specified using the format described under the <a href="#fill">-fill</a> option.</p>
+
+<div style="margin: auto;">
+  <h4><a name="background" id="background"></a>-background <em class="option">color</em></h4>
+</div>
+
+<p>the background color.</p>
+
+<p>The color is specified using the format described under the <a href="#fill">-fill</a> option.</p>
+
+<div style="margin: auto;">
+  <h4><a name="bias" id="bias"></a>-bias <em class="option">value</em>{<em class="option">%</em>}</h4>
+</div>
+
+<p>add bias when convolving an image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="black-point-compensation" id="black-point-compensation"></a>-black-point-compensation</h4>
+</div>
+
+<p>use black point compensation.</p>
+
+<div style="margin: auto;">
+  <h4><a name="black-threshold" id="black-threshold"></a>-black-threshold <em class="option">threshold</em></h4>
+</div>
+
+<p>force all pixels at or below the threshold into black while leaving all pixels above the threshold unchanged.</p>
+
+<div style="margin: auto;">
+  <h4><a name="blue-primary" id="blue-primary"></a>-blue-primary <em class="option">x</em>,<em class="option">y</em></h4>
+</div>
+
+<p>blue chromaticity primary point.</p>
+
+<div style="margin: auto;">
+  <h4><a name="blur" id="blur"></a>-blur <em class="option">radius</em><br />-blur <em class="option">radius</em>x<em class="option">sigma</em></h4>
+</div>
+
+<p>reduce image noise and reduce detail levels.</p>
+
+<p>Convolve the image with a Gaussian or normal distribution.  The formula is:</p>
+<ul><dd><img alt="gaussian distribution" width="243px" height="42px" src="../images/gaussian-blur.png"/></dd></ul>
+<p>where <i>r</i> is the blur radius (<i>r</i><sup>2</sup> = <i>u</i><sup>2</sup> + <i>v</i><sup>2</sup>), and σ is the standard deviation of the Gaussian distribution.  As a guideline, set <i>r</i> to approximately 3σ.  Specify a radius of 0 and ImageMagick selects a suitable radius for you.</p>
+
+<p>This option differs from <a href="#gaussian-blur">-gaussian-blur</a> simply by taking advantage of the linear separable properties of the distribution.  Here we apply a single-dimensional Gaussian matrix in the horizontal direction, then repeat the process in the vertical direction.</p>
+
+<div style="margin: auto;">
+  <h4><a name="border" id="border"></a>-border <em class="option">width</em><br />-border <em class="option">width</em>x<em class="option">height</em></h4>
+</div>
+
+<p>surround the image with a border of color.</p>
+
+<p>See <a href="#resize">-resize</a> for details about the geometry specification.</p>
+
+<div style="margin: auto;">
+  <h4><a name="bordercolor" id="bordercolor"></a>-bordercolor <em class="option">color</em></h4>
+</div>
+
+<p>the border color.</p>
+
+<p>The color is specified using the format described under the <a href="#fill">-fill</a> option.</p>
+
+<div style="margin: auto;">
+  <h4><a name="borderwidth" id="borderwidth"></a>-borderwidth <em class="option">geometry</em></h4>
+</div>
+
+<p>the border width.</p>
+
+<div style="margin: auto;">
+  <h4><a name="cache" id="cache"></a>-cache <em class="option">threshold</em></h4>
+</div>
+
+<p>(This option has been replaced by the <a href="#limit">-limit</a> option).</p>
+
+<div style="margin: auto;">
+  <h4><a name="channel" id="channel"></a>-channel <em class="option">type</em></h4>
+</div>
+
+<p>define the image color channels later operators may be limited to.</p>
+
+<p>Choose from: <kbd>Red</kbd>, <kbd>Green</kbd>, <kbd>Blue</kbd>, <kbd>Alpha</kbd>, <kbd>Cyan</kbd>, <kbd>Magenta</kbd>, <kbd>Yellow</kbd>, <kbd>Black</kbd>, <kbd>Opacity</kbd>, <kbd>Index</kbd>, <kbd>RGB</kbd>, <kbd>RGBA</kbd>, <kbd>CMYK</kbd>, or <kbd>CMYKA</kbd>.</p>
+
+<p>Use the <a href="#list">-list</a> option with a '<kbd>Channel</kbd>'
+argument for a list of <a href="#channel">-channel</a> <em
+class="option">types</em> available in your ImageMagick installation.</p>
+
+<p>You can specify the above as a comma separated list of channels, or
+concatenate the letters '<kbd>R</kbd>', '<kbd>G</kbd>', '<kbd>B</kbd>',
+'<kbd>A</kbd>', '<kbd>O</kbd>', '<kbd>C</kbd>', '<kbd>M</kbd>', '<kbd>Y</kbd>',
+'<kbd>K</kbd>', to specify specific multiple channels for later operators to be
+applied to.
+
+For example to only negate the alpha channel of an image, use</p>
+<pre class="text">
+    -channel Alpha -negate
+</pre>
+
+<p>By default, ImageMagick sets <a href="#channel" >"-channel</a> to the value
+'<kbd>RGB</kbd>' to limit channel affected operators to all channels, except
+the opacity channel, in an image. Using the option <a href="#channel" >"+channel</a> will reset the value back to this default. </p>
+
+<p>Operators that are affected by the <a href="#channel" >"-channel</a>
+setting include:
+<a href="#blur" >"-blur</a>,
+<a href="#combine" >"-combine</a>,
+<a href="#contrast-stretch" >"-contrast-stretch</a>,
+<a href="#evaluate" >"-evaluate</a>,
+<a href="#fx" >"-fx</a>,
+<a href="#gaussian-blur" >"-gaussian-blur</a>,
+<a href="#motion-blur" >"-motion-blur</a>,
+<a href="#negate" >"-negate</a>,
+<a href="#normalize" >"-normalize</a>,
+<a href="#ordered-dither" >"-ordered-dither</a>,
+<a href="#radial-blur" >"-radial-blur</a>,
+<a href="#random-threshold" >"-random-threshold</a>,
+<a href="#separate" >"-separate</a>,
+and <a href="#threshold" >-threshold</a>. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="charcoal" id="charcoal"></a>-charcoal <em class="option">factor</em></h4>
+</div>
+
+<p>simulate a charcoal drawing.</p>
+
+<div style="margin: auto;">
+  <h4><a name="chop" id="chop"></a>-chop <em class="option">width</em>x<em class="option">height</em>{<em class="option">+-</em>}<em class="option">x</em>{<em class="option">+-</em>}<em class="option">y</em>{<em class="option">%</em>}</h4>
+</div>
+
+<p>remove pixels from the interior of an image.</p>
+
+<p><em class="option">Width</em> and <em class="option">height</em> give the number of columns and rows to remove, and <em class="option">x</em> and <em class="option">y</em> are offsets that give the location of the leftmost column and topmost row to remove.</p>
+
+<p>The <kbd class="option">x</kbd> offset normally specifies the leftmost column to remove. If the <a href="#gravity">-gravity</a> option is present with <kbd>NorthEast</kbd>, <kbd>East</kbd>, or <kbd>SouthEast</kbd> gravity, it gives the distance leftward from the right edge of the image to the rightmost column to remove. Similarly, the <kbd class="option">y</kbd> offset normally specifies the topmost row to remove, but if the <a href="#gravity">-gravity</a> option is present with <kbd>SouthWest</kbd>, <kbd>South</kbd>, or <kbd>SouthEast</kbd> gravity, it specifies the distance upward from the bottom edge of the image to the bottom row to remove.</p>
+
+<p>The <a href="#chop">-chop</a>option removes entire rows and columns, and moves the remaining corner blocks leftward and upward to close the gaps.</p>
+
+<div style="margin: auto;">
+  <h4><a name="clip" id="clip"></a>-clip</h4>
+</div>
+
+<p>apply the clipping path, if one is present.</p>
+
+<p>If a clipping path is present, it will be applied to subsequent operations.</p>
+
+<p>For example, if you type the following command:</p>
+
+<pre class="text">
+     convert -clip -negate cockatoo.tif negated.tif
+</pre>
+
+<p>only the pixels within the clipping path are negated.</p>
+
+<p>The <a href="#clip">-clip</a> feature requires the XML library. If the XML library is not present, the option is ignored.</p>
+
+<div style="margin: auto;">
+  <h4><a name="clip-mask" id="clip-mask"></a>-clip-mask</h4>
+</div>
+
+<p>clip image as defined by this mask.</p>
+
+<div style="margin: auto;">
+  <h4><a name="clip-path" id="clip-path"></a>-clip-path <em class="option">id</em></h4>
+</div>
+
+<p>clip along a named path from the 8BImageMagick profile.</p>
+
+<div style="margin: auto;">
+  <h4><a name="clone" id="clone"></a>-clone <em class="option">index(s)</em></h4>
+</div>
+
+<p>make a copy of an image (or images).</p>
+
+<p>Specify the image by its index in the sequence.  The first image is index
+0.  Negative indexes are relative to the end of the sequence, for example, -1
+represents the last image of the sequence.  Specify a range of images with a
+dash (e.g. 0-4).  Separate indexes with a comma (e.g. 0,2).  Use <a
+href="#clone">+clone</a>  make a copy of the last image in the image
+sequence.</p>
+
+<div style="margin: auto;">
+  <h4><a name="clut" id="clut"></a>-clut</h4>
+</div>
+
+<p>Given two images, replace the channel values in the first image, with a
+lookup of its replacement value in second LUT gradient image.  </p>
+
+<p>The LUT image should be either a single row or column image of replacement
+colors.  The lookup is controled by the <a
+href="#interpolate">-interpolate</a> setting, especially for an LUT which is
+not the full length needed by the ImageMagick installed Quailty (Q) level. Good setings
+for this is the default '<kbd>bilinear</kbd>' or '<kbd>bicubic</kbd>'
+interpolation setting for a smooth color gradient, or '<kbd>integer</kbd>'
+for a direct unsmoothed lookup of color values. </p>
+
+<p>Also only the channel values defined by the <a href="#channel">-channel</a>
+setting will have there values replaced. </p>
+
+<p>This operator is especially suited to replacing a grayscale image with
+specific color gradient from the CLUT image. </p>
+
+<p>Note that color replacements involving transparency (alpha/matte channel)
+will lookup the replacement alpha/matte value using the alpha/matte value of
+the original image. As such correct alpha channel lookup for a pure gray-scale
+original image will require a copy of that grayscale to be transfered into its
+alpha channel before applying the <a href="#clut" >-clut</a> operator. The
+special "<kbd><a href="#alpha" >-alpha</a> set</kbd>" operation can be used
+for this purpose. </p>
+
+<div style="margin: auto;">
+  <h4><a name="coalesce" id="coalesce"></a>-coalesce</h4>
+</div>
+
+<p>Fully define the look of each frame of an GIF animation sequence, to form a 'film strip' like animation.</p>
+
+<p>Overlay each image in an image sequence accoding to their <a href="#dispose">-dispose</a> meta-data, to re-produce the actual look of an animation at each point in the animation sequence. All images the same size, and are assigned appropriate GIF disposal settings so the animation will continues to work as expected as a GIF animation.  Such frames are more easilly viewed, and processed, than the highly optimized GIF overlay images.  </p>
+
+<p>The animation can be re-optimized after processing using the <a href="#layers">-layers</a> method '<kbd>optimize</kbd>', though there is no gurantee that the restored GIF animation optimization will be better than the original. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="colorize" id="colorize"></a>-colorize <em class="option">value</em></h4>
+</div>
+
+<p>colorize the image with the fill color.</p>
+
+<p>Specify the amount of colorization as a percentage. You can apply separate colorization values to the red, green, and blue channels of the image with a colorization value list delimited with commas (e.g. <kbd>0,0,50</kbd>).</p>
+
+<div style="margin: auto;">
+  <h4><a name="colormap" id="colormap"></a>-colormap <em class="option">type</em></h4>
+</div>
+
+<p>define the colormap type.</p>
+
+<p>Choose between <kbd>shared</kbd> or <kbd>private</kbd>.</p>
+
+<p>This option only applies when the default X server visual is <kbd>PseudoColor</kbd> or <kbd>GrayScale</kbd>. Refer to <a href="#visual">-visual</a> for more details. By default, a shared colormap is allocated. The image shares colors with other X clients. Some image colors could be approximated, therefore your image may look very different than intended. Choose <kbd>Private</kbd> and the image colors appear exactly as they are defined. However, other clients may go <em>technicolor</em> when the image colormap is installed.</p>
+
+<div style="margin: auto;">
+  <h4><a name="colors" id="colors"></a>-colors <em class="option">value</em></h4>
+</div>
+
+<p>preferred number of colors in the image.</p>
+
+<p>The actual number of colors in the image may be less than your request, but never more. Note, this is a color reduction option. Images with less unique colors than specified with this option will have any duplicate or unused colors removed.  The ordering of an existing color palette may be altered. When converting an image from color to grayscale, convert the image to the gray colorspace before reducing the number of colors since doing so is most efficient. Refer to the <a href="../www/quantize.html">color reduction algorithm</a> for more details.</p>
+
+<div style="margin: auto;">
+  <h4><a name="colorspace" id="colorspace"></a>-colorspace <em class="option">value</em></h4>
+</div>
+
+<p>the image colorspace.</p>
+
+<p>Choices are:</p>
+
+<pre class="text">
+  CMY
+  CMYK
+  Gray
+  HSB
+  HSL
+  HWB
+  Lab
+  Log
+  OHTA
+  Rec601Luma
+  Rec601YCbCr
+  Rec709Luma
+  Rec709YCbCr
+  RGB
+  sRGB
+  Transparent
+  XYZ
+  YCbCr
+  YCC
+  YIQ
+  YPbPr
+  YUV
+</pre>
+
+<p>Use the <a href="#list">-list</a> option with a '<kbd>Colorspace</kbd>'
+argument for a list of <a href="#colorspace">-colorspace</a>
+arguments available in your ImageMagick installation.</p>
+
+<p>For a more accurate color conversion to or from the RGB, CMYK, or grayscale colorspaces use the <a href="#profile">-profile</a> option.</p>
+
+<div style="margin: auto;">
+  <h4><a name="combine" id="combine"></a>-combine</h4>
+</div>
+
+<p>combine one or more images into a single image.</p>
+
+<p>The grayscale value of the pixels of each image in the sequence is assigned in order to the specified channels of the combined image. The typical ordering would be image 1 = Red, 2 = Green, 3 = Blue, etc.</p>
+
+<div style="margin: auto;">
+  <h4><a name="comment" id="comment"></a>-comment<em class="option">string</em></h4>
+</div>
+
+<p>annotate an image with a comment.</p>
+
+<p>Use this option to assign a specific comment to the image, when writing to an image format that supports comments.  You can include the image filename, type, width, height, or other image attribute by embedding special format characters listed under the <a href="#format">-format</a> option. The comment is not drawn on the image, but is embedded in the image datastream via a "Comment" tag or similar mechanism. If you want the comment to be visible on the image itself, use the <a href="#draw">-draw</a> option.</p>
+
+<p>For example,</p>
+
+<pre class="text">
+     -comment "%m:%f %wx%h"
+</pre>
+<p>produces an image comment of <kbd>MIFF:bird.miff 512x480</kbd> for an image titled <kbd>bird.miff</kbd> and whose width is 512 and height is 480.</p>
+
+<p>If the first character of <em class="option">string</em> is <em class="option">@</em>, the image comment is read from a file titled by the remaining characters in the string.  Comments in a file are literal, no embedded formatting characters are recognized.</p>
+
+<div style="margin: auto;">
+  <h4><a name="compose" id="compose"></a>-compose <em class="option">operator</em></h4>
+</div>
+
+<p>the type of image composition.</p>
+
+<p>The description of composition uses abstract terminology in order to allow the description to be more clear, while avoiding constant values which are specific to a particular build configuration. Each image pixel is represented by red, green, and blue levels (which are equal for a gray pixel). QuantumRange is the maximum integral value which may be stored in the red, green, or blue channels of the image. Each image pixel may also optionally (if the image matte channel is enabled) have an associated level of opacity (ranging from opaque to transparent), which may be used to determine the influence of the pixel color when compositing the pixel with another image pixel. If the image matte channel is disabled, then all pixels in the image are treated as opaque. The color of an <em>opaque</em> pixel is fully visible while the color of a <em>transparent</em> pixel color is entirely absent (pixel color is ignored).</p>
+
+<p>By definition, raster images have a rectangular shape. All image rows are of equal length, and all image columns have the same number of rows. By treating the alpha channel as a visual "mask" the rectangular image may be given a "shape" by treating the alpha channel as a cookie-cutter for the image. Pixels within the shape are opaque, while pixels outside the shape are transparent. Pixels on the boundary of the shape may be between opaque and transparent in order to provide antialiasing (visually smooth edges). The description of the composition operators use this concept of image "shape" in order to make the description of the operators easier to understand. While it is convenient to describe the operators in terms of "shapes" they are by no means limited to mask-style operations since they are based on continuous floating-point mathematics rather than simple boolean operations.</p>
+
+<p>The following composite methods are available:</p>
+
+<table id="table" cellpadding="2" cellspacing="0" style="width: 93%">
+  <tbody>
+  <tr valign=top>
+    <th align="left" style="width: 8%">Method</th>
+    <th align="left">Description</th>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">clear</td>
+    <td valign="top">Both the color and the alpha of the destination are cleared. Neither the source nor the destination are used as input.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">src</td>
+    <td valign="top">The source is copied to the destination. The destination is not used as input.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">dst</td>
+    <td valign="top">The destination is left untouched.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top"><b>src-over</b></td>
+    <td valign="top">The source is composited over the destination.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">dst-over</td>
+    <td valign="top">The destination is composited over the source and the result replaces the destination.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">src-in</td>
+    <td valign="top">The part of the source lying inside of the destination replaces the destination.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">dst-in</td>
+    <td valign="top">The part of the destination lying inside of the source replaces the destination.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">src-out</td>
+    <td valign="top">The part of the source lying outside of the destination replaces the destination.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">dst-out</td>
+    <td valign="top">The part of the destination lying outside of the source         replaces the destination.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">src-atop</td>
+    <td valign="top">The part of the source lying inside of the destination is  composited onto the destination.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">dst-atop</td>
+    <td valign="top">The part of the destination lying inside of the source is composited over the source and replaces the destination.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">multiply</td>
+    <td valign="top">The source is multiplied by the destination and replaces the destination. The resultant color is always at least as dark as either of the two constituent colors. Multiplying any color with black produces black. Multiplying any color with white leaves the original color unchanged.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">screen</td>
+    <td valign="top">The source and destination are complemented and then multiplied and then replace the destination. The resultant color is always at least as light as either of the two constituent colors. Screening any color with white produces white. Screening any color with black leaves the original color unchanged.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">overlay</td>
+    <td valign="top">Multiplies or screens the colors, dependent on the destination color. Source colors overlay the destination whilst preserving its highlights and shadows. The destination color is not replaced, but is mixed with the source color to reflect the lightness or darkness of the destination.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">darken</td>
+    <td valign="top">Selects the darker of the destination and source colors.  The destination is replaced with the source when the source is darker, otherwise it is left unchanged.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">lighten</td>
+    <td valign="top">Selects the lighter of the destination and source colors.  The destination is replaced with the source when the source is lighter, otherwise it is left unchanged.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">linear-light</td>
+    <td valign="top">Increase contrast slightly with an impact on the foreground's tonal values.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">color-dodge</td>
+    <td valign="top">Brightens the destination color to reflect the source color. Painting with black produces no change.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">color-burn</td>
+    <td valign="top">Darkens the destination color to reflect the source color.  Painting with white produces no change.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">hard-light</td>
+    <td valign="top">Multiplies or screens the colors, dependent on the source color value. If the source color is lighter than 0.5, the destination is lightened as if it were screened. If the source color is darker than 0.5, the destination is darkened, as if it were multiplied. The degree of lightening or darkening is proportional to the difference between the source color and 0.5. If it is equal to 0.5 the destination is unchanged. Painting with pure black or white produces black or white.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">soft-light</td>
+    <td valign="top">Darkens or lightens the colors, dependent on the source color value. If the source color is lighter than 0.5, the destination is lightened. If the source color is darker than 0.5, the destination is darkened, as if it were burned in. The degree of darkening or lightening is proportional to the difference between the source color and 0.5. If it is equal to 0.5, the destination is unchanged. Painting with pure black or white produces a distinctly darker or lighter area, but does not result in pure black or white.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">plus</td>
+    <td valign="top">The source is added to the destination and replaces the destination. This operator is useful for animating a dissolve between two images.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">add</td>
+    <td valign="top">As per 'plus' but transparency data is treated as matte
+        values. As such any transparent areas in either image remain
+        transparent. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">minus</td>
+    <td valign="top">Subtract the colors in the source image from the
+        destination image. When transparency is involved, Opaque areas will be
+        subtracted from any destination opaque areas. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">subtract</td>
+    <td valign="top">Subtract the colors in the source image from the
+        destination image. When transparency is involved transparent areas are
+        subtracted, so only the opaque areas in the source remain opaque in
+        the destination image. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">difference</td>
+    <td valign="top">Subtracts the darker of the two constituent colors from the lighter. Painting with white inverts the destination color. Painting with black produces no change.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">exclusion</td>
+    <td valign="top">Produces an effect similar to that of 'difference', but appears as lower contrast. Painting with white inverts the destination color. Painting with black produces no change.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">xor</td>
+    <td valign="top">The part of the source that lies outside of the destination is combined with the part of the destination that lies outside of the source.</td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">copy-*</td>
+    <td valign="top">Copy the specificed channel in the source image to the
+        same channel in the destination image.  If the channel specified in
+        the source image does not exist, (which can only happen for methods,
+        '<kbd>copy-opacity</kbd>' or '<kbd>copy-black</kbd>') then it is
+        assumed that the source image is a special grayscale channel image
+        of the values to be copied. </td>
+    </tr>
+
+  <tr valign=top>
+    <td valign="top">change-mask</td>
+    <td valign="top">Replace any destination pixel that is similar to the source images pixel (as defined by the current <a href="#fuzz">-fuzz</a> factor), with transparency. </td>
+  </tr>
+  </tbody>
+</table>
+
+<p>Use the <a href="#list">-list</a> option with a '<kbd>Composite</kbd>'
+argument for a list of <a href="#compose">-compose</a>
+methods available in your ImageMagick installation.</p>
+
+There can be more methods listed, that what is shown above, many of these
+require special arguments, restricting there use to special composition
+operators, such as <a href="#blend">-blend</a>, <a
+href="#blend">-dissolve</a>, and <a href="#displace">-displace</a>. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="composite" id="composite"></a>-composite</h4>
+</div>
+
+<p>perform alpha composition on the current image sequence.</p>
+
+<p> This is done according to the current <a href="#compose">-compose</a> setting with the source image offset but the position given by <a href="#geometry" >-geometry</a>
+
+
+<div style="margin: auto;">
+  <h4><a name="compress" id="compress"></a>-compress <em class="option">type</em></h4>
+</div>
+
+<p>use this type of pixel compression when writing the image.</p>
+
+<p>Choices are: <kbd class="option">None</kbd>, <kbd class="option">BZip</kbd>, <kbd class="option">Fax</kbd>, <kbd class="option">Group4</kbd>, <kbd class="option">JPEG</kbd>,  <kbd class="option">JPEG2000</kbd>, <kbd class="option">Lossless</kbd>, <kbd class="option">LZW</kbd>, <kbd class="option">RLE</kbd> or <kbd class="option">Zip</kbd>.</p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Compression</kbd>'
+argument for a list of <a href="#compress" >-compress</a> arguments available
+in your ImageMagick installation.</p>
+
+<p>Specify <a href="#compress">+compress</a> to store the binary image in an uncompressed format. The default is the compression type of the specified image file.</p>
+
+<p>If <kbd>LZW</kbd> compression is specified but LZW compression has not been enabled, the image data will be written in an uncompressed LZW format that can be read by LZW decoders. This may result in larger-than-expected GIF files.</p>
+
+<p><kbd>Lossless</kbd> refers to lossless JPEG, which is only available if the JPEG library has been patched to support it. Use of lossless JPEG is generally not recommended.</p>
+
+<p>Use the <a href="#quality">-quality</a> option to set the compression level to be used by JPEG, PNG, MIFF, and MPEG encoders. Use the <a href="#sampling-factor">-sampling-factor</a> option to set the sampling factor to be used by JPEG, MPEG, and YUV encoders for down-sampling the chroma channels.</p>
+
+<div style="margin: auto;">
+  <h4><a name="contrast" id="contrast"></a>-contrast</h4>
+</div>
+
+<p>enhance or reduce the image contrast.</p>
+
+<p>This option enhances the intensity differences between the lighter and darker elements of the image. Use <a href="#contrast">-contrast</a> to enhance the image or <a href="#contrast">+contrast</a> to reduce the image contrast.</p>
+
+<p>For a more pronounced effect you can repeat the option:</p>
+
+<pre class="text">
+    convert rose: -contrast -contrast rose_c2.png
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="contrast-stretch" id="contrast-stretch"></a>-contrast-stretch <em class="option">black-point</em><br />-contrast-stretch <em class="option">black-point</em>{x<em class="option">white-point</em>}{<em class="option">%</em>}}</h4>
+</div>
+
+<p>Improve the contrast in an image by <em>stretching</em> the range of intensity values. While doing so black-out at most <em>black-point</em> pixels and burn at most <em>white-point</em> pixels. Or, if percent is used, black-out at most <em>black-point %</em> pixels and burn at most <em>100% minus white-point%</em> pixels.</p>
+
+<p>The channels are stretched in concert.  Specify <a href="#channel">-channel</a> to normalize the RGB channels individually.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="convolve" id="convolve"></a>-convolve <em class="option">kernel</em></h4>
+</div>
+
+<p>convolve image with the specified convolution kernel.</p>
+
+<p>The kernel is specified as a comma-separated list of integers, ordered left-to right, starting with the top row.  The order of the kernel is determined by the square root of the number of entries. Presently only square kernels are supported.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="crop" id="crop"></a>-crop <em class="option">width</em>{%}<br />-crop <em class="option">width</em>x<em class="option">height</em>{<em class="option">+-</em>}<em class="option">x</em>{<em class="option">+-</em>}<em class="option">y</em>{<em class="option">%</em>}</h4>
+</div>
+
+<p>cut out a rectangular region of the image.</p>
+
+<p>See <a href="#resize">-resize</a> for details about the geometry specification.</p>
+
+<p>The width and height give the size of the image that remains after cropping, and <em class="option">x</em> and <em class="option">y</em> are offsets that give the location of the top left corner of the cropped image with respect to the original image. To specify the amount to be removed, use <a href="#shave">-shave</a> instead.</p>
+
+<p>If the <em class="option">x</em> and <em class="option">y</em> offsets are present, a single image is generated, consisting of the pixels from the cropping region. The offsets specify the location of the upper left corner of the cropping region measured downward and rightward with respect to the upper left corner of the image. If the <a href="#gravity">-gravity</a> option is present with <kbd>NorthEast</kbd>, <kbd>East</kbd>, or <kbd>SouthEast</kbd> gravity, it gives the distance leftward from the right edge of the image to the right edge of the cropping region. Similarly, if the <a href="#gravity">-gravity</a> option is present with <kbd>SouthWest</kbd>, <kbd>South</kbd>, or <kbd>SouthEast</kbd> gravity, the distance is measured upward between the bottom edges.</p>
+
+<p>If the <em class="option">x</em> and <em class="option">y</em> offsets are omitted, a set of tiles of the specified geometry, covering the entire input image, is generated. The rightmost tiles and the bottom tiles are smaller if the specified geometry extends beyond the dimensions of the input image.</p>
+
+<p>By adding a exclamation character flag to the geometry argument, the
+cropped images virtual canvas page size and offset will be set as if the
+geometry argument was a viewport or window. This means the canvas page size
+will be set to exactly the same size you specified, the the image offset set
+relative to top left corner of the region cropped. </p>
+
+<p>If the cropped image 'missed' the actual image on its virtual canvas, a
+special single pixel transparent 'missed' image is returned, and a 'crop
+missed' warning given. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="cycle" id="cycle"></a>-cycle <em class="option">amount</em></h4>
+</div>
+
+<p>displace image colormap by amount.</p>
+
+<p><em class="option">Amount</em> defines the number of positions each
+colormap entry is shifted.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="debug" id="debug"></a>-debug <em class="option">events</em></h4>
+</div>
+
+<p>enable debug printout.</p>
+
+<p>The <kbd>events</kbd> parameter specifies which events are to be logged. It can be either <kbd>None</kbd>, <kbd>All</kbd>, <kbd>Trace</kbd>, or a comma-separated list consisting of one or more of the following domains: <kbd>Annotate</kbd>, <kbd>Blob</kbd>, <kbd>Cache</kbd>, <kbd>Coder</kbd>, <kbd>Configure</kbd>, <kbd>Deprecate</kbd>, <kbd>Exception</kbd>, <kbd>Locale</kbd>, <kbd>Render</kbd>, <kbd>Resource</kbd>, <kbd>TemporaryFile</kbd>, <kbd>Transform</kbd>, <kbd>X11</kbd>, or <kbd>User</kbd>. For example, to log cache and blob events, use.</p>
+
+<pre class="text">
+    convert -debug "Cache,Blob" rose: rose.png
+</pre>
+
+<p>The <kbd>User</kbd> domain is normally empty, but developers can log user events in their private copy of ImageMagick.</p>
+
+<p>Use the <a href="#log">-log</a> option to specify the format for debugging output.</p>
+
+<p>Use <a href="#debug">+debug</a> to turn off all logging.</p>
+
+<p>Debugging may also be set using the <kbd>MAGICK_DEBUG</kbd> <a href="../www/resources.html#environment">environment variable</a>.  The allowed values for the <kbd>MAGICK_DEBUG</kbd> environment variable are the same as for the <a href="#debug">-debug</a> option.</p>
+
+<div style="margin: auto;">
+  <h4><a name="deconstruct" id="deconstruct"></a>-deconstruct</h4>
+</div>
+
+<p>find areas that has changed between images </p>
+
+<p>Given a sequence of images all the same size, such as produced by <a href="#coalesce">-coalesce</a>, replace the second and later images, with a smaller image of just the area that changed relative to the previous image. </p>
+
+<p>The resulting sequence of images can be used to optimize an animation sequence, though will not work correctly for GIF animations when parts of the animation can go from opaque to transparent. </p>
+
+<p>This option is actually equivalent to the  <a href="#layers">-layers</a> method '<kbd>compare-any</kbd>'. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="define" id="define"></a>-define <em class="option">key</em>{<em class="option">=value</em>}<em class="option">...</em></h4>
+</div>
+
+<p>add coder/decoder specific options.</p>
+
+<p>This option creates one or more definitions for coders and decoders to use while reading and writing image data.  Definitions may be passed to coders and decoders to control options that are specific to certain image formats. If <em class="option">value</em> is missing for a definition, an empty-valued definition of a flag will be created with that name. This is used to control on/off options.  Use <a href="#define">+define key</a> to remove definitions previously created. Use <a href="#define">+define "*"</a> to remove all existing definitions.</p>
+
+<p>The following definitions may be created:</p>
+
+<pre class="text">
+  jp2:rate=value
+    Specify the compression factor to use while writing JPEG-2000
+    files. The compression factor is the reciprocal of the compression
+    ratio. The valid range is 0.0 to 1.0, with 1.0 indicating lossless
+    compression. If defined, this value overrides the -quality setting.
+    A quality setting of 75 results in a rate value of 0.06641.
+
+  mng:need-cacheoff
+    turn playback caching off for streaming MNG.
+
+  ps:imagemask
+    If the ps:imagemask flag is defined, the PS3 and EPS3 coders will
+    create Postscript files that render bilevel images with the Postscript
+    imagemask operator instead of the image operator.
+</pre>
+
+<p>For example, to create a postscript file that will render only the black pixels of a bilevel image, use:</p>
+
+<pre class="text">
+    convert bilevel.tif -define ps:imagemask eps3:stencil.ps
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="delay" id="delay"></a>-delay <em class="option">ticks</em> <br />-delay <em class="option">ticks</em>x<em class="option">ticks-per-second</em> {<em class="option">&lt;</em>} {<em class="option">&gt;</em>}</h4>
+</div>
+
+<p>display the next image after pausing.</p>
+
+<p>This option is useful for regulating the animation of image sequences <em>ticks/ticks-per-second</em> seconds must expire before the display of the next image. The default is no delay between each showing of the image sequence.  The default ticks-per-second is 100.</p>
+
+<p>Use <kbd>&gt;</kbd> to change the image delay <em>only</em> if its current value exceeds the given delay. <kbd>&lt;</kbd> changes the image delay <em>only</em> if current value is less than the given delay.  For example, if you specify <kbd>30&gt;</kbd> and the image delay is 20, the image delay does not change. However, if the image delay is 40 or 50, the delay it is changed to 30. Enclose the given delay in quotation marks to prevent the <kbd>&lt;</kbd> or <kbd>&gt;</kbd> from being interpreted by your shell as a file redirection.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="delete" id="delete"></a>-delete <em class="option">index</em></h4>
+</div>
+
+<p>delete the image, specified by its index, from the image sequence.</p>
+
+<p>Specify the image by its index in the sequence.  The first image is index 0.  Negative indexes are relative to the end of the sequence, for example, -1 represents the last image of the sequence.  Specify a range of images with a dash (e.g. 0-4).  Separate indexes with a comma (e.g. 0,2).  Use <kbd>+delete</kbd> to delete the last image in the current image sequence.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="density" id="density"></a>-density <em class="option">width</em><br />-density <em class="option">width</em>x<em class="option">height</em></h4>
+</div>
+
+<p>horizontal and vertical resolution in pixels of the image.</p>
+
+<p>This option specifies the image resolution to store while encoding a raster image or the canvas resolution while rendering (reading) vector formats such as Postscript, PDF, WMF, and SVG into a raster image. Image resolution provides the unit of measure to apply when rendering to an output device or raster image. The default unit of measure is in dots per inch (DPI). The <a href="#units">-units</a> option may be used to select dots per centimeter instead.</p>
+
+<p>The default resolution is 72 dots per inch, which is equivalent to one point per pixel (Macintosh and Postscript standard). Computer screens are normally 72 or 96 dots per inch while printers typically support 150, 300, 600, or 1200 dots per inch. To determine the resolution of your display, use a ruler to measure the width of your screen in inches, and divide by the number of horizontal pixels (1024 on a 1024x768 display).</p>
+
+<p>If the file format supports it, this option may be used to update the stored image resolution. Note that Photoshop stores and obtains image resolution from a proprietary embedded profile. If this profile is not stripped from the image, then Photoshop will continue to treat the image using its former resolution, ignoring the image resolution specified in the standard file header.</p>
+
+<p>The density option is an attribute and does not alter the underlying raster image. It may be used to adjust the rendered size for desktop publishing purposes by adjusting the scale applied to the pixels. To resize the image so that it is the same size at a different resolution, use the <a href="#resample">-resample</a> option.</p>
+
+<div style="margin: auto;">
+  <h4><a name="depth" id="depth"></a>-depth <em class="option">value</em></h4>
+</div>
+
+<p>depth of the image.</p>
+
+<p>This is the number of bits in a color sample within a pixel.  Use this option to specify the depth of raw images whose depth is unknown such as GRAY, RGB, or CMYK, or to change the depth of any image after it has been read.</p>
+
+<div style="margin: auto;">
+  <h4><a name="descend" id="descend"></a>-descend</h4>
+</div>
+
+<p>obtain image by descending window hierarchy.</p>
+
+<div style="margin: auto;">
+  <h4><a name="despeckle" id="despeckle"></a>-despeckle</h4>
+</div>
+
+<p>reduce the speckles within an image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="displace" id="displace"></a>-displace <em class="option">horizontal-scale</em><br />-displace <em class="option">horizontal-scale</em>x<em class="option">vertical-scale</em></h4>
+</div>
+
+<p>shift image pixels as defined by a displacement map.</p>
+
+<p>With this option, <em class="option">composite image</em> is used as a displacement map. Black, within the displacement map, is a maximum positive displacement. White is a maximum negative displacement and middle gray is neutral. The displacement is scaled to determine the pixel shift. By default, the displacement applies in both the horizontal and vertical directions. However, if you specify <em class="option">mask</em>, <em class="option">composite image</em> is the horizontal X displacement and <em class="option">mask</em> the vertical Y displacement.</p>
+
+<div style="margin: auto;">
+  <h4><a name="display" id="display"></a>-display <em class="option">host:display[.screen]</em></h4>
+</div>
+
+<p>specifies the X server to contact.</p>
+
+<p>This option is used with convert for obtaining image or font from this X server. See <em class="option">X(1)</em>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="dispose" id="dispose"></a>-dispose <em class="option">method</em></h4>
+</div>
+
+<p>define the GIF disposal image setting for images that are being created or read in. </p>
+
+<p>The GIF disposal method defines the way each the displayed image is to be
+modified after the current 'frame' of an animation has finished being
+displayed (after its 'delay' period), but before the next frame on an
+animation is to be overlaid onto the display. </p>
+
+<p>Here are the valid methods:</p>
+
+<pre class="text">
+  Undefined    0   No disposal specified (usually equivalent to '<kbd>none</kbd>').
+  None         1   Do not dispose between frames. Just layer the next frame.
+  Background   2   Overwrite the frames area with the background color.
+  Previous     3   Overwrite the frames area with what was there prior to overlaying.
+</pre>
+
+<p>You can also use the numbers given above, which is what the GIF format
+uses internally to represent the above settings. <p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Dispose</kbd>'
+argument for a complete list of <a href="#dispose" >-dispose</a> arguments
+available in your ImageMagick installation (the above is however the compete list).
+</p>
+
+<p>Use <a href="#dispose" >+dispose</a>, turn off the setting and prevent
+resetting the GIF disposal methods of images being read in. </p>
+
+<p>Use <a href="#set">-set</a> '<kbd>dispose</kbd>' method to set the image
+disposal method for images already in memory.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="dissolve" id="dissolve"></a>-dissolve <em class="option">percent</em></h4>
+</div>
+
+<p>dissolve an image into another by the given percent.</p>
+
+<p>The opacity of the composite image is multiplied by the given percent, then it is composited over the main image.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="distort" id="distort"></a>-distort <em class="option">method arguments</em></h4>
+</div>
+
+<p>distort an image, using the given <em class="option">method</em>
+and its required <em class="option">arguments</em>.
+
+<p>The <em class="option">arguments</em> is a single string containing a list
+of floating point numbers separated by commas or spaces.  The number of
+floating point values need depends on the distortion <em
+class="option">method</em> being used. </p>
+
+<p>Choose from these distortion types:</p>
+
+<table id="table" cellpadding="2" cellspacing="0" style="width: 93%">
+  <tbody>
+  <tr valign="top">
+    <th align="left" style="width: 8%">Method</th>
+    <th align="left">Description</th>
+  </tr>
+
+  <tr valign="top">
+    <td valign="top">Affine</td>
+    <td valign="top">
+       Affine transform, given a minimum of 3 sets of coordinate pairs, or 12
+       values (see below). Image can be scaled, rotated, sheared, translated,
+       but does not include a perspective transformation. </td>
+  </tr>
+
+  <tr valign="top">
+    <td valign="top">AffineProjection</td>
+    <td valign="top">
+       Affine transform given an Affine Matrix of 6 values
+       (sx,rx,ry,sy,tx,ty).<br>
+       (see <A HREF="#affine" >-affine</A> setting) </td>
+  </tr>
+
+  <tr valign="top">
+    <td valign="top">Bilinear</td>
+    <td valign="top">
+       Bilinear (reversed) Distortion, given a minimum of 4 sets of
+       coordinate pairs, or 16 values (see below). Not that lines may not
+       appear straight after distortion, though the distance between
+       coordinates will remain consistant. </td>
+  </tr>
+
+  <tr valign="top">
+    <td valign="top">Perspective</td>
+    <td valign="top">
+       Perspective Distortion, given a minimum of 4 sets of coordinate pairs,
+       or 16 values (see below). Any straight lines will remain straight. This
+       distortion also includes 'horizon' and 'sky' effects. </td>
+  </tr>
+
+  <tr valign="top">
+    <td valign="top">ScaleRotateTranslate&nbsp;<br>or &nbsp; SRT</td>
+    <td valign="top">
+       Distort image by first scaling, then rotating an image about a given
+       'center' then translating that 'center' to the new location, in that
+       order. It is an alternative method of specifying a '<kbd>Affine</kbd>'
+       type of distortion, but without shearing effects.  It also provides a
+       good way of rotating and displacing a smaller image for overlaying onto
+       a larger background (IE 2-dimentional animations). </p>
+
+       The number of arguments determine the specific meaning of each
+       argument for the scales, rotation, and translation operations. <br>
+
+       <table align="center">
+       <tr><td># args</td><td>meaning of arguments</td></tr>
+       <tr><td>1:</td><td>Angle_of_Rotation</td></tr>
+       <tr><td>2:</td><td>Scale &nbsp; Angle</td></tr>
+       <tr><td>3:</td><td>ScaleX,ScaleY &nbsp; Angle</td></tr>
+       <tr><td>4:</td><td>X,Y &nbsp; Scale &nbsp; Angle</td></tr>
+       <tr><td>5:</td><td>X,Y &nbsp; ScaleX,ScaleY &nbsp; Angle</td></tr>
+       <tr><td>6:</td>
+           <td>X,Y &nbsp; Scale &nbsp; Angle &nbsp; NewX,NewY</td></tr>
+       <tr><td>7:</td>
+           <td>X,Y &nbsp; ScaleX,ScaleY &nbsp; Angle &nbsp; NewX,NewY</td></tr>
+       </table></p>
+
+       </td>
+
+  <tr valign="top">
+    <td valign="top">Arc</td>
+    <td valign="top">
+       Arc the image (variation of polar mapping) over the angle given around
+       a circle. </br>
+       Arguments:  arc_width  rotate  top_edge_radius  bottom_edge_radius <BR>
+       where all but the first argument is optional.
+       <table align="center">
+       <tr><td>arc_width      </td>
+           <td>The angle over which to arc the image side-to-side</td></tr>
+       <tr><td>rotate         </td>
+           <td>Angle to rotate resulting image from vertical center</td></tr>
+       <tr><td>top_radius     </td>
+           <td>Set top edge of source image at this radius</td></tr>
+       <tr><td>bottom_radius  </td>
+           <td>Set bottom edge to this radius (radial scaling)</td></tr>
+       </table></p>
+
+       The resulting image is always resized to best fit the resulting image,
+       (as if using <A HREF="#distort" >+distort</A>) while attempting to
+       preserve scale and aspect ratio of the original image as much as
+       possible with the arguments given by the user. All four arguments will
+       be needed to change the overall aspect ratio of an 'Arc'ed image. </p>
+
+       This is a variation of a polar distortion. </p>
+  </tr>
+
+  </tbody>
+</table>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Distort</kbd>'
+argument for a list of distortion <em class="option" >method</em> available to
+your ImageMagick installation.</p>
+
+<p>Many of the above methods are based on how a set of individual coordinates
+will move when image is distorted.  Such a coordinate list is given as a
+sequence of pairs of coordinates, source X,Y coordinate, followed immediataly
+by that points distorted X,Y coordinate (4 floating point values). </p>
+
+<p>For example, to warp an image using '<kbd>perspective</kbd>' distortion,
+you need a list of at least 4 coordinate pairs, or 16 numbers.  These number
+could be thought of as representing the distortion of a quadraterial from the
+source image to the distorted image.  Here is the perspective distortion of
+the built-in "rose:" image. Note the 4 sets of coordinate pairs.
+<pre class="text">
+  convert rose:  -virtual-pixel black \
+       -distort Perspective '0,0,0,0  0,45,0,45   69,0,60,10  69,45,60,35' \
+       rose_3d_rotated.gif
+</pre></p>
+
+<p>The output image size will be the same as the input image.  This means that
+if the part of the distorted image falls outside the viewed areas of the
+'distorted space', those parts will be clipped and lost.  However if you use
+the plus form of the operator (<a href="#distort"
+>+distort</a>) the resulting image will be automatically adjusted to show
+the whole of the distorted image, using the smallest image possible.  A
+'virtual canvas' offset will also be defined with location of this image
+location in the 'distorted space'.  Use a <a href="#repage" >+repage</a>, to
+remove this offset if it is unwanted. </p>
+
+<p>You can alternatively specify a special "<kbd><a href="#set" >-set</a>
+option:distort:viewport {geometry_string}</kbd>" setting which will specify
+the size and the offset of the 'viewport' image into the distorted space. </p>
+
+<p>Colors are acquired from the source image according to the <a
+href="#interpolate" >-interpolate</a> color lookup setting, when the image is
+magnified.  However if the viewed image is minified (image becomes smaller), a
+special area resampling function (added ImageMagick v6.3.6-9), is used to
+produce a higher quality image.  For example you can use a
+'<kbd>perspective</kbd>' distortion to view a infinitely tiled 'plane' all the
+way to the horizon. </p>
+
+<p>For example...
+<pre class="text">
+  convert -size 90x90 pattern:checkerboard -normalize -virtual-pixel tile \
+      -distort perspective  '0,0,5,45  89,0,45,46  0,89,0,89  89,89,89,89' \
+      checks_tiled.jpg
+</pre></p>
+
+<p>Warning, infinitely tiled perspective images involving the horizon can be
+very slow to generate due to the use of the high quality 'area resampling'
+function (added ImageMagick v6.3.6-9).  You can turn off 'area resampling'
+using a <a href="#filter" >-filter</a> setting of '<kbd>point</kbd>', but the
+quality will suffer badly.  </p>
+
+<p>If an image generates <i>invalid pixels</i>, such as the 'sky' in the last
+'<kbd>perspective</kbd>' distortion example, <a href="#distort" >-distort</a>
+will use the current <a href="#mattecolor" >-mattecolor</a> setting for these
+pixels. If you do not what this 'sky' to be visible, set the color to match
+the rest of the ground. </p>
+
+<p>Affine rotations and shears (such as '<kbd>SRT</kbd>' distortion), tend to
+produce a cleaner result that the equivalent <a href="#rotate" >-rotate</a>
+and/or <a href="#shear" >-shear</a> operation, with more control of due to the
+above settings. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="dither" id="dither"></a>-dither</h4>
+</div>
+
+<p>Apply a Hilbert-Peano error diffusion dither to images when general color reduction is applied via an option, or automatically when saving to specific formats. This is enabled by default. </p>
+
+<p>Dithering places two or more colors in neighbouring pixels so that to the eye a closer approximation of the images original color is reproduced. This reduces the number of colors needed to reproduce the image but at the cost of a lower level pattern of colors. Error diffusion dithers can use any set of colors (generated or user defined) to an image.  </p>
+
+<p>Use <a href="#dither">+dither</a> to turn off dithering, and to also render PostScript without text or graphic aliasing. Disabling dithering often (but not always) leads to faster process, a smaller number of colors, but more cartoon like image coloring.  Generally resulting in 'color banding' effects in areas with color gradients. </p>
+
+<p>The color reduction operators <a href="#colors">-colors</a>, <a
+href="#monochrome">-monochrome</a>, <a href="#map ">-map</a>, and <a href="#posterize">-posterize</a>, apply dithering to images using the reduced color set they created. These operators are also used as part of automatic color reduction when saving images to formats with limited color support, such as <kbd>GIF:</kbd>, <kbd>XBM:</kbd>, and others, so dithering may also be used in these cases. </p>
+
+<p>Alternativelly you can use <a href="#random-threshold">-random-threshold</a> to generate purely random dither. Or use <a href="#ordered-dither">-ordered-dither</a> to apply threshold mapped dither patterns, using uniform color maps, rather than specific color maps. </P>
+
+
+<div style="margin: auto;">
+  <h4><a name="draw" id="draw"></a>-draw <em class="option">string</em></h4>
+</div>
+
+<p>annotate an image with one or more graphic primitives.</p>
+
+<p>Use this option to annotate an image with one or more graphic primitives. The primitives include shapes, text, transformations, and pixel operations. The shape primitives are:</p>
+
+<pre class="text">
+   point           x,y
+   line            x0,y0 x1,y1
+   rectangle       x0,y0 x1,y1
+   roundRectangle  x0,y0 x1,y1 wc,hc
+   arc             x0,y0 x1,y1 a0,a1
+   ellipse         x0,y0 rx,ry a0,a1
+   circle          x0,y0 x1,y1
+   polyline        x0,y0  ...  xn,yn
+   polygon         x0,y0  ...  xn,yn
+   Bezier          x0,y0  ...  xn,yn
+   path            path specification
+   image           operator x0,y0 w,h filename
+</pre>
+
+<p>The text primitive is.</p>
+
+<pre class="text">
+   text            x0,y0 string
+</pre>
+<p>The text gravity primitive is.</p>
+
+<pre class="text">
+   gravity         NorthWest, North, NorthEast, West, Center,
+                   East, SouthWest, South, or SouthEast
+</pre>
+
+<p>The text gravity primitive only affects the placement of text and does not interact with the other primitives.  It is equivalent to using the <a href="#gravity">-gravity</a> commandline option, except that it is limited in scope to the <a href="#draw">-draw</a> option in which it appears.</p>
+
+<p>The transformation primitives are.</p>
+
+<pre class="text">
+   rotate          degrees
+   translate       dx,dy
+   scale           sx,sy
+   skewX           degrees
+   skewY           degrees
+</pre>
+
+<p>The pixel operation primitives are.</p>
+
+<pre class="text">
+   color           x0,y0 method
+   matte           x0,y0 method
+</pre>
+
+<p>The shape primitives are drawn in the color specified in the preceding <a href="#fill">-fill</a> option.  For unfilled shapes, use <a href="#fill">-fill none</a>.  You can optionally control the stroke with the <a href="#stroke">-stroke</a> and <a href="#strokewidth">-strokewidth</a> options.</p>
+
+<p><kbd>Point</kbd> requires a single coordinate.</p>
+
+<p><kbd>Line</kbd> requires a start and end coordinate.</p>
+
+<p><kbd>Rectangle</kbd> expects an upper left and lower right coordinate.</p>
+
+<p><kbd>RoundRectangle</kbd> has the upper left and lower right coordinates and the width and height of the corners.</p>
+
+<p><kbd>Circle</kbd> has a center coordinate and a coordinate for the outer edge.</p>
+
+<p>Use <kbd>Arc</kbd> to inscribe an elliptical arc within a rectangle. Arcs require a start and end point as well as the degree of rotation (e.g. 130,30 200,100 45,90).</p>
+
+<p>Use <kbd>Ellipse</kbd> to draw a partial ellipse centered at the given point with the x-axis and y-axis radius and start and end of arc in degrees (e.g. 100,100 100,150 0,360).</p>
+
+<p>Finally, <kbd>polyline</kbd> and
+<kbd>polygon</kbd> require three or more coordinates to define its boundaries. Coordinates are integers separated by an optional comma. For example, to define a circle centered at 100,100 that extends to 150,150 use:</p>
+
+<pre class="text">
+   -draw 'circle 100,100 150,150'
+</pre>
+
+<p><kbd>Paths</kbd> (See <a href="http://www.w3.org/TR/SVG/paths.html">Paths</a>) represent an outline of an object which is defined in terms of moveto (set a new current point), lineto (draw a straight line), curveto (draw a curve using a cubic Bezier), arc (elliptical or circular arc) and closepath (close the current shape by drawing a line to the last moveto) elements. Compound paths (i.e., a path with subpaths, each consisting of a single moveto followed by one or more line or curve operations) are possible to allow effects such as <em>donut holes</em> in objects.</p>
+
+<p>Use <kbd>image</kbd> to composite an image with another image. Follow the image keyword with the composite operator, image location, image size, and filename:</p>
+
+<pre class="text">
+   -draw 'image Over 100,100 225,225 image.jpg'
+</pre>
+
+<p>You can use 0,0 for the image size, which means to use the actual dimensions found in the image header. Otherwise, it will be scaled to the given dimensions. See <a href="#compose">-compose</a> for a description of the composite operators.</p>
+
+<p>Use <kbd>text</kbd> to annotate an image with text. Follow the text coordinates with a string. If the string has embedded spaces, enclose it in single or double quotes.</p>
+
+<p>For example,</p>
+
+<pre class="text">
+   -draw 'text 100,100 "Works like magick!"'
+</pre>
+
+<p>annotates the image with <kbd>Works like magick!</kbd> for an image titled <kbd>bird.miff</kbd></p>.  See the <a href="#annotate">-annotate</a> option for another convenient way to annotate an image with text.</p>
+
+<p><kbd>Rotate</kbd> rotates subsequent shape primitives and text primitives about the origin of the main image. If the <a href="#region">-region</a> option precedes the <a href="#draw">-draw</a> option, the origin for transformations is the upper left corner of the region.</p>
+
+<p><kbd>Translate</kbd> translates them.</p>
+
+<p><kbd>Scale</kbd> scales them.</p>
+
+<p><kbd>SkewX</kbd> and <kbd>SkewY</kbd> skew them with respect to the origin of the main image or the region.</p>
+
+<p>The transformations modify the current affine matrix, which is initialized from the initial affine matrix defined by the <a href="#affine">-affine</a> option. Transformations are cumulative within the <a href="#draw">-draw</a> option. The initial affine matrix is not affected; that matrix is only changed by the appearance of another <a href="#affine">-affine</a>option. If another <a href="#draw">-draw</a> option appears, the current affine matrix is reinitialized from the initial affine
+matrix.</p>
+
+<p>Use <kbd>color</kbd> to change the color of a pixel to the fill color (see <a href="#fill">-fill</a>). Follow the pixel coordinate with a method:</p>
+
+<pre class="text">
+   point
+   replace
+   floodfill
+   filltoborder
+   reset
+</pre>
+
+<p>Consider the target pixel as that specified by your coordinate. The <kbd>point</kbd> method recolors the target pixel. The <kbd>replace</kbd> method recolors any pixel that matches the color of the target pixel.  <kbd>Floodfill</kbd> recolors any pixel that matches the color of the target pixel and is a neighbor, whereas <kbd>filltoborder</kbd> recolors any neighbor pixel that is not the border color. Finally, <kbd>reset</kbd> recolors all pixels.</p>
+
+<p>Use <kbd>matte</kbd> to the change the pixel matte value to transparent. Follow the pixel coordinate with a method (see the <kbd>color</kbd> primitive for a description of methods). The <kbd>point</kbd> method changes the matte value of the target pixel. The <kbd>replace</kbd> method changes the matte value of any pixel that matches the color of the target pixel. <kbd>Floodfill</kbd> changes the matte value of any pixel that matches the color of the target pixel and is a neighbor, whereas <kbd>filltoborder</kbd> changes the matte value of any neighbor pixel that is not the border color (<a href="#bordercolor">-bordercolor</a>). Finally <kbd>reset</kbd> changes the matte value of all pixels.</p>
+
+<p>You can set the primitive color, font, and font bounding box color with <a href="#fill">-fill</a>, <a href="#font">-font</a>, and <a href="#box">-box</a> respectively.  Options are processed in command line order so be sure to use these options <em>before</em> the <a href="#draw">-draw</a> option.</p>
+
+<p>Drawing primitives conform to the <a href="../www/magick-vector-graphics.html">Magick Vector Graphics</a> format.</p>
+
+<div style="margin: auto;">
+  <h4><a name="edge" id="edge"></a>-edge <em class="option">radius</em></h4>
+</div>
+
+<p>detect edges within an image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="emboss" id="emboss"></a>-emboss <em class="option">radius</em></h4>
+</div>
+
+<p>emboss an image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="encoding" id="encoding"></a>-encoding <em class="option">type</em></h4>
+</div>
+
+<p>specify the text encoding.</p>
+
+<p>Choose from <kbd>AdobeCustom</kbd>, <kbd>AdobeExpert</kbd>, <kbd>AdobeStandard</kbd>, <kbd>AppleRoman</kbd>, <kbd>BIG5</kbd>, <kbd>GB2312</kbd>, <kbd>Latin 2</kbd>, <kbd>None</kbd>, <kbd>SJIScode</kbd>, <kbd>Symbol</kbd>, <kbd>Unicode</kbd>, <kbd>Wansung</kbd>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="endian" id="endian"></a>-endian <em class="option">type</em></h4>
+</div>
+
+<p>specify endianness (<kbd>MSB</kbd> or <kbd>LSB</kbd>) of the image.</p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Endian</kbd>'
+argument for a list of <a href="#endian" >-endian</a> arguments available
+in your ImageMagick installation.</p>
+
+<p>Use <a href="#endian">+endian</a> to revert to unspecified endianness.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="enhance" id="enhance"></a>-enhance</h4>
+</div>
+
+<p>apply a digital filter to enhance a noisy
+image.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="equalize" id="equalize"></a>-equalize</h4>
+</div>
+
+<p>perform histogram equalization to the image.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="evaluate" id="evaluate"></a>-evaluate <em class="option">operator constant</em></h4>
+</div>
+
+<p>evaluate an arithmetic, relational, or logical expression.</p> <p>Choose from: <kbd>Add</kbd>, <kbd>And</kbd>, <kbd>Divide</kbd>, <kbd>LeftShift</kbd>, <kbd>Max</kbd>, <kbd>Min</kbd>, <kbd>Multiply</kbd>, <kbd>Or</kbd>, <kbd>RightShift</kbd>, <kbd>Set</kbd>, <kbd>Subtract</kbd>, or <kbd>Xor</kbd>.</p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Evaluate</kbd>'
+argument for a list of <a href="#evaluate" >-evaluate</a> arguments available
+in your ImageMagick installation.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="extent" id="extent"></a>-extent <em class="option">width</em><br />-extent <em class="option">width</em>x<em class="option">height</em></h4>
+</div>
+
+<p>set the image size and offset.  If the image is enlarged, unfilled areas are set to to the background color.</p>
+
+<p>See <a href="#resize">-resize</a> for details about the geometry specification.</p>
+
+<div style="margin: auto;">
+  <h4><a name="extract" id="extract"></a>-extract <em class="option">width</em><br />-extract <em class="option">width</em>x<em class="option">height</em>{{+-}<em class="option">offset</em>}</h4>
+</div>
+
+<p>extract the specified area from image.  The option is most useful for extracting a subregion of a very large raw image.  Note, these two command are equivalent:</p>
+
+<pre class="text">
+  convert -size 16000x16000 -depth 8 -extract 640x480+1280+960 image.rgb image.png
+  convert -size 16000x16000 -depth 8 image.rgb[640x480+1280+960]' image.rgb image.png
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="fill" id="fill"></a>-fill <em class="option">color</em></h4>
+</div>
+
+<p>color to use when filling a graphic primitive.</p>
+
+<p>Colors are represented in ImageMagick in the same form used by SVG:</p>
+
+<pre class="text">
+  name                 (<kbd>identify -list color</kbd> to see names)
+  #RGB                 (R,G,B are hex numbers, 4 bits each)
+  #RRGGBB              (8 bits each)
+  #RRRGGGBBB           (12 bits each)
+  #RRRRGGGGBBBB        (16 bits each)
+  #RGBA                (4 bits each)
+  #RRGGBBOO            (8 bits each)
+  #RRRGGGBBBOOO        (12 bits each)
+  #RRRRGGGGBBBBOOOO    (16 bits each)
+  rgb(r,g,b)           0-255 or 0-100% for each of rgb
+  rgba(r,g,b,a)        0-255 or 0-100% for each of rgb and 0.0 - 1.0 for alpha
+  cmyk(c,m,y,k)        0-255 or 0-100% for each of cmyk
+  cmyka(c,m,y,k,a)     0-255 or 0-100% for each of cmyk and 0.0 - 1.0 for alpha
+  hsl(h,s,l)           0-360 for hue, 0-100 for saturation and luminosity
+  hsla(h,s,l,a)        for hue, 0-100 for saturation and luminosity and 0.0 - 1.0 for alpha
+</pre>
+
+<p>Enclose the color specification in quotation marks to prevent the "#" or the parentheses from being interpreted by your shell.</p>
+
+<p>For example,</p>
+
+<pre class="text">
+  convert -fill blue ...
+  convert -fill "#ddddff" ...
+  convert -fill "rgb(255,255,255)" ...
+</pre>
+
+<p>The shorter forms are scaled up, if necessary by replication. For example, <kbd>#3af</kbd>, <kbd>#33aaff</kbd>, and <kbd>#3333aaaaffff</kbd> are all equivalent.</p>
+
+<p>See <a href="#draw">-draw</a> for further details.</p>
+
+<p>Use <a href="#list">-list</a> with a '<kbd>Color</kbd>' argument for a complete list of the color names and their values, known by your ImageMagick installation.</p>
+
+<div style="margin: auto;">
+  <h4><a name="filter" id="filter"></a>-filter <em class="option">type</em></h4>
+</div>
+
+<p>use this type of filter when resizing an image.</p>
+
+<p>Use this option to affect the resizing operation of an image (see <a href="#resize">-resize</a>). Choose from these filters:</p>
+
+<pre class="text">
+   Point
+   Box
+   Triangle
+   Hermite
+   Hanning
+   Hamming
+   Blackman
+   Gaussian
+   Quadratic
+   Cubic
+   Catrom
+   Mitchell
+   Lanczos
+   Bessel
+   Sinc
+</pre>
+
+<p>The default filter is automatically selected to provide the best quality while consuming a reasonable amount of time. The <kbd>Mitchell</kbd> filter is used if the image supports a palette, supports a matte channel, or is being enlarged, otherwise the <kbd>Lanczos</kbd> filter is used.</p>
+
+<p>Since options are evaluated in command line order, be sure to specify the <a href="#filter">-filter</a> option <em>before</em> the <a href="#resize">-resize</a> option.
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Filter</kbd>'
+argument for a list of <a href="#filter" >-filter</a> arguments available
+in your ImageMagick installation.</p>
+
+<div style="margin: auto;">
+  <h4><a name="flatten" id="flatten"></a>-flatten</h4>
+</div>
+
+<p>flatten a sequence of images.</p>
+
+<p>The current sequence of images is replaced by a single image created by composing each image on top of the previous image according to the current <a href="#compose" >-compose</a> setting, starting with a canvas the size of the first images current <a href="#page" >-page</a> size, and using the current <a href="#background" >-background</a> color.  </p>
+
+<p>The starting canvas is not enlarged to allow later images to fit into that canvas. </p>
+
+<p>See also <a href="#mosaic">-mosaic</a> </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="flip" id="flip"></a>-flip</h4>
+</div>
+
+<p>create a <em>mirror image</em>.</p>
+
+<p>reflect the scanlines in the vertical direction.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="flop" id="flop"></a>-flop</h4>
+</div>
+
+<p>create a <em>mirror image</em>.</p>
+
+<p>reflect the scanlines in the horizontal direction.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="font" id="font"></a>-font <em class="option">name</em></h4>
+</div>
+
+<p>set the font to use when annotating images with text, or creating labels.</p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Font</kbd>' argument
+(before ImageMagick v6.3.6, use '<kbd>Type</kbd>' instead ) for a list of fonts that
+that ImageMagick knows about by name. </p>
+
+<p>In addition to the fonts specified by the above pre-defined list, you can
+also specify a font from a specific source.  For example <kbd>Arial.ttf</kbd>
+is a TrueType font file, <kbd>ps:helvetica</kbd> is PostScript font, and
+<kbd>x:fixed</kbd> is X11 font.</p>
+
+<div style="margin: auto;">
+  <h4><a name="foreground" id="foreground"></a>-foreground <em class="option">color</em></h4>
+</div>
+
+<p>define the foreground color.</p>
+
+<p>The color is specified using the format described under the <a href="#fill">-fill</a> option.</p>
+
+<div style="margin: auto;">
+  <h4><a name="format" id="format"></a>-format <em class="option">type</em></h4>
+</div>
+
+<p>the image format type.</p>
+
+<p>When used with the <kbd>mogrify</kbd> utility, this option converts any image to the image <a href="/www/formats.html">format</a> you specify.  For a list of image format types supported by ImageMagick, see the output of this command: <kbd>identify -list format</kbd>.</p>
+
+<p>By default the file is written to its original name. However, if the filename extension matches a supported format, the extension is replaced with the image format type specified with <a href="#format">-format</a>. For example, if you specify <em class="option">tiff</em> as the format type and the input image filename is <em class="option">image.gif</em>, the output image filename becomes <em class="option">image.tiff</em>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="format" id="format"></a>-format <em class="option">string</em></h4>
+</div>
+
+<p>output formatted image characteristics.</p>
+
+<p>When used with the <kbd>identify</kbd> utility, use this option to print information about the image in a format of your choosing. You can include the image filename, type, width, height, Exif data, or other image attributes by embedding special format characters:</p>
+
+<pre class="text">
+   %b   file size
+   %c   comment
+   %d   directory
+   %e   filename extension
+   %f   filename
+   %g   page geometry
+   %h   height
+   %i   input filename
+   %k   number of unique colors
+   %l   label
+   %m   magick
+   %n   number of scenes
+   %o   output filename
+   %p   page number
+   %q   quantum depth
+   %r   image class and colorspace
+   %s   scene number
+   %t   top of filename
+   %u   unique temporary filename
+   %w   width
+   %x   x resolution
+   %y   y resolution
+   %z   image depth
+   %C   image compression type
+   %D   image dispose method
+   %O   page offset
+   %P   page width and height
+   %Q   image compression quality
+   %T   image delay
+   %@   bounding box
+   %#   signature
+   %%   a percent sign
+   \n   newline
+   \r   carriage return
+</pre>
+
+<p>For example,</p>
+
+<pre class="text">
+   -format "%m:%f %wx%h"
+</pre>
+
+<p>displays <kbd>MIFF:bird.miff 512x480</kbd> for an image titled <kbd>bird.miff</kbd> and whose width is 512 and height is 480.</p>
+
+<p>Use fx: to evaluate  <a href="../www/fx.html">FX</a> expression:</p>
+
+<pre class="text">
+   %[fx:<em>expression</em>]
+</pre>
+
+<p>Use pixel: to evaluate a pixel color as defined by the <a href="../www/fx.html">FX</a> expression:</p>
+
+<pre class="text">
+   %[pixel:<em>expression</em>]
+</pre>
+
+<p>You can also use the following special formatting syntax to print EXIF information contained in the file:</p>
+
+<pre class="text">
+   %[EXIF:tag]
+</pre>
+
+<p>Where "tag" can be one of the following:</p>
+
+<pre class="text">
+   *  (print all Exif tags, in keyword=data format)
+   !  (print all Exif tags, in tag_number data format)
+   #hhhh (print data for Exif tag #hhhh)
+   ImageWidth
+   ImageLength
+   BitsPerSample
+   Compression
+   PhotometricInterpretation
+   FillOrder
+   DocumentName
+   ImageDescription
+   Make
+   Model
+   StripOffsets
+   Orientation
+   SamplesPerPixel
+   RowsPerStrip
+   StripByteCounts
+   XResolution
+   YResolution
+   PlanarConfiguration
+   ResolutionUnit
+   TransferFunction
+   Software
+   DateTime
+   Artist
+   WhitePoint
+   PrimaryChromaticities
+   TransferRange
+   JPEGProc
+   JPEGInterchangeFormat
+   JPEGInterchangeFormatLength
+   YCbCrCoefficients
+   YCbCrSubSampling
+   YCbCrPositioning
+   ReferenceBlackWhite
+   CFARepeatPatternDim
+   CFAPattern
+   BatteryLevel
+   Copyright
+   ExposureTime
+   FNumber
+   IPTC/NAA
+   ExifOffset
+   InterColorProfile
+   ExposureProgram
+   SpectralSensitivity
+   GPSInfo
+   ISOSpeedRatings
+   OECF
+   ExifVersion
+   DateTimeOriginal
+   DateTimeDigitized
+   ComponentsConfiguration
+   CompressedBitsPerPixel
+   ShutterSpeedValue
+   ApertureValue
+   BrightnessValue
+   ExposureBiasValue
+   MaxApertureValue
+   SubjectDistance
+   MeteringMode
+   LightSource
+   Flash
+   FocalLength
+   MakerNote
+   UserComment
+   SubSecTime
+   SubSecTimeOriginal
+   SubSecTimeDigitized
+   FlashPixVersion
+   ColorSpace
+   ExifImageWidth
+   ExifImageLength
+   InteroperabilityOffset
+   FlashEnergy
+   SpatialFrequencyResponse
+   FocalPlaneXResolution
+   FocalPlaneYResolution
+   FocalPlaneResolutionUnit
+   SubjectLocation
+   ExposureIndex
+   SensingMethod
+   FileSource
+   SceneType
+</pre>
+
+<p>Surround the format specification with quotation marks to prevent your shell from misinterpreting any spaces and square brackets.</p>
+
+<p>You can also use the following special formatting syntax to print IPTC information contained in the file:</p>
+
+<pre class="text">
+   %[IPTC:dataset:record]
+</pre>
+
+<p>Where dataset and record can be one of the following:</p>
+
+<pre class="text">
+    Envelope Record
+      1:00  Model Version
+      1:05  Destination
+      1:20  File Format
+      1:22  File Format Version
+      1:30  Service Identifier
+      1:40  Envelope Number
+      1:50  Product ID
+      1:60  Envelope Priority
+      1:70  Date Sent
+      1:80  Time Sent
+      1:90  Coded Character Set
+      1:100  UNO (Unique Name of Object)
+      1:120  ARM Identifier
+      1:122  ARM Version
+
+    Application Record
+      2:00  Record Version
+      2:03  Object Type Reference
+      2:05  Object Name (Title)
+      2:07  Edit Status
+      2:08  Editorial Update
+      2:10  Urgency
+      2:12  Subject Reference
+      2:15  Category
+      2:20  Supplemental Category
+      2:22  Fixture Identifier
+      2:25  Keywords
+      2:26  Content Location Code
+      2:27  Content Location Name
+      2:30  Release Date
+      2:35  Release Time
+      2:37  Expiration Date
+      2:35  Expiration Time
+      2:40  Special Instructions
+      2:42  Action Advised
+      2:45  Reference Service
+      2:47  Reference Date
+      2:50  Reference Number
+      2:55  Date Created
+      2:60  Time Created
+      2:62  Digital Creation Date
+      2:63  Digital Creation Time
+      2:65  Originating Program
+      2:70  Program Version
+      2:75  Object Cycle
+      2:80  By-Line (Author)
+      2:85  By-Line Title (Author Position) [Not used in Photoshop 7]
+      2:90  City
+      2:92  Sub-Location
+      2:95  Province/State
+      2:100  Country/Primary Location Code
+      2:101  Country/Primary Location Name
+      2:103  Original Transmission Reference
+      2:105  Headline
+      2:110  Credit
+      2:115  Source
+      2:116  Copyright Notice
+      2:118  Contact
+      2:120  Caption/Abstract
+      2:122  Caption Writer/Editor
+      2:125  Rasterized Caption
+      2:130  Image Type
+      2:131  Image Orientation
+      2:135  Language Identifier
+      2:150  Audio Type
+      2:151  Audio Sampling Rate
+      2:152  Audio Sampling Resolution
+      2:153  Audio Duration
+      2:154  Audio Outcue
+      2:200  ObjectData Preview File Format
+      2:201  ObjectData Preview File Format Version
+      2:202  ObjectData Preview Data
+
+    Pre-ObjectData Descriptor Record
+      7:10   Size Mode
+      7:20   Max Subfile Size
+      7:90   ObjectData Size Announced
+      7:95   Maximum ObjectData Size
+
+    ObjectData Record
+      8:10   Subfile
+
+    Post ObjectData Descriptor Record
+      9:10   Confirmed ObjectData Size
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="frame" id="frame"></a>-frame <em class="option">width</em><br />-frame <em class="option">width</em>x<em class="option">height</em>{+-}<em class="option">outer-bevel-width</em>{+-}<em class="option">inner-bevel-width</em></h4>
+</div>
+
+<p>surround the image with an ornamental border.</p>
+
+<p>See <a href="#resize">-resize</a>for details about the geometry specification. The <a href="#frame">-frame</a> option is not affected by the <a href="#gravity">-gravity</a> option.</p>
+
+<p>The color of the border is specified with the <a href="#mattecolor">-mattecolor</a> command line option.</p>
+
+<div style="margin: auto;">
+  <h4><a name="frame" id="frame"></a>-frame</h4>
+</div>
+
+<p>include the X window frame in the imported image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="fuzz" id="fuzz"></a>-fuzz <em class="option">distance</em>{<em class="option">%</em>}</h4>
+</div>
+
+<p>colors within this distance are considered equal.</p>
+
+<p>A number of algorithms search for a target color. By default the color must be exact. Use this option to match colors that are close to the target color in RGB space. For example, if you want to automatically trim the edges of an image with <a href="#trim">-trim</a> but the image was scanned and the target background color may differ by a small amount. This option can account for these differences.</p>
+
+<p>The <em class="option">distance</em> can be in absolute intensity units or, by appending <kbd>%</kbd> as a percentage of the maximum possible intensity (255, 65535, or 4294967295).</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="fx" id="fx"></a>-fx <em class="option">expression</em></h4>
+</div>
+
+<p>apply a mathematical expression to an image or image channels.</p>
+
+<p>If the first character of <em class="option">expression</em> is <kbd>@</kbd>, the expression is read from a file titled by the remaining characters in the string.</p>
+
+<p>See <a href="../www/fx.html">FX, The Special Effects Image Operator</a> for a detailed discussion of this option.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="gamma" id="gamma"></a>-gamma <em class="option">value</em></h4>
+</div>
+
+<p>level of gamma correction.</p>
+
+<p>The same color image displayed on two different workstations may look different due to differences in the display monitor. Use gamma correction to adjust for this color difference.  Reasonable values extend from <kbd>0.8</kbd> to <kbd>2.3</kbd>. Gamma less than 1.0 darkens the image and gamma greater than 1.0 lightens it. Large adjustments to image gamma may result in the loss of some image information if the pixel quantum size is only eight bits (quantum range 0 to 255).</p>
+
+<p>You can apply separate gamma values to the red, green, and blue channels of the image with a gamma value list delimited with commas (e.g., <kbd>1.7,2.3,1.2</kbd>).</p>
+
+<p>Use <a href="#gamma">+gamma <em class="option">value</em></a> to set the image gamma level without actually adjusting the image pixels. This option is useful if the image is of a known gamma but not set as an image attribute (e.g. PNG images).</p>
+
+<div style="margin: auto;">
+  <h4><a name="gaussian-blur" id="gaussian-blur"></a>-gaussian-blur <em class="option">radius</em><br />-gaussian-blur <em class="option">radius</em>x<em class="option">sigma</em></h4>
+</div>
+
+<p>blur the image with a Gaussian operator.</p>
+
+<p>Convolve the image with a Gaussian or normal distribution.  The formula is:</p>
+<ul><dd><img alt="gaussian distribution" width="243px" height="42px" src="../images/gaussian-blur.png"/></dd></ul>
+<p>where <i>r</i> is the blur radius (<i>r</i><sup>2</sup> = <i>u</i><sup>2</sup> + <i>v</i><sup>2</sup>), and σ is the standard deviation of the Gaussian distribution.  As a guideline, set <i>r</i> to approximately 3σ.  Specify a radius of 0 and ImageMagick selects a suitable radius for you.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="geometry" id="geometry"></a>-geometry <em class="option">width</em><br />-geometry <em class="option">width</em>x<em class="option">height</em>{<em class="option">+-</em>}<em class="option">x</em>{<em class="option">+-</em>}<em class="option">y</em></h4>
+</div>
+
+<p>preferred size and location of the image.</p>
+
+<p>If the <em class="option">x</em> is negative, the offset is measured leftward from the right edge of the screen to the right edge of the image being displayed. Similarly, negative <em class="option">y</em> is measured between the bottom edges. The offsets are not affected by <kbd>%</kbd>; they are always measured in pixels.</p>
+
+<div style="margin: auto;">
+  <h4><a name="gravity" id="gravity"></a>-gravity <em class="option">type</em></h4>
+</div>
+
+<p>direction primitive gravitates to when annotating the image.</p>
+
+<p>Choices are: <kbd>NorthWest</kbd>, <kbd>North</kbd>, <kbd>NorthEast</kbd>,
+<kbd>West</kbd>, <kbd>Center</kbd>, <kbd>East</kbd>, <kbd>SouthWest</kbd>,
+<kbd>South</kbd>, <kbd>SouthEast</kbd>.  Or you can use <a
+href="#list">-list</a> with a '<kbd>Gravity</kbd>' option to get a complete
+list of <a href="#gravity">-gravity</a> settings available in your ImageMagick
+installation.</p>
+
+<p>The direction you choose specifies where to position the text when annotating the image. For example, a gravity of <kbd>Center</kbd> forces the text to be centered within the image. By default, the image gravity is <kbd>NorthWest</kbd>. See <a href="#draw">-draw</a> for more details about graphic primitives.  Only the text primitive is affected by the <a href="#gravity">-gravity</a> option.</p>
+
+<p>The <a href="#gravity">-gravity</a> option is also used in concert with the <a href="#geometry">-geometry</a> option and other options that take <em class="option">geometry</em> as a parameter, such as the <a href="#crop">-crop</a> option. See <a href="#geometry">-geometry</a> for details of how the <a href="#gravity">-gravity</a> option interacts with the <kbd>x</kbd> and <kbd>y</kbd> parameters of a geometry specification.</p>
+
+<p>When used as an option to <a href="../www/composite.html">composite</a>, <a href="#gravity">-gravity</a> gives the direction that the image gravitates within the composite.</p>
+
+<p>When used as an option to <a href="../www/montage.html">montage</a>, <a href="#gravity">-gravity</a> gives the direction that an image gravitates within a tile. The default gravity is <kbd>Center</kbd> for this purpose.</p>
+
+<div style="margin: auto;">
+  <h4><a name="green-primary" id="green-primary"></a>-green-primary <em class="option">x,y</em></h4>
+</div>
+
+<p>green chromaticity primary point.</p>
+
+<div style="margin: auto;">
+  <h4><a name="help" id="help"></a>-help</h4>
+</div>
+
+<p>print usage instructions.</p>
+
+<div style="margin: auto;">
+  <h4><a name="iconGeometry" id="iconGeometry"></a>-iconGeometry <em class="option">geometry</em></h4>
+</div>
+
+<p>specify the icon geometry.</p>
+
+<p>Offsets, if present in the geometry specification, are handled in the same manner as the <a href="#geometry">-geometry</a> option, using X11 style to handle negative offsets.</p>
+
+<div style="margin: auto;">
+  <h4><a name="iconic" id="iconic"></a>-iconic</h4>
+</div>
+
+<p>iconic animation.</p>
+
+<div style="margin: auto;">
+  <h4><a name="identify" id="identify"></a>-identify</h4>
+</div>
+
+<p>identify the format and characteristics of the image.</p>
+
+<p>This information is printed: image scene number; image name; image size; the image class (<em class="option">DirectClass</em> or <em class="option">PseudoClass</em>); the total number of unique colors; and the number of seconds to read and transform the image. Refer to <a href="../www/miff.html">MIFF</a> for a description of the image class.</p>
+
+<p>If <a href="#colors">-colors</a> is also specified, the total unique colors in the image and color reduction error values are printed. Refer to <a href="/www/quantize.html">color reduction algorithm</a> for a description of these values.</p>
+
+<p>If <a href="#verbose">-verbose</a> preceds this option, copious
+amounts of image properties are displayed including image statistics, profiles,
+image histogram, and others.</p>
+
+<div style="margin: auto;">
+  <h4><a name="immutable" id="immutable"></a>-immutable</h4>
+</div>
+
+<p>make image immutable.</p>
+
+<div style="margin: auto;">
+  <h4><a name="implode" id="implode"></a>-implode <em class="option">factor</em></h4>
+</div>
+
+<p>implode image pixels about the center.</p>
+
+<div style="margin: auto;">
+  <h4><a name="insert" id="insert"></a>-insert <em class="option">index</em></h4>
+</div>
+
+<p>insert the last image into the image sequence.</p>
+
+<p>This option takes last image in the current image sequence and inserts it at the given index. If a negative index is used, the insert position is calculated before the last image is removed from the sequence. As such <kbd>-insert -1</kbd> will result in no change to the image sequence.</p>
+
+<p>The <kbd>+insert</kbd> option is equivalent to <kbd>-insert -1</kbd>. In other words, insert the last image, at the end of the current image sequence. Consequently this has no effect on the image sequence order.</p>
+
+<div style="margin: auto;">
+  <h4><a name="intent" id="intent"></a>-intent <em class="option">type</em></h4>
+</div>
+
+<p>use this type of rendering intent when managing the image color.</p>
+
+<p>Use this option to affect the color management operation of an image (see <a href="#profile">-profile</a>).  Choose from these intents: <kbd>Absolute, Perceptual, Relative, Saturation</kbd>.</p>
+
+<p>The default intent is undefined.</p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Intent</kbd>'
+argument for a list of <a href="#intent" >-intent</a> arguments available
+in your ImageMagick installation.</p>
+
+<div style="margin: auto;">
+  <h4><a name="interlace" id="interlace"></a>-interlace <em class="option">type</em></h4>
+</div>
+
+<p>the type of interlacing scheme.</p>
+
+<p>Choose from:</p>
+
+<pre class="text">
+  none
+  line
+  plane
+  partition
+  JPEG
+  GIF
+  PNG
+</pre>
+
+<p>This option is used to specify the type of interlacing scheme for raw image formats such as <kbd>RGB</kbd> or <kbd>YUV</kbd>.</p>
+
+<p><kbd>None</kbd> means do not interlace (RGBRGBRGBRGBRGBRGB...),</p>
+
+<p><kbd>Line</kbd> uses scanline interlacing (RRR...GGG...BBB...RRR...GGG...BBB...), and.</p>
+
+<p><kbd>Plane</kbd> uses plane interlacing (RRRRRR...GGGGGG...BBBBBB...).</p>
+
+<p><kbd>Partition</kbd> is like plane except the different planes are saved to individual files (e.g. image.R,
+image.G, and image.B).</p>
+
+<p>Use <kbd>Line</kbd> or <kbd>Plane</kbd> to create an <kbd>interlaced PNG</kbd> or <kbd>GIF</kbd> or <kbd>progressive JPEG</kbd>
+image.</p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Interlace</kbd>'
+argument for a list of <a href="#interlace" >-interlace</a> arguments available
+in your ImageMagick installation.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="interpolate" id="interpolate"></a>-interpolate <em class="option">type</em></h4>
+</div>
+
+<p>The pixel color interpolation method to use when looking up a color basied
+on a floating point or real value.</p>
+
+<p>When looking up the color of a pixel using a non-interger floating point
+value, you typically fall in between the pixel colors defined by the source
+image. This setting determines how the color is determined from the colors of
+the pixels surrounding that point.  That is how to determine the color of a
+point that falls between two, or even four different colored pixels. </p>
+
+<pre class="text">
+  integer:           The color of the top-left pixel (floor function)
+  nearest-neighbor:  The nearest pixel to the lookup point (rounded function)
+  average:           The average color of the surrounding four pixels
+  bilinear           A double linear interpolation of pixels (the default)
+  mesh               Divide area into two flat triangular interpolations
+  bicubic            Fitted bicubic-spines of surrounding 16 pixels
+  spline             Direct spline curves (colors are blurred)
+  filter             Use resize <a href="#filter">-filter</a> and <a href="#support">-support</a> settings
+</pre>
+
+<p>This is most important for distortion operators such as <a href="#distort"
+>-distort</a>, <a href="#implode" >-implode</a>, <a href="#transform"
+>-transform</a> and <a href="#fx" >-fx</a>. </p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Interpolate</kbd>'
+argument for a list of <a href="#interpolate" >-interpolate</a> arguments
+available in your ImageMagick installation.</p>
+
+<p>See also <a href="#virtual-pixel" >-virtual-pixel</a>, for control of the
+lookup for positions outside the boundaries of the image. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="label" id="label"></a>-label <em class="option">name</em></h4>
+</div>
+
+<p>assign a label to an image.</p>
+
+<p>Use this option to assign a specific label to the image, as it is read in or created.  You can use the <a href="#set" >-set</a> operation to re-assign a the labels of images already read in.  Image formats such as TIFF, PNG, MIFF, supports saving the label information with the image.</p>
+
+<p>When saving an image to a <em class="option">PostScript</em> file, any label assigned to an image will be used as a header string to print above the postscript image. </p>
+
+<p>You can include the image filename, type, width, height, or other image attribute by embedding special format character.  See <a href="#format">-format</a> for details of the percent escape codes.</p>
+
+<p>For example,</p>
+
+<pre class="text">
+  -label "%m:%f %wx%h"  bird.miff
+</pre>
+
+<p>assigns an image label of <kbd>MIFF:bird.miff 512x480</kbd> to the "<kbd>bird.miff</kbd>" image and whose width is 512 and height is 480, as it is read in.  If a  <a href="#label">+label</a> option was used instead, any existing label present in the image would be used.  You can remove all labels from an image by assigning the empty string. </p>
+
+<p>A label is not drawn on the image, but is embedded in the image datastream via a <em>Label</em> tag or similar mechanism. If you want the label to be visible on the image itself, use the <a href="#draw">-draw</a> option, or during the final processing in the creation of a image montage.</p>
+
+<p>The label font can be specified with <a href="#font">-font</a>, and the
+other font attribute settings.</p>
+
+<p>If the first character of <em class="option">string</em> is <em class="option">@</em>, the image label is read from a file titled by the remaining characters in the string. Labels in a file are literal, no embedded formatting characters are recognized.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="lat" id="lat"></a>-lat <em class="option">width</em><br />-lat <em class="option">width</em>x<em class="option">height</em>{<em class="option">+-</em>}<em class="option">offset</em>{<em class="option">%</em>}</h4>
+</div>
+
+<p>perform local adaptive threshold.</p>
+
+<p>Perform local adaptive threshold using the specified width, height, and offset. The offset is a distance in sample space from the mean, as an absolute integer ranging from 0 to the maximum sample value or as a percentage.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="layers" id="layers"></a>-layers <em class="option">method</em></h4>
+</div>
+
+<p>optimize or compare image layers.</p>
+
+<p>Perform various image operation methods to a ordered sequence of images
+which may represent either a set of 'image layers', or a 'coalesced' animation
+sequence, or a GIF dispose/overlay animation. </p>
+
+<table id="table" cellpadding="2" cellspacing="0" style="width: 93%">
+  <tbody>
+  <tr valign=top>
+    <th align="left" style="width: 8%">Method</th>
+    <th align="left">Description</th>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">compare-any</td>
+    <td valign="top">Crop the second and later frames to the smallest rectangle
+        that contains all the differences between the two images.  No GIF <a
+        href="#dispose" >-dispose</A> methods are taken into account. </p>
+
+        This is exactly the same as the <a href="#deconstruct"
+        >-deconstruct</a> operator, and does not preserve a animations normal
+        working, especially when a animation used GIF disposal methods such as
+        '<kbd>Previous</kbd>' or '<kbd>Background</kbd>'. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">compare-clear</td>
+    <td valign="top">As '<kbd>compare-any</kbd>' but crop to the bounds of any
+       opaque pixels which become transparent in the second frame. That is the
+       smallest image needed to mask or erase pixels for the next frame. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">compare-overlay</td>
+    <td valign="top">As '<kbd>compare-any</kbd>' but crop to pixels that add
+       extra color to the next image, as a result of overlaying color pixels.
+       That is the smallest single overlaid image to add or change colors. </p>
+
+       This can, be used with the <a href="#compose" >-compose</A> alpha
+       composition method '<kbd>change-mask</kbd>', to reduce the image to
+       just the pixels that need to be overlaid. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">coalesce</td>
+    <td valign="top">Equivalent to a call to the <a href="#coalesce"
+        >-coalesce</a> operator.  Apply the GIF disposal methods set in the
+        current image sequence to form a fully defined animation sequence
+        without, as it should be displayed.  Effectively converting a GIF
+        animation into a 'film strip' like animation.  </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">composite</td>
+    <td valign="top">Alpha Composition of two image lists, separated by a
+        "<kbd>null:</kbd>" image, with the destination image list first, and
+        the source images last.  An image from each list are composited
+        together until one list is finished. The separator image and source
+        image lists are removed.  </p>
+
+        The <a href="#geometry" >-geometry</a> offset is adjusted according to
+        <a href="#gravity" >-gravity</a> in accordance of the virtual canvas
+        size of the first image in each list. Unlike a normal <a
+        href="#composite" >-composite</a> operation, the canvas offset is also
+        included to the composite positioning. </p>
+
+        If one of the image lists only contains one image, that image is
+        applied to all the images in the other image list, regardless of which
+        list it is. In this case it is the image meta-data of the list which
+        preserved.  </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">dispose</td>
+    <td valign="top">This is like '<kbd>coalesce</kbd>' but shows the look of
+        the animation after the GIF disposal method has been applied, before
+        the next sub-frame image is overlaid. That is the 'dispose' image that
+        results from the application of the GIF <a href="#dispose"
+        >-dispose</a> method.  This allows you to check what
+        is going wrong with a particular animation you may be developing.
+        </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top"><b>optimize</b></td>
+    <td valign="top">Optimize a coalesced animation, into GIF animation using
+        a number of general techniques.  This is currently a short cut to
+        apply both the '<kbd>optimize-frame</kbd>', and
+        '<kbd>optimize-transparency</kbd>' methods but will expand to include
+        other methods. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">optimize-frame</td>
+    <td valign="top">Optimize a coalesced animation, into GIF animation by
+        reducing the number of pixels per frame as much as possible by
+        attempting to pick the best GIF disposal method to use, while ensuring
+        the result will continue to animate properly. </p>
+
+        There is no guarantee that the best optimization will be found. But
+        then no reasonably fast GIF optimization algorithm can do this.
+        However this does seem to do better than most other GIF frame
+        optimizers seen. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">optimize-plus</td>
+    <td valign="top">As '<kbd>optimize-frame</kbd>' but attempt to improve the
+        overall optimization by adding extra frames to the animation, without
+        changing the final look or timing of the animation.  The frames are
+        added to attempt to separate the clearing of pixels from the
+        overlaying of new additional pixels from one animation frame to the
+        next.  If this does not improve the optimization (for the next frame
+        only), it will fall back to the results of the previous normal
+        '<kbd>optimize-frame</kbd>' technique.  </p>
+
+        There is the possibility that the change in the disposal style will
+        result in a worsening in the optimization of later frames, though this
+        is unlikely. In other words there no guarantee that it is better than
+        the normal '<kbd>optimize-frame</kbd>' technique. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">optimize-transparency</td>
+    <td valign="top">Given a GIF animation, replace any pixel in the sub-frame
+        overlay images with transparency, if it does not change the resulting
+        animation by more than the current <a href="#fuzz" >-fuzz</a> factor.
+        </p>
+
+        This should allow a existing frame optimized GIF animation to compress
+        into a smaller file size due to larger areas of one (transparent)
+        color rather than a pattern of multiple colors repeating the current
+        disposed image of the last frame. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">remove-dups</td>
+    <td valign="top">Remove (and merge time delays) of duplicate consecutive
+        images, so as to simplify layer overlays of coalesced animations.
+        </p>
+
+        Usally this is a result of using a constant time delay across the
+        whole animation, or after a larger animation was split into smaller
+        sub-animations.  The duplicate frames could also have been used as
+        part of some frame optimization methods. </td>
+  </tr>
+
+  <tr valign=top>
+    <td valign="top">remove-zero</td>
+    <td valign="top">Remove any image with a zero time delay, unless ALL the
+        images have a zero time delay (and is no a proper timed animation, a
+        warning is then issued).  </p>
+
+        In a GIF animation, such images are usually frames which provide
+        partial intermediary updates between the frames that are actually
+        displayed to users.  These frames are usally added for improved frame
+        optimization in GIF animations. </td>
+  </tr>
+
+  </tbody>
+</table>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Layers</kbd>'
+argument for a list of <a href="#layer" >-layer</a> methods available
+in your ImageMagick installation.</p>
+
+<p>See also the <a href="#coalesce" >-coalesce</a> operator, and the GIF <a
+href="#dispose" >-dispose</a> setting. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="level" id="level"></a>-level <em class="option">black-point</em><br />-level <em class="option">black-point</em>{,<em class="option">white-point</em>}{<em class="option">%</em>}{,<em class="option">gamma</em>}</h4>
+</div>
+
+<p>adjust the level of image contrast.</p>
+
+<p>Give one, two or three values delimited with commas: black-point, white-point, gamma (e.g. 10,250,1.0 or 2%,98%,0.5). The black and white points range from 0 to QuantumRange or from 0 to 100%; if the white point is omitted it is set to QuantumRange-black_point. If a <kbd>%</kbd> sign is present anywhere in the string, the black and white points are percentages of QuantumRange. Gamma is an exponent that ranges from 0.1 to 10.; if it is omitted, the default of 1.0 (no gamma correction) is assumed.</p>
+
+<div style="margin: auto;">
+  <h4><a name="limit" id="limit"></a>-limit <em class="option">type value</em></h4>
+</div>
+
+<p>pixel cache resource limit.</p>
+
+<p>Choose from: <kbd>Area</kbd>, <kbd>Disk</kbd>, <kbd>File</kbd>, <kbd>Map</kbd>, <kbd>or Memory.</kbd></p>
+
+<p>The value for File is in number of files. The Disk limit is in Gigabytes and and the values for the other resources are in Megabytes. By default the limits are 768 files, 1024MB memory, 4096MB map, and unlimited disk, but these are adjusted at startup time on platforms that can provide information about available resources. When the limit is reached, ImageMagick will fail in some fashion, or take compensating actions if possible. For example,</p>
+
+<pre class="text">
+  -limit memory 32 -limit map 64
+</pre>
+
+<p>limits memory.  When the pixel cache reaches the memory limit it uses memory mapping. When that limit is reached it goes to disk. If disk has a hard limit, the program will fail.</p>
+
+<p>Resource limits may also be set using <a href="../www/resources.html#environment">environment variables</a>. The environment variables <kbd>MAGICK_AREA_LImageMagickIT</kbd>, <kbd>MAGICK_DISK_LImageMagickIT</kbd>, <kbd>MAGICK_FILE_LImageMagickIT</kbd>, <kbd>MAGICK_MEMORY_LImageMagickIT</kbd>, and <kbd>MAGICK_MAP_LImageMagickIT</kbd>, may be used to set the limits for disk space, open files, heap memory, and memory map size, respectively.</p> <p>You can use the option <a href="#list">-list resource</a> to list the limits.</p>
+
+<div style="margin: auto;">
+  <h4><a name="linear-stretch" id="linear-stretch"></a>-linear-stretch <em class="option">black-point</em><br />-linear-stretch <em class="option">black-point</em>{x<em class="option">white-point</em>}{<em class="option">%</em>}}</h4>
+</div>
+
+<p>Linear with saturation stretch.</p>
+
+<div style="margin: auto;">
+  <h4><a name="linewidth" id="linewidth"></a>-linewidth</h4>
+</div>
+
+<p>the line width for subsequent draw operations.</p>
+
+<div style="margin: auto;">
+  <h4><a name="list" id="list"></a>-list <em class="option">type</em></h4>
+</div>
+
+<p>the type of list.  Choose from these list types:</p>
+
+<pre class="text">
+  coder
+  color
+  configure
+  delegate
+  font
+  format
+  log
+  magic
+  module
+  resource
+  threshold
+</pre>
+
+<p>The above are just the special lists generated from various sources.  In
+addition to these are many other lists, generally used as part of the parsing
+of command line options as compiled into the current ImageMagick version you are using.  For example type "<kbd>-list list</kbd>" to get a completely listing of all the "<kbd>-list</kbd>" arguments available.</p>
+
+<div style="margin: auto;">
+  <h4><a name="log" id="log"></a>-log <em class="option">string</em></h4>
+</div>
+
+<p>Specify format for debug log.</p>
+
+<p>This option specifies the format for the log printed when the <a href="#debug">-debug</a> option is active.</p>
+
+<p>You can display the following components by embedding special format characters:</p>
+
+<pre class="text">
+   %d   domain
+   %e   event
+   %f   function
+   %l   line
+   %m   module
+   %p   process ID
+   %r   real CPU time
+   %t   wall clock time
+   %u   user CPU time
+   %%   percent sign
+   \n   newline
+   \r   carriage return
+</pre>
+
+<p>For example:</p>
+
+<pre class="text">
+  convert -debug coders -log "%u %m:%l %e" in.gif out.png
+</pre>
+
+<p>The default behavior is to print all of the components.</p>
+
+<div style="margin: auto;">
+  <h4><a name="loop" id="loop"></a>-loop <em class="option">iterations</em></h4>
+</div>
+
+<p>add Netscape loop extension to your GIF animation.</p>
+
+<p>Set iterations to zero to repeat the animation an infinite number of times, otherwise the animation repeats itself up to <em class="option">iterations</em> times.</p>
+
+<div style="margin: auto;">
+  <h4><a name="magnify" id="magnify"></a>-magnify <em class="option">factor</em></h4>
+</div>
+
+<p>magnify the image.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="map" id="map"></a>-map <em class="option">filename</em></h4>
+</div>
+
+<p>reduce the number of colors in an image to the colors used by this image.</p>
+
+<p>[<em class="option">convert</em> or <em class="option">mogrify</em>].</p>
+
+<p>If the <a href="#dither">-dither</a> setting is enabled (the default) then
+the given colors are dithered over the image as necessary, otherwise the closest
+color (in RGB colorspace) is selected to replace that pixel in the image. </p>
+
+<p>As a side effect of applying a <a href="#map">-map</a> of colors across all
+images in the current image sequence, all the images will have the same color
+table.  That means that when saved to a file format such as GIF, it will use
+that color table as a single common or global color table, for all the images,
+without requiring extra local color tables. </p>
+
+<p>Use <a href="#map">+map</a> to reduce all images in the current image
+sequence to use a common color map over all the images. This is equivalent to
+appending all the images together (without extra background colors) and color
+reducing those images using <a href="#colors">-colors</a> with a 256 color
+limit, then <a href="#map">-map</a> those colors over the original list of
+images. This ensures all the images follow a single color map. </p>
+
+<p>If the number of colors over all the images is less than 256, then <a
+href="#map">+map</a> should not perform any color reduction or dithering, as
+no color changes are needed. In that case, its only effect is to force the use
+of a global color table.  This is recommended after using either <a
+href="#colors">-colors</a> or <a href="#ordered-dither">-ordered-dither</a> to
+reduce the number of colors in an animated image sequence. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="map" id="map"></a>-map <em class="option">type</em></h4>
+</div>
+
+<p>display image using this type.</p>
+
+<p>[<em class="option">animate</em> or <em class="option">display</em>].</p>
+
+<p>Choose from these <em class="option">Standard Colormap</em> types:</p>
+
+<pre class="text">
+  best
+  default
+  gray
+  red
+  green
+  blue
+</pre>
+
+<p>The <em class="option">X server</em> must support the <em class="option">Standard Colormap</em> you choose, otherwise an error occurs.  Use <kbd>list</kbd> as the type and <kbd>display</kbd> searches the list of colormap types in <kbd>top-to-bottom</kbd> order until one is located. See <em class="option">xstdcmap(1)</em> for one way of creating Standard Colormaps.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="stream-map" id="map"></a>-map <em class="option">components</em></h4>
+</div>
+
+<p>pixel map.  Here are the valid components of a map:</p>
+
+<pre class="text">
+  r        red pixel component
+  g        green pixel component
+  b        blue pixel component
+  a        alpha pixel component (0 is transparent)
+  o        opacity pixel component (0 is opaque)
+  i        grayscale intensity pixel component
+  c        cyan pixel component
+  m        magenta pixel component
+  y        yellow pixel component
+  k        black pixel component
+  p        pad component (always 0)
+</pre>
+
+<p>You can specify as many of these components as needed in any order (e.g. bgr).  The components can repeat as well (e.g. rgbr).</p>
+
+<div style="margin: auto;">
+  <h4><a name="mask" id="mask"></a>-mask
+<em class="option">filename</em></h4>
+</div>
+
+<p>Composite the image pixels as defined by the mask.</p>
+
+<p>Use <a href="#mask">+mask</a> to remove the image mask.</p>
+
+<div style="margin: auto;">
+  <h4><a name="mattecolor" id="mattecolor"></a>-mattecolor <em class="option">color</em></h4>
+</div>
+
+<p>specify the color to be used with the <a href="#frame">-frame</a> option.</p>
+
+<p>The color is specified using the format described under the <a href="#fill">-fill</a> option.</p>
+
+<div style="margin: auto;">
+  <h4><a name="median" id="median"></a>-median <em class="option">radius</em></h4>
+</div>
+
+<p>apply a median filter to the image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="metric" id="metric"></a>-metric <em class="option">type</em></h4>
+</div>
+
+<p>output to STDERR a measure of the differences between images, according the
+to given metric. </p>
+
+<p>Choose from:</p>
+
+<pre class="text">
+ AE    absolute number of differnet pixels
+ MAE   mean absolute error (normalized) - average channel error distance
+ MEPP  mean error per pixel (normalized mean error, normalized peak error)
+ MSE   mean error squared      - average of the channel error squared
+ PAE   peak absolute (normalize peak absolute)
+ PSNR  peak signal to noise ratio
+ RMSE  root mean squared (normalized root mean squared)
+</pre>
+
+<p>The '<kbd>AE</kbd>' or absolute count of pixels that are different, can be
+controled using a <a href="#fuzz" >-fuzz</a> factor to ignore pixels which
+only changed by a small amount.  The '<kbd>PAE</kbd>' can be used to find the
+size of the <a href="#fuzz" >-fuzz</a> factor needed to make all pixels
+'similar'. </p>
+
+<p>The '<kbd>MEPP</kbd>' metric returns three different metrics
+('<kbd>MAE</kbd>', '<kbd>MAE</kbd>' normalized, and '<kbd>PAE</kbd>'
+normalized) from the single comparision run. </p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Metric</kbd>'
+argument for a list of <a href="#metric" >-metric</a> arguments available
+in your ImageMagick installation. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="mode" id="mode"></a>-mode <em class="option">value</em></h4>
+</div>
+
+<p>mode of operation.  Choose from these styles: <kbd>Frame, Unframe, or Concatenate</kbd></p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Mode</kbd>'
+argument for a list of <a href="#mode" >-mode</a> arguments available
+in your ImageMagick installation.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="modulate" id="modulate"></a>-modulate <em class="option">value</em></h4>
+</div>
+
+<p>vary the brightness, saturation, and hue of an image.</p>
+
+<p>Specify the percent change in brightness, the color saturation, and the hue separated by commas.  Hue is the percentage of absolute rotation from the current position. For example 50 results in a counter-clockwise rotation of 90 degrees, 150 results in a clockwise rotation of 90 degrees, with 0 and 200 both resulting in a rotation of 180 degrees.  .</p>
+
+<p> To increase the color brightness by 20% and decrease the color saturation by 10% and leave the hue unchanged, use: <a href="#modulate">-modulate 120,90</a>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="monitor" id="monitor"></a>-monitor</h4>
+</div>
+
+<p>monitor progress.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="monochrome" id="monochrome"></a>-monochrome</h4>
+</div>
+
+<p>transform the image to black and white.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="morph" id="morph"></a>-morph <em class="option">frames</em></h4>
+</div>
+
+<p>morphs an image sequence.</p>
+
+<p>Both the image pixels and size are linearly interpolated to give the
+appearance of a meta-morphosis from one image to the next, over all the images
+in the current image list. The added images are the equivelent of a <a
+href="#blend">-blend</a> composition. The <em class="option">frames</em>
+argument determine how many images to interpolate between each image. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="mosaic" id="mosaic"></a>-mosaic</h4>
+</div>
+
+<p>create a mosaic from an image or an image sequence.</p>
+
+<p>The <a href="#page">-page</a> option can be used to establish the
+dimensions of the mosaic and to locate the images within the mosaic. The final
+image size will be expanded if the second or later images or <a
+href="#page">-page</a> sizes is larger that the first. </p>
+
+<p>The images themselves are overlaid using the current <a
+href="#compose">-compose</a> setting on an initial <a
+href="#background">-background</a> colored canvas. </p>
+
+<p>See also <a href="#flatten">-flatten</a>. </p>
+
+<div style="margin: auto;">
+  <h4><a name="motion-blur" id="motion-blur"></a>-motion-blur <em class="option">radius</em><br />-motion-blur <em class="option">radius</em>x<em class="option">sigma</em>+<em class="option">angle</em></h4>
+</div>
+
+<p>simulate motion blur.</p>
+
+<p>Blur with the given radius, standard deviation (sigma), and angle.   The angle given is the angle toward which the image is blurred.  That is the direction people would consider the object is coming from.  </p>
+
+<div style="margin: auto;">
+  <h4><a name="name" id="name"></a>-name</h4>
+</div>
+
+<p>name an image.</p>
+<div style="margin: auto;">
+  <h4><a name="negate" id="negate"></a>-negate</h4>
+</div>
+
+<p>replace every pixel with its complementary color.</p>
+
+<p>The red, green, and blue intensities of an image are negated. White becomes black, yellow becomes blue, etc.  Use <a href="#negate">+negate</a> to only negate the grayscale pixels of the image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="noise" id="noise"></a>-noise <em class="option">radius|type</em></h4>
+</div>
+
+<p>add or reduce noise in an image.</p>
+
+<p>The principal function of noise peak elimination filter is to smooth the objects within an image without losing edge information and without creating undesired structures.  The central idea of the algorithm is to replace a pixel with its next neighbor in value within a pixel window, if this pixel has been found to be noise. A pixel is defined as noise if and only if this pixel is a maximum or minimum within the pixel window.</p>
+
+<p>Use <kbd>radius</kbd> to specify the width of the neighborhood.</p>
+
+<p>Use <a href="#noise">+noise</a> followed by a noise type to add noise to an image. Choose from these noise types:</p>
+
+<pre class="text">
+  Uniform
+  Gaussian
+  Multiplicative
+  Impulse
+  Laplacian
+  Poisson
+</pre>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Noise</kbd>'
+argument for a list of <a href="#noise" >+noise</a> arguments available
+in your ImageMagick installation.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="normalize" id="normalize"></a>-normalize</h4>
+</div>
+
+<p>transform image to span the full range of color values.</p>
+
+<p>The channels are normalized in concert.  Specify <a href="#channel">-channel</a> to normalize the RGB channels independently.</p>
+
+<div style="margin: auto;">
+  <h4><a name="ordered-dither" id="ordered-dither"></a>-ordered-dither <em class="option">threshold_map</em>{,<em class="option">level</em>...}</h4>
+</div>
+
+<p>dither the image using a pre-defined  ordered dither <em class="option">threshold map</em> specified, and a uniform color map with the number of <em class="option">levels</em> per color channel .  </p>
+
+<p>You can choose from these standard threshold maps:</p>
+
+<pre class="text">
+  checks
+  o2x2
+  o3x3
+  o4x4
+  o8x8
+  h4x4a
+  h6x6a
+  h8x8a
+  h4x4o
+  h6x6o
+  h8x8o
+  h16x16o
+</pre>
+
+<p>The '<kbd>o</kbd>' are ordered diffused pixel threshold maps, while the
+'<kbd>h</kbd>' maps are halftone threshold maps. The '<kbd>checks</kbd>'
+produce a 3 level checkerbord dither pattern.  Or you can define your own <em
+class="option">threshold map</em> in a personal or system
+"<kbd>thresholds.xml</kbd>" XML file. </p>
+
+<p>Use the <a href="#list">-list</a> option with a '<kbd>Threshold</kbd>'
+argument for a complete list of currently defined <em class="option">threshold
+map</em> arguments available in your installation.</p>
+
+<p>It is recommended that the <a href="#map">+map</a> operator be used after
+applying <a href="#ordered-dither">-ordered-dither</a> to reduce the number of
+colors an animated image sequence, to less that 256 colors. This ensures that
+a common or global color table is used when saving the result to a color
+limited file format such as GIF.  </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="opaque" id="opaque"></a>-opaque <em class="option">color</em></h4>
+</div>
+
+<p>change this color to the fill color within the image.</p>
+
+<p>The <em class="option">color</em> argument is defined using the format
+described under the <a href="#fill">-fill</a> option. The <a
+href="#fuzz">-fuzz</a> setting can be used to match and replace colors similar
+to the one given.</p>
+
+<p>The <a href="#transparent">-transparent</a>  operator is exactly the same
+as <a href="#opaque">-opaque</a> but makes the matching color transparent,
+rather than the same as the current <a href="#fill">-fill</a> color. </P>
+
+
+<div style="margin: auto;">
+  <h4><a name="orient" id="orient"></a>-orient <em class="option">image orientation</em></h4>
+</div>
+
+<p>specify orientation of a digital camera image.</p>
+
+<p>Choose from these orientations:</p>
+
+<pre class="text">
+  bottom-left
+  bottom-right
+  left-bottom
+  left-top
+  right-bottom
+  right-top
+  top-left
+  top-right
+  undefined
+</pre>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Orientation</kbd>'
+argument for a list of <a href="#orient" >-orient</a> arguments available
+in your ImageMagick installation.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="page" id="page"></a>-page <em class="option">width</em>x<em class="option">height</em>{<em class="option">+-</em>}<em class="option">x</em>{<em class="option">+-</em>}<em class="option"> y</em>{<em class="option">%</em>}{<em class="option">!</em>}{<em class="option"></em>}{<em class="option"></em>}</h4> </div>
+
+<p>size and location of an image canvas.</p>
+
+<p>Use this option to specify the dimensions of the <em class="option">PostScript</em> page in dots per inch or a TEXT page in pixels. The choices for a PostScript page are:</p>
+
+<pre class="text">
+  11x17         792  1224
+  Ledger       1224   792
+  Legal         612  1008
+  Letter        612   792
+  LetterSmall   612   792
+  ArchE        2592  3456
+  ArchD        1728  2592
+  ArchC        1296  1728
+  ArchB         864  1296
+  ArchA         648   864
+  A0           2380  3368
+  A1           1684  2380
+  A2           1190  1684
+  A3            842  1190
+  A4            595   842
+  A4Small       595   842
+  A5            421   595
+  A6            297   421
+  A7            210   297
+  A8            148   210
+  A9            105   148
+  A10            74   105
+  B0           2836  4008
+  B1           2004  2836
+  B2           1418  2004
+  B3           1002  1418
+  B4            709  1002
+  B5            501   709
+  C0           2600  3677
+  C1           1837  2600
+  C2           1298  1837
+  C3            918  1298
+  C4            649   918
+  C5            459   649
+  C6            323   459
+  Flsa          612   936
+  Flse          612   936
+  HalfLetter    396   612
+</pre>
+
+<p>For convenience you can specify the page size by media (e.g. A4, Ledger, etc.). Otherwise, <a href="#page">-page</a> behaves much like <a href="#geometry">-geometry</a> (e.g. <a href="#page">-page letter+43+43</a>).</p>
+
+<p>This option is also used to place subimages when writing to a multi-image format that supports offsets, such as GIF89 and MNG. When used for this purpose the offsets are always measured from the top left corner of the canvas and are not affected by the <a href="#gravity">-gravity</a> option. To position a GIF or MNG image, use <a href="#page">-page</a><em class="option">{+-}x{+-}y</em> (e.g.  -page +100+200). When writing to a MNG file, a <a href="#page">-page</a> option appearing ahead of the first image in the sequence with nonzero width and height defines the width and height values that are written in the <kbd>MHDR</kbd> chunk.  Otherwise, the MNG width and height are computed from the bounding box that contains all images in the sequence. When writing a GIF89 file, only the bounding box method is used to determine its dimensions.</p>
+
+<p>For a PostScript page, the image is sized as in <a href="#geometry">-geometry</a> and positioned relative to the lower left hand corner of the page by {+-}<kbd>x</kbd><em class="option">offset</em>{+-}<kbd>y</kbd> <em class="option">offset</em>. Use <a href="#page">-page 612x792</a>, for example, to center the image within the page. If the image size exceeds the PostScript page, it is reduced to fit the page. The default gravity for the <a href="#page">-page</a> option is <em class="option">NorthWest</em>, i.e., positive <kbd>x</kbd> and <kbd>y</kbd> <em class="option">offset</em> are measured rightward and downward from the top left corner of the page, unless the <a href="#gravity">-gravity</a> option is present with a value other than <em class="option">NorthWest</em>.</p>
+
+<p>The default page dimensions for a TEXT image is 612x792.</p>
+
+<p>This option is used in concert with <a href="#density">-density</a>.</p>
+
+<p>Use <a href="#page">+page</a> to remove the page settings for an image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="paint" id="paint"></a>-paint <em class="option">radius</em></h4>
+</div>
+
+<p>simulate an oil painting.</p>
+
+<p>Each pixel is replaced by the most frequent color in a circular neighborhood whose width is specified with <em class="option">radius</em>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="path" id="path"></a>-path <em class="option">path</em></h4></div>
+
+<p>write images to this path on disk.</p>
+
+<div style="margin: auto;">
+  <h4><a name="pause" id="pause"></a>-pause <em class="option">seconds</em></h4>
+</div>
+
+<p>pause between animation loops [animate].</p>
+
+<p>Pause for the specified number of seconds before repeating the animation.</p>
+
+<div style="margin: auto;">
+  <h4><a name="pause" id="pause"></a>-pause <em class="option">seconds</em></h4>
+</div>
+
+<p>pause between snapshots [import].</p>
+
+<p>Pause for the specified number of seconds before taking the next snapshot.</p>
+
+<div style="margin: auto;">
+  <h4><a name="ping" id="ping"></a>-ping</h4>
+</div>
+
+<p>efficiently determine image characteristics.</p>
+
+<div style="margin: auto;">
+  <h4><a name="pointsize" id="pointsize"></a>-pointsize <em class="option">value</em></h4>
+</div>
+
+<p>pointsize of the PostScript, OPTION1, or TrueType font.</p>
+
+<div style="margin: auto;">
+  <h4><a name="polaroid" id="polaroid"></a>-polaroid <em class="option">angle</em></h4>
+</div>
+
+<p>simulate a Polaroid picture.</p>
+
+<div style="margin: auto;">
+  <h4><a name="posterize" id="posterize"></a>-posterize <em class="option">levels</em></h4>
+</div>
+
+<p>reduce the image to a limited number of color levels.</p>
+
+<div style="margin: auto;">
+  <h4><a name="preview" id="preview"></a>-preview <em class="option">type</em></h4>
+</div>
+
+<p>image preview type.</p>
+
+<p>Use this option to affect the preview operation of an image (e.g. <kbd>convert file.png -preview Gamma Preview:gamma.png</kbd>). Choose from these previews:</p>
+
+<pre class="text">
+  Rotate
+  Shear
+  Roll
+  Hue
+  Saturation
+  Brightness
+  Gamma
+  Spiff
+  Dull
+  Grayscale
+  Quantize
+  Despeckle
+  ReduceNoise
+  Add Noise
+  Sharpen
+  Blur
+  Threshold
+  EdgeDetect
+  Spread
+  Shade
+  Raise
+  Segment
+  Solarize
+  Swirl
+  Implode
+  Wave
+  OilPaint
+  CharcoalDrawing
+  JPEG
+</pre>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Preview</kbd>'
+argument for a list of <a href="#preview" >-preview</a> arguments available
+in your ImageMagick installation.</p>
+
+<p>The default preview is <kbd>JPEG</kbd>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="print" id="print"></a>-print <em class="option">string</em></h4>
+</div>
+
+<p>interpret string and print to console.</p>
+
+<div style="margin: auto;">
+  <h4><a name="process" id="process"></a>-process <em class="option">command</em></h4>
+</div>
+
+<p>process the image with a custom image filter.</p>
+
+<p>The command arguments has the form <kbd>"module arg1 arg2 arg3 ... argN"</kbd> where <kbd>module</kbd> is the name of the module to invoke (e.g.  "Analyze") and arg1 arg2 arg3 ... argN are an arbitrary number of arguments to pass to the process module.</p>
+
+<div style="margin: auto;">
+  <h4><a name="profile" id="profile"></a>-profile <em class="option">filename</em></h4>
+</div>
+
+<p>add ICM, IPTC, or generic profile to image.</p> <p><a href="#profile">-profile filename</a> adds an ICM (ICC color management), IPTC (newswire information), or a generic profile to the image</p>
+
+<p>Use <a href="#profile">+profile icm</a>, <a href="#profile">+profile iptc</a>, or <a href="#profile">+profile profile_name</a> to remove the respective profile. Use <kbd>identify -verbose</kbd> to find out what profiles are in the image file. Use <a href="#strip">-strip</a> to remove all profiles.</p>
+
+<p>To extract a profile, the <a href="#profile">-profile</a> option is not used. Instead, simply write the file to an image format such as <em class="option">APP1, 8BImageMagick, ICM,</em> or <em class="option">IPTC</em>.</p>
+
+<p>For example, to extract the Exif data (which is stored in JPEG files in the <em class="option">APP1</em> profile), use.</p>
+
+<pre class="text">
+  convert cockatoo.jpg exifdata.app1
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="quality" id="quality"></a>-quality <em class="option">value</em></h4>
+</div>
+
+<p>JPEG/MIFF/PNG compression level.</p>
+
+<p>For the JPEG and MPEG image formats, quality is 0 (lowest image quality and highest compression) to 100 (best quality but least effective compression). The default is to use the estimate quality of your input image otherwise 85. Use the <a href="#sampling-factor">-sampling-factor</a> option to specify the factors for chroma downsampling.</p>
+
+<p>For the MIFF image format, quality/10 is the zlib compression level, which is 0 (worst but fastest compression) to 9 (best but slowest). It has no effect on the image appearance, since the compression is always lossless.</p>
+
+<p>For the JPEG-2000 image format, quality is mapped using a non-linear equation to the compression ratio required by the Jasper library. This non-linear equation is intended to loosely approximate the quality provided by the JPEG v1 format. The default quality value 85 results in a request for 16:1 compression. The quality value 100 results in a request for non-lossy compression.</p>
+
+<p>For the MNG and PNG image formats, the quality value sets the zlib compression level (quality / 10) and filter-type (quality % 10). Compression levels range from 0 (fastest compression) to 100 (best but slowest). For compression level 0, the Huffman-only strategy is used, which is fastest but not necessarily the worst compression.</p>
+
+<p>If filter-type is 4 or less, the specified filter-type is used for all scanlines:</p>
+
+<pre class="text">
+  0: none
+  1: sub
+  2: up
+  3: average
+  4: Paeth
+</pre>
+
+<p>If filter-type is 5, adaptive filtering is used when quality is greater than 50 and the image does not have a color map, otherwise no filtering is used.</p>
+
+<p>If filter-type is 6, adaptive filtering with <em class="option">minimum-sum-of-absolute-values</em> is used.</p>
+
+<p>Only if the output is MNG, if filter-type is 7, the LOCO color transformation and adaptive filtering with <em class="option">minimum-sum-of-absolute-values</em> are used.</p>
+
+<p>The default is quality is 85, which means nearly the best compression with adaptive filtering. The quality setting has no effect on the appearance of PNG and MNG images, since the compression is always lossless.</p>
+
+<p>For further information, see the <a href="http://www.w3.org/pub/WWW/TR">PNG</a> specification.</p>
+
+<p>When writing a JNG image with transparency, two quality values are required, one for the main image and one for the grayscale image that conveys the alpha channel. These are written as a single integer equal to the main image quality plus 1000 times the opacity quality. For example, if you want to use quality 85 for the main image and quality 90 to compress the opacity data, use <a href="#quality">-quality 90085</a>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="quantize" id="quantize"></a>-quantize <em class="option">colorspace</em></h4>
+</div>
+
+<p>reduce colors in this colorspace.</p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>Colorspace</kbd>'
+argument for a complete list of <a href="#quantize">-quantize</a> options
+available in your ImageMagick installation. See <a href="#colorspace">-colorspace</a>,
+for more details.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="quiet" id="quiet"></a>-quiet</h4>
+</div>
+
+<p>suppress all warning messages. Error messages will still be given. </p>
+
+<div style="margin: auto;">
+  <h4><a name="radial-blur" id="radial-blur"></a>-radial-blur  <em class="option">angle</em></h4>
+</div>
+
+<p>blur around the center of the the image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="raise" id="raise"></a>-raise <em class="option">widthxheight</em></h4>
+</div>
+
+<p>lighten or darken image edges.</p>
+
+<p>This will create a 3-D effect. See <a href="#geometry">-geometry</a> for details details about the geometry specification. Offsets are not used.</p>
+
+<p>Use <a href="#raise">-raise</a> to create a raised effect, otherwise use <a href="#raise">+raise</a>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="random-threshold" id="random-threshold"></a>-random-threshold <em class="option">low</em>x<em class="option">high</em></h4>
+</div>
+
+<p>random threshold the image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="recolor" id="recolor"></a>-recolor <em class="option">matrix</em></h4>
+</div>
+
+<p>translate, scale, shear, or rotate image colors. Although you can use variable sized matrices, typically you use a 5 x 5 for an RGBA image and a 6x6 for CMYKA.  Populate the last row with normalized values to translate.</p>
+
+<div style="margin: auto;">
+  <h4><a name="red-primary" id="red-primary"></a>-red-primary <em class="option">x,y</em></h4>
+</div>
+
+<p>red chromaticity primary point.</p>
+
+<div style="margin: auto;">
+  <h4><a name="regard-warnings" id="regard-warnings"></a>-regard-warnings</h4>
+</div>
+
+<p>pay attention to warning messages.</p>
+
+<div style="margin: auto;">
+  <h4><a name="region" id="region"></a>-region <em class="option">widthxheight</em>{<em class="option">+-</em>}<em class="option">x</em>{<em class="option">+-</em>}<em class="option"> y</em></h4>
+</div>
+
+<p>apply options to a portion of the image.</p>
+
+<p>The <em class="option">x</em> and <em class="option">y</em> offsets are treated in the same manner as in <a href="#crop">-crop</a>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="remote" id="remote"></a>-remote</h4>
+</div>
+
+<p>perform a remote operation.</p>
+
+<p>The only command recognized at this time is the name of an image file to load.</p>
+
+<div style="margin: auto;">
+  <h4><a name="render" id="render"></a>-render</h4>
+</div>
+
+<p>render vector operations.</p>
+
+<p>Use <a href="#render">+render</a> to turn off rendering vector operations. This is useful when saving the result to vector formats such as MVG or SVG.</p>
+
+<div style="margin: auto;">
+<h4><a name="repage" id="repage"></a>-repage <em class="option">geometry</em></h4>
+</div>
+
+<p>adjust the canvas and offset information of the image.</p>
+
+<p>This option is like <a href="#page">-page</a> but acts as an image operator
+rather than a setting.  You can seperatally set the canvas size or the offset
+of the image on that canvas by only providing those components. </p>
+
+<p>If a <kbd>!</kbd> flag is given the offset given is added to the existing
+offset to move the image relative to its previous position. This is useful for
+animation sequences. </p>
+
+<p>A given a canvas size of zero such as '<kbd>0x0</kbd>' forces it to
+recalculate the canvas size so the image (at its current offset) will appear
+completely on that canvas (unless it has a negative offset).</p>
+
+<p>Use <a href="#repage">+repage</a> to completely remove/reset the virtual
+canvas meta-data from the images. </p>
+
+<p>The <a href="#set">-set</a> '<kbd>page</kbd>' option can be used to just
+directly assign virtual canvas meta-data. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="resample" id="resample"></a>-resample <em class="option">horizontalxvertical</em></h4>
+</div>
+
+<p>Resample image to specified horizontal and vertical resolution.</p>
+
+<p>Resize the image so that its rendered size remains the same as the original at the specified target resolution. For example, if a 300 DPI image renders at 3 inches by 2 inches on a 300 DPI device, when the image has been resampled to 72 DPI, it will render at 3 inches by 2 inches on a 72 DPI device.  Note that only a small number of image formats (e.g. JPEG, PNG, and TIFF) are capable of storing the image resolution. For formats which do not support an image resolution, the original resolution of the image must be specified via <a href="#density">-density</a> on the command line prior to specifying the resample resolution.</p>
+
+<p>Note that Photoshop stores and obtains image resolution from a proprietary embedded profile. If this profile exists in the image, then Photoshop will continue to treat the image using its former resolution, ignoring the image resolution specified in the standard file header.</p>
+
+<div style="margin: auto;">
+  <h4><a name="resize" id="resize"></a>-resize <em class="option">width</em><br />-resize <em class="option">width</em>x<em class="option">height</em>{<em class="option">%</em>} {<em class="option">@</em>} {<em class="option">!</em>} {<em class="option">&lt;</em>} {<em class="option">&gt;</em>}</h4>
+</div>
+
+<p>resize an image.</p>
+
+<p>By default, the width and height are maximum values. That is, the image is expanded or contracted to fit the width and height value while maintaining the aspect ratio of the image. Append an exclamation point to the geometry to force the image size to exactly the size you specify. For example, if you specify <kbd>640x480!</kbd> the image width is set to 640 pixels and height to 480.</p>
+
+<p>If only the width is specified, the width assumes the value and the height is chosen to maintain the aspect ratio of the image. Similarly, if only the height is specified (e.g., <kbd>-resize x256</kbd>, the width is chosen to maintain the aspect ratio.</p>
+
+<p>To specify a percentage width or height instead, append %. The image size is multiplied by the width and height percentages to obtain the final image dimensions. To increase the size of an image, use a value greater than 100 (e.g.  125%). To decrease an image's size, use a percentage less than 100.</p>
+
+<p>Use <kbd>@</kbd> to specify the maximum area in pixels of an image.</p>
+
+<p>Use <kbd>&gt;</kbd> to change the dimensions of the image <em>only</em> if its width or height exceeds the geometry specification. <kbd>&lt;</kbd> resizes the image <em>only</em> if both of its dimensions are less than the geometry specification.  For example, if you specify <kbd>640x480&gt;</kbd> and the image size is 256x256, the image size does not change. However, if the image is 512x512 or 1024x1024, it is resized to 480x480. Enclose the geometry specification in quotation marks to prevent the <kbd>&lt;</kbd> or <kbd>&gt;</kbd> from being interpreted by your shell as a file redirection.</p>
+
+<p>If the <a href="#filter">-filter</a> option precedes the <a href="#resize">-resize</a> option, the image is resized with the specified filter.</p>
+
+<p>If the <a href="#support">-support</a> option precedes the <a href="#resize">-resize</a> option, the image is resized with the specified support.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="reverse" id="reverse"></a>-reverse</h4>
+</div>
+
+<p>Reverse the order of images in the current image list.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="roll" id="roll"></a>-roll {<em class="option">+-</em>}<em class="option">x</em>{<em class="option">+-</em>}<em class="option">y</em></h4>
+</div>
+
+<p>roll an image vertically or horizontally by the amount given.</p>
+
+<p>A negative <em class="option">x</em> offset rolls the image left-to-right. A negative <em class="option">y</em> offset rolls the image top-to-bottom.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="rotate" id="rotate"></a>-rotate <em class="option">degrees</em>{<em class="option">&lt;</em>}{<em class="option">&gt;</em>}</h4>
+</div>
+
+<p>Apply Paeth image rotation (using shear operations) to the image.</p>
+
+<p>Use <kbd>&gt;</kbd> to rotate the image only if its width exceeds the height. <kbd>&lt;</kbd> rotates the image <em>only</em> if its width is less than the height. For example, if you specify <kbd>-rotate "-90&gt;"</kbd> and the image size is 480x640, the image is not rotated. However, if the image is 640x480, it is rotated by -90 degrees. If you use <kbd>&gt;</kbd> or <kbd>&lt;</kbd>, enclose it in quotation marks to prevent it from being misinterpreted as a file redirection.</p>
+
+<p>Empty triangles in the corners, left over from rotating the image, are
+filled with the <kbd>background</kbd> color. </p>
+
+<p>See also the <a href="#distort">-distort</a> operator and specifically the
+'<kbd>ScaleRotateTranslate</kbd>' distort method. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="sample" id="sample"></a>-sample <em class="option">geometry</em></h4>
+</div>
+
+<p>scale image using pixel sampling.</p>
+
+<p><a href="#sample">-sample</a> ignores the current <a href="#resize">-resize</a> <a href="#filter">-filter</a> setting. The results are equivelent to using <a href="#resize">-resize</a> with a <a href="#filter">-filter</a> setting of <kbd>point</kbd>,  though <a href="#sample">-sample</a> is a lot faster. </p>
+
+<p>See <a href="#resize">-resize</a> for details about the geometry specification.  Offsets, if present in the geometry string, are ignored, and the <a href="#gravity">-gravity</a> option has no effect.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="sampling-factor" id="sampling-factor"></a>-sampling-factor <em class="option">horizontal-factor</em>x<em class="option">vertical-factor</em></h4>
+</div>
+
+<p>sampling factors used by JPEG or MPEG-2 encoder and YUV decoder/encoder.</p>
+
+<p>This option specifies the sampling factors to be used by the JPEG encoder for chroma downsampling. If this option is omitted, the JPEG library will use its own default values. When reading or writing the YUV format and when writing the M2V (MPEG-2) format, use <a href="#sampling-factor">-sampling-factor 2x1</a> or <a href="#sampling-factor">-sampling-factor 4:2:2</a> to specify the 4:2:2 downsampling method.</p>
+
+<div style="margin: auto;">
+  <h4><a name="scale" id="scale"></a>-scale <em class="option">geometry</em></h4>
+</div>
+
+<p>scale the image.</p>
+
+<p>See <a href="#resize">-resize</a> for details about the geometry specification. <a href="#scale">-scale</a> uses a simpler, faster algorithm, and it ignores the <a href="#filter">-filter</a> selection if the <a href="#filter">-filter</a> option is present. Offsets, if present in the geometry string, are ignored, and the <a href="#gravity">-gravity</a> option has no effect.</p>
+
+<div style="margin: auto;">
+  <h4><a name="scene" id="scene"></a>-scene <em class="option">value</em></h4>
+</div>
+
+<p>set scene number.</p>
+
+<p>This option sets the scene number of an image or the first image in an image sequence.</p>
+
+<div style="margin: auto;">
+  <h4><a name="scenes" id="scenes"></a>-scenes <em class="option">value-value</em></h4>
+</div>
+
+<p>range of image scene numbers to read.</p>
+
+<p>Each image in the range is read with the filename followed by a period (<kbd>.</kbd>) and the decimal scene number. You can change this behavior by embedding a <kbd>%d, %0Nd, %o, %0No, %x, or %0Nx printf</kbd> format specification in the file name. For example,</p>
+
+<pre class="text">
+  montage -scenes 5-7 image.miff
+</pre>
+
+<p>makes a montage of files image.miff.5,
+image.miff.6, and image.miff.7, and.</p>
+
+<pre class="text">
+  animate -scenes 0-12 image%02d.miff
+</pre>
+
+<p>animates files image00.miff, image01.miff, through image12.miff.</p>
+
+<div style="margin: auto;">
+  <h4><a name="screen" id="screen"></a>-screen</h4>
+</div>
+
+<p>specify the screen to capture.</p>
+
+<p>This option indicates that the GetImage request used to obtain the image should be done on the root window, rather than directly on the specified window. In this way, you can obtain pieces of other windows that overlap the specified window, and more importantly, you can capture menus or other popups that are independent windows but appear over the specified window.</p>
+
+<div style="margin: auto;">
+  <h4><a name="segment" id="segment"></a>-segment <em class="option">cluster-threshold</em>x<em class="option">smoothing-threshold</em></h4>
+</div>
+
+<p>segmentthe colors of an image.</p>
+
+<p>Segment an image by analyzing the histograms of the color components and identifying units that are homogeneous with the fuzzy c-means technique. This is part of the ImageMagick color quantization routines. </p>
+
+<p>Specify <em class="option">cluster threshold</em> as the number of pixels in each cluster that must exceed the cluster threshold to be considered valid. <em class="option">Smoothing threshold</em> eliminates noise in the second derivative of the histogram. As the value is increased, you can expect a smoother second derivative.  The default is 1.5.</p>
+
+<p>If the <a href="#verbose">-verbose</a> setting is define, a detailed report
+of the color clusters is returned.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="seed" id="seed"></a>-seed</h4>
+</div>
+
+<p>seed a new sequence of pseudo-random numbers</p>
+
+<div style="margin: auto;">
+  <h4><a name="separate" id="separate"></a>-separate</h4>
+</div>
+
+<p>separate an image channel into a grayscale image.  Specify the channel with <a href="#channel">-channel</a>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="sepia-tone" id="sepia-tone"></a>-sepia-tone <em class="option">threshold</em></h4>
+</div>
+
+<p>simulate a sepia-toned photo.</p>
+
+<p>Specify <em class="option">threshold</em> as the percent threshold of the intensity (0 - 99.9%).</p>
+
+<p>This option applies a special effect to the image, similar to the effect achieved in a photo darkroom by sepia toning.  Threshold ranges from 0 to QuantumRange and is a measure of the extent of the sepia toning.  A threshold of 80% is a good starting point for a reasonable tone.</p>
+
+<div style="margin: auto;">
+  <h4><a name="set" id="set"></a>-set <em class="option">attribute value</em></h4>
+</div>
+
+<p>set an image attribute for all images in the current image sequence, after they have been created or read in. </p>
+
+<p>Attributes of interest include <a href="#comment">-comment</a>, <a href="#delay">-delay</a>, <a href="#dispose">-dispose</a>, and <a href="#page">-page</a>.  For example:</p>
+
+<pre class="text">
+  -> convert rose: -set comment 'Rose is a rose is a rose is a rose' rose.png
+
+  -> identify -format %c rose.png
+  Rose is a rose is a rose is a rose
+</pre>
+
+<p>The <a href="#repage">-repage</a> operator will also set the
+'<kbd>page</kbd>' attribute of images already in memory, but allows you to
+separately set the virtual canvas's size and offset components, and also allows
+relative offset changes, and automatic canvas size re-calculating.  The above
+<a href="#set">-set</a> option is purely a direct, unmodified assignment of the
+virtual canvas (page) meta-data. </p>
+
+<p>Set image options by prefixing the value with <kbd>option:</kbd>.  Set attributes of the image registry by prefixing the value with <kbd>registry:</kbd>.  For example, to set a temporary path to put work files, use:</p>
+
+<pre class="text">
+  convert -set registry:temporary-path /data/tmp ...
+</pre>
+
+
+<div style="margin: auto;">
+  <h4><a name="shade" id="shade"></a>-shade <em class="option">azimuth</em>x<em class="option">elevation</em></h4>
+</div>
+
+<p>shade the image using a distant light source.</p>
+
+<p>Specify <em class="option">azimuth</em> and <em class="option">elevation</em> as the position of the light source. Use <a href="#shade">+shade</a> to return the shading results as a grayscale image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="shadow" id="shadow"></a>-shadow <em class="option">percent-opacity</em>{x<em class="option">sigma</em>}{<em class="option">+-</em>}<em class="option">x</em>{<em class="option">+-</em>}<em class="option">y</em>{<em class="option">%</em>}</h4>
+</div>
+
+<p>simulate an image shadow.</p>
+
+<div style="margin: auto;">
+  <h4><a name="shared-memory"
+id="shared-memory"></a>-shared-memory</h4>
+</div>
+
+<p>use shared memory.</p>
+
+<p>This option specifies whether the utility should attempt to use shared memory for pixmaps. ImageMagick must be compiled with shared memory support, and the display must support the <em class="option">MIT-SHM</em> extension. Otherwise, this option is ignored. The default is <kbd>True</kbd>.</p>
+
+<div style="margin: auto;">
+  <h4><a name="sharpen" id="sharpen"></a>-sharpen <em class="option">radius</em>{x<em class="option">sigma</em>}</h4>
+</div>
+
+<p>sharpen the image.</p>
+
+<p>Use a Gaussian operator of the given radius and standard deviation (sigma).</p>
+
+<div style="margin: auto;">
+  <h4><a name="shave" id="shave"></a>-shave <em class="option">widthxheight</em>{<em class="option">%</em>}</h4>
+</div>
+
+<p>shave pixels from the image edges.</p>
+
+<p>Specify the width of the region to be removed from both sides of the image and the height of the regions to be removed from top and bottom.</p>
+
+<div style="margin: auto;">
+  <h4><a name="shear" id="shear"></a>-shear <em class="option">x-degrees</em>x<em class="option">y-degrees</em></h4>
+</div>
+
+<p>shear the image along the X or Y axis.</p>
+
+<p>Use the specified positive or negative shear angle.</p>
+
+<p>Shearing slides one edge of an image along the X or Y axis, creating a parallelogram. An X direction shear slides an edge along the X axis, while a Y direction shear slides an edge along the Y axis. The amount of the shear is controlled by a shear angle. For X direction shears, <em class="option">x-degrees</em> is measured relative to the Y axis, and similarly, for Y direction shears <em class="option">y-degrees</em> is measured relative to the X axis.</p>
+
+<p>Empty triangles left over from shearing the image are filled with the color defined with the <a href="#fill">-background</a> options. The color is specified using the format described under the <a href="#fill">-fill</a> option.</p>
+
+<div style="margin: auto;">
+  <h4><a name="sigmoidal" id="sigmoidal-contrast"></a>-sigmoidal-contrast <em class="option">contrast</em>x<em class="option">mid-point</em></h4>
+</div>
+
+<p>image lightness rescaling using sigmoidal contrast enhancement.</p>
+
+<p>Increase the contrast of the image using a sigmoidal transfer function without saturating highlights or shadows. <em class="option">Contrast</em> indicates how much to increase the contrast (0 is none; 3 is typical; 20 is a lot); <em class="option">mid-point</em> indicates where midtones fall in the resultant image (0 is white; 50% is middle-gray; 100% is black).  By default the image contrast is increased, use <em class="option">+sigmoidal-contrast</em> to decrease the contrast.</p>
+
+<div style="margin: auto;">
+  <h4><a name="silent" id="silent"></a>-silent</h4>
+</div>
+
+<p>operate silently.</p>
+
+<div style="margin: auto;">
+  <h4><a name="size" id="size"></a>-size <em class="option">width</em>{x<em class="option">height</em>}{<em class="option">+offset</em>}</h4>
+</div>
+
+<p>width and height of the image.</p>
+
+<p>Use this option to specify the width and height of raw images whose dimensions are unknown such as <kbd>GRAY</kbd>, <kbd>RGB</kbd>, or <kbd>CMYK</kbd>. In addition to width and height, use <a href="#size">-size</a> with an offset to skip any header information in the image or tell the number of colors in a <kbd>MAP</kbd> image file, (e.g. -size 640x512+256).</p>
+
+<p>For Photo CD images, choose from these sizes:</p>
+
+<pre class="text">
+  192x128
+  384x256
+  768x512
+  1536x1024
+  3072x2048
+</pre>
+
+<p>Finally, use this option to choose a particular resolution layer of a JBIG or JPEG image (e.g. -size 1024x768).</p>
+
+<div style="margin: auto;">
+  <h4><a name="sketch" id="sketch"></a>-sketch <em class="option">radius</em><br />-sketch <em class="option">radius</em>x<em class="option">sigma</em>+<em class="option">angle</em></h4>
+</div>
+
+<p>simulate a pencil sketch.</p>
+
+<p>Sketch with the given radius, standard deviation (sigma), and angle.   The angle given is the angle toward which the image is sketched.  That is the direction people would consider the object is coming from.  </p>
+
+<div style="margin: auto;">
+  <h4><a name="snaps" id="snaps"></a>-snaps <em class="option">value</em></h4>
+</div>
+
+<p>number of screen snapshots.</p>
+
+<p>Use this option to grab more than one image from the X server screen, to create an animation sequence.</p>
+
+<div style="margin: auto;">
+  <h4><a name="solarize" id="solarize"></a>-solarize <em class="option">threshold</em></h4>
+</div>
+
+<p>negate all pixels above the threshold level.</p>
+
+<p>Specify <em class="option">factor</em> as the percent threshold of the intensity (0 - 99.9%).</p>
+
+<p>This option produces a <em class="option">solarization</em> effect seen when exposing a photographic film to light during the development process.</p>
+
+<div style="margin: auto;">
+  <h4><a name="splice" id="splice"></a>-splice <em class="option">width</em>x<em class="option">height</em>{<em class="option">+-</em>}<em class="option">x</em>{<em class="option">+-</em>}<em class="option"> y</em>{<em class="option">%</em>}<em class="option"></em></h4>
+</div>
+
+<p>splice the background color into the image.</p>
+
+<p>See <a href="#geometry">-resize</a> for details about the geometry specification.</p>
+
+<div style="margin: auto;">
+  <h4><a name="spread" id="spread"></a>-spread <em class="option">amount</em></h4>
+</div>
+
+<p>displace image pixels by a random amount.</p>
+
+<p><em class="option">Amount</em> defines the size of the neighborhood around each pixel to choose a candidate pixel to swap.</p>
+
+<div style="margin: auto;">
+  <h4><a name="stegano" id="stegano"></a>-stegano <em class="option">offset</em></h4>
+</div>
+
+<p>hide watermark within an image.</p>
+
+<p>Use an offset to start the image hiding some number of pixels from the beginning of the image. Note this offset and the image size. You will need this information to recover the steganographic image (e.g. display -size 320x256+35 stegano:image.png).</p>
+
+<div style="margin: auto;">
+  <h4><a name="stereo" id="stereo"></a>-stereo</h4>
+</div>
+
+<p>composite two images to create a stereo anaglyph.</p>
+
+<p>The left side of the stereo pair is saved as the red channel of the output image. The right side is saved as the green channel. Red-green stereo glasses are required to properly view the stereo image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="storage-type" id="storage-type"></a>-storage-type <em class="option">type</em></h4>
+</div>
+
+<p>pixel storage type.  Here are the valid types:</p>
+
+<pre class="text">
+  char        store pixels as unsigned characters
+  double      store pixels as doubles
+  float       store pixels as floats
+  integer     store pixels as integers
+  long        store pixels as longs
+  quantum     store pixels in the native depth of your ImageMagick distribution
+  short       store pixels as unsigned shorts
+</pre>
+
+<p>Float and double types are normalized from 0.0 to 1.0 otherwise the pixels
+values range from 0 to the maximum value the storage type can support.
+
+<div style="margin: auto;">
+  <h4><a name="strip" id="strip"></a>-strip</h4>
+</div>
+
+<p>strip the image of any profiles or comments.</p>
+
+<div style="margin: auto;">
+  <h4><a name="stroke" id="stroke"></a>-stroke <em class="option">color</em></h4>
+</div>
+
+<p>color to use when stroking a graphic primitive.</p>
+
+<p>The color is specified using the format described under the <a href="#fill">-fill</a> option.</p>
+
+<p>See <a href="#draw">-draw</a> for further details.</p>
+
+<div style="margin: auto;">
+  <h4><a name="strokewidth" id="strokewidth"></a>-strokewidth <em class="option">value</em></h4>
+</div>
+
+<p>set the stroke width.</p>
+
+<p>See <a href="#draw">-draw</a> for further details.</p>
+
+<div style="margin: auto;">
+  <h4><a name="support" id="support"></a>-support <em class="option">factor</em></h4>
+</div>
+
+<p>resize support: &gt; 1.0 is blurry, &lt; 1.0 is sharp.</p>
+
+<div style="margin: auto;">
+  <h4><a name="swap" id="swap"></a>-swap <em class="option">index,index</em></h4>
+</div>
+
+<p>swap the positions of two images in the image sequence.</p>
+
+<p>For example, <a href="#swap">-swap 0,2</a> swaps the first and the third images in the current image sequence.  Whereas, <a href="#swap">+swap</a> swaps the last two image.</p>
+
+<div style="margin: auto;">
+  <h4><a name="swirl" id="swirl"></a>-swirl <em class="option">degrees</em></h4>
+</div>
+
+<p>swirl image pixels about the center.</p>
+
+<p><em class="option">Degrees</em> defines the tightness of the swirl.</p>
+
+<div style="margin: auto;">
+  <h4><a name="text-font" id="text-font"></a>-text-font <em class="option">name</em></h4>
+</div>
+
+<p>font for writing fixed-width text.</p>
+
+<p>Specifies the name of the preferred font to use in fixed (typewriter style) formatted text. The default is 14 point <em class="option">Courier</em>.</p>
+
+<p>You can tag a font to specify whether it is a PostScript, TrueType, or OPTION1 font. For example, <kbd>Courier.ttf</kbd> is a TrueType font and <kbd>x:fixed</kbd> is OPTION1.</p>
+
+<div style="margin: auto;">
+  <h4><a name="texture" id="texture"></a>-texture <em class="option">filename</em></h4>
+</div>
+
+<p>name of texture to tile onto the image background.</p>
+
+<div style="margin: auto;">
+  <h4><a name="threshold" id="threshold"></a>-threshold <em class="option">value</em>{<em class="option">green,blue,opacity</em>}{<em class="option"> %</em>}</h4>
+</div>
+
+<p>threshold the image.</p>
+
+<p>Create an image such that any pixel sample that is equal to, or exceeds the threshold, is reassigned the maximum intensity otherwise the minimum intensity.</p>
+
+<p>If the green or blue value is omitted, these channels use the same value as the first one provided. If all three color values are the same, the result is a bi-level image. If the opacity threshold is omitted, OpaqueOpacity will be used and any partially transparent pixel will become fully transparent. If only a single 0 is provided, auto-thresholding will be performed.</p>
+
+<p>To generate an all-black or all-white image with the same dimensions as the input image, you can use.</p>
+
+<pre class="text">
+  convert -threshold 65535 in.png black.png
+  convert -threshold 0,0 in.png white.png
+</pre>
+
+<div style="margin: auto;">
+  <h4><a name="thumbnail" id="thumbnail"></a>-thumbnail <em class="option">width</em><br />-thumbnail <em class="option">width</em>x<em class="option">height</em>{<em class="option">%</em>} {<em class="option">@</em>} {<em class="option">!</em>} {<em class="option">&lt;</em>} {<em class="option">&gt;</em>}</h4>
+</div>
+
+<p>create a thumbnail of the image.</p>
+
+<p>This is exactly like <a href="#resize">-resize</a>, except that any image profiles present are also removed as they are of little importance to small image thumbnails.</p>
+
+<div style="margin: auto;">
+  <h4><a name="tile" id="tile"></a>-tile <em class="option">filename</em></h4>
+</div>
+
+<p>tile image when filling a graphic primitive.</p>
+
+<div style="margin: auto;">
+  <h4>-tile <em class="option">geometry</em></h4>
+</div>
+
+<p>layout of images [<em class="option">montage</em>].</p>
+
+<div style="margin: auto;">
+  <h4>-tile</h4>
+</div>
+
+<p>repeat composite operation across and down image [<em class="option">composite</em>].</p>
+
+<div style="margin: auto;">
+  <h4><a name="tile-offset" id="tile-offset"></a>-tile-offset <em class="option">+-</em>}<em class="option">x</em>{<em class="option">+-</em>}<em class="option"> y</em></h4>
+</div>
+
+<p>specify the offset for tile images, relative to the background image it will be tiled on.</p>
+
+<p>This should be set before the tiling image is defined using <a href="#tile" >-tile</a> or <a href="#texture" >-texture</a>, or directly applied for create a tiled canvas using <kbd>TILE:<kbd> or <kbd>PATTERN</kbd> input formats. </p>
+
+<p>Internally ImageMagick does a <a href="#roll" >-roll</a> of the tile image by the arguments given when the tile image is set. </p>
+
+<div style="margin: auto;">
+  <h4><a name="tint" id="tint"></a>-tint <em class="option">value</em></h4>
+</div>
+
+<p>tint the image with the fill color.</p>
+
+<p>Specify the amount of tinting as a percentage.  Pure colors like black, white red, yellow, will not be affected by -tint. Only mid-range colors such as the various shades of grey.</p>
+
+<div style="margin: auto;">
+  <h4><a name="title" id="title"></a>-title <em class="option">string</em></h4>
+</div>
+
+<p>assign title to displayed image [<em class="option">animate, display, montage</em>].</p>
+
+<p>Use this option to assign a specific title to the image. This is assigned to the image window and is typically displayed in the window title bar. Optionally you can include the image filename, type, width, height, Exif data, or other image attribute by embedding special format characters described under the <a href="#format">-format</a> option.</p>
+
+<p>For example,</p>
+
+<pre class="text">
+  -title "%m:%f %wx%h"
+</pre>
+
+<p>produces an image title of <kbd>MIFF:bird.miff 512x480</kbd> for an image titled <kbd>bird.miff</kbd> and whose width is 512 and height is 480.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="transform" id="transform"></a>-transform</h4>
+</div>
+
+<p>transform the image.</p>
+
+<p>This option applies the transformation matrix from a previous <a href="#affine">-affine</a> option.</p>
+
+<pre class="text">
+  convert -affine 2,2,-2,2,0,0 -transform bird.ppm bird.jpg
+</pre>
+
+
+<div style="margin: auto;">
+  <h4><a name="transparent" id="transparent"></a>-transparent <em class="option">color</em></h4>
+</div>
+
+<p>make this color transparent within the image.</p>
+
+<p>The <em class="option">color</em> argument is defined using the format
+described under the <a href="#fill">-fill</a> option. The <a href="#fuzz"
+>-fuzz</a> setting can be used to match and replace colors similar to the one
+given. </p>
+
+<p>The <a href="#opaque">-opaque</a>  operator is exactly the same as <a
+href="#transparent" >-transparent</a> but replaces the matching color same as
+the current <a href="#fill">-fill</a> color setting. </p>
+
+<p>This does not define the 'transparency color' used for colormapped image
+formats, such as GIF.  For that use <a href="#transparent-color"
+>-transparent-color</a> </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="transparent-color" id="transparent-color"></a>-transparent-color <em class="option">color</em></h4>
+</div>
+
+<p>The transparent color. Used for saving to image formats such as GIF and
+PNG8 which uses this color to represent boolean transparency. </p>
+
+<p>The color may also exist as an opaque color within the image, without that
+color becoming transparenct. That is both the transparent and opaque color can
+co-exist.  Use <a href="#transparent">-transparent</a> to make the opaque
+color transparent. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="treedepth" id="treedepth"></a>-treedepth <em class="option">value</em></h4>
+</div>
+
+<p>tree depth for the color reduction algorithm.</p>
+
+<p>Normally, this integer value is zero or one. A value of zero or one causes the use of an optimal tree depth for the color reduction algorithm.</p>
+
+<p>An optimal depth generally allows the best representation of the source image with the fastest computational speed and the least amount of memory. However, the default depth is inappropriate for some images. To assure the best representation, try values between 2 and 8 for this parameter.  Refer to the <a href="../www/quantize.html">color reduction algorithm</a> for more details.</p>
+
+<p>The <a href="#colors">-colors</a> or <a href="#monochrome">-monochrome</a> option, or writing to an image format which requires color reduction, is required for this option to take effect.</p>
+
+<div style="margin: auto;">
+  <h4><a name="transpose" id="transpose"></a>-transpose</h4>
+</div>
+
+<p>Mirror the image along the images top-left to bottom-right diagonal (i.e. mathematically transpose the pixel array).  Equivelent to the operations <kbd>-flip -rotate 90</kbd>.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="transverse" id="transverse"></a>-transverse</h4>
+</div>
+
+<p>Mirror the image along the images bottom-left to top-right diagonal.  Equivelent to the operations <kbd>-flop -rotate 90</kbd>.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="trim" id="trim"></a>-trim</h4>
+</div>
+
+<p>trim an image.</p>
+
+<p>This option removes any edges that are exactly the same color as the corner pixels. Use <a href="#fuzz">-fuzz</a> to make <a href="#trim">-trim</a> remove edges that are nearly the same color as the corner pixels.</p>
+
+<p>The page or virtual canvas information of the image is preserved allowing
+you to extract the result of the <a href="#trim">-trim</a> operation from the
+image.  Use a <a href="#repage">+repage</a> to remove the virtual canvas page
+information if it is unwanted.</p>
+
+<p>If the trimmed image 'disappears' an warning is produced, and a special
+single pixel transparent 'missed' image is returned, in the same way as when a
+<a href="#crop">-crop</a> operation 'misses' the image proper. </p>
+
+
+<div style="margin: auto;">
+  <h4><a name="type" id="type"></a>-type <em class="option">type</em></h4>
+</div>
+
+<p>the image type.</p> <p>Choose from: <kbd>Bilevel</kbd>, <kbd>Grayscale</kbd>, <kbd>Palette</kbd>, <kbd>PaletteMatte</kbd>, <kbd>TrueColor</kbd>, <kbd>TrueColorMatte</kbd>, <kbd>ColorSeparation</kbd>, <kbd>ColorSeparationMatte</kbd>, or <kbd>Optimize</kbd>.</p>
+
+<p>Normally, when a format supports different subformats such as grayscale and truecolor, the encoder will try to choose an efficient subformat. The <a href="#type">-type</a> option can be used to overrride this behavior. For example, to prevent a JPEG from being written in grayscale format even though only gray pixels are present, use.</p>
+
+<pre class="text">
+  convert bird.png -type TrueColor bird.jpg
+</pre>
+
+<p>Similarly, using <a href="#type">-type TrueColorMatte</a> to force the encoder to write an alpha channel even though the image is opaque, if the output format supports transparency.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="undercolor" id="undercolor"></a>-undercolor <em class="option">color</em></h4>
+</div>
+
+<p>set the color of the annotation bounding box.</p>
+
+<p>The color is specified using the format described under the <a href="#fill">-fill</a> option.</p>
+
+<p>See <a href="#draw">-draw</a> for further details.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="update" id="update"></a>-update <em class="option">seconds</em></h4>
+</div>
+
+<p>detect when image file is modified and redisplay.</p>
+
+<p>Suppose that while you are displaying an image the file that is currently displayed is over-written.  <kbd>display</kbd> will automatically detect that the input file has been changed and update the displayed image accordingly.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="unique-colors" id="unique-colors"></a>-unique-colors</h4>
+</div>
+
+<p>discard all but one of any pixel color.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="units" id="units"></a>-units <em class="option">type</em></h4>
+</div>
+
+<p>the units of image resolution.</p>
+
+<p>Choose from: <kbd>Undefined</kbd>, <kbd>PixelsPerInch</kbd>, or <kbd>PixelsPerCentimeter</kbd>. This option is normally used in conjunction with the <a href="#density">-density</a> option.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="unsharp" id="unsharp"></a>-unsharp <em class="option">radius</em><br />-unsharp <em class="option">radius</em>x<em class="option">sigma</em>{<em class="option">+amount</em>}{<em class="option">+threshold</em>}</h4>
+</div>
+
+<p>sharpen the image with an unsharp mask operator.</p>
+
+<p>The <a href="#unsharp">-unsharp</a> option sharpens an image. The image is convolved with a Gaussian operator of the given radius and standard deviation (sigma). For reasonable results, radius should be larger than sigma. Use a radius of 0 to have the method select a suitable radius.</p>
+
+<p>The parameters are:</p>
+
+<pre class="text">
+  radius:    The radius of the Gaussian, in pixels,  not counting the center
+             pixel (default 0).
+  sigma:     The standard deviation of the Gaussian, in pixels (default 1.0).
+  amount:    The percentage of the difference between the original and the blur
+             image that is added back into the original (default 1.0).
+  threshold: The threshold, as a fraction of QuantumRange, needed to apply the
+             difference amount (default 0.05).
+</pre>
+
+
+<div style="margin: auto;">
+  <h4><a name="verbose" id="verbose"></a>-verbose</h4>
+</div>
+
+<p>print detailed information about the image when this option preceds the <a href="#identify">-identify</a> option or <kbd>info:</kbd>.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="version" id="version"></a>-version</h4>
+</div>
+
+<p>print ImageMagick version string and exit.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="view" id="view"></a>-view <em class="option">string</em></h4>
+</div>
+
+<p>FlashPix viewing parameters.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="vignette" id="vignette"></a>-vignette <em class="option">radius</em>{x<em class="option">sigma</em>}{<em class="option">+-</em>}<em class="option">x</em>{<em class="option">+-</em>}<em class="option">y</em>{<em class="option">%</em>}</h4>
+</div>
+
+<p>soften the edges of the image in vignette style.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="virtual-pixel" id="virtual-pixel"></a>-virtual-pixel <em class="option">method</em></h4>
+</div>
+
+<p>Specify contents of <em>virtual pixels</em>.</p>
+
+<p>This option defines what color source should be used if and when a color
+lookup completely 'misses' the source image. The color(s) that appear to
+surround the source image.  Generally this color is derived from the source
+image, but could also be set to a specify background color. </p>
+
+<p>Choose from these methods:</p>
+
+<pre class="text">
+  black:       The area surrounding the image is black.
+  background:  The area surrounding the image is the background color.
+  dither:      use a dithered pattern to choose a pixel in a 32x32 neighborhood.
+  edge:        Extend the edge pixel toward infinity (default).
+  gray:        The area surrounding the image is gray.
+  mirror:      Mirror the image.
+  random:      Choose a random pixel from the image.
+  tile:        Tile the image.
+  transparent: The area surrounding the image is a transparent blackness.
+  white:       The area surrounding the image is white.
+</pre>
+
+<p>This is most important for distortion operators such as <a href="#distort"
+>-distort</a>, <a href="#implode" >-implode</a>, and <a href="#fx" >-fx</a>.
+However it also effects operations that may access pixels just outside the
+image proper, such as <a href="#convolve">-convolve</a>, <a
+href="#blur">-blur</a>, and <a href="#sharpen">-sharpen</a>. </p>
+
+<p>Use the <a href="#list" >-list</a> option with a '<kbd>VirtualPixel</kbd>'
+argument for a list of <a href="#virtual-pixel" >-virtual-pixel</a> arguments
+available in your ImageMagick installation.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="visual" id="visual"></a>-visual <em class="option">type</em></h4>
+</div>
+
+<p>animate images using this X visual type.</p>
+
+<p>Choose from these visual classes:</p>
+
+<pre class="text">
+  StaticGray
+  GrayScale
+  StaticColor
+  PseudoColor
+  TrueColor
+  DirectColor
+  default
+  visual id
+</pre>
+
+<p>The X server must support the visual you choose, otherwise an error occurs. If a visual is not specified, the visual class that can display the most simultaneous colors on the default screen is chosen.</p>
+
+
+<div style="margin: auto;">
+  <h4><a name="watermark" id="watermark"></a>-watermark <em class="option">brightness</em></h4>
+</div>
+
+<p>Watermark an image using the given percentage brightness.</p>
+
+<div style="margin: auto;">
+  <h4><a name="wave" id="wave"></a>-wave <em class="option">amplitude</em><br />-wave <em class="option">amplitude</em>x<em class="option">wavelength</em></h4>
+</div>
+
+<p>Shear the columns of an image into a sine wave.</p>
+
+<p>Specify <em class="option">amplitude</em> and <em class="option">wavelength</em> of the wave.</p>
+
+<div style="margin: auto;">
+  <h4><a name="white-point" id="white-point"></a>-white-point <em class="option">x,y</em></h4>
+</div>
+
+<p>chromaticity white point.</p>
+
+<div style="margin: auto;">
+  <h4><a name="white-threshold" id="white-threshold"></a>-white-threshold <em class="option">threshold</em></h4>
+</div>
+
+<p>force all pixels at or above the threshold into white while leaving all pixels below the threshold unchanged.</p>
+
+<div style="margin: auto;">
+  <h4><a name="window" id="window"></a>-window <em class="option">id</em></h4>
+</div>
+
+<p>make image the background of a window.</p>
+
+<p><em class="option">id</em> can be a window id or name. Specify <kbd>root</kbd> to select X's root window as the target window.</p>
+
+<p>By default the image is tiled onto the background of the target window. If <kbd>backdrop</kbd> or <a href="#geometry">-resize</a> are specified, the image is surrounded by the background color. Refer to <kbd>X RESOURCES</kbd> for details.</p>
+
+<p>The image will not display on the root window if the image has more unique colors than the target window colormap allows. Use <a href="#colors">-colors</a> to reduce the number of colors.</p>
+
+<div style="margin: auto;">
+  <h4><a name="window-group" id="window-group"></a>-window-group</h4>
+</div>
+
+<p>specify the window group.</p>
+
+<div style="margin: auto;">
+  <h4><a name="write" id="write"></a>-write <em class="option">filename</em></h4>
+</div>
+
+<p>write an image sequence.</p> <p>The image sequence preceding the <a href="#write">-write</a> <em class="option">filename</em> option is written out, and processing continues with the same image in its current state if there are additional options. To restore the image to its original state after writing it, use the <a href="#write">+write</a> <em class="option">filename</em> option.</p>
+
+<p>Use <a href="#compress">-compress</a> to specify the type of image compression.</p>
+
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="1667290399">Discourse Server</a> &bull;
+    <a href="../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://studio.webbyland.com/ImageMagick/MagickStudio/scripts/MagickStudio.cgi" target="1366641523">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

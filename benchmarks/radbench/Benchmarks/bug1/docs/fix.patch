@@ -1,0 +1,218 @@
+Index: tm/js/src/jscntxt.cpp
+===================================================================
+--- tm.orig/js/src/jscntxt.cpp	2009-09-24 14:46:57.841925766 +0400
++++ tm/js/src/jscntxt.cpp	2009-09-24 14:49:01.198924837 +0400
+@@ -716,32 +716,20 @@ js_DestroyContext(JSContext *cx, JSDestr
+          * request to end.  We'll let it run below, just before we do the truly
+          * final GC and then free atom state.
+          */
+         while (cx->requestDepth != 0)
+             JS_EndRequest(cx);
+ #endif
+ 
+         if (last) {
+-            /* Clear builtin functions, which are recreated on demand. */
+-            memset(rt->builtinFunctions, 0, sizeof rt->builtinFunctions);
+-
+             js_GC(cx, GC_LAST_CONTEXT);
+             DUMP_EVAL_CACHE_METER(cx);
+             DUMP_FUNCTION_METER(cx);
+ 
+-            /*
+-             * Free the script filename table if it exists and is empty. Do this
+-             * after the last GC to avoid finalizers tripping on free memory.
+-             */
+-            if (rt->scriptFilenameTable &&
+-                rt->scriptFilenameTable->nentries == 0) {
+-                js_FinishRuntimeScriptState(rt);
+-            }
+-
+             /* Take the runtime down, now that it has no contexts or atoms. */
+             JS_LOCK_GC(rt);
+             rt->state = JSRTS_DOWN;
+             JS_NOTIFY_ALL_CONDVAR(rt->stateChange);
+         } else {
+             if (mode == JSDCM_FORCE_GC)
+                 js_GC(cx, GC_NORMAL);
+             else if (mode == JSDCM_MAYBE_GC)
+Index: tm/js/src/jsgc.cpp
+===================================================================
+--- tm.orig/js/src/jsgc.cpp	2009-09-24 14:46:57.841925766 +0400
++++ tm/js/src/jsgc.cpp	2009-09-24 14:57:18.475928636 +0400
+@@ -3471,16 +3471,22 @@ js_GC(JSContext *cx, JSGCInvocationKind 
+     if (rt->shapeGen & SHAPE_OVERFLOW_BIT) {
+         rt->gcRegenShapes = true;
+         rt->gcRegenShapesScopeFlag ^= JSScope::SHAPE_REGEN;
+         rt->shapeGen = 0;
+         rt->protoHazardShape = 0;
+     }
+ 
+     js_PurgeThreads(cx);
++#ifdef JS_TRACER
++    if (gckind == GC_LAST_CONTEXT) {
++        /* Clear builtin functions, which are recreated on demand. */
++        memset(rt->builtinFunctions, 0, sizeof rt->builtinFunctions);
++    }
++#endif
+ 
+     /*
+      * Mark phase.
+      */
+     JS_TRACER_INIT(&trc, cx, NULL);
+     rt->gcMarkingTracer = &trc;
+     JS_ASSERT(IS_GC_MARKING_TRACER(&trc));
+ 
+Index: tm/js/src/jsscript.cpp
+===================================================================
+--- tm.orig/js/src/jsscript.cpp	2009-09-24 14:46:57.841925766 +0400
++++ tm/js/src/jsscript.cpp	2009-09-24 14:49:53.277927458 +0400
+@@ -1016,73 +1016,72 @@ js_free_sftbl_entry(void *priv, JSHashEn
+     js_free(he);
+ }
+ 
+ static JSHashAllocOps sftbl_alloc_ops = {
+     js_alloc_table_space,   js_free_table_space,
+     js_alloc_sftbl_entry,   js_free_sftbl_entry
+ };
+ 
++static void
++FinishRuntimeScriptState(JSRuntime *rt)
++{
++    if (rt->scriptFilenameTable) {
++        JS_HashTableDestroy(rt->scriptFilenameTable);
++        rt->scriptFilenameTable = NULL;
++    }
++#ifdef JS_THREADSAFE
++    if (rt->scriptFilenameTableLock) {
++        JS_DESTROY_LOCK(rt->scriptFilenameTableLock);
++        rt->scriptFilenameTableLock = NULL;
++    }
++#endif
++}
++
+ JSBool
+ js_InitRuntimeScriptState(JSRuntime *rt)
+ {
+ #ifdef JS_THREADSAFE
+     JS_ASSERT(!rt->scriptFilenameTableLock);
+     rt->scriptFilenameTableLock = JS_NEW_LOCK();
+     if (!rt->scriptFilenameTableLock)
+         return JS_FALSE;
+ #endif
+     JS_ASSERT(!rt->scriptFilenameTable);
+     rt->scriptFilenameTable =
+         JS_NewHashTable(16, JS_HashString, js_compare_strings, NULL,
+                         &sftbl_alloc_ops, NULL);
+     if (!rt->scriptFilenameTable) {
+-        js_FinishRuntimeScriptState(rt);    /* free lock if threadsafe */
++        FinishRuntimeScriptState(rt);       /* free lock if threadsafe */
+         return JS_FALSE;
+     }
+     JS_INIT_CLIST(&rt->scriptFilenamePrefixes);
+     return JS_TRUE;
+ }
+ 
+ typedef struct ScriptFilenamePrefix {
+     JSCList     links;      /* circular list linkage for easy deletion */
+     const char  *name;      /* pointer to pinned ScriptFilenameEntry string */
+     size_t      length;     /* prefix string length, precomputed */
+     uint32      flags;      /* user-defined flags to inherit from this prefix */
+ } ScriptFilenamePrefix;
+ 
+ void
+-js_FinishRuntimeScriptState(JSRuntime *rt)
+-{
+-    if (rt->scriptFilenameTable) {
+-        JS_HashTableDestroy(rt->scriptFilenameTable);
+-        rt->scriptFilenameTable = NULL;
+-    }
+-#ifdef JS_THREADSAFE
+-    if (rt->scriptFilenameTableLock) {
+-        JS_DESTROY_LOCK(rt->scriptFilenameTableLock);
+-        rt->scriptFilenameTableLock = NULL;
+-    }
+-#endif
+-}
+-
+-void
+ js_FreeRuntimeScriptState(JSRuntime *rt)
+ {
+-    ScriptFilenamePrefix *sfp;
+-
+     if (!rt->scriptFilenameTable)
+         return;
+ 
+     while (!JS_CLIST_IS_EMPTY(&rt->scriptFilenamePrefixes)) {
+-        sfp = (ScriptFilenamePrefix *) rt->scriptFilenamePrefixes.next;
++        ScriptFilenamePrefix *sfp = (ScriptFilenamePrefix *)
++                                    rt->scriptFilenamePrefixes.next;
+         JS_REMOVE_LINK(&sfp->links);
+         js_free(sfp);
+     }
+-    js_FinishRuntimeScriptState(rt);
++    FinishRuntimeScriptState(rt);
+ }
+ 
+ #ifdef DEBUG_brendan
+ #define DEBUG_SFTBL
+ #endif
+ #ifdef DEBUG_SFTBL
+ size_t sftbl_savings = 0;
+ #endif
+Index: tm/js/src/jsscript.h
+===================================================================
+--- tm.orig/js/src/jsscript.h	2009-09-24 14:46:57.842924048 +0400
++++ tm/js/src/jsscript.h	2009-09-24 14:49:01.206924496 +0400
+@@ -208,26 +208,18 @@ js_InitScriptClass(JSContext *cx, JSObje
+ /*
+  * On first new context in rt, initialize script runtime state, specifically
+  * the script filename table and its lock.
+  */
+ extern JSBool
+ js_InitRuntimeScriptState(JSRuntime *rt);
+ 
+ /*
+- * On last context destroy for rt, if script filenames are all GC'd, free the
+- * script filename table and its lock.
+- */
+-extern void
+-js_FinishRuntimeScriptState(JSRuntime *rt);
+-
+-/*
+  * On JS_DestroyRuntime(rt), forcibly free script filename prefixes and any
+- * script filename table entries that have not been GC'd, the latter using
+- * js_FinishRuntimeScriptState.
++ * script filename table entries that have not been GC'd.
+  *
+  * This allows script filename prefixes to outlive any context in rt.
+  */
+ extern void
+ js_FreeRuntimeScriptState(JSRuntime *rt);
+ 
+ extern const char *
+ js_SaveScriptFilename(JSContext *cx, const char *filename);
+Index: tm/js/src/jsnum.cpp
+===================================================================
+--- tm.orig/js/src/jsnum.cpp	2009-09-24 14:46:57.842924048 +0400
++++ tm/js/src/jsnum.cpp	2009-09-24 14:49:01.209923948 +0400
+@@ -757,20 +757,16 @@ js_TraceRuntimeNumberState(JSTracer *trc
+         JS_CALL_DOUBLE_TRACER(trc, rt->jsNegativeInfinity, "-Infinity");
+ }
+ 
+ void
+ js_FinishRuntimeNumberState(JSContext *cx)
+ {
+     JSRuntime *rt = cx->runtime;
+ 
+-    js_UnlockGCThingRT(rt, rt->jsNaN);
+-    js_UnlockGCThingRT(rt, rt->jsNegativeInfinity);
+-    js_UnlockGCThingRT(rt, rt->jsPositiveInfinity);
+-
+     rt->jsNaN = NULL;
+     rt->jsNegativeInfinity = NULL;
+     rt->jsPositiveInfinity = NULL;
+ 
+     cx->free((void *)rt->thousandsSeparator);
+     cx->free((void *)rt->decimalSeparator);
+     cx->free((void *)rt->numGrouping);
+     rt->thousandsSeparator = rt->decimalSeparator = rt->numGrouping = NULL;

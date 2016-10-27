@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source ${PARSECDIR}/pkgs/libs/imagick/parsec/gcc.bldconf
+
+# Append option to disable threads
+build_conf="${build_conf} --without-threads"
+

@@ -1,0 +1,177 @@
+/*************************************************************************************************************
+Print CSS file for Mozilla Developer Center for Firefox 3
+Created by Craig Cook - focalcurve.com
+        on 20 April, 2008
+*************************************************************************************************************/
+
+/* =Hidden elements ******************************************************************************************/
+#nav-access, #noscript, #popupMask, #popupContainer, #moztab, .siteNav { display: none; }
+.siteSearch, #site-notice, .pageBar, #sitetools, #sitetools.collapsed { display: none; }
+div.menu, div.dmenu-body, #menuPageOptions, div.article-nav, ul.page-anchors { display: none; }
+#page-tags .tagAdd, #page-files .fileAdd, .nofiles, #siteFooter { display: none; }
+#comments div.commentActions, #comments #commentForm, #comments div.commentForm { display: none; }
+form#addusers, form#editusers div.navigation { display: none; }
+#pageContent #editform, #pageContent #pageToc { display: none; } 
+
+/* =General elements and content blocks **********************************************************************/
+html { padding: 0; margin: 0; background-color: #fff; background-image: none; }
+body { padding: 0; margin: 0; background-image: none; font: 11pt/1.6 Georgia, "Times New Roman", Times, serif; color: #000; }
+div.globalWrap { position: relative; margin: 1em 10px; width: auto; }
+div.body { position: relative; }
+#pageContent { background-image: none; padding: 0; width: 100%; font-size: inherit; }
+.pageSection { position: relative; clear: both; margin: 1em 0 2em; border-top: 2px solid #000; background-image: none; }
+
+/*** =Links */
+a:link, a:visited, a:hover, a:active, a:focus { text-decoration: underline; }
+a.external { padding-right: 0; background-image: none; }
+
+/*** =Headings */h1, h2, h3, h4, h5, h6 { margin: 0 0 .5em; font-weight: normal; font-family: Georgia, "Times New Roman", Times, serif; color: #000; }
+h1 { font-size: 185%; }
+h2 { font-size: 150%; }
+h3 { font-size: 125%; }
+h4 { font-size: 115%; }
+h5 { font-size: 105%; }
+h6 { font-size: 100%; }
+
+/* =Print options */
+#printOptions { position: relative; top: 0; left: 0; margin: 0; width: 100%; background-image: none; }
+div.prefsToggledOn { padding-top: 0 !important; } /* override common because we're showing a header */
+
+/*** =Forms */
+input, select, textarea, button { font-size: 11pt; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+/* =Header ***************************************************************************************************/
+.header { position: static; border-bottom: 2px solid #000; }
+.siteLogo { margin: 0; padding: 0; width: 280px; }
+
+/*** =Hierarchy (breadcrumbs) */
+.header div.hierarchy { margin: .5em 0; font-size: 11pt; color: #000; }
+.header div.hierarchy ol { margin: 0; padding: 0; list-style: none; }
+.header div.hierarchy ol li { display: inline; padding: 0; }
+.header div.hierarchy ol li:after { content: "\0020/\0020"; } /* space-slash-space */
+.header div.hierarchy ol li.last:after { content: ""; }
+
+/* =TOC ******************************************************************************************************/
+#pageContent #pageToc { width: 30%; float: right; margin: 0 0 .5em 15px; border: 3px double #ccc; padding: 10px; }
+
+/* =Languages ************************************************************************************************/
+#languages, #languages.collapsed { margin: 1em 0; }
+#languages h5 { margin-bottom: 0; }
+#languages ul, #languages.collapsed ul { display: block !important; margin: 0; padding: 0; list-style: none; font: 10pt "Helvetica Neue", Helvetica, Arial, sans-serif; }
+#languages ul li, #languages.collapsed ul li { display: inline !important; }
+#languages ul li:after, #languages.collapsed ul li:after { content: ",\0020"; } /* comma space */
+#languages ul li:last-child:after, #languages.collapsed ul li:last-child:after { content: ""; }
+
+#page-files .secTitle, #page-images .secTitle, #page-comments .secTitle { background-image: none; }
+
+/* =Content styles ********************************************************************************************/
+.pageTitle h1 { font-size: 205%; margin: .25em 0; }
+#pageText ul, #pageText ol { margin-left: 25px; padding-left: 0; }
+#pageText li { margin-bottom: .25em; }
+#pageText li ul, #pageText li ol { margin-left: 15px; margin-bottom: 0; }
+#pageText li ul li, #pageText li ol li { margin-bottom: 0; }
+#pageText blockquote { margin: 0 20px 1.7em; border-left: 1px solid #555; border-right: 1px solid #555; padding: 0 20px; }
+#pageText dt { font-style: italic; }
+#pageText dd { padding-left: 15px; }
+#pageText table { margin-bottom: 1.7em; }
+#pageText caption { font-weight: bold; }
+#pageText pre { border: 1px solid #555; padding: 10px; overflow: visible; font: 10pt "Andale Mono", Courier, "Courier New", monospace; color: #000; }
+
+img.lwrap { margin: 0 15px .5em 0; }
+img.rwrap { margin: 0 0 .5em 15px; }
+
+.pageLastchange { clear: both; margin: 1em 0 0; font: 10pt/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+#printfooter { display: block; font: 10pt/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+/* =Messages ***************************************************************************************************/
+#page-update.hastoc { padding-right: 260px; }
+#sessionMsg { margin-bottom: 1em; }
+#sessionMsg.successmsg .inner { padding: 10px 10px 10px 50px; background: #f5fbfc url("img/icons/sysaccept.png") 10px 8px no-repeat; border: 1px solid #e3e2df; }
+#sessionMsg.errormsg .inner { padding: 10px 10px 10px 50px; background: #f8f6f0 url("img/icons/sysalert.png") 10px 8px no-repeat; border: 1px solid #e3d3c6; }
+#sessionMsg ul { list-style: none; margin: 0; }
+
+/* =Tags ******************************************************************************************************/
+#page-tags { position: relative; clear: both; margin: .5em 0; }
+#pageTags, .pageTagList, .taglist { display: inline; }
+#pageTags { margin-left: 15px; }
+.taglist { font: 10pt "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+/* =Files *****************************************************************************************************/
+#attachTable { margin-top: 1em; }
+#attachTable table { font: 10pt "Helvetica Neue", Helvetica, Arial, sans-serif; border-collapse: collapse; border: 1px solid #e2e1de; border-bottom: 0; }
+#attachTable table th { font-size: 10px; text-align: left; font-weight: normal; border-bottom: 1px solid #e2e1de; padding: 2px; }
+#attachTable table th.col1 { padding-left: 36px; }
+#attachTable table td { border-bottom: 1px solid #e3e1de; padding: 6px 2px; }
+#attachTable table td.col2 { vertical-align: top; }
+#attachTable a.file-preview { display: none; }
+#attachTable .desctext { font-size: 95%; }
+
+/* =Images ****************************************************************************************************/
+#pageGallery { width: 100%; float: left; clear: both; margin-bottom: 1em; }
+#pageGalleryWrap .preControls { width: 100%; float: left; clear: both; font: 10pt "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 1em 0 1.7em; }
+#pageGalleryWrap .preControls div.offset form { margin-left: 20px; }
+#pageGalleryWrap .navigation { display: none; }
+#pageGalleryWrap #pageGallery div.galleryCell { margin-bottom: .75em; }
+#pageGalleryWrap a img.image { padding: 1px; border: 1px solid #0589b7; }
+#pageGalleryWrap a:hover img.image { border-color: #44a7c9; }
+#pageGalleryWrap .desctext { margin: .5em 0 0; font: 9pt "Helvetica Neue", Helvetica, Arial, sans-serif; }
+#pageGalleryWrap .desctext span.desctext { display: block; }
+#pageGalleryWrap a.actionmenu { display: none; }
+
+/* =Comments **************************************************************************************************/
+#comments { margin: auto -12px; }
+#comments div.comments, #comments div.commentForm { padding: 0; }
+#comments div.comments { margin-bottom: 1em; }
+#comments div.commentMore { font: 10pt "Helvetica Neue", Helvetica, Arial, sans-serif; clear: both; float: none; padding: 6px 15px; }
+#comments div.comment { position: relative; border-bottom: 1px solid #000; padding: 20px 50px 20px; clear: both; }
+#comments div#comment1 { border-top: 1px solid #000; }
+#comments div.commentNum { font-size: 150%; line-height: 1.2; position: absolute; left: 10px; top: 13px; }
+#comments div.commentNum a { padding: 0; color: #000; text-decoration: none; }
+#comments div.commentMetaData { font: 9py "Helvetica Neue", Helvetica, Arial, sans-serif; margin-bottom: .5em; }
+#comments div.commentText { width: auto; padding: 0; float: none; }
+#comments div.commentPosted { font: 9pt "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 1em 0 0; }
+#comments div.commentPosted em { font-style: normal; }
+
+/* =Tables on Admin and Special pages **************************************************************************/
+table.table { width: 100%; margin: .5em 0 1em; font: 10pt "Helvetica Neue", Helvetica, Arial, sans-serif; border-collapse: collapse; border: 1px solid #e2e1de; border-bottom: 0; }
+table.table th { font-size: 10px; text-align: left; font-weight: normal; border-bottom: 1px solid #e2e1de; padding: 2px 6px; }
+table.table td { border-bottom: 1px solid #e3e1de; padding: 6px; }
+table.table tr.show-no { display: table-row-group; }
+table.table .bg2 { background-color: #f8fbfb; }
+
+/* =Admin pages *************************************************************************************************/
+#pageTypeAdmin form table td { padding: 6px; }
+#pageTypeAdmin .tablemenu input { margin-left: 6px; }
+
+form#addusers td.usertip, form#addservices td.usertip, form#editservices td.usertip { background: #f3f3f3; border: 1px solid #ebeae7; }
+
+.PageDW-Admin #pageTypeAdmin ul { list-style: none; margin-left: 0; width: 80%; margin: 0 auto 2em; overflow: auto; }
+.PageDW-Admin #pageTypeAdmin ul li { position: relative; border: 1px solid #ebeae7; padding: 3em 10px 10px; margin: 0 2% 10px 0; font: 9pt "Helvetica Neue", Helvetica, Arial, sans-serif; width: 28%; float: left; overflow: hidden; height: 10em; }
+.PageDW-Admin #pageTypeAdmin ul li:hover { background-color: #eefaff; border-color: #d4e7ed; }
+.PageDW-Admin #pageTypeAdmin ul li strong { font: 16px Georgia, serif; }
+.PageDW-Admin #pageTypeAdmin ul li a { display: block; position: absolute; margin: -2em -10px -10px; padding: 10px; width: 100%; height: 9em; }
+
+.PageDW-AdminStyles textarea { width: 80%; }
+
+/* =Special pages ***********************************************************************************************/
+.PageDW-SpecialListRss ul, .PageDW-SpecialListRss ol { list-style: none; }
+.PageDW-SpecialListRss a.iconitext span.icon { margin-bottom: -2px; }
+
+#preferences ul { list-style: none; }
+#preferences fieldset legend { display: none; }
+#preferences div.row { clear: both; margin-bottom: .5em; }
+#preferences span.label { display: block; margin-bottom: .25em; }
+
+#pageTypeSpecial #logindivid label { display: block; margin-bottom: .25em; }
+#pageTypeSpecial #logindivid td { padding-bottom: .5em; padding-right: 15px; vertical-align: bottom; }
+
+/*** =Special search page (this is not the sitesearch in the header) */
+#searchForm { margin-bottom: 1em; }
+#searchForm label { margin-right: 15px; }
+#searchForm #lsearchbox { margin-right: 15px; }
+#searchForm #select-language { margin-right: 15px; }
+#searchResults ul { list-style: none; margin: 1em 0; }
+#searchResults ul li { padding: 1em 20px; border-bottom: 1px solid #e2e1de; }
+#searchResults .title { font-size: 130%; margin: 0 0 .25em -20px; }
+#searchResults .itemmatch { font-size: 90%; margin-bottom: .5em; }

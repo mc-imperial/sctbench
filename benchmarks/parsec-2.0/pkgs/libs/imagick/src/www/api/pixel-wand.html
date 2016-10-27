@@ -1,0 +1,1270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: MagickWand, C API for ImageMagick: Pixel Wand Methods</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="magickwc, api, for, imagemagick:, pixel, wmethods, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../../index.html"><img id="titlebar-west" src="../../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="120808961"><img id="titlebar-west" src="../../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img src="../../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img id="titlebar-east" src="../../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../../index.html">About ImageMagick</a>
+      <a href="../../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="1848393607" class="sub">Usage</a>
+      <a href="../../www/api.html">Program Interfaces</a>
+      <a href="../../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../../Magick++/" target="1076865255" class="sub">Magick++</a>
+      <a href="../../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/install-source.html">Install from Source</a>
+      <a href="../../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../../www/binary-releases.html">Binary Releases</a>
+      <a href="../../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/sitemap.html">Site Map</a>
+			<a href="../../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../../www/sponsors.html">Sponsors</a>
+  <a href="http://www.florida-vacation-travel.com/" class="sponsor" target="sponsor">Florida Vacation &amp;<br />Travel</a><!-- 2007110100mv -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[ <a href="#ClearPixelWand">ClearPixelWand</a> | <a href="#ClonePixelWand">ClonePixelWand</a> | <a href="#ClonePixelWands">ClonePixelWands</a> | <a href="#DestroyPixelWand">DestroyPixelWand</a> | <a href="#DestroyPixelWands">DestroyPixelWands</a> | <a href="#IsPixelWandSimilar">IsPixelWandSimilar</a> | <a href="#IsPixelWand">IsPixelWand</a> | <a href="#NewPixelWand">NewPixelWand</a> | <a href="#NewPixelWands">NewPixelWands</a> | <a href="#PixelClearException">PixelClearException</a> | <a href="#PixelGetAlpha">PixelGetAlpha</a> | <a href="#PixelGetAlphaQuantum">PixelGetAlphaQuantum</a> | <a href="#PixelGetBlack">PixelGetBlack</a> | <a href="#PixelGetBlackQuantum">PixelGetBlackQuantum</a> | <a href="#PixelGetBlue">PixelGetBlue</a> | <a href="#PixelGetBlueQuantum">PixelGetBlueQuantum</a> | <a href="#PixelGetColorAsString">PixelGetColorAsString</a> | <a href="#PixelGetColorAsNormalizedString">PixelGetColorAsNormalizedString</a> | <a href="#PixelGetColorCount">PixelGetColorCount</a> | <a href="#PixelGetCyan">PixelGetCyan</a> | <a href="#PixelGetCyanQuantum">PixelGetCyanQuantum</a> | <a href="#PixelGetException">PixelGetException</a> | <a href="#PixelGetExceptionType">PixelGetExceptionType</a> | <a href="#PixelGetFuzz">PixelGetFuzz</a> | <a href="#PixelGetGreen">PixelGetGreen</a> | <a href="#PixelGetGreenQuantum">PixelGetGreenQuantum</a> | <a href="#PixelGetHSL">PixelGetHSL</a> | <a href="#PixelGetIndex">PixelGetIndex</a> | <a href="#PixelGetMagenta">PixelGetMagenta</a> | <a href="#PixelGetMagentaQuantum">PixelGetMagentaQuantum</a> | <a href="#PixelGetOpacity">PixelGetOpacity</a> | <a href="#PixelGetOpacityQuantum">PixelGetOpacityQuantum</a> | <a href="#PixelGetQuantumColor">PixelGetQuantumColor</a> | <a href="#PixelGetRed">PixelGetRed</a> | <a href="#PixelGetRedQuantum">PixelGetRedQuantum</a> | <a href="#PixelGetYellow">PixelGetYellow</a> | <a href="#PixelGetYellowQuantum">PixelGetYellowQuantum</a> | <a href="#PixelSetAlpha">PixelSetAlpha</a> | <a href="#PixelSetAlphaQuantum">PixelSetAlphaQuantum</a> | <a href="#PixelSetBlack">PixelSetBlack</a> | <a href="#PixelSetBlackQuantum">PixelSetBlackQuantum</a> | <a href="#PixelSetBlue">PixelSetBlue</a> | <a href="#PixelSetBlueQuantum">PixelSetBlueQuantum</a> | <a href="#PixelSetColor">PixelSetColor</a> | <a href="#PixelSetColorCount">PixelSetColorCount</a> | <a href="#PixelSetColorFromWand">PixelSetColorFromWand</a> | <a href="#PixelSetCyan">PixelSetCyan</a> | <a href="#PixelSetCyanQuantum">PixelSetCyanQuantum</a> | <a href="#PixelSetFuzz">PixelSetFuzz</a> | <a href="#PixelSetGreen">PixelSetGreen</a> | <a href="#PixelSetGreenQuantum">PixelSetGreenQuantum</a> | <a href="#PixelSetHSL">PixelSetHSL</a> | <a href="#PixelSetIndex">PixelSetIndex</a> | <a href="#PixelSetMagenta">PixelSetMagenta</a> | <a href="#PixelSetMagentaQuantum">PixelSetMagentaQuantum</a> | <a href="#PixelSetMagickColor">PixelSetMagickColor</a> | <a href="#PixelSetOpacity">PixelSetOpacity</a> | <a href="#PixelSetOpacityQuantum">PixelSetOpacityQuantum</a> | <a href="#PixelSetQuantumColor">PixelSetQuantumColor</a> | <a href="#PixelSetRed">PixelSetRed</a> | <a href="#PixelSetRedQuantum">PixelSetRedQuantum</a> | <a href="#PixelSetYellow">PixelSetYellow</a> | <a href="#PixelSetYellowQuantum">PixelSetYellowQuantum</a> ]</p>
+
+<div style="margin: auto;">
+  <h2><a name="ClearPixelWand">ClearPixelWand</a></h2>
+</div>
+
+<p>ClearPixelWand() clears resources associated with the wand.</p></ol>
+
+<p>The format of the ClearPixelWand method is:</p>
+
+<pre class="code">
+  void ClearPixelWand(PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ClonePixelWand">ClonePixelWand</a></h2>
+</div>
+
+<p>ClonePixelWand() makes an exact copy of the specified wand.</p></ol>
+
+<p>The format of the ClonePixelWand method is:</p>
+
+<pre class="code">
+  PixelWand *ClonePixelWand(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ClonePixelWands">ClonePixelWands</a></h2>
+</div>
+
+<p>ClonePixelWands() makes an exact copy of the specified wands.</p></ol>
+
+<p>The format of the ClonePixelWands method is:</p>
+
+<pre class="code">
+  PixelWand **ClonePixelWands(const PixelWand **wands,
+    const unsigned long number_wands)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wands</h5>
+<ol><p>The magick wands.</p></ol>
+
+<h5>number_wands</h5>
+<ol><p>The number of wands.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DestroyPixelWand">DestroyPixelWand</a></h2>
+</div>
+
+<p>DestroyPixelWand() deallocates resources associated with a PixelWand.</p></ol>
+
+<p>The format of the DestroyPixelWand method is:</p>
+
+<pre class="code">
+  PixelWand *DestroyPixelWand(PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DestroyPixelWands">DestroyPixelWands</a></h2>
+</div>
+
+<p>DestroyPixelWands() deallocates resources associated with an array of pixel wands.</p></ol>
+
+<p>The format of the DestroyPixelWands method is:</p>
+
+<pre class="code">
+  PixelWand **DestroyPixelWands(PixelWand **wand,
+    const unsigned long number_wands)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>number_wands</h5>
+<ol><p>The number of wands.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="IsPixelWandSimilar">IsPixelWandSimilar</a></h2>
+</div>
+
+<p>IsPixelWandSimilar() returns MagickTrue if the distance between two colors is less than the specified distance.</p></ol>
+
+<p>The format of the IsPixelWandSimilar method is:</p>
+
+<pre class="code">
+  MagickBooleanType IsPixelWandSimilar(PixelWand *p,PixelWand *q,
+    const double fuzz)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>p</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>q</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>fuzz</h5>
+<ol><p>any two colors that are less than or equal to this distance squared are consider similar.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="IsPixelWand">IsPixelWand</a></h2>
+</div>
+
+<p>IsPixelWand() returns MagickTrue if the wand is verified as a pixel wand.</p></ol>
+
+<p>The format of the IsPixelWand method is:</p>
+
+<pre class="code">
+  MagickBooleanType IsPixelWand(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="NewPixelWand">NewPixelWand</a></h2>
+</div>
+
+<p>NewPixelWand() returns a new pixel wand.</p></ol>
+
+<p>The format of the NewPixelWand method is:</p>
+
+<pre class="code">
+  PixelWand *NewPixelWand(void)
+</pre>
+
+<div style="margin: auto;">
+  <h2><a name="NewPixelWands">NewPixelWands</a></h2>
+</div>
+
+<p>NewPixelWands() returns an array of pixel wands.</p></ol>
+
+<p>The format of the NewPixelWands method is:</p>
+
+<pre class="code">
+  PixelWand **NewPixelWands(const unsigned long number_wands)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>number_wands</h5>
+<ol><p>The number of wands.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelClearException">PixelClearException</a></h2>
+</div>
+
+<p>PixelClearException() clear any exceptions associated with the iterator.</p></ol>
+
+<p>The format of the PixelClearException method is:</p>
+
+<pre class="code">
+  MagickBooleanType PixelClearException(PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetAlpha">PixelGetAlpha</a></h2>
+</div>
+
+<p>PixelGetAlpha() returns the normalized alpha color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetAlpha method is:</p>
+
+<pre class="code">
+  double PixelGetAlpha(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetAlphaQuantum">PixelGetAlphaQuantum</a></h2>
+</div>
+
+<p>PixelGetAlphaQuantum() returns the alpha value of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetAlphaQuantum method is:</p>
+
+<pre class="code">
+  Quantum PixelGetAlphaQuantum(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetBlack">PixelGetBlack</a></h2>
+</div>
+
+<p>PixelGetBlack() returns the normalized black color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetBlack method is:</p>
+
+<pre class="code">
+  double PixelGetBlack(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetBlackQuantum">PixelGetBlackQuantum</a></h2>
+</div>
+
+<p>PixelGetBlackQuantum() returns the black color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetBlackQuantum method is:</p>
+
+<pre class="code">
+  Quantum PixelGetBlackQuantum(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetBlue">PixelGetBlue</a></h2>
+</div>
+
+<p>PixelGetBlue() returns the normalized blue color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetBlue method is:</p>
+
+<pre class="code">
+  double PixelGetBlue(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetBlueQuantum">PixelGetBlueQuantum</a></h2>
+</div>
+
+<p>PixelGetBlueQuantum() returns the blue color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetBlueQuantum method is:</p>
+
+<pre class="code">
+  Quantum PixelGetBlueQuantum(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetColorAsString">PixelGetColorAsString</a></h2>
+</div>
+
+<p>PixelGetColorAsString() returnsd the color of the pixel wand as a string.</p></ol>
+
+<p>The format of the PixelGetColorAsString method is:</p>
+
+<pre class="code">
+  char *PixelGetColorAsString(PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetColorAsNormalizedString">PixelGetColorAsNormalizedString</a></h2>
+</div>
+
+<p>PixelGetColorAsNormalizedString() returns the normalized color of the pixel wand as a string.</p></ol>
+
+<p>The format of the PixelGetColorAsNormalizedString method is:</p>
+
+<pre class="code">
+  char *PixelGetColorAsNormalizedString(PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetColorCount">PixelGetColorCount</a></h2>
+</div>
+
+<p>PixelGetColorCount() returns the color count associated with this color.</p></ol>
+
+<p>The format of the PixelGetColorCount method is:</p>
+
+<pre class="code">
+  unsigned long PixelGetColorCount(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetCyan">PixelGetCyan</a></h2>
+</div>
+
+<p>PixelGetCyan() returns the normalized cyan color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetCyan method is:</p>
+
+<pre class="code">
+  double PixelGetCyan(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetCyanQuantum">PixelGetCyanQuantum</a></h2>
+</div>
+
+<p>PixelGetCyanQuantum() returns the cyan color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetCyanQuantum method is:</p>
+
+<pre class="code">
+  Quantum PixelGetCyanQuantum(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetException">PixelGetException</a></h2>
+</div>
+
+<p>PixelGetException() returns the severity, reason, and description of any error that occurs when using other methods in this API.</p></ol>
+
+<p>The format of the PixelGetException method is:</p>
+
+<pre class="code">
+  char *PixelGetException(const PixelWand *wand,ExceptionType *severity)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>severity</h5>
+<ol><p>The severity of the error is returned here.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetExceptionType">PixelGetExceptionType</a></h2>
+</div>
+
+<p>PixelGetExceptionType() the exception type associated with the wand.  If no exception has occurred, UndefinedExceptionType is returned.</p></ol>
+
+<p>The format of the PixelGetExceptionType method is:</p>
+
+<pre class="code">
+  ExceptionType PixelGetExceptionType(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetFuzz">PixelGetFuzz</a></h2>
+</div>
+
+<p>PixelGetFuzz() returns the normalized fuzz value of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetFuzz method is:</p>
+
+<pre class="code">
+  double PixelGetFuzz(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetGreen">PixelGetGreen</a></h2>
+</div>
+
+<p>PixelGetGreen() returns the normalized green color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetGreen method is:</p>
+
+<pre class="code">
+  double PixelGetGreen(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetGreenQuantum">PixelGetGreenQuantum</a></h2>
+</div>
+
+<p>PixelGetGreenQuantum() returns the green color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetGreenQuantum method is:</p>
+
+<pre class="code">
+  Quantum PixelGetGreenQuantum(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetHSL">PixelGetHSL</a></h2>
+</div>
+
+<p>PixelGetHSL() returns the normalized HSL color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetHSL method is:</p>
+
+<pre class="code">
+  void PixelGetHSL(const PixelWand *wand,double *hue,double *saturation,
+    double *luminosity)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>hue,saturation,luminosity</h5>
+<ol><p>Return the pixel hue, saturation, and brightness.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetIndex">PixelGetIndex</a></h2>
+</div>
+
+<p>PixelGetIndex() returns the colormap index from the pixel wand.</p></ol>
+
+<p>The format of the PixelGetIndex method is:</p>
+
+<pre class="code">
+  IndexPacket PixelGetIndex(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetMagenta">PixelGetMagenta</a></h2>
+</div>
+
+<p>PixelGetMagenta() returns the normalized magenta color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetMagenta method is:</p>
+
+<pre class="code">
+  double PixelGetMagenta(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetMagentaQuantum">PixelGetMagentaQuantum</a></h2>
+</div>
+
+<p>PixelGetMagentaQuantum() returns the magenta color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetMagentaQuantum method is:</p>
+
+<pre class="code">
+  Quantum PixelGetMagentaQuantum(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetOpacity">PixelGetOpacity</a></h2>
+</div>
+
+<p>PixelGetOpacity() returns the normalized opacity color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetOpacity method is:</p>
+
+<pre class="code">
+  double PixelGetOpacity(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetOpacityQuantum">PixelGetOpacityQuantum</a></h2>
+</div>
+
+<p>PixelGetOpacityQuantum() returns the opacity color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetOpacityQuantum method is:</p>
+
+<pre class="code">
+  Quantum PixelGetOpacityQuantum(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetQuantumColor">PixelGetQuantumColor</a></h2>
+</div>
+
+<p>PixelGetQuantumColor() gets the color of the pixel wand as a PixelPacket.</p></ol>
+
+<p>The format of the PixelGetQuantumColor method is:</p>
+
+<pre class="code">
+  void PixelGetQuantumColor(PixelWand *wand,PixelPacket *color)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>color</h5>
+<ol><p>The pixel wand color is returned here.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetRed">PixelGetRed</a></h2>
+</div>
+
+<p>PixelGetRed() returns the normalized red color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetRed method is:</p>
+
+<pre class="code">
+  double PixelGetRed(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetRedQuantum">PixelGetRedQuantum</a></h2>
+</div>
+
+<p>PixelGetRedQuantum() returns the red color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetRedQuantum method is:</p>
+
+<pre class="code">
+  Quantum PixelGetRedQuantum(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetYellow">PixelGetYellow</a></h2>
+</div>
+
+<p>PixelGetYellow() returns the normalized yellow color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetYellow method is:</p>
+
+<pre class="code">
+  double PixelGetYellow(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetYellowQuantum">PixelGetYellowQuantum</a></h2>
+</div>
+
+<p>PixelGetYellowQuantum() returns the yellow color of the pixel wand.</p></ol>
+
+<p>The format of the PixelGetYellowQuantum method is:</p>
+
+<pre class="code">
+  Quantum PixelGetYellowQuantum(const PixelWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetAlpha">PixelSetAlpha</a></h2>
+</div>
+
+<p>PixelSetAlpha() sets the normalized alpha color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetAlpha method is:</p>
+
+<pre class="code">
+  void PixelSetAlpha(PixelWand *wand,const double alpha)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>alpha</h5>
+<ol><p>The level of transparency: 1.0 is fully opaque and 0.0 is fully transparent.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetAlphaQuantum">PixelSetAlphaQuantum</a></h2>
+</div>
+
+<p>PixelSetAlphaQuantum() sets the alpha color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetAlphaQuantum method is:</p>
+
+<pre class="code">
+  void PixelSetAlphaQuantum(PixelWand *wand,
+    const Quantum opacity)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>opacity</h5>
+<ol><p>The opacity color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetBlack">PixelSetBlack</a></h2>
+</div>
+
+<p>PixelSetBlack() sets the normalized black color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetBlack method is:</p>
+
+<pre class="code">
+  void PixelSetBlack(PixelWand *wand,const double black)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>black</h5>
+<ol><p>The black color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetBlackQuantum">PixelSetBlackQuantum</a></h2>
+</div>
+
+<p>PixelSetBlackQuantum() sets the black color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetBlackQuantum method is:</p>
+
+<pre class="code">
+  void PixelSetBlackQuantum(PixelWand *wand,const Quantum black)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>black</h5>
+<ol><p>The black color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetBlue">PixelSetBlue</a></h2>
+</div>
+
+<p>PixelSetBlue() sets the normalized blue color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetBlue method is:</p>
+
+<pre class="code">
+  void PixelSetBlue(PixelWand *wand,const double blue)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>blue</h5>
+<ol><p>The blue color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetBlueQuantum">PixelSetBlueQuantum</a></h2>
+</div>
+
+<p>PixelSetBlueQuantum() sets the blue color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetBlueQuantum method is:</p>
+
+<pre class="code">
+  void PixelSetBlueQuantum(PixelWand *wand,const Quantum blue)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>blue</h5>
+<ol><p>The blue color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetColor">PixelSetColor</a></h2>
+</div>
+
+<p>PixelSetColor() sets the color of the pixel wand with a string (e.g. "blue", "#0000ff", "rgb(0,0,255)", "cmyk(100,100,100,10)", etc.).</p></ol>
+
+<p>The format of the PixelSetColor method is:</p>
+
+<pre class="code">
+  MagickBooleanType PixelSetColor(PixelWand *wand,const char *color)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>color</h5>
+<ol><p>The pixel wand color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetColorCount">PixelSetColorCount</a></h2>
+</div>
+
+<p>PixelSetColorCount() sets the color count of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetColorCount method is:</p>
+
+<pre class="code">
+  void PixelSetColorCount(PixelWand *wand,const unsigned long count)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>count</h5>
+<ol><p>The number of this particular color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetColorFromWand">PixelSetColorFromWand</a></h2>
+</div>
+
+<p>PixelSetColorFromWand() sets the color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetColorFromWand method is:</p>
+
+<pre class="code">
+  PixelSetColorFromWand(PixelWand *wand,const PixelWand *color)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>color</h5>
+<ol><p>set the pixel wand color here.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetCyan">PixelSetCyan</a></h2>
+</div>
+
+<p>PixelSetCyan() sets the normalized cyan color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetCyan method is:</p>
+
+<pre class="code">
+  void PixelSetCyan(PixelWand *wand,const double cyan)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>cyan</h5>
+<ol><p>The cyan color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetCyanQuantum">PixelSetCyanQuantum</a></h2>
+</div>
+
+<p>PixelSetCyanQuantum() sets the cyan color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetCyanQuantum method is:</p>
+
+<pre class="code">
+  void PixelSetCyanQuantum(PixelWand *wand,const Quantum cyan)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>cyan</h5>
+<ol><p>The cyan color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetFuzz">PixelSetFuzz</a></h2>
+</div>
+
+<p>PixelSetFuzz() sets the fuzz value of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetFuzz method is:</p>
+
+<pre class="code">
+  void PixelSetFuzz(PixelWand *wand,const double fuzz)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>fuzz</h5>
+<ol><p>The fuzz value.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetGreen">PixelSetGreen</a></h2>
+</div>
+
+<p>PixelSetGreen() sets the normalized green color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetGreen method is:</p>
+
+<pre class="code">
+  void PixelSetGreen(PixelWand *wand,const double green)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>green</h5>
+<ol><p>The green color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetGreenQuantum">PixelSetGreenQuantum</a></h2>
+</div>
+
+<p>PixelSetGreenQuantum() sets the green color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetGreenQuantum method is:</p>
+
+<pre class="code">
+  void PixelSetGreenQuantum(PixelWand *wand,const Quantum green)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>green</h5>
+<ol><p>The green color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetHSL">PixelSetHSL</a></h2>
+</div>
+
+<p>PixelSetHSL() sets the normalized HSL color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetHSL method is:</p>
+
+<pre class="code">
+  void PixelSetHSL(PixelWand *wand,const double hue,
+    const double saturation,const double luminosity)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>hue,saturation,luminosity</h5>
+<ol><p>Return the pixel hue, saturation, and brightness.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetIndex">PixelSetIndex</a></h2>
+</div>
+
+<p>PixelSetIndex() sets the colormap index of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetIndex method is:</p>
+
+<pre class="code">
+  void PixelSetIndex(PixelWand *wand,const IndexPacket index)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>index</h5>
+<ol><p>The colormap index.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetMagenta">PixelSetMagenta</a></h2>
+</div>
+
+<p>PixelSetMagenta() sets the normalized magenta color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetMagenta method is:</p>
+
+<pre class="code">
+  void PixelSetMagenta(PixelWand *wand,const double magenta)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>magenta</h5>
+<ol><p>The magenta color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetMagentaQuantum">PixelSetMagentaQuantum</a></h2>
+</div>
+
+<p>PixelSetMagentaQuantum() sets the magenta color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetMagentaQuantum method is:</p>
+
+<pre class="code">
+  void PixelSetMagentaQuantum(PixelWand *wand,
+    const Quantum magenta)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>magenta</h5>
+<ol><p>The green magenta.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetMagickColor">PixelSetMagickColor</a></h2>
+</div>
+
+<p>PixelSetMagickColor() sets the color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetMagickColor method is:</p>
+
+<pre class="code">
+  PixelSetMagickColor(PixelWand *wand,const MagickPixelPacket *color)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>color</h5>
+<ol><p>The pixel wand color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetOpacity">PixelSetOpacity</a></h2>
+</div>
+
+<p>PixelSetOpacity() sets the normalized opacity color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetOpacity method is:</p>
+
+<pre class="code">
+  void PixelSetOpacity(PixelWand *wand,const double opacity)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>opacity</h5>
+<ol><p>The opacity color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetOpacityQuantum">PixelSetOpacityQuantum</a></h2>
+</div>
+
+<p>PixelSetOpacityQuantum() sets the opacity color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetOpacityQuantum method is:</p>
+
+<pre class="code">
+  void PixelSetOpacityQuantum(PixelWand *wand,
+    const Quantum opacity)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>opacity</h5>
+<ol><p>The opacity color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetQuantumColor">PixelSetQuantumColor</a></h2>
+</div>
+
+<p>PixelSetQuantumColor() sets the color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetQuantumColor method is:</p>
+
+<pre class="code">
+  PixelSetQuantumColor(PixelWand *wand,const PixelPacket *color)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>color</h5>
+<ol><p>The pixel wand color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetRed">PixelSetRed</a></h2>
+</div>
+
+<p>PixelSetRed() sets the normalized red color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetRed method is:</p>
+
+<pre class="code">
+  void PixelSetRed(PixelWand *wand,const double red)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>red</h5>
+<ol><p>The red color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetRedQuantum">PixelSetRedQuantum</a></h2>
+</div>
+
+<p>PixelSetRedQuantum() sets the red color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetRedQuantum method is:</p>
+
+<pre class="code">
+  void PixelSetRedQuantum(PixelWand *wand,const Quantum red)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>red</h5>
+<ol><p>The red color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetYellow">PixelSetYellow</a></h2>
+</div>
+
+<p>PixelSetYellow() sets the normalized yellow color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetYellow method is:</p>
+
+<pre class="code">
+  void PixelSetYellow(PixelWand *wand,const double yellow)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>yellow</h5>
+<ol><p>The yellow color.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelSetYellowQuantum">PixelSetYellowQuantum</a></h2>
+</div>
+
+<p>PixelSetYellowQuantum() sets the yellow color of the pixel wand.</p></ol>
+
+<p>The format of the PixelSetYellowQuantum method is:</p>
+
+<pre class="code">
+  void PixelSetYellowQuantum(PixelWand *wand,const Quantum yellow)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The pixel wand.</p></ol>
+
+<h5>yellow</h5>
+<ol><p>The yellow color.</p></ol>
+
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="1451170555">Discourse Server</a> &bull;
+    <a href="../../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://www.imagemagick.org/MagickStudio/scripts/MagickStudio.cgi" target="1645144871">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: MagickCore, C API for ImageMagick: Resize an Image</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="magickcore, c, api, for, imagemagick:, resize, an, image, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../../index.html"><img id="titlebar-west" src="../../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="762800281"><img id="titlebar-west" src="../../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img src="../../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img id="titlebar-east" src="../../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../../index.html">About ImageMagick</a>
+      <a href="../../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="2105676300" class="sub">Usage</a>
+      <a href="../../www/api.html">Program Interfaces</a>
+      <a href="../../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../../Magick++/" target="799264958" class="sub">Magick++</a>
+      <a href="../../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/install-source.html">Install from Source</a>
+      <a href="../../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../../www/binary-releases.html">Binary Releases</a>
+      <a href="../../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/sitemap.html">Site Map</a>
+			<a href="../../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../../www/sponsors.html">Sponsors</a>
+  <a href="http://www.net-tec-online.de/" class="sponsor" target="sponsor">NET-TEC Winterreifen</a><!-- 200711120050 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[ <a href="#AdaptiveResizeImage">AdaptiveResizeImage</a> | <a href="#MagnifyImage">MagnifyImage</a> | <a href="#MinifyImage">MinifyImage</a> | <a href="#ResampleImage">ResampleImage</a> | <a href="#ResizeImage">ResizeImage</a> | <a href="#SampleImage">SampleImage</a> | <a href="#ScaleImage">ScaleImage</a> | <a href="#ThumbnailImage">ThumbnailImage</a> | <a href="#ZoomImage">ZoomImage</a> ]</p>
+
+<div style="margin: auto;">
+  <h2><a name="AdaptiveResizeImage">AdaptiveResizeImage</a></h2>
+</div>
+
+<p>AdaptiveResizeImage() adaptively resize image with pixel resampling.</p></ol>
+
+<p>The format of the AdaptiveResizeImage method is:</p>
+
+<pre class="code">
+  Image *AdaptiveResizeImage(const Image *image,
+    const unsigned long columns,const unsigned long rows,
+    ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>columns</h5>
+<ol><p>The number of columns in the resized image.</p></ol>
+
+<h5>rows</h5>
+<ol><p>The number of rows in the resized image.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagnifyImage">MagnifyImage</a></h2>
+</div>
+
+<p>MagnifyImage() is a convenience method that scales an image proportionally to twice its size.</p></ol>
+
+<p>The format of the MagnifyImage method is:</p>
+
+<pre class="code">
+  Image *MagnifyImage(const Image *image,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MinifyImage">MinifyImage</a></h2>
+</div>
+
+<p>MinifyImage() is a convenience method that scales an image proportionally to half its size.</p></ol>
+
+<p>The format of the MinifyImage method is:</p>
+
+<pre class="code">
+  Image *MinifyImage(const Image *image,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ResampleImage">ResampleImage</a></h2>
+</div>
+
+<p>ResampleImage() resample image to desired resolution.</p></ol>
+
+<p>Bessel   Blackman   Box Catrom   Cubic      Gaussian Hanning  Hermite    Lanczos Mitchell Point      Quandratic Sinc     Triangle</p></ol>
+
+<p>Most of the filters are FIR (finite impulse response), however, Bessel, Gaussian, and Sinc are IIR (infinite impulse response).  Bessel and Sinc are windowed (brought down to zero) with the Blackman filter.</p></ol>
+
+<p>The format of the ResampleImage method is:</p>
+
+<pre class="code">
+  Image *ResampleImage(Image *image,const double x_resolution,
+    const double y_resolution,const FilterTypes filter,const double blur,
+     ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>x_resolution</h5>
+<ol><p>The new image x resolution.</p></ol>
+
+<h5>y_resolution</h5>
+<ol><p>The new image y resolution.</p></ol>
+
+<h5>filter</h5>
+<ol><p>Image filter to use.</p></ol>
+
+<h5>blur</h5>
+<ol><p>The blur factor where > 1 is blurry, < 1 is sharp.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ResizeImage">ResizeImage</a></h2>
+</div>
+
+<p>ResizeImage() scales an image to the desired dimensions with one of these filters:</p>
+
+<pre class="text">
+      Bessel   Blackman   Box
+      Catrom   CubicGaussian
+      Hanning  Hermite    Lanczos
+      Mitchell PointQuandratic
+      Sinc     Triangle
+</pre>
+
+<p>Most of the filters are FIR (finite impulse response), however, Bessel, Gaussian, and Sinc are IIR (infinite impulse response).  Bessel and Sinc are windowed (brought down to zero) with the Blackman filter.</p></ol>
+
+<p>ResizeImage() was inspired by Paul Heckbert's zoom program.</p></ol>
+
+<p>The format of the ResizeImage method is:</p>
+
+<pre class="code">
+  Image *ResizeImage(Image *image,const unsigned long columns,
+    const unsigned long rows,const FilterTypes filter,const double blur,
+    ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>columns</h5>
+<ol><p>The number of columns in the scaled image.</p></ol>
+
+<h5>rows</h5>
+<ol><p>The number of rows in the scaled image.</p></ol>
+
+<h5>filter</h5>
+<ol><p>Image filter to use.</p></ol>
+
+<h5>blur</h5>
+<ol><p>The blur factor where > 1 is blurry, < 1 is sharp.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="SampleImage">SampleImage</a></h2>
+</div>
+
+<p>SampleImage() scales an image to the desired dimensions with pixel sampling.  Unlike other scaling methods, this method does not introduce any additional color into the scaled image.</p></ol>
+
+<p>The format of the SampleImage method is:</p>
+
+<pre class="code">
+  Image *SampleImage(const Image *image,const unsigned long columns,
+    const unsigned long rows,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>columns</h5>
+<ol><p>The number of columns in the sampled image.</p></ol>
+
+<h5>rows</h5>
+<ol><p>The number of rows in the sampled image.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ScaleImage">ScaleImage</a></h2>
+</div>
+
+<p>ScaleImage() changes the size of an image to the given dimensions.</p></ol>
+
+<p>The format of the ScaleImage method is:</p>
+
+<pre class="code">
+  Image *ScaleImage(const Image *image,const unsigned long columns,
+    const unsigned long rows,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>columns</h5>
+<ol><p>The number of columns in the scaled image.</p></ol>
+
+<h5>rows</h5>
+<ol><p>The number of rows in the scaled image.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ThumbnailImage">ThumbnailImage</a></h2>
+</div>
+
+<p>ThumbnailImage() changes the size of an image to the given dimensions and removes any associated profiles.  The goal is to produce small low cost thumbnail images suited for display on the Web.</p></ol>
+
+<p>The format of the ThumbnailImage method is:</p>
+
+<pre class="code">
+  Image *ThumbnailImage(const Image *image,const unsigned long columns,
+    const unsigned long rows,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>columns</h5>
+<ol><p>The number of columns in the scaled image.</p></ol>
+
+<h5>rows</h5>
+<ol><p>The number of rows in the scaled image.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ZoomImage">ZoomImage</a></h2>
+</div>
+
+<p>ZoomImage() creates a new image that is a scaled size of an existing one. It allocates the memory necessary for the new Image structure and returns a pointer to the new image.  The Point filter gives fast pixel replication, Triangle is equivalent to bi-linear interpolation, and Mitchel giver slower, very high-quality results.  See Graphic Gems III for details on this algorithm.</p></ol>
+
+<p>The filter member of the Image structure specifies which image filter to use. Blur specifies the blur factor where > 1 is blurry, < 1 is sharp.</p></ol>
+
+<p>The format of the ZoomImage method is:</p>
+
+<pre class="code">
+  Image *ZoomImage(const Image *image,const unsigned long columns,
+    const unsigned long rows,ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>zoom_image</h5>
+<ol><p>Method ZoomImage returns a pointer to the image after scaling.  A null image is returned if there is a memory shortage.</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>columns</h5>
+<ol><p>An integer that specifies the number of columns in the zoom image.</p></ol>
+
+<h5>rows</h5>
+<ol><p>An integer that specifies the number of rows in the scaled image.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="575738652">Discourse Server</a> &bull;
+    <a href="../../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://studio.webbyland.com/ImageMagick/MagickStudio/scripts/MagickStudio.cgi" target="1327198745">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

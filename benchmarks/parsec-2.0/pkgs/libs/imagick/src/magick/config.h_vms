@@ -1,0 +1,285 @@
+/* magick/config.h.in.  Generated automatically from configure.in by autoheader.  */
+
+/* Define if you don't have vprintf but do have _doprnt.  */
+#undef HAVE_DOPRNT
+
+/* Define if you have a working `mmap' system call.  */
+#define HAVE_MMAP 1
+
+/* Define if you have the vprintf function.  */
+#define HAVE_VPRINTF 1
+
+/* Define as __inline if that's what the C compiler calls it.  */
+#define inline __inline
+
+/* Define as the return type of signal handlers (int or void).  */
+#define RETSIGTYPE void
+
+/* Define if the `S_IS*' macros in <sys/stat.h> do not work properly.  */
+#undef STAT_MACROS_BROKEN
+
+/* Define if you have the ANSI C header files.  */
+#define STDC_HEADERS 1
+
+/* Define if you can safely include both <sys/time.h> and <time.h>.  */
+#define TIME_WITH_SYS_TIME 1
+
+/* Define if your processor stores words with the most significant
+   byte first (like Motorola and SPARC, unlike Intel and VAX).  */
+#undef WORDS_BIGENDIAN
+
+/* Define if the X Window System is missing or not being used.  */
+#undef X_DISPLAY_MISSING
+
+/* The number of bytes in a int.  */
+#define SIZEOF_INT 4
+
+/* The number of bytes in a long long.  */
+#define SIZEOF_LONG_LONG 8
+
+/* Define if you have the getcwd function.  */
+#define HAVE_GETCWD 1
+
+/* Define if you have the getexecname function.  */
+#undef HAVE_GETEXECNAME
+
+/* Define if you have the getpagesize function.  */
+#define HAVE_GETPAGESIZE 1
+
+/* Define if you have the gettimeofday function.  */
+#define HAVE_GETTIMEOFDAY 1
+
+/* Define if you have the mkdir function.  */
+#define HAVE_MKDIR 1
+
+/* Define if you have the poll function.  */
+#undef HAVE_POLL
+
+/* Define if you have the select function.  */
+#undef HAVE_SELECT
+
+/* Define if you have the snprintf function.  */
+#undef HAVE_SNPRINTF
+
+/* Define if you have the strchr function.  */
+#define HAVE_STRCHR 1
+
+/* Define if you have the strerror function.  */
+#define HAVE_STRERROR 1
+
+/* Define if you have the strtol function.  */
+#define HAVE_STRTOL 1
+
+/* Define if you have the sysconf function.  */
+#define HAVE_SYSCONF 1
+
+/* Define if you have the tempnam function.  */
+#define HAVE_TEMPNAM 1
+
+/* Define if you have the vsnprintf function.  */
+#undef HAVE_VSNPRINTF
+
+/* Define if you have the <dirent.h> header file.  */
+#define HAVE_DIRENT_H 1
+
+/* Define if you have the <errno.h> header file.  */
+#define HAVE_ERRNO_H 1
+
+/* Define if you have the <fcntl.h> header file.  */
+#define HAVE_FCNTL_H 1
+
+/* Define if you have the <ft2build.h> header file.  */
+#define HAVE_FT2BUILD_H 1
+
+/* Define if you have the <freetype/freetype.h> header file.  */
+#define HAVE_FREETYPE_FREETYPE_H 1
+
+/* Define if you have the <hdf.h> header file.  */
+#define HAVE_HDF_H 1
+
+/* Define if you have the <hdf/hdf.h> header file.  */
+#undef HAVE_HDF_HDF_H
+
+/* Define if you have the <libxml/xml-error.h> header file.  */
+#undef HAVE_LIBXML_XML_ERROR_H
+
+/* Define if you have the <libxml/xmlerror.h> header file.  */
+#undef HAVE_LIBXML_XMLERROR_H
+
+/* Define if you have the <jp2conf.h> header file.  */
+#undef HAVE_JP2CONF_H
+
+/* Define if you have the <malloc.h> header file.  */
+#undef HAVE_MALLOC_H
+
+/* Define if you have the <math.h> header file.  */
+#define HAVE_MATH_H 1
+
+/* Define if you have the <memory.h> header file.  */
+#define HAVE_MEMORY_H 1
+
+/* Define if you have the <ndir.h> header file.  */
+#undef HAVE_NDIR_H
+
+/* Define if you have the <pwd.h> header file.  */
+#define HAVE_PWD_H 1
+
+/* Define if you have the <stdarg.h> header file.  */
+#define HAVE_STDARG_H 1
+
+/* Define if you have the <stdint.h> header file.  */
+#undef HAVE_STDINT_H
+
+/* Define if you have the <string.h> header file.  */
+#define HAVE_STRING_H 1
+
+/* Define if you have the <sys/dir.h> header file.  */
+#undef HAVE_SYS_DIR_H
+
+/* Define if you have the <sys/ndir.h> header file.  */
+#undef HAVE_SYS_NDIR_H
+
+/* Define if you have the <sys/select.h> header file.  */
+#define HAVE_SYS_SELECT_H 1
+
+/* Define if you have the <sys/stat.h> header file.  */
+#define HAVE_SYS_STAT_H 1
+
+/* Define if you have the <sys/time.h> header file.  */
+#define HAVE_SYS_TIME_H 1
+
+/* Define if you have the <sys/types.h> header file.  */
+#define HAVE_SYS_TYPES_H 1
+
+/* Define if you have the <tiffconf.h> header file.  */
+#define HAVE_TIFFCONF_H 1
+
+/* Define if you have the <unistd.h> header file.  */
+#define HAVE_UNISTD_H 1
+
+/* Define if you have the <varargs.h> header file.  */
+#undef HAVE_VARARGS_H
+
+/* Define if using libltdl to create dynamically loadable modules */
+#undef HasLTDL
+
+/* Location of coder modules */
+#undef MagickModulesPath
+
+/* Include LZW compression */
+#define HasLZW 1
+
+/* Number of bits in a pixel Quantum (8 or 16) */
+#define QuantumDepth 16
+
+/* Pixel cache threshold (default 2047MB) */
+#undef PixelCacheThreshold
+
+/* Define to specify default TrueType font path. */
+#undef TT_FONT_PATH
+
+/* Location of X11 configure files */
+#undef X11ConfigurePath
+
+/* Define if you have Posix thread methods. */
+#undef HasPTHREADS
+
+/* Define if you have zlib compression library */
+#define HasZLIB 1
+
+/* Define if you have the bzip2 library */
+#define HasBZLIB 1
+
+/* Define if you have X11 library */
+#define HasX11 1
+
+/* X11 server supports shared memory extension */
+#undef HasSharedMemory
+
+/* X11 server supports shape extension */
+#undef HasShape
+
+/* Define if you have Display Postscript */
+#undef HasDPS
+
+/* Define if you have FlashPIX library */
+#undef HasFPX
+
+/* Define if you have LCMS library */
+#undef HasLCMS
+
+/* Define if you have PNG library */
+#define HasPNG 1
+
+/* Define if you have JPEG library */
+#define HasJPEG 1
+
+/* Define if you have JPEG version 2 Jasper library */
+#define HasJP2 1
+
+/* Define if you have Ghostscript library */
+#undef HasGS
+
+/* Define if you have FreeType (TrueType font) library */
+#define HasFREETYPE 1
+
+/* Define if you have TIFF library */
+#define HasTIFF 1
+
+/* Define if you have HDF4 library */
+#define HasHDF 1
+
+/* Define if you have JBIG library */
+#define HasJBIG 1
+
+/* Define if you have XML library */
+#undef HasXML
+
+/* Define if you have WMF library */
+#undef HasWMF
+
+/* Define if you have sys_errlist in libc */
+#undef HAVE_SYS_ERRLIST
+
+/* Define directory where ImageMagick/delegates.xml lives. */
+#undef MagickConfigurePath
+
+/* define if bool is a built-in type */
+#define HAVE_BOOL 1
+
+/* define if the compiler supports const_cast<> */
+#undef HAVE_CONST_CAST
+
+/* define if the compiler supports default template parameters */
+#undef HAVE_DEFAULT_TEMPLATE_PARAMETERS
+
+/* define if the compiler supports exceptions */
+#undef HAVE_EXCEPTIONS
+
+/* define if the compiler implements namespaces */
+#undef HAVE_NAMESPACES
+
+/* define if the compiler supports the explicit keyword */
+#undef HAVE_EXPLICIT
+
+/* define if the compiler supports ISO C++ standard library */
+#define HAVE_STD 1
+
+/* define if the compiler supports Standard Template Library */
+#define HAVE_STL 1
+
+/* define if the compiler supports the mutable keyword */
+#undef HAVE_MUTABLE
+
+/* define if the compiler accepts the new for scoping rules */
+#undef HAVE_NEW_FOR_SCOPING
+
+/* define if the compiler supports static_cast<> */
+#undef HAVE_STATIC_CAST
+
+/* define if the compiler supports basic templates */
+#undef HAVE_TEMPLATES
+
+#define MagickLibSubdir "/"
+
+#define HAVE_MKSTEMP 1

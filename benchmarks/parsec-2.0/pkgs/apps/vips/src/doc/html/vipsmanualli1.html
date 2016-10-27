@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>Contents</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<!-- 3,html --> 
+<meta name="src" content="vipsmanual.tex"> 
+<meta name="date" content="2008-09-15 17:53:00"> 
+<link rel="stylesheet" type="text/css" href="vipsmanual.css"> 
+</head><body 
+>
+  <!--l. 45--><div class="crosslinks"><p class="noindent">[<a 
+href="vipsmanualli2.html" >next</a>] [<a 
+href="#tailvipsmanualli1.html">tail</a>] [<a 
+href="vipsmanual.html#vipsmanualli1.html" >up</a>] </p></div>
+  <h2 class="likechapterHead"><a 
+ id="x2-1000"></a>Contents</h2>
+  <div class="tableofcontents">
+  <span class="chapterToc" >1 <a 
+href="vipsmanualch1.html#x5-40001">VIPS from C++ and Python</a></span>
+<br />  &#x00A0;<span class="sectionToc" >1.1 <a 
+href="vipsmanualse1.html#x6-50001.1">Introduction</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.1.1 <a 
+href="vipsmanualse1.html#x6-60001.1.1" id="QQ2-6-6">If you&#8217;ve used the C API</a></span>
+<br />  &#x00A0;<span class="sectionToc" >1.2 <a 
+href="vipsmanualse2.html#x7-70001.2">The VIPS file format</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.2.1 <a 
+href="vipsmanualse2.html#x7-80001.2.1" id="QQ2-7-10">VIPS file header</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.2.2 <a 
+href="vipsmanualse2.html#x7-90001.2.2" id="QQ2-7-15">Computation formats</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.2.3 <a 
+href="vipsmanualse2.html#x7-100001.2.3" id="QQ2-7-16">Storage formats</a></span>
+<br />  &#x00A0;<span class="sectionToc" >1.3 <a 
+href="vipsmanualse3.html#x8-110001.3">The <span 
+class="pcrr7t-">VImage </span>class</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.1 <a 
+href="vipsmanualse3.html#x8-120001.3.1" id="QQ2-8-18">Constructors</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.2 <a 
+href="vipsmanualse3.html#x8-130001.3.2" id="QQ2-8-19">File conversion</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.3 <a 
+href="vipsmanualse3.html#x8-140001.3.3" id="QQ2-8-20">Large files</a></span>                             <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.4 <a 
+href="vipsmanualse3.html#x8-150001.3.4" id="QQ2-8-21">Projection functions</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.5 <a 
+href="vipsmanualse3.html#x8-160001.3.5" id="QQ2-8-22">Assignment</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.6 <a 
+href="vipsmanualse3.html#x8-170001.3.6" id="QQ2-8-23">Computing with <span 
+class="pcrr7t-">VImage</span>s</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.7 <a 
+href="vipsmanualse3.html#x8-180001.3.7" id="QQ2-8-24">Writing results</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.8 <a 
+href="vipsmanualse3.html#x8-190001.3.8" id="QQ2-8-25">Type conversions</a></span>
+  <br />    &#x00A0;<span class="sectionToc" >1.4 <a 
+href="vipsmanualse4.html#x9-200001.4">The <span 
+class="pcrr7t-">VMask </span>class</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.4.1 <a 
+href="vipsmanualse4.html#x9-210001.4.1" id="QQ2-9-27">Constructors</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.4.2 <a 
+href="vipsmanualse4.html#x9-220001.4.2" id="QQ2-9-28">Projection functions</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.4.3 <a 
+href="vipsmanualse4.html#x9-230001.4.3" id="QQ2-9-29">Assignment</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.4.4 <a 
+href="vipsmanualse4.html#x9-240001.4.4" id="QQ2-9-30">Computing with <span 
+class="pcrr7t-">VMask</span></a></span>
+ <br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.4.5 <a 
+href="vipsmanualse4.html#x9-250001.4.5" id="QQ2-9-31"><span 
+class="pcrr7t-">VIMask </span>operations</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.4.6 <a 
+href="vipsmanualse4.html#x9-260001.4.6" id="QQ2-9-32"><span 
+class="pcrr7t-">VDMask </span>operations</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.4.7 <a 
+href="vipsmanualse4.html#x9-270001.4.7" id="QQ2-9-33">Output of masks</a></span>
+  <br />    &#x00A0;<span class="sectionToc" >1.5 <a 
+href="vipsmanualse5.html#x10-280001.5">The <span 
+class="pcrr7t-">VDisplay </span>class</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.5.1 <a 
+href="vipsmanualse5.html#x10-290001.5.1" id="QQ2-10-35">Constructors</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.5.2 <a 
+href="vipsmanualse5.html#x10-300001.5.2" id="QQ2-10-36">Projection functions</a></span>
+  <br />    &#x00A0;<span class="sectionToc" >1.6 <a 
+href="vipsmanualse6.html#x11-310001.6">The <span 
+class="pcrr7t-">VError </span>class</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.6.1 <a 
+href="vipsmanualse6.html#x11-320001.6.1" id="QQ2-11-38">Constructors</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.6.2 <a 
+href="vipsmanualse6.html#x11-330001.6.2" id="QQ2-11-39">Projection functions</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >1.6.3 <a 
+href="vipsmanualse6.html#x11-340001.6.3" id="QQ2-11-40">Computing with <span 
+class="pcrr7t-">VError</span></a></span>
+ <br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.6.4 <a 
+href="vipsmanualse6.html#x11-350001.6.4" id="QQ2-11-41">Convenience function</a></span>
+  <br />    <span class="chapterToc" >2 <a 
+href="vipsmanualch2.html#x12-360002">VIPS for C programmers</a></span>
+  <br />    &#x00A0;<span class="sectionToc" >2.1 <a 
+href="vipsmanualse7.html#x13-370002.1">Introduction</a></span>
+  <br />    &#x00A0;<span class="sectionToc" >2.2 <a 
+href="vipsmanualse8.html#x14-380002.2">Core C API</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.1 <a 
+href="vipsmanualse8.html#x14-390002.2.1" id="QQ2-14-46">Startup</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.2 <a 
+href="vipsmanualse8.html#x14-400002.2.2" id="QQ2-14-48">Image descriptors</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.3 <a 
+href="vipsmanualse8.html#x14-410002.2.3" id="QQ2-14-50">Header fields</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.4 <a 
+href="vipsmanualse8.html#x14-420002.2.4" id="QQ2-14-51">Opening and closing</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.5 <a 
+href="vipsmanualse8.html#x14-430002.2.5" id="QQ2-14-52">Examples</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.6 <a 
+href="vipsmanualse8.html#x14-440002.2.6" id="QQ2-14-55">Metadata</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.7 <a 
+href="vipsmanualse8.html#x14-450002.2.7" id="QQ2-14-56">History</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.8 <a 
+href="vipsmanualse8.html#x14-460002.2.8" id="QQ2-14-57">Eval callbacks</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.9 <a 
+href="vipsmanualse8.html#x14-470002.2.9" id="QQ2-14-58">Detailed rules for descriptors</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.10 <a 
+href="vipsmanualse8.html#x14-480002.2.10" id="QQ2-14-59">Automatic resource deallocation</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.11 <a 
+href="vipsmanualse8.html#x14-520002.2.11" id="QQ2-14-64">Error handling</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.2.12 <a 
+href="vipsmanualse8.html#x14-530002.2.12" id="QQ2-14-65">Joining operations together</a></span>
+  <br />    &#x00A0;<span class="sectionToc" >2.3 <a 
+href="vipsmanualse9.html#x15-600002.3">Function dispatch and plug-ins</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.3.1 <a 
+href="vipsmanualse9.html#x15-610002.3.1" id="QQ2-15-75">Simple plugin example</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.3.2 <a 
+href="vipsmanualse9.html#x15-620002.3.2" id="QQ2-15-77">A more complicated example</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.3.3 <a 
+href="vipsmanualse9.html#x15-630002.3.3" id="QQ2-15-78">Adding new types</a></span>
+  <br />    &#x00A0;&#x00A0;<span class="subsectionToc" >2.3.4 <a 
+href="vipsmanualse9.html#x15-640002.3.4" id="QQ2-15-79">Using function dispatch in your application</a></span>
+                                                                                       
+
+                                                                                       
+<br />  &#x00A0;<span class="sectionToc" >2.4 <a 
+href="vipsmanualse10.html#x16-680002.4">Image formats</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >2.4.1 <a 
+href="vipsmanualse10.html#x16-690002.4.1" id="QQ2-16-84">How a format is represented</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >2.4.2 <a 
+href="vipsmanualse10.html#x16-700002.4.2" id="QQ2-16-85">The format table</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >2.4.3 <a 
+href="vipsmanualse10.html#x16-710002.4.3" id="QQ2-16-87">Finding a format</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >2.4.4 <a 
+href="vipsmanualse10.html#x16-720002.4.4" id="QQ2-16-88">Convenience functions</a></span>
+<br />  <span class="chapterToc" >3 <a 
+href="vipsmanualch3.html#x17-730003">Writing VIPS operations</a></span>
+<br />  &#x00A0;<span class="sectionToc" >3.1 <a 
+href="vipsmanualse11.html#x18-740003.1">Introduction</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.1.1 <a 
+href="vipsmanualse11.html#x18-750003.1.1" id="QQ2-18-91">Why use VIPS?</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.1.2 <a 
+href="vipsmanualse11.html#x18-760003.1.2" id="QQ2-18-92">I/O styles</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.1.3 <a 
+href="vipsmanualse11.html#x18-770003.1.3" id="QQ2-18-93">What&#8217;s new in this version</a></span>
+<br />  &#x00A0;<span class="sectionToc" >3.2 <a 
+href="vipsmanualse12.html#x19-780003.2">Programming WIO operations</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.2.1 <a 
+href="vipsmanualse12.html#x19-790003.2.1" id="QQ2-19-95">Input from an image</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.2.2 <a 
+href="vipsmanualse12.html#x19-800003.2.2" id="QQ2-19-97">Output to an image</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.2.3 <a 
+href="vipsmanualse12.html#x19-810003.2.3" id="QQ2-19-99">Polymorphism</a></span>
+<br />  &#x00A0;<span class="sectionToc" >3.3 <a 
+href="vipsmanualse13.html#x20-820003.3">Programming PIO functions</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.3.1 <a 
+href="vipsmanualse13.html#x20-830003.3.1" id="QQ2-20-103">Easy PIO with <span 
+class="pcrr7t-">im</span><span 
+class="pcrr7t-">_wrapone() </span>and <span 
+class="pcrr7t-">im</span><span 
+class="pcrr7t-">_wrapmany()</span></a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.3.2 <a 
+href="vipsmanualse13.html#x20-840003.3.2" id="QQ2-20-104">Region descriptors</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.3.3 <a 
+href="vipsmanualse13.html#x20-850003.3.3" id="QQ2-20-105">Image input with regions</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.3.4 <a 
+href="vipsmanualse13.html#x20-860003.3.4" id="QQ2-20-108">Splitting into sequences</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.3.5 <a 
+href="vipsmanualse13.html#x20-870003.3.5" id="QQ2-20-112">Output to regions</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.3.6 <a 
+href="vipsmanualse13.html#x20-880003.3.6" id="QQ2-20-115">Callbacks</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >3.3.7 <a 
+href="vipsmanualse13.html#x20-920003.3.7" id="QQ2-20-119">Memory allocation revisited</a></span>
+<br />  &#x00A0;<span class="sectionToc" >3.4 <a 
+href="vipsmanualse14.html#x21-930003.4">Programming in-place functions</a></span>
+<br />  <span class="chapterToc" >4 <a 
+href="vipsmanualch4.html#x22-940004">VIPS reference</a></span>
+<br />  &#x00A0;<span class="sectionToc" >4.1 <a 
+href="vipsmanualse15.html#x23-950004.1">Introduction</a></span>
+<br />  &#x00A0;<span class="sectionToc" >4.2 <a 
+href="vipsmanualse16.html#x24-960004.2">VIPS packages</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.1 <a 
+href="vipsmanualse16.html#x24-970004.2.1" id="QQ2-24-125">Arithmetic</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.2 <a 
+href="vipsmanualse16.html#x24-980004.2.2" id="QQ2-24-127">Relational</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.3 <a 
+href="vipsmanualse16.html#x24-990004.2.3" id="QQ2-24-129">Boolean</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.4 <a 
+href="vipsmanualse16.html#x24-1000004.2.4" id="QQ2-24-131">Colour</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.5 <a 
+href="vipsmanualse16.html#x24-1010004.2.5" id="QQ2-24-134">Conversion</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.6 <a 
+href="vipsmanualse16.html#x24-1020004.2.6" id="QQ2-24-137">Matricies</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.7 <a 
+href="vipsmanualse16.html#x24-1030004.2.7" id="QQ2-24-139">Convolution</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.8 <a 
+href="vipsmanualse16.html#x24-1040004.2.8" id="QQ2-24-141">In-place operations</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.9 <a 
+href="vipsmanualse16.html#x24-1050004.2.9" id="QQ2-24-143">Frequency filtering</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.10 <a 
+href="vipsmanualse16.html#x24-1060004.2.10" id="QQ2-24-145">Histograms and LUTs</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.11 <a 
+href="vipsmanualse16.html#x24-1070004.2.11" id="QQ2-24-147">Morphology</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.12 <a 
+href="vipsmanualse16.html#x24-1080004.2.12" id="QQ2-24-149">Mosaicing</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.13 <a 
+href="vipsmanualse16.html#x24-1090004.2.13" id="QQ2-24-151">CImg functions</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.14 <a 
+href="vipsmanualse16.html#x24-1100004.2.14" id="QQ2-24-153">Other</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.15 <a 
+href="vipsmanualse16.html#x24-1110004.2.15" id="QQ2-24-155">IO functions</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >4.2.16 <a 
+href="vipsmanualse16.html#x24-1120004.2.16" id="QQ2-24-157">Format functions</a></span>
+  </div>
+                                           
+                                                                                       
+
+                                                                                       
+                                                                                       
+
+                                                                                       
+  <!--l. 49--><div class="crosslinks"><p class="noindent">[<a 
+href="vipsmanualli2.html" >next</a>] [<a 
+href="vipsmanualli1.html" >front</a>] [<a 
+href="vipsmanual.html#vipsmanualli1.html" >up</a>] </p></div>
+<!--l. 49--><p class="indent" >  <a 
+ id="tailvipsmanualli1.html"></a>  
+</body></html> 

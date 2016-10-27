@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# gcc-serial.bldconf - configuration file for PARSEC
+
+# Note: raytrace does not have an explicit serial version
+source ${PARSECDIR}/pkgs/apps/raytrace/parsec/gcc.bldconf
+

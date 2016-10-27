@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuremap [
+  <!ELEMENT configuremap (configure+)>
+  <!ELEMENT configure (#PCDATA)>
+  <!ATTLIST configure name CDATA #REQUIRED>
+  <!ATTLIST configure value CDATA #REQUIRED>
+]>
+<configuremap>
+  <configure name="NAME" value="ImageMagick" />
+  <configure name="LIB_VERSION" value="0x636" />
+  <configure name="LIB_VERSION_NUMBER" value="6,3,6,0" />
+  <configure name="RELEASE_DATE" value="09/23/07" />
+  <configure name="CONFIGURE" value="./configure /usr/local/share/config.site /usr/local/etc/config.site" />
+  <configure name="PREFIX" value="/usr/local" />
+  <configure name="EXEC-PREFIX" value="/usr/local" />
+  <configure name="VERSION" value="6.3.6" />
+  <configure name="CC" value="gcc" />
+  <configure name="CFLAGS" value="-g -O2 -Wall -W -pthread" />
+  <configure name="CPPFLAGS" value="-I/usr/local/include" />
+  <configure name="PCFLAGS" value="" />
+  <configure name="DEFS" value="-DHAVE_CONFIG_H" />
+  <configure name="LDFLAGS" value="-L/usr/local/lib -L/usr/lib64 -lfreetype" />
+  <configure name="LIBS" value="-lMagick -llcms -ltiff -lfreetype -ljpeg -lfontconfig -lXext -lSM -lICE -lX11 -lXt -lbz2 -lz -lm -lpthread" />
+  <configure name="CXX" value="g++" />
+  <configure name="CXXFLAGS" value="-g -O2 -Wall -W -pthread" />
+  <configure name="DISTCHECK_CONFIG_FLAGS" value="--disable-deprecate --with-quantum-depth=16 --with-fpx=no --with-fontpath=" />
+  <configure name="HOST" value="x86_64-unknown-linux-gnu" />
+  <configure name="DELEGATES" value="bzlib fontconfig freetype gs gvc jpeg jp2 lcms openexr png rsvg tiff wmf x11 xml wmf zlib" />
+  <configure name="COPYRIGHT" value="Copyright (C) 1999-2007 ImageMagick Studio LLC" />
+  <configure name="WEBSITE" value="http://www.imagemagick.org" />
+  <configure name="QuantumDepth" value="16" />
+</configuremap>

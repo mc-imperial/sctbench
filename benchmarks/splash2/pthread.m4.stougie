@@ -1,0 +1,82 @@
+dnl Found on the web.  Written by Bastiaan Stougie, October 2003
+
+divert(-1)
+define(NEWPROC,) dnl
+
+define(BARRIER, `{
+ pthread_mutex_lock(&(($1).bar_mutex));
+ ($1).bar_teller++;
+ if (($1).bar_teller == ($2)) {
+     ($1).bar_teller = 0;
+     pthread_cond_broadcast(&(($1).bar_cond));
+ } else
+     pthread_cond_wait(&(($1).bar_cond), &(($1).bar_mutex));
+ pthread_mutex_unlock(&(($1).bar_mutex));
+}')
+
+define(BARDEC, `
+struct { pthread_mutex_t bar_mutex; pthread_cond_t bar_cond; unsigned bar_teller; } $1;
+')
+define(BARINIT, `{
+pthread_mutex_init(&(($1).bar_mutex), NULL);
+pthread_cond_init(&(($1).bar_cond), NULL);
+($1).bar_teller=0;
+}')
+
+define(LOCKDEC, `pthread_mutex_t $1;')
+define(LOCKINIT, `{pthread_mutex_init(&($1),NULL);}')
+define(LOCK, `{pthread_mutex_lock(&($1));}')
+define(UNLOCK, `{pthread_mutex_unlock(&($1));}')
+
+define(ALOCKDEC, `pthread_mutex_t ($1)[$2];')
+define(ALOCKINIT, `{ int i; for(i = 0; i < ($2); i++) pthread_mutex_init(&(($1)[i]), NULL); }')
+define(ALOCK, `{pthread_mutex_lock(&(($1)[($2)]));}')
+define(AULOCK, `{pthread_mutex_unlock(&(($1)[($2)]));}')
+
+define(PAUSEDEC, `sem_t $1;')
+define(PAUSEINIT, `{sem_init(&($1),0,0);}')
+define(CLEARPAUSE, `{;}')
+define(SETPAUSE, `{sem_post(&($1));}')
+define(WAITPAUSE, `{sem_wait(&($1));}')
+
+define(WAIT_FOR_END, `{int aantal=$1; while (aantal--) pthread_join(__tid__[aantal], NULL);}')
+
+define(CREATE, `{
+pthread_mutex_lock(&__intern__);
+assert(__threads__<__MAX_THREADS__);
+pthread_create(&(__tid__[__threads__++]), NULL, (void*(*)(void *))($1), NULL);
+printf("==> created thread %d\n", __threads__-1);
+pthread_mutex_unlock(&__intern__);
+}')
+define(MAIN_INITENV, `{__tid__[__threads__++]=pthread_self();}')
+define(MAIN_END, `{exit(0);}')
+
+define(INCLUDES,`
+#include <pthread.h>
+#include <stdlib.h>
+#include <semaphore.h>
+#include <assert.h>
+#define PAGE_SIZE 4096
+#define __MAX_THREADS__ 256
+')
+
+define(MAIN_ENV,`
+INCLUDES
+pthread_t __tid__[__MAX_THREADS__];
+unsigned __threads__=0;
+pthread_mutex_t __intern__;
+void *our_malloc(size_t size, char * file, unsigned line) { return malloc(size); }
+')
+
+define(EXTERN_ENV, `
+INCLUDES
+extern pthread_t __tid__[__MAX_THREADS__];
+extern unsigned __threads__;
+extern pthread_mutex_t __intern__;
+void *our_malloc(size_t size, char * file, unsigned line);
+')
+
+define(G_MALLOC, `our_malloc($1,__FILE__,__LINE__)')
+define(NU_MALLOC, `our_malloc($1,__FILE__,__LINE__);')
+define(CLOCK, `{long time(); ($1) = time(0);}')
+divert(0)

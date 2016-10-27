@@ -1,0 +1,458 @@
+? PATCH-1-bug-476934.patch
+Index: jsapi.c
+===================================================================
+RCS file: /cvsroot/mozilla/js/src/jsapi.c,v
+retrieving revision 3.447
+diff -U 8 -p -r3.447 jsapi.c
+--- jsapi.c	25 Feb 2009 13:11:19 -0000	3.447
++++ jsapi.c	11 Mar 2009 19:40:23 -0000
+@@ -5785,31 +5785,66 @@ JS_GetContextThread(JSContext *cx)
+ /*
+  * Set the current thread as the owning thread of a context. Returns the
+  * old owning thread id, or -1 if the operation failed.
+  */
+ JS_PUBLIC_API(jsword)
+ JS_SetContextThread(JSContext *cx)
+ {
+ #ifdef JS_THREADSAFE
+-    jsword old = JS_THREAD_ID(cx);
+-    if (!js_SetContextThread(cx))
++    JS_ASSERT(cx->requestDepth == 0);
++    if (cx->thread) {
++        JS_ASSERT(cx->thread->id == js_CurrentThreadId());
++        return cx->thread->id;
++    }
++
++    JSRuntime *rt = cx->runtime;
++    JSThread *thread = js_GetCurrentThread(rt);
++    if (!thread) {
++        js_ReportOutOfMemory(cx);
+         return -1;
+-    return old;
+-#else
+-    return 0;
++    }
++
++    /*
++     * We must not race with a GC that accesses cx->thread for all threads,
++     * see bug 476934.
++     */
++    JS_LOCK_GC(rt);
++    js_WaitForGC(rt);
++    js_InitContextThread(cx, thread);
++    JS_UNLOCK_GC(rt);
+ #endif
++    return 0;
+ }
+ 
+ JS_PUBLIC_API(jsword)
+ JS_ClearContextThread(JSContext *cx)
+ {
+ #ifdef JS_THREADSAFE
+-    jsword old = JS_THREAD_ID(cx);
+-    js_ClearContextThread(cx);
++    /*
++     * This must be called outside a request and, if cx is associated with a
++     * thread, this must be called only from that thread.  If not, this is a
++     * harmless no-op.
++     */
++    JS_ASSERT(cx->requestDepth == 0);
++    if (!cx->thread)
++        return 0;
++    jsword old = cx->thread->id;
++    JS_ASSERT(old == js_CurrentThreadId());
++
++    /*
++     * We must not race with a GC that accesses cx->thread for all threads,
++     * see bug 476934.
++     */
++    JSRuntime *rt = cx->runtime;
++    JS_LOCK_GC(rt);
++    js_WaitForGC(rt);
++    JS_REMOVE_AND_INIT_LINK(&cx->threadLinks);
++    cx->thread = NULL;
++    JS_UNLOCK_GC(cx->runtime);
+     return old;
+ #else
+     return 0;
+ #endif
+ }
+ 
+ #ifdef JS_GC_ZEAL
+ JS_PUBLIC_API(void)
+Index: jscntxt.c
+===================================================================
+RCS file: /cvsroot/mozilla/js/src/jscntxt.c,v
+retrieving revision 3.136
+diff -U 8 -p -r3.136 jscntxt.c
+--- jscntxt.c	2 Apr 2008 09:14:59 -0000	3.136
++++ jscntxt.c	11 Mar 2009 19:40:23 -0000
+@@ -141,72 +141,45 @@ js_GetCurrentThread(JSRuntime *rt)
+             return NULL;
+         }
+ 
+         JS_INIT_CLIST(&thread->contextList);
+         thread->id = js_CurrentThreadId();
+         thread->gcMallocBytes = 0;
+ 
+         /*
+-         * js_SetContextThread initializes the remaining fields as necessary.
++         * js_InitContextThread initializes the remaining fields as necessary.
+          */
+     }
+     return thread;
+ }
+ 
+ /*
+  * Sets current thread as owning thread of a context by assigning the
+- * thread-private info to the context. If the current thread doesn't have
+- * private JSThread info, create one.
++ * thread-private info to the context.
+  */
+-JSBool
+-js_SetContextThread(JSContext *cx)
++void
++js_InitContextThread(JSContext *cx, JSThread *thread)
+ {
+-    JSThread *thread = js_GetCurrentThread(cx->runtime);
+-
+-    if (!thread) {
+-        JS_ReportOutOfMemory(cx);
+-        return JS_FALSE;
+-    }
++    JS_ASSERT(CURRENT_THREAD_IS_ME(thread));
++    JS_ASSERT(!cx->thread);
++    JS_ASSERT(cx->requestDepth == 0);
+ 
+     /*
+      * Clear gcFreeLists and caches on each transition from 0 to 1 context
+      * active on the current thread. See bug 351602 and bug 425828.
+      */
+     if (JS_CLIST_IS_EMPTY(&thread->contextList)) {
+         memset(thread->gcFreeLists, 0, sizeof(thread->gcFreeLists));
+         memset(&thread->gsnCache, 0, sizeof(thread->gsnCache));
+         memset(&thread->propertyCache, 0, sizeof(thread->propertyCache));
+     }
+ 
+-    /* Assert that the previous cx->thread called JS_ClearContextThread(). */
+-    JS_ASSERT(!cx->thread || cx->thread == thread);
+-    if (!cx->thread)
+-        JS_APPEND_LINK(&cx->threadLinks, &thread->contextList);
++    JS_APPEND_LINK(&cx->threadLinks, &thread->contextList);
+     cx->thread = thread;
+-    return JS_TRUE;
+-}
+-
+-/* Remove the owning thread info of a context. */
+-void
+-js_ClearContextThread(JSContext *cx)
+-{
+-    /*
+-     * If cx is associated with a thread, this must be called only from that
+-     * thread.  If not, this is a harmless no-op.
+-     */
+-    JS_ASSERT(cx->thread == js_GetCurrentThread(cx->runtime) || !cx->thread);
+-    JS_REMOVE_AND_INIT_LINK(&cx->threadLinks);
+-#ifdef DEBUG
+-    if (JS_CLIST_IS_EMPTY(&cx->thread->contextList)) {
+-        memset(cx->thread->gcFreeLists, JS_FREE_PATTERN,
+-               sizeof(cx->thread->gcFreeLists));
+-    }
+-#endif
+-    cx->thread = NULL;
+ }
+ 
+ #endif /* JS_THREADSAFE */
+ 
+ void
+ js_OnVersionChange(JSContext *cx)
+ {
+ #ifdef DEBUG
+@@ -224,32 +197,42 @@ js_SetVersion(JSContext *cx, JSVersion v
+ }
+ 
+ JSContext *
+ js_NewContext(JSRuntime *rt, size_t stackChunkSize)
+ {
+     JSContext *cx;
+     JSBool ok, first;
+     JSContextCallback cxCallback;
++#ifdef JS_THREADSAFE
++    JSThread *thread = js_GetCurrentThread(rt);
++
++    if (!thread)
++        return NULL;
++#endif
+ 
+     cx = (JSContext *) malloc(sizeof *cx);
+     if (!cx)
+         return NULL;
+     memset(cx, 0, sizeof *cx);
+ 
+     cx->runtime = rt;
+     JS_ClearOperationCallback(cx);
+     cx->debugHooks = &rt->globalDebugHooks;
+ #if JS_STACK_GROWTH_DIRECTION > 0
+     cx->stackLimit = (jsuword)-1;
+ #endif
+     cx->scriptStackQuota = JS_DEFAULT_SCRIPT_STACK_QUOTA;
+ #ifdef JS_THREADSAFE
+-    JS_INIT_CLIST(&cx->threadLinks);
+-    js_SetContextThread(cx);
++
++    /*
++     * At this point cx is not on rt->contextList. Thus we do not need to
++     * prevent a race against the GC when adding cx to JSThread.contextList.
++     */
++    js_InitContextThread(cx, thread);
+ #endif
+ 
+     JS_LOCK_GC(rt);
+     for (;;) {
+         first = (rt->contextList.next == &rt->contextList);
+         if (rt->state == JSRTS_UP) {
+             JS_ASSERT(!first);
+             break;
+@@ -334,16 +317,19 @@ js_DestroyContext(JSContext *cx, JSDestr
+ {
+     JSRuntime *rt;
+     JSContextCallback cxCallback;
+     JSBool last;
+     JSArgumentFormatMap *map;
+     JSLocalRootStack *lrs;
+     JSLocalRootChunk *lrc;
+ 
++#ifdef JS_THREADSAFE
++    JS_ASSERT(CURRENT_THREAD_IS_ME(cx->thread));
++#endif
+     rt = cx->runtime;
+ 
+     if (mode != JSDCM_NEW_FAILED) {
+         cxCallback = rt->cxCallback;
+         if (cxCallback) {
+             /*
+              * JSCONTEXT_DESTROY callback is not allowed to fail and must
+              * return true.
+@@ -403,20 +389,16 @@ js_DestroyContext(JSContext *cx, JSDestr
+ 
+ #ifdef JS_THREADSAFE
+     /*
+      * Destroying a context implicitly calls JS_EndRequest().  Also, we must
+      * end our request here in case we are "last" -- in that event, another
+      * js_DestroyContext that was not last might be waiting in the GC for our
+      * request to end.  We'll let it run below, just before we do the truly
+      * final GC and then free atom state.
+-     *
+-     * At this point, cx must be inaccessible to other threads.  It's off the
+-     * rt->contextList, and it should not be reachable via any object private
+-     * data structure.
+      */
+     while (cx->requestDepth != 0)
+         JS_EndRequest(cx);
+ #endif
+ 
+     if (last) {
+         js_GC(cx, GC_LAST_CONTEXT);
+ 
+@@ -465,17 +447,23 @@ js_DestroyContext(JSContext *cx, JSDestr
+         while ((lrc = lrs->topChunk) != &lrs->firstChunk) {
+             lrs->topChunk = lrc->down;
+             JS_free(cx, lrc);
+         }
+         JS_free(cx, lrs);
+     }
+ 
+ #ifdef JS_THREADSAFE
+-    js_ClearContextThread(cx);
++    /*
++     * Since cx is not on rt->contextList, it cannot be accessed by the GC
++     * running on another thread. Thus, compared with JS_ClearContextThread,
++     * we can safely unlink cx from from JSThread.contextList without taking
++     * the GC lock.
++     */
++    JS_REMOVE_LINK(&cx->threadLinks);
+ #endif
+ 
+     /* Finally, free cx itself. */
+     free(cx);
+ }
+ 
+ JSBool
+ js_ValidContextPointer(JSRuntime *rt, JSContext *cx)
+Index: jscntxt.h
+===================================================================
+RCS file: /cvsroot/mozilla/js/src/jscntxt.h,v
+retrieving revision 3.205
+diff -U 8 -p -r3.205 jscntxt.h
+--- jscntxt.h	1 Jul 2008 17:22:52 -0000	3.205
++++ jscntxt.h	11 Mar 2009 19:40:23 -0000
+@@ -129,21 +129,18 @@ struct JSThread {
+ };
+ 
+ #define JS_GSN_CACHE(cx)        ((cx)->thread->gsnCache)
+ #define JS_PROPERTY_CACHE(cx)   ((cx)->thread->propertyCache)
+ 
+ extern void JS_DLL_CALLBACK
+ js_ThreadDestructorCB(void *ptr);
+ 
+-extern JSBool
+-js_SetContextThread(JSContext *cx);
+-
+ extern void
+-js_ClearContextThread(JSContext *cx);
++js_InitContextThread(JSContext *cx, JSThread *thread);
+ 
+ extern JSThread *
+ js_GetCurrentThread(JSRuntime *rt);
+ 
+ #endif /* JS_THREADSAFE */
+ 
+ typedef enum JSDestroyContextMode {
+     JSDCM_NO_GC,
+Index: jsgc.c
+===================================================================
+RCS file: /cvsroot/mozilla/js/src/jsgc.c,v
+retrieving revision 3.303
+diff -U 8 -p -r3.303 jsgc.c
+--- jsgc.c	7 Jan 2009 04:31:50 -0000	3.303
++++ jsgc.c	11 Mar 2009 19:40:24 -0000
+@@ -1449,32 +1449,19 @@ js_AddRootRT(JSRuntime *rt, void *rp, co
+     JSGCRootHashEntry *rhe;
+ 
+     /*
+      * Due to the long-standing, but now removed, use of rt->gcLock across the
+      * bulk of js_GC, API users have come to depend on JS_AddRoot etc. locking
+      * properly with a racing GC, without calling JS_AddRoot from a request.
+      * We have to preserve API compatibility here, now that we avoid holding
+      * rt->gcLock across the mark phase (including the root hashtable mark).
+-     *
+-     * If the GC is running and we're called on another thread, wait for this
+-     * GC activation to finish.  We can safely wait here (in the case where we
+-     * are called within a request on another thread's context) without fear
+-     * of deadlock because the GC doesn't set rt->gcRunning until after it has
+-     * waited for all active requests to end.
+      */
+     JS_LOCK_GC(rt);
+-#ifdef JS_THREADSAFE
+-    JS_ASSERT(!rt->gcRunning || rt->gcLevel > 0);
+-    if (rt->gcRunning && rt->gcThread->id != js_CurrentThreadId()) {
+-        do {
+-            JS_AWAIT_GC_DONE(rt);
+-        } while (rt->gcLevel > 0);
+-    }
+-#endif
++    js_WaitForGC(rt);
+     rhe = (JSGCRootHashEntry *)
+           JS_DHashTableOperate(&rt->gcRootsHash, rp, JS_DHASH_ADD);
+     if (rhe) {
+         rhe->root = rp;
+         rhe->name = name;
+         ok = JS_TRUE;
+     } else {
+         ok = JS_FALSE;
+@@ -1486,24 +1473,17 @@ js_AddRootRT(JSRuntime *rt, void *rp, co
+ JSBool
+ js_RemoveRoot(JSRuntime *rt, void *rp)
+ {
+     /*
+      * Due to the JS_RemoveRootRT API, we may be called outside of a request.
+      * Same synchronization drill as above in js_AddRoot.
+      */
+     JS_LOCK_GC(rt);
+-#ifdef JS_THREADSAFE
+-    JS_ASSERT(!rt->gcRunning || rt->gcLevel > 0);
+-    if (rt->gcRunning && rt->gcThread->id != js_CurrentThreadId()) {
+-        do {
+-            JS_AWAIT_GC_DONE(rt);
+-        } while (rt->gcLevel > 0);
+-    }
+-#endif
++    js_WaitForGC(rt);
+     (void) JS_DHashTableOperate(&rt->gcRootsHash, rp, JS_DHASH_REMOVE);
+     rt->gcPoke = JS_TRUE;
+     JS_UNLOCK_GC(rt);
+     return JS_TRUE;
+ }
+ 
+ #ifdef DEBUG
+ 
+@@ -3542,16 +3522,41 @@ js_GC(JSContext *cx, JSGCInvocationKind 
+              * On shutdown iterate until JSGC_END callback stops creating
+              * garbage.
+              */
+             goto restart_at_beginning;
+         }
+     }
+ }
+ 
++#ifdef JS_THREADSAFE
++
++/*
++ * If the GC is running and we're called on another thread, wait for this GC
++ * activation to finish. We can safely wait here without fear of deadlock (in
++ * the case where we are called within a request on another thread's context)
++ * because the GC doesn't set rt->gcRunning until after it has waited for all
++ * active requests to end.
++ *
++ * We call here js_CurrentThreadId() after checking for rt->gcRunning to avoid
++ * expensive calls when the GC is not running.
++ */
++void
++js_WaitForGC(JSRuntime *rt)
++{
++    JS_ASSERT_IF(rt->gcRunning, rt->gcLevel > 0);
++    if (rt->gcRunning && rt->gcThread->id != js_CurrentThreadId()) {
++        do {
++            JS_AWAIT_GC_DONE(rt);
++        } while (rt->gcRunning);
++    }
++}
++
++#endif
++
+ void
+ js_UpdateMallocCounter(JSContext *cx, size_t nbytes)
+ {
+     uint32 *pbytes, bytes;
+ 
+ #ifdef JS_THREADSAFE
+     pbytes = &cx->thread->gcMallocBytes;
+ #else
+Index: jsgc.h
+===================================================================
+RCS file: /cvsroot/mozilla/js/src/jsgc.h,v
+retrieving revision 3.112
+diff -U 8 -p -r3.112 jsgc.h
+--- jsgc.h	2 Apr 2008 07:46:12 -0000	3.112
++++ jsgc.h	11 Mar 2009 19:40:24 -0000
+@@ -291,16 +291,30 @@ typedef enum JSGCInvocationKind {
+      * in jsgc.c just before js_GC's definition for details.
+      */
+     GC_LAST_DITCH       = GC_LOCK_HELD | 2
+ } JSGCInvocationKind;
+ 
+ extern void
+ js_GC(JSContext *cx, JSGCInvocationKind gckind);
+ 
++
++/*
++ * This function must be called with the GC lock held. It is a helper for code
++ * that can potentially run outside JS request to ensure that the GC is not
++ * running when the function returns.
++ */
++#ifdef JS_THREADSAFE
++extern void
++js_WaitForGC(JSRuntime *rt);
++#else
++# define js_WaitForGC(rt)    ((void) 0)
++#endif
++
++
+ /* Call this after succesful malloc of memory for GC-related things. */
+ extern void
+ js_UpdateMallocCounter(JSContext *cx, size_t nbytes);
+ 
+ typedef struct JSGCArenaInfo JSGCArenaInfo;
+ typedef struct JSGCArenaList JSGCArenaList;
+ typedef struct JSGCChunkInfo JSGCChunkInfo;
+ 

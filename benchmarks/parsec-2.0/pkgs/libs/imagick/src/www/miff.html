@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: Magick Image File Format</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="magick, image, file, format, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../index.html"><img id="titlebar-west" src="../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="1359386584"><img id="titlebar-west" src="../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img src="../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img id="titlebar-east" src="../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../index.html">About ImageMagick</a>
+      <a href="../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="703671914" class="sub">Usage</a>
+      <a href="../www/api.html">Program Interfaces</a>
+      <a href="../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../Magick++/" target="875841612" class="sub">Magick++</a>
+      <a href="../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/install-source.html">Install from Source</a>
+      <a href="../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../www/binary-releases.html">Binary Releases</a>
+      <a href="../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/sitemap.html">Site Map</a>
+			<a href="../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../www/sponsors.html">Sponsors</a>
+  <a href="http://www.fosstools.org/" class="sponsor" target="sponsor">Foss Tools</a><!-- 200803010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[<a href="#header">MIFF Header</a> &bull; <a href="#binary">MIFF Binary Data</a>]</p>
+
+<p>The Magick Image File Format (MIFF) is ImageMagick's own platform-independent format for storing bitmap images.  It has an advantage over other image formats in that it stores all metadata known to ImageMagick (e.g. image color profiles, comments, author, copyright, etc.), whereas, other formats may only support a small portion of available metadata or none at all.  A MIFF image file consist of two sections.  The first section is a header composed of keys describing the image in text form.  The next section is the binary image data.  We discuss these sections in detail below.</p>
+
+<div style="margin: auto;">
+  <h2><a name="header"></a>MIFF Header</h2>
+</div>
+
+
+<p>The MIFF header is composed entirely of ISO-8859-1 characters.  The fields
+in the header are key and value combination in the <em>key = value</em> format, with each key and value separated by an equal sign (<kbd>=</kbd>).  Each <em>key = value</em> combination is delimited by at least one control or whitespace character.  Comments may appear in the header section and are always delimited by braces.  The MIFF header always ends with a colon (<kbd>:</kbd>) character, followed by a <em>ctrl-Z</em> character.  It is also common to proceed the colon with a <em>formfeed</em> and a <em>newline</em> character.  The <em>formfeed</em> prevents the listing of binary data when using the <kbd>more</kbd> Unix program, whereas, the <em>ctrl-Z</em> has the same effect with the <kbd>type</kbd> command on the Windows command line.<p>
+
+<p>The following is a partial list of <em> key = value</em> combinations that are typically be found in a MIFF file:</p>
+
+<ul>
+<dt>background-color = <em class="option">color</em><dt>
+<dt>border-color = <em class="option">color</em></dt>
+<dt>matte-color = <em class="option">color</em></dt>
+  <dd>these optional keys reflect the image background, border, and matte colors respectively.  A <a href="../www/color.html">color</a> can be a name (e.g. white) or a hex value (e.g. #ccc).</dd><br />
+<dt>class = DirectClass</dt>
+<dt>class = PseudoClass</dt>
+  <dd>the type of binary pixel data stored in the MIFF file.  If this key is not present, DirectClass pixel data is assumed.</dd><br />
+<dt>colors = <em class="option"> value</em></dt>
+  <dd>the number of colors in a DirectClass image. For a PseudoClass image, this key specifies the number of entires in the colormap.  If this key is not present in the header, and the image is PseudoClass, a linear 256 color grayscale colormap is is assumed.  The maximum number of colormap entries is 65536.</dd><br />
+<dt>colorspace = RGB</dt>
+<dt>colorspace = CMYK</dt>
+  <dd>the colorspace of the pixel data.  The default is RGB.</dd><br />
+<dt>columns = value</dt>
+  <dd>the width of the image in pixels.  This is a required key and has no default value.</dd><br />
+<dt>compression = BZip</dt>
+<dt>compression = Fax</dt>
+<dt>compression = None</dt>
+<dt>compression = RLE</dt>
+<dt>compression = Zip</dt>
+  <dd>the type of algorithm used to compress the image data.  If this key is not present, the pixel data is assumed to be uncompressed.</dd><br />
+<dt>delay = <em class="option">microseconds</em></dt>
+ <dd>the interframe delay in an image sequence in microseconds.</dd><br />
+<dt>depth = 8</dt>
+<dt>depth = 16</dt>
+<dt>depth = 32</dt>
+  <dd>the depth of a single color value representing values from 0 to 255 (depth 8), 0 - 65535 (depth 16), or 0 - 4294967295 (depth 32).  If this key is absent, a depth of 8 is assumed.</dd><br />
+<dt>dispose = <em class="option">value</em></dt>
+  <dd>GIF disposal method.</dd><br />
+  <dd>Here are the valid methods:<dd>
+
+<dd><ul>
+  <dd>0. No disposal specified.</dd>
+  <dd>1. Do not dispose between frames.</dd>
+  <dd>2. Overwrite frame with background color from header.</dd>
+  <dd>3. Overwrite with previous frame.</dd>
+</ul></dd><dd><br />
+
+<dt>gamma = <em class="option">value</em></dt>
+  <dd>the gamma of the image.  If it is not specified, a gamma of 1.0 (linear brightness response) is assumed.</dd><br />
+
+<dt>id = ImageMagick</dt>
+  <dd>identifies the file as a MIFF-format image file.  This key is required and has no default.  Although this key can appear anywhere in the header, it should start as the first key of the header in column 1.  This will allow programs like <kbd>file</kbd>(1) to easily identify the file as MIFF.</dd><br />
+
+<dt>iterations = <em class="option">value</em></dt>
+  <dd>the number of times an image sequence loops before stopping.</dd><br />
+
+<dt>label = { <em class="option">string </em>}</dt>
+  <dd>defines a short title or caption for the image.  If any whitespace appears in the label, it must be enclosed within braces.</dd><br />
+
+<dt>matte = True</dt>
+<dt>matte = False</dt>
+  <dd>specifies whether a the image has matte data.  Matte data is generally useful for image compositing.</dt><br />
+
+<dt>montage = <em class="option">&lt;width&gt;x&lt;height&gt;{+-}&lt;x offset&gt;{+-}&lt;y offset&gt;</em></dt>
+  <dd>size and location of the individual tiles of a composite image.</dd><br />
+
+  <dd>Use this key when the image is a composite of a number of different tiles.  A tile consists of an image and optionally a border and a label.  <em>Width</em> is the size in pixels of each individual tile in the horizontal direction and <em>height</em> is the size in the vertical direction.  Each tile must have an equal number of pixels in width and equal in height.  However, the width can differ from the height.  <em>X offset</em> is the offset in number of pixels from the vertical edge of the composite image where the first tile of a row begins and <em>y offset</em> is the offset from the horizontal edge where the first tile of a column begins.</dd><br />
+
+  <dd>If this key is specified, a directory of tile names must follow the image header.  The format of the directory is explained below.</dd><br />
+
+<dt>page = <em class="option">value</em></dt>
+  <dd>preferred size and location of an image canvas.</dd><br />
+
+<dt>profile-icc = <em class="option">value</em></dt>
+  <dd>the number of bytes in the International Color Consortium color profile.  The profile is defined by the ICC profile specification located at <a href="http://www.color.org/icc_specs2.html">http://www.color.org/icc_specs2.html</a>.</dd><br />
+
+<dt>red-primary = <em class="option">x,y</em></dt>
+<dt>green-primary = <em class="option">x,y</em></dt>
+<dt>blue-primary = <em class="option">x,y</em></dt>
+<dt>white-point = <em class="option">x,y</em></dt>
+  <dd>this optional key reflects the chromaticity primaries and white point.</dd><br />
+
+<dt>rendering-intent = <em class="option">saturation</em></dt>
+<dt>rendering-intent = <em class="option">perceptual</em></dt>
+<dt>rendering-intent = <em class="option">absolute</em></dt>
+<dt>rendering-intent = <em class="option">relative</em></dt>
+  <dd>Rendering intent is the CSS-1 property that has been defined by the International Color Consortium (<a href="http://www.color.org">http://www.color.org</a>).</dd><br />
+
+<dt>resolution = <em class="option">&lt;x-resolution&gt;x&lt;y-resolution&gt;</em></dt>
+  <dd>vertical and horizontal resolution of the image.  See units for the specific resolution units (e.g. pixels per inch).</dd><br />
+
+<dt>rows = <em class="option">value</em></dt>
+  <dd>the height of the image in pixels.  This is a required key and has no default value.</dd><br />
+
+<dt>scene = <em class="option">value</em></dt>
+  <dd>the sequence number for this MIFF image file.  This optional key is useful when a MIFF image file is one in a sequence of files used in an animation.</dd><br />
+
+<dt>signature = <em class="option">value</em></dt>
+  <dd>this optional key contains a string that uniquely identifies the image pixel contents.  NIST's SHA-256 message digest algorithm is recommended.</dd><br />
+
+<dt>units = pixels-per-inch</dt>
+<dt>units = pixels-per-centimeter</dt>
+  <dd>image resolution units.</dd>
+</ul>
+
+<p>Other key value pairs are permitted.  If a value contains whitespace it must be enclosed with braces as illustrated here:</p>
+
+<pre class="text">
+  id=ImageMagick
+  class=PseudoClass  colors=256  matte=False
+  columns=1280  rows=1024  depth=8
+  compression=RLE
+  colorspace=RGB
+  copyright={Copyright (c) 1999-2007 ImageMagick Studio LLC}
+  <FF>
+  :
+</pre>
+
+<p>Note that <em>key = value</em> combinations may be separated by <em>newlines</em> or spaces and may occur in any order within the header.  Comments (within braces) may appear anywhere before the colon.</p>
+
+<p>If you specify the montage key in the header, follow the header with a directory of image tiles.  This directory consists of a name for each tile of the composite image separated by a <em>newline</em> character.  The list is terminated with a NULL character.</p>
+
+<p>If you specify the color-profile key in the header, follow the header (or montage directory if the montage key is in the header) with the binary color profile.</p>
+
+<p>The header is separated from the image data by a <kbd>:</kbd> character immediately followed by a <em>newline</em>.<p>
+
+<div style="margin: auto;">
+  <h2><a name="binary"></a>MIFF Binary Data</h2>
+</div>
+
+<p>Next comes the binary image data itself.  How the image data is formatted depends upon the class of the image as specified (or not specified) by the value of the class key in the header.</p>
+
+<p>DirectClass images are continuous-tone, images stored as RGB (red, green, blue), RGBA (red, green, blue, alpha), CMYK (cyan, yellow, magenta, black), or CMYKA (cyan, yellow, magenta, black, alpha)  intensity values as defined by the colorspace key. Each intensity value is one byte in length for images of depth 8 (0..255), two bytes for a depth of 16 (0..65535), and images of depth 32 (0..4294967295) require four bytes in most significant byte first order.<p>
+
+<p>PseudoClass images are colormapped RGB images. The colormap is stored as a series of red, green, and blue pixel values, each value being a byte in size. If the image depth is 16, each colormap entry consumes two bytes with the most significant byte being first. The number of colormap entries is defined by the colors key.  The colormap data occurs immediately following the header (or image directory if the montage key is in the header). PseudoClass image data is an array of index values into the color map. If there are 256
+or fewer colors in the image, each byte of image data contains an index value. If the image contains more than 256 colors or the image depth is 16, the index value is stored as two contiguous bytes with the most significant byte being first. If matte is true, each colormap index is followed by a 1 or 2-byte alpha value.</p>
+
+<p>The image pixel data in a MIFF file may be uncompressed, runlength encoded, Zip compressed, or BZip compressed. The compression key in the header defines how the image data is compressed. Uncompressed pixels are stored one scanline at a time in row order. Runlength-encoded compression counts runs of identical adjacent pixels and stores the pixels followed by a length byte (the number of identical pixels minus 1). Zip and BZip compression compresses each row of an image and precedes the compressed row with the length of compressed pixel bytes as a word in most significant byte first order.</p>
+
+<p>MIFF files may contain more than one image.  Simply concatenate each individual image (composed of a header and image data) into one file.</p>
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="1040990471">Discourse Server</a> &bull;
+    <a href="../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://www.imagemagick.org/MagickStudio/scripts/MagickStudio.cgi" target="1628941643">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

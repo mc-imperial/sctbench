@@ -1,0 +1,32 @@
+EnderUNIX Aget 0.57 INSTALL
+--------------------------
+
+The program is tested on RedHat Linux 7.2 (gcc-2.96), FreeBSD 4.5
+and Solaris 8. For Solaris, you'll have to use Makefile.Solaris.
+
+To compile Aget, type:
+
+# make  && make strip
+
+To install the compiled binary, type:
+
+# make install 
+
+and binary will be installed as /usr/local/bin/aget
+
+You're done. All you need is a file to download and supply
+that url and desired number of segments to aget, e.g:
+
+$ aget -n10 http://www.enderunix.org/murat/barismanco-hibrahimsofrasi.mp3 
+
+Aget will split the file into 10 segments and will download it for you.
+
+
+PS:
+If your OS is MacOS X then, you can use the makefile Makefile.MacOSX
+If Solaris, you can use Makefile.Solaris, and if it's FreeBSD, you can 
+use the default one or Makefile.FreeBSD. Simply copy  the one 
+which suits your platform over Makefile...
+
+Fri Nov 22 07:49:15 EET 2002
+http://www.enderunix.org/aget/

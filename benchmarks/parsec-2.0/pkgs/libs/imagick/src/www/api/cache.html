@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: MagickCore, C API for ImageMagick: Get or Set Image Pixels</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="magickcore, c, api, for, imagemagick:, get, or, set, image, pixels, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../../index.html"><img id="titlebar-west" src="../../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="11564853"><img id="titlebar-west" src="../../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img src="../../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img id="titlebar-east" src="../../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../../index.html">About ImageMagick</a>
+      <a href="../../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="847050527" class="sub">Usage</a>
+      <a href="../../www/api.html">Program Interfaces</a>
+      <a href="../../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../../Magick++/" target="1607660385" class="sub">Magick++</a>
+      <a href="../../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/install-source.html">Install from Source</a>
+      <a href="../../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../../www/binary-releases.html">Binary Releases</a>
+      <a href="../../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/sitemap.html">Site Map</a>
+			<a href="../../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../../www/sponsors.html">Sponsors</a>
+  <a href="http://www.fern-studiengang.de" class="sponsor" target="sponsor">Fernstudium / Studium</a><!-- 200804010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[ <a href="#AcquireImagePixels">AcquireImagePixels</a> | <a href="#AcquireIndexes">AcquireIndexes</a> | <a href="#AcquireOneMagickPixel">AcquireOneMagickPixel</a> | <a href="#AcquireOnePixel">AcquireOnePixel</a> | <a href="#AcquireOneVirtualPixel">AcquireOneVirtualPixel</a> | <a href="#DestroyCacheInfo">DestroyCacheInfo</a> | <a href="#DestroyImagePixels">DestroyImagePixels</a> | <a href="#GetCacheVirtualPixelMethod">GetCacheVirtualPixelMethod</a> | <a href="#GetImagePixels">GetImagePixels</a> | <a href="#GetIndexes">GetIndexes</a> | <a href="#GetOnePixel">GetOnePixel</a> | <a href="#GetPixels">GetPixels</a> | <a href="#ReferenceCache">ReferenceCache</a> | <a href="#SetCacheVirtualPixelMethod">SetCacheVirtualPixelMethod</a> | <a href="#SetImagePixels">SetImagePixels</a> | <a href="#SyncImagePixels">SyncImagePixels</a> ]</p>
+
+<div style="margin: auto;">
+  <h2><a name="AcquireImagePixels">AcquireImagePixels</a></h2>
+</div>
+
+<p>AcquireImagePixels() obtains a pixel region for read-only access. If the region is successfully accessed, a pointer to it is returned, otherwise NULL is returned. The returned pointer may point to a temporary working copy of the pixels or it may point to the original pixels in memory. Performance is maximized if the selected area is part of one row, or one or more full rows, since there is opportunity to access the pixels in-place (without a copy) if the image is in RAM, or in a memory-mapped file.  The returned pointer should *never* be deallocated by the user.</p></ol>
+
+<p>Pixels accessed via the returned pointer represent a simple array of type PixelPacket.  If the image type is CMYK or the storage class is PseudoClass, call GetIndexes() after invoking GetImagePixels() to access the black color component or to obtain the colormap indexes (of type IndexPacket) corresponding to the region.</p></ol>
+
+<p>If you plan to modify the pixels, use GetImagePixels() instead.</p></ol>
+
+<p>Note, the AcquireImagePixels() and GetImagePixels() methods are not thread- safe.  In a threaded environment, use AcquireCacheViewPixels() or GetCacheViewPixels() instead.</p></ol>
+
+<p>The format of the AcquireImagePixels() method is:</p>
+
+<pre class="code">
+  const PixelPacket *AcquireImagePixels(const Image *image,const long x,
+    const long y,const unsigned long columns,const unsigned long rows,
+    ExceptionInfo *exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>x,y,columns,rows</h5>
+<ol><p>These values define the perimeter of a region of pixels.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="AcquireIndexes">AcquireIndexes</a></h2>
+</div>
+
+<p>AcquireIndexes() returns the black channel or the colormap indexes associated with the last call to SetImagePixels() or AcquireImagePixels(). NULL is returned if the black channel or colormap indexes are not available.</p></ol>
+
+<p>The format of the AcquireIndexes() method is:</p>
+
+<pre class="code">
+  const IndexPacket *AcquireIndexes(const Image *image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>indexes</h5>
+<ol><p>AcquireIndexes() returns the indexes associated with the last call to SetImagePixels() or AcquireImagePixels().</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="AcquireOneMagickPixel">AcquireOneMagickPixel</a></h2>
+</div>
+
+<p>AcquireOneMagickPixel() returns a single pixel at the specified (x,y) location.  The image background color is returned if an error occurs.  If you plan to modify the pixel, use GetOnePixel() instead.</p></ol>
+
+<p>The format of the AcquireOneMagickPixel() method is:</p>
+
+<pre class="code">
+  MagickPixelPacket AcquireOneMagickPixel(const Image image,const long x,
+    const long y,ExceptionInfo exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>pixels</h5>
+<ol><p>AcquireOneMagickPixel() returns a pixel at the specified (x,y) location.</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>x,y</h5>
+<ol><p>These values define the location of the pixel to return.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="AcquireOnePixel">AcquireOnePixel</a></h2>
+</div>
+
+<p>AcquireOnePixel() returns a single pixel at the specified (x,y) location. The image background color is returned if an error occurs.  If you plan to modify the pixel, use GetOnePixel() instead.</p></ol>
+
+<p>The format of the AcquireOnePixel() method is:</p>
+
+<pre class="code">
+  PixelPacket AcquireOnePixel(const Image image,const long x,
+    const long y,ExceptionInfo exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>pixels</h5>
+<ol><p>AcquireOnePixel() returns a pixel at the specified (x,y) location.</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>x,y</h5>
+<ol><p>These values define the location of the pixel to return.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="AcquireOneVirtualPixel">AcquireOneVirtualPixel</a></h2>
+</div>
+
+<p>AcquireOneVirtualPixel() returns a single pixel at the specified (x,y) location as defined by specified pixel method.  The image background color is returned if an error occurs.  If you plan to modify the pixel, use GetOnePixel() instead.</p></ol>
+
+<p>The format of the AcquireOneVirtualPixel() method is:</p>
+
+<pre class="code">
+  PixelPacket AcquireOneVirtualPixel(const Image image,
+    const VirtualPixelMethod virtual_pixel_method,const long x,
+    const long y,ExceptionInfo exception)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>pixels</h5>
+<ol><p>AcquireOneVirtualPixel() returns a pixel at the specified (x,y) location.</p></ol>
+
+<h5>virtual_pixel_method</h5>
+<ol><p>The virtual pixel method.</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>x,y</h5>
+<ol><p>These values define the location of the pixel to return.</p></ol>
+
+<h5>exception</h5>
+<ol><p>Return any errors or warnings in this structure.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DestroyCacheInfo">DestroyCacheInfo</a></h2>
+</div>
+
+<p>DestroyCacheInfo() deallocates memory associated with the pixel cache.</p></ol>
+
+<p>The format of the DestroyCacheInfo() method is:</p>
+
+<pre class="code">
+  Cache DestroyCacheInfo(Cache cache)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>cache</h5>
+<ol><p>The pixel cache.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DestroyImagePixels">DestroyImagePixels</a></h2>
+</div>
+
+<p>DestroyImagePixels() deallocates memory associated with the pixel cache.</p></ol>
+
+<p>The format of the DestroyImagePixels() method is:</p>
+
+<pre class="code">
+  void DestroyImagePixels(Image *image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetCacheVirtualPixelMethod">GetCacheVirtualPixelMethod</a></h2>
+</div>
+
+<p>GetCacheVirtualPixelMethod() gets the "virtual pixels" method for the pixel cache.  A virtual pixel is any pixel access that is outside the boundaries of the image cache.</p></ol>
+
+<p>The format of the GetCacheVirtualPixelMethod() method is:</p>
+
+<pre class="code">
+  VirtualPixelMethod GetCacheVirtualPixelMethod(const Image *image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetImagePixels">GetImagePixels</a></h2>
+</div>
+
+<p>GetImagePixels() obtains a pixel region for read/write access. If the region is successfully accessed, a pointer to a PixelPacket array representing the region is returned, otherwise NULL is returned.</p></ol>
+
+<p>The returned pointer may point to a temporary working copy of the pixels or it may point to the original pixels in memory. Performance is maximized if the selected area is part of one row, or one or more full rows, since then there is opportunity to access the pixels in-place (without a copy) if the image is in RAM, or in a memory-mapped file. The returned pointer should *never* be deallocated by the user.</p></ol>
+
+<p>Pixels accessed via the returned pointer represent a simple array of type PixelPacket. If the image type is CMYK or if the storage class is PseduoClass, call GetIndexes() after invoking GetImagePixels() to obtain the black color component or colormap indexes (of type IndexPacket) corresponding to the region.  Once the PixelPacket (and/or IndexPacket) array has been updated, the changes must be saved back to the underlying image using SyncImagePixels() or they may be lost.</p></ol>
+
+<p>The format of the GetImagePixels() method is:</p>
+
+<pre class="code">
+  PixelPacket *GetImagePixels(Image *image,const long x,const long y,
+    const unsigned long columns,const unsigned long rows)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>x,y,columns,rows</h5>
+<ol><p>These values define the perimeter of a region of pixels.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetIndexes">GetIndexes</a></h2>
+</div>
+
+<p>GetIndexes() returns the black channel or the colormap indexes associated with the last call to SetImagePixels() or AcquireImagePixels().  NULL is returned if the black channel or colormap indexes are not available.</p></ol>
+
+<p>The format of the GetIndexes() method is:</p>
+
+<pre class="code">
+  IndexPacket *GetIndexes(const Image *image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>indexes</h5>
+<ol><p>GetIndexes() returns the indexes associated with the last call to SetImagePixels() or GetImagePixels().</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetOnePixel">GetOnePixel</a></h2>
+</div>
+
+<p>GetOnePixel() returns a single pixel at the specified (x,y) location. The image background color is returned if an error occurs.</p></ol>
+
+<p>The format of the GetOnePixel() method is:</p>
+
+<pre class="code">
+  PixelPacket GetOnePixel(const Image image,const long x,const long y)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>x,y</h5>
+<ol><p>These values define the location of the pixel to return.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="GetPixels">GetPixels</a></h2>
+</div>
+
+<p>GetPixels() returns the pixels associated with the last call to SetImagePixels() or GetImagePixels().</p></ol>
+
+<p>The format of the GetPixels() method is:</p>
+
+<pre class="code">
+  PixelPacket *GetPixels(const Image image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>pixels</h5>
+<ol><p>GetPixels() returns the pixels associated with the last call to SetImagePixels() or GetImagePixels().</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="ReferenceCache">ReferenceCache</a></h2>
+</div>
+
+<p>ReferenceCache() increments the reference count associated with the pixel cache returning a pointer to the cache.</p></ol>
+
+<p>The format of the ReferenceCache method is:</p>
+
+<pre class="code">
+  Cache ReferenceCache(Cache cache_info)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>cache_info</h5>
+<ol><p>The pixel cache.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="SetCacheVirtualPixelMethod">SetCacheVirtualPixelMethod</a></h2>
+</div>
+
+<p>SetCacheVirtualPixelMethod() sets the "virtual pixels" method for the pixel cache and returns the previous setting.  A virtual pixel is any pixel access that is outside the boundaries of the image cache.</p></ol>
+
+<p>The format of the SetCacheVirtualPixelMethod() method is:</p>
+
+<pre class="code">
+  VirtualPixelMethod SetCacheVirtualPixelMethod(const Image *image,
+    const VirtualPixelMethod virtual_pixel_method)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>virtual_pixel_method</h5>
+<ol><p>choose the type of virtual pixel.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="SetImagePixels">SetImagePixels</a></h2>
+</div>
+
+<p>SetImagePixels() initializes a pixel region for write-only access. If the region is successfully intialized a pointer to a PixelPacket array representing the region is returned, otherwise NULL is returned. The returned pointer may point to a temporary working buffer for the pixels or it may point to the final location of the pixels in memory.</p></ol>
+
+<p>Write-only access means that any existing pixel values corresponding to the region are ignored.  This is useful while the initial image is being created from scratch, or if the existing pixel values are to be completely replaced without need to refer to their pre-existing values. The application is free to read and write the pixel buffer returned by SetImagePixels() any way it pleases. SetImagePixels() does not initialize the pixel array values. Initializing pixel array values is the application's responsibility.</p></ol>
+
+<p>Performance is maximized if the selected area is part of one row, or one or more full rows, since then there is opportunity to access the pixels in-place (without a copy) if the image is in RAM, or in a memory-mapped file. The returned pointer should *never* be deallocated by the user.</p></ol>
+
+<p>Pixels accessed via the returned pointer represent a simple array of type PixelPacket. If the image type is CMYK or the storage class is PseudoClass, call GetIndexes() after invoking GetImagePixels() to obtain the black color component or the colormap indexes (of type IndexPacket) corresponding to the region.  Once the PixelPacket (and/or IndexPacket) array has been updated, the changes must be saved back to the underlying image using SyncImagePixels() or they may be lost.</p></ol>
+
+<p>The format of the SetImagePixels() method is:</p>
+
+<pre class="code">
+  PixelPacket *SetImagePixels(Image *image,const long x,const long y,
+    const unsigned long columns,const unsigned long rows)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>pixels</h5>
+<ol><p>SetImagePixels returns a pointer to the pixels if they are transferred, otherwise a NULL is returned.</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+<h5>x,y,columns,rows</h5>
+<ol><p>These values define the perimeter of a region of pixels.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="SyncImagePixels">SyncImagePixels</a></h2>
+</div>
+
+<p>SyncImagePixels() saves the image pixels to the in-memory or disk cache. The method returns MagickTrue if the pixel region is synced, otherwise MagickFalse.</p></ol>
+
+<p>The format of the SyncImagePixels() method is:</p>
+
+<pre class="code">
+  MagickBooleanType SyncImagePixels(Image *image)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>image</h5>
+<ol><p>The image.</p></ol>
+
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="822316458">Discourse Server</a> &bull;
+    <a href="../../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://studio.webbyland.com/ImageMagick/MagickStudio/scripts/MagickStudio.cgi" target="1244366020">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

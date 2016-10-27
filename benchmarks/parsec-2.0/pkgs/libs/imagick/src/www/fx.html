@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: The Fx Special Effects Image Operator</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="the, fx, special, effects, image, operator, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../index.html"><img id="titlebar-west" src="../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="1677617120"><img id="titlebar-west" src="../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img src="../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img id="titlebar-east" src="../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../index.html">About ImageMagick</a>
+      <a href="../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="1950543297" class="sub">Usage</a>
+      <a href="../www/api.html">Program Interfaces</a>
+      <a href="../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../Magick++/" target="1068777177" class="sub">Magick++</a>
+      <a href="../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/install-source.html">Install from Source</a>
+      <a href="../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../www/binary-releases.html">Binary Releases</a>
+      <a href="../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/sitemap.html">Site Map</a>
+			<a href="../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../www/sponsors.html">Sponsors</a>
+  <a href="http://www.fosstools.org/" class="sponsor" target="sponsor">Foss Tools</a><!-- 200803010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[<a href="#fx">The Fx Special Effects Image Operator</a> | <a href="#anatomy">The Anatomy of an Fx Expression</a>]</p>
+
+<div style="margin: auto;">
+  <h2><a name="fx"></a>The Fx Special Effects Image Operator</h2>
+</div>
+
+<p>Use the Fx special effects image operator to apply a mathematical expression to an image or image channels.  Use Fx to:</p>
+
+<ul>
+  <li>move color values between images and channels colors</li>
+  <li>translate, flip, mirror, rotate, scale, shear and transform images colors</li>
+  <li>merge multiple images, in just about every way possible</li>
+  <li>adjust image colors</li>
+  <li>create canvases from existing images</li>
+</ul>
+
+<p>The expression can be simple--</p>
+
+<pre class="text">
+  convert -size 64x64 xc:black -channel blue -fx '1/2' fx_navy.png
+</pre>
+
+<p>Here, we convert a black to a navy blue image:</p>
+
+<p class="image">
+  <a href="../images/black.png"><img src="../images/black.png" width="64" height="64" align="middle" alt="black" /></a>
+  <img src="../images/right.gif" width="20" height="20" align="middle" alt="==>" />
+  <a href="../images/navy.png"><img src="../images/navy.png" width="64" height="64" align="middle" alt="navy" /></a>
+</p>
+
+<p>-- or complex:</p>
+
+<pre class="text">
+    convert rose.jpg -fx '(1.0/(1.0+exp(10.0*(0.5-u)))-0.0066928509)*1.0092503' rose-sigmoidal.png
+</pre>
+
+<p>This expression results in a high contrast version of the image:</p>
+
+<p class="image">
+  <a href="../images/rose.jpg"><img src="../images/rose.jpg" width="70" height="46" align="middle" alt="rose" /></a>
+  <img src="../images/right.gif" width="20" height="20" align="middle" alt="==>" />
+  <a href="../images/rose-sigmoidal.png"><img src="../images/rose-sigmoidal.png" width="70" height="46" align="middle" alt="rose-sigmoidal" /></a>
+</p>
+
+<p>The expression can include variable assignments.  Assignments, in most cases, reduce the complexity of an expression and permits some operations that might not be possible any other way.  For example, lets create a radial gradient with statements:</p>
+
+<pre class="text">
+    convert -size 70x70 xc: -fx 'Xi=i-w/2; Yj=j-h/2; 1.2*(0.5-hypot(Xi,Yj)/70.0)+0.5' radial-gradient.png
+</pre>
+
+<p>These statements return this image:</p>
+
+<p class="image">
+  <a href="../images/radial-gradient.png"><img src="../images/radial-gradient.png" width="70" height="70" align="middle" alt="radial-gradient" /></a>
+</p>
+<p>See <a href="http://www.imagemagick.org/Usage/transform/index.html#fx" target="1635464769">Using FX, The Special Effects Image Operator</a> for more examples on how to     apply a mathematical expression to an image or image channels.</p>
+
+<p>The next section discusses the Fx expression language.</p>
+
+<div style="margin: auto;">
+  <h2><a name="anatomy"></a>The Anatomy of an Fx Expression</h2>
+</div>
+
+<h5>The Fx Expression Language</h5>
+
+<p>The formal Fx expression language is defined in this table:</p>
+
+<pre class="text">
+  constants: QuantumRange, QuantumScale, Opaque, Transparent, e, Pi
+  Fx operators (in order of precedence):
+     ^ (power), *, /, % (modulo), +, -, &lt;&lt;, &gt;&gt;, &lt;, &lt;=, &gt;, &gt;=, ==, !=, &amp; (bitwise AND),
+     | (bitwise OR), &amp;&amp; (logical AND), || (logical OR), ~ (logical NOT), ?: (ternary conditional)
+  math functions:
+     abs(), acos(), asin(), alt(), atan(), atan2(), ceil(), cos(), debug(), exp(), floor(), hypot(), int(),
+     log(), ln(), mod(), pow(), rand(), sign(), sin(), sqrt(), tan()
+  color names: red, cyan, black, etc.
+  color functions: rgb(), rgba(), cmyk(), cmyka(), hsl(), hsla()
+  color hex values: #ccc, #cbfed0, #b9e1cc00
+  symbols:
+     s  = current image in sequence
+     t  = scene number of current image in sequence
+     u  = first image in sequence
+     v  = second image in sequence
+     n  = number of images in sequence
+     i  = column offset
+     j  = row offset
+     p  = pixel to use (absolute or relative to current pixel)
+     w  = width of this image
+     h  = height of this image
+     z  = channel depth
+     r  = red value (from RGBA), of a specific or current pixel
+     g  = green    ''
+     b  = blue     ''
+     a  = alpha    ''
+     o  = opacity  ''
+     c  = cyan value of CMYK color of pixel
+     y  = yellow   ''
+     m  = magenta  ''
+     k  = black    ''
+     intensity = pixel intensity
+     hue = pixel hue
+     saturation = pixel saturation
+     luminosity = pixel luminosity
+     image.resolution.x
+     image.resolution.y
+</pre>
+
+<h5>The Fx Expression</h5>
+
+<p>The Fx expressions includes any combination of the following:</p>
+<ul>
+<li> <em>x</em> <kbd>^</kbd> <em>y</em>:  exponentiation (<em>x<sup>y</sup></em>)</li>
+<li> <kbd>(</kbd> ... <kbd>)</kbd>:  grouping</li>
+<li> <em>x</em> <kbd>*</kbd> <em>y</em>:  multiplication (the asterisk <kbd>*</kbd> is optional, for example, <kbd>2u</kbd> or <kbd>2(x+y)</kbd> are acceptable)</li>
+<li> <em>x</em> <kbd>/</kbd> <em>y</em>:  division</li>
+<li> <em>x</em> <kbd>%</kbd> <em>y</em>:  modulo</li>
+<li> <em>x</em> <kbd>+</kbd> <em>y</em>:  addition</li>
+<li> <em>x</em> <kbd>-</kbd> <em>y</em>:  subtraction</li>
+<li> <em>x</em> <kbd>&lt;&lt;</kbd> <em>y</em>:  left shift</li>
+<li> <em>x</em> <kbd>&gt;&gt;</kbd> <em>y</em>:  right shift</li>
+<li> <em>x</em> <kbd>&lt;</kbd> <em>y</em>:  boolean relation, returns value 1.0 if <em>x</em> &lt; <em>y</em>,  otherwise 0.0</li>
+<li> <em>x</em> <kbd>&lt;=</kbd> <em>y</em>:  boolean relation, returns value 1.0 if <em>x</em> &lt;= <em>y</em>,  otherwise 0.0</li>
+<li> <em>x</em> <kbd>&gt;</kbd> <em>y</em>:  boolean relation, returns value 1.0 if <em>x</em> &gt; <em>y</em>,  otherwise 0.0</li>
+<li> <em>x</em> <kbd>&gt;=</kbd> <em>y</em>:  boolean relation, returns value 1.0 if <em>x</em> &gt;= <em>y</em>,  otherwise 0.0</li>
+<li> <em>x</em> <kbd>==</kbd> <em>y</em>:  boolean relation, returns value 1.0 if <em>x </em>==<em> y</em>, otherwise 0.0</li>
+<li> <em>x</em> <kbd>!=</kbd> <em>y</em>:  boolean relation, returns value 1.0 if <em>x </em>!=<em> y</em>, otherwise 0.0</li>
+<li> <em>x</em> <kbd>&amp</kbd> <em>y</em>:  binary AND</li>
+<li> <em>x</em> <kbd>|</kbd> <em>y</em>:  binary OR</li>
+<li> <em>x</em> <kbd>&amp;&amp;</kbd> <em>y</em>:  logical AND connective, returns value 1.0 if <em>x</em> &gt; 0 and <em>y</em> &gt; 0,  otherwise 0.0</li>
+<li> <em>x</em> <kbd>||</kbd> <em>y</em>:  logical OR connective (inclusive), returns value 1.0 if <em>x</em> &gt; 0 or <em>y</em> &gt; 0 (or both),  otherwise 0.0</li>
+<li> <kbd>~</kbd><em>x</em>:  logical NOT operator, returns value 1.0 if <em>not</em> <em>x</em> &gt; 0,  otherwise 0.0</li>
+<li> <kbd>+</kbd><em>x</em>:  unary plus, returns 1.0*value</li>
+<li> <kbd>-</kbd><em>x</em>:  unary minus, returns -1.0*value</li>
+<li> <em>x</em> <kbd>?</kbd> <em>y</em> :</b> <em>z</em>: ternary conditional expression, returns value <em>y</em> if <em>x</em> != 0, otherwise <em>z</em>; only one ternary conditional permitted per statement</li>
+<li> <em>x</em> <kbd>=</kbd> <em>y</em>: assignment; assignment variables are resticted to letter combinations only (e.g. xx not x1)</li>
+<li> <em>x</em> <kbd>;</kbd> <em>y</em>: statement separator </li>
+<li> <kbd>pi</kbd>:  constant (3.141659...)</li>
+<li> <kbd>e</kbd>:  constant (2.71828...)</li>
+<li> <kbd>QuantumRange</kbd>:  constant maximum pixel value (255 for Q8, 65535 for Q16)</li>
+<li> <kbd>QuantumScale</kbd>:  constant 1.0/<kbd>QuantumRange</kbd></li>
+<li> <kbd>intensity</kbd>:  pixel intensity</li>
+<li> <kbd>hue</kbd>:  pixel hue</li>
+<li> <kbd>saturation</kbd>:  pixel saturation</li>
+<li> <kbd>luminosity</kbd>:  pixel luminosity</li>
+<li> <kbd>red, green, blue</kbd>, etc.:  color names</li>
+<li> <kbd>#ccc, #cbfed0, #b9e1cc00</kbd>, etc.:  color hex values</li>
+<li> <kbd>rgb(), rgba(), cmyk(), cmyka(), hsl(), hsla()</kbd>:  color functions</li>
+<li> <kbd>s, t, u, v, n, i, j, w, h, z, r, g, b, a, o, c, y, m, k</kbd>:  symbols</li>
+<li> <kbd>abs(</kbd><em>x</em><kbd>)</kbd>:  absolute value function</li>
+<li> <kbd>acos(</kbd><em>x</em><kbd>)</kbd>:  arc cosine function</li>
+<li> <kbd>alt(</kbd><em>x</em><kbd>)</kbd>:  sign alternation function (returns 1 if <kbd>int(</kbd><em>x</em><kbd>)</kbd> is even, -1 if <kbd>int(</kbd><em>x</em><kbd>)</kbd> is odd)</li>
+<li> <kbd>asin(</kbd><em>x</em><kbd>)</kbd>:  arc sine function</li>
+<li> <kbd>atan(</kbd><em>x</em><kbd>)</kbd>:  arc tangent function</li>
+<li> <kbd>atan2(</kbd><em>y</em>,<em>x</em><kbd>)</kbd>:  arc tangent function of two variables</li>
+<li> <kbd>ceil(</kbd><em>x</em><kbd>)</kbd>: smallest integral value not less than argument</li>
+<li> <kbd>cos(</kbd><em>x</em><kbd>)</kbd>:  cosine function</li>
+<li> <kbd>debug(</kbd><em>x</em><kbd>)</kbd>:  print value for debugging</li>
+<li> <kbd>exp(</kbd><em>x</em><kbd>)</kbd>:  natural exponential function (<em>e<sup>x</sup></em>)</li>
+<li> <kbd>floor(</kbd><em>x</em><kbd>)</kbd>:  largest integral value not greater than argument</li>
+<li> <kbd>hypot(</kbd><em>x</em>,<em>y</em><kbd>)</kbd>:  the square root of x<sup>2</sup>+y<sup>2</sup></li>
+<li> <kbd>int(</kbd><em>x</em><kbd>)</kbd>:  greatest integer function (returns greatest integer less than or equal to <em>x</em>)</li>
+<li> <kbd>ln(</kbd><em>x</em><kbd>)</kbd>:  natural logarithm function</li>
+<li> <kbd>log(</kbd><em>x</em><kbd>)</kbd>:  logarithm base 10</li>
+<li> <kbd>max(</kbd><em>x</em>,</b> <em>y</em><kbd>)</kbd>:  maximum of <em>x</em> and <em>y</em></li>
+<li> <kbd>min(</kbd><em>x</em>,</b> <em>y</em><kbd>)</kbd>:  minimum of <em>x</em> and <em>y</em></li>
+<li> <kbd>mod(</kbd><em>x</em>,</b> <em>y</em><kbd>)</kbd>:  floating-point remainder function</li>
+<li> <kbd>pow(</kbd><em>x</em>,<em>y</em><kbd>)</kbd>:  power function (<em>x<sup>y</sup></em>)</li>
+<li> <kbd>rand()</kbd>:  value uniformly distributed over the interval [0.0, 1.0) with a 2 to the 128th-1 period</li>
+<li> <kbd>sign(</kbd><em>x</em><kbd>)</kbd>:  returns 1 if <em>x</em> is less than 0 otherwise 1</li>
+<li> <kbd>sin(</kbd><em>x</em><kbd>)</kbd>:  sine function</li>
+<li> <kbd>sqrt(</kbd><em>x</em><kbd>)</kbd>:  square root function</li>
+<li> <kbd>tan(</kbd><em>x</em><kbd>)</kbd>:  tangent function</li>
+</ul>
+
+<p>The expression semantics include these rules:</p>
+
+<ul>
+<li>symbols are case insensitive</li>
+<li>only one ternary conditional (e.g. x ? y : z) per statement</li>
+<li>statements are assignments or the final expression to return</li>
+<li>an assignment starts a statement, it is not an operator</li>
+<li>assignments to built-ins do not throw errors and have no effect;  e.g. <kbd>r=3.0; r</kbd> returns the pixel red color value, not 3.0</li>
+</ul>
+
+<h5>Source Image</h5>
+
+<p>The default image for <kbd>p</kbd>, <kbd>r</kbd>, <kbd>g</kbd>, <kbd>b</kbd>, <kbd>a</kbd>, etc. is <kbd>s</kbd>  which refers to the current image being looked at in <a href="../www/command-line-options.html#format" target="magick-options">%[fx: ]</a> and <a href="../www/command-line-options.html#format" target="magick-options">%[pixel: ]</a> escapes.  The <kbd>-fx</kbd> image <kbd>s</kbd> defaults to the first (zeroth) image <kbd>u</kbd>.  The index of <kbd>s</kbd> is given by <kbd>t</kbd>.</p>
+
+<p>The symbol <kbd>u</kbd> refers to the first (zeroth) image in the current image sequence, <kbd>v</kbd> the second image.  Other images can be referred to using a index on any image reference (usually <kbd>u</kbd>), a negative index counts from the end.  For example, <kbd>u[2]</kbd> is the third image, <kbd>u[-1]</kbd> is the last image, and <kbd>u[t]</kbd> is also image <kbd>s</kbd>.</p>
+
+<p>For example to reduce the intensity of the red channel by 50%, use:</p>
+
+<pre class="text">
+  convert image.png -channel red -fx 'u/2.0' image.jpg
+</pre>
+
+<h5>Accessing Pixels</h5>
+
+<p>All color values are in the range of 0.0 to 1.0.  The alpha channel ranges from 0.0 (fully transparent) to 1.0 (fully opaque).
+
+<p>The pixels are processed one at a time, but a different pixel of a image can be specified with a pixel index represented by <kbd>p</kbd>. For example,</p>
+
+<pre class="text">
+   p[-1].g      Green value of pixel to the immediate left of current
+   p[-1,-1].r   Red value, diagonally left and up from current pixel
+</pre>
+
+<p>To specify an absolute position, use braces, rather than brackets.</p>
+
+<pre class="text">
+  p{12,34}.b   is the blue pixel at image location 12,34
+</pre>
+
+<p>The other symbols specify the value you wish to retrieve.</p>
+
+<p>A pixel outside the boundary of the image has a value dictated by the <a href="../www/command-line-options.html#virtual-pixel" target="magick-options">-virtual-pixel</a> option setting.</p>
+
+<p>Use the <a href="../www/command-line-options.html#interpolate" target="magick-options">-interpolate</a> setting to specify how pixels are blended. The default is bi-linear interpolation.</p>
+
+<h5>Apply an Expression to Select Image Channels</h5>
+
+<p>The <a href="../www/command-line-options.html#channel" target="magick-options">-channel</a> setting can be used to specify the output channel of the result. If no output channel is given the result is set over all channels, except the opacity channel. For example, suppose you want to replace the red channel of <kbd>alpha.png</kbd> with the average of the green channels from the images <kbd>alpha.png</kbd> and <kbd>beta.png</kbd>, use:</p>
+
+<pre class="text">
+  convert alpha.png beta.png -channel red -fx '(u.g+v.g)/2' gamma.png
+</pre>
+
+<p>Integer pixel references retrieve the color of the pixel referred to, however non-integer references return a blended color according to the current <a href="../www/command-line-options.html#interpolate" target="magick-options">-interpolate</a> setting.</p>
+
+
+<h5>Results</h5>
+
+<p>The <kbd>-fx</kbd> operator evaluates the given expression once for each pixel in the first <em>u</em> image for each defined <a href="../www/command-line-options.html#channel" target="magick-options">-channel</a>. The resulting value is placed in a copy (clone) of that first image.  This new image replaces all images in the current image sequence.  As such in the previous example, the updated <kbd>alpha.png</kbd> replaces both the original <kbd>alpha.png</kbd> and <kbd>beta.png</kbd> images, before being saved as <kbd>gamma.png</kbd></p>
+
+<p>The current image <kbd>s</kbd> is set to the first <kbd>u</kbd> image, and <kbd>t</kbd> to its index, 0.  The symbols <kbd>i</kbd> and <kbd>j</kbd> define the current pixel being processed.</p>
+
+
+<p>The value escape <kbd>%[fx: ]</kbd> is evaluated once only for each image in the current image sequence, with <kbd>s</kbd> and <kbd>t</kbd> specifying which image is being referred to <kbd>i</kbd> and <kbd>j</kbd> is set to zero and the current channel is set to red (<a href="../www/command-line-options.html#channel" target="magick-options">-channel</a> is ignored).</p>
+
+<p>The color escape <kbd>%[pixel: ]</kbd> is evaluated once per image and per color channel in that image (<a href="../www/command-line-options.html#channel" target="magick-options">-channel</a> is ignored), The values generated are then converted into a color string (named color or hex color value).  The symbols <kbd>i</kbd> and <kbd>j</kbd> are set to zero and <kbd>s</kbd> and <kbd>t</kbd> define the current image.</p>
+
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="714241838">Discourse Server</a> &bull;
+    <a href="../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://studio.webbyland.com/ImageMagick/MagickStudio/scripts/MagickStudio.cgi" target="583919985">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

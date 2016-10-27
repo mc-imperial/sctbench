@@ -1,0 +1,73 @@
+/* 
+ * Custom rules for skins/standard/global.css.
+ * The rules you put here override rules in that stylesheet.
+ */
+
+body {
+	margin: 0;
+	padding: 30px 15px 2px 15px;
+	background: #fff url("https://www.mozilla.org/images/subsite_back.gif") repeat-x;
+}
+
+#header {
+	margin-bottom: 0.5em;
+}
+
+#header .links {
+	font-size: 90%;
+}
+
+#header .btn, #header .txt {
+	font-size: 100%;
+}
+
+#mozilla-org a {
+	float: right;
+	position: absolute;
+	top: 0;
+	right: 30px;
+	display: block;
+	text-indent: -5000em;
+	width: 110px;
+	height: 25px;
+	text-decoration: none;
+	background: url("https://www.mozilla.org/images/subsite_mozilla-org.gif") no-repeat;
+	margin-bottom: 1.5em;
+	outline: none;
+}
+
+#header #information {
+	color: #8f97aa;
+	font-size: small;
+}
+
+pre
+{
+    font-size: medium;
+}
+
+.bz_comment_head {
+	padding: 2px 1em;
+}
+
+.bz_comment_number {
+	float: right;
+}
+
+.field_label {
+    text-align: left;
+}
+
+#attachment_table {
+        width: 50em;
+}
+
+/* createaccount styling */
+.support_div {
+    width: 40%;
+    font-size: 80%;
+}
+
+.support_div > img {
+  padding: 5px 20px;
+}

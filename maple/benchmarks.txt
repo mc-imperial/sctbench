@@ -1,0 +1,60 @@
+bugs:
+streamcluster x3
+  execution time: 1.1865978241 seconds
+  Number of important scheduling points 926
+
+ferret
+  
+
+
+no bugs:
+raytrace
+  with 2 manually added scheduling points. undef barrier_wrapper.
+  execution time: 3.22757101059 seconds
+  Number of important scheduling points 19
+  
+vips 10          (old: GThread-ERROR)
+  without mem ops
+  execution time: 3.1753680706 seconds
+  Number of important scheduling points 923
+  
+  with mem ops
+  execution time: 3.0699160099 seconds
+  Number of important scheduling points 1375
+  
+
+no bugs and no synchronisation:
+swaptions
+blackscholes
+ - reduced NUM_RUNS
+ - seeded atomicity violation.
+canneal (uses barriers, but only 1 scheduling point)
+
+slow:
+bodytrack     signal 11 (segfault) (13 hours db=1)
+ - lots of bugs. but it shouldn't crash. cyclic.
+
+fluidanimate  SLOW
+  without mem ops
+  execution time: 4.44068408012 seconds
+  Number of important scheduling points 45298
+
+facesim       SLOW
+  without mem ops
+  execution time: 220.305228949 seconds
+  Number of important scheduling points 9992
+  
+
+
+ dedup ?           MEMORY
+ x264 ?            crash (even without maple)
+
+ freqmine 4       SERIAL ONLY
+
+
+
+
+
+
+
+

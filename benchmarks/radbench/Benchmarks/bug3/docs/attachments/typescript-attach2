@@ -1,0 +1,246 @@
+Script started on Wed 11 Mar 2009 14:01:54 NZDT
+]0;paul@strangepork:~[?1034h[01;32mpaul@strangepork[01;34m ~ $[00m mkdir /tmp/bug478336
+]0;paul@strangepork:~[01;32mpaul@strangepork[01;34m ~ $[00m cd $_
+]0;paul@strangepork:/tmp/bug478336[01;32mpaul@strangepork[01;34m /tmp/bug478336 $[00m wget http://ftp.mozilla.org/pub/mozilla.org/js/js-1.8.0-rc1.tar.gz
+--2009-03-11 14:02:06--  http://ftp.mozilla.org/pub/mozilla.org/js/js-1.8.0-rc1.tar.gz
+Resolving ftp.mozilla.org... 63.245.208.138
+Connecting to ftp.mozilla.org|63.245.208.138|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1310344 (1.2M) [application/x-gzip]
+Saving to: `js-1.8.0-rc1.tar.gz'
+
+ 0% [                                                                                       ] 0           --.-K/s               1% [>                                                                                      ] 18,886      55.6K/s               3% [=>                                                                                     ] 40,774      60.1K/s               7% [=====>                                                                                 ] 92,758      64.9K/s               7% [=====>                                                                                 ] 100,966     57.0K/s               8% [======>                                                                                ] 116,014     55.0K/s              13% [===========>                                                                           ] 183,046     74.8K/s              23% [===================>                                                                   ] 302,062      108K/s              30% [=========================>                                                             ] 406,030      115K/s  eta 8s      31% [==========================>                                                            ] 414,238      107K/s  eta 8s      32% [===========================>                                                           ] 427,918      102K/s  eta 8s      37% [===============================>                                                       ] 493,582      113K/s  eta 7s      37% [===============================>                                                       ] 494,950      103K/s  eta 7s      38% [================================>                                                      ] 503,158     93.1K/s  eta 7s      39% [=================================>                                                     ] 518,206      101K/s  eta 9s      44% [=====================================>                                                 ] 583,870      114K/s  eta 9s      50% [==========================================>                                            ] 660,478      115K/s  eta 7s      51% [===========================================>                                           ] 668,686     93.3K/s  eta 7s      52% [============================================>                                          ] 685,062     66.4K/s  eta 7s      57% [================================================>                                      ] 750,766     82.1K/s  eta 6s      68% [==========================================================>                            ] 899,806      116K/s  eta 6s      70% [============================================================>                          ] 927,238      110K/s  eta 6s      71% [=============================================================>                         ] 935,446     97.1K/s  eta 4s      72% [==============================================================>                        ] 950,494      109K/s  eta 4s      77% [==================================================================>                    ] 1,014,790    122K/s  eta 4s      89% [=============================================================================>         ] 1,178,950    152K/s  eta 1s      90% [=============================================================================>         ] 1,183,054    132K/s  eta 1s      90% [=============================================================================>         ] 1,188,526    127K/s  eta 1s      92% [===============================================================================>       ] 1,207,678    129K/s  eta 1s      96% [==================================================================================>    ] 1,263,766    139K/s  eta 1s      100%[======================================================================================>] 1,310,344    150K/s   in 11s     
+
+2009-03-11 14:02:18 (112 KB/s) - `js-1.8.0-rc1.tar.gz' saved [1310344/1310344]
+
+]0;paul@strangepork:/tmp/bug478336[01;32mpaul@strangepork[01;34m /tmp/bug478336 $[00m gunzip -c js-1.8.0-rc1.tar.gz | tar xf -
+]0;paul@strangepork:/tmp/bug478336[01;32mpaul@strangepork[01;34m /tmp/bug478336 $[00m cd js/src
+]0;paul@strangepork:/tmp/bug478336/js/src[01;32mpaul@strangepork[01;34m /tmp/bug478336/js/src $[00m wget -O- https://bug478336.bugzilla.mozilla.org/attachment.cgi?id=366581 | patch -p0
+--2009-03-11 14:02:29--  https://bug478336.bugzilla.mozilla.org/attachment.cgi?id=366581
+Resolving bug478336.bugzilla.mozilla.org... 63.245.209.86
+Connecting to bug478336.bugzilla.mozilla.org|63.245.209.86|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4663 (4.6K) [text/plain]
+Saving to: `STDOUT'
+
+ 0% [                                                                                       ] 0           --.-K/s              100%[======================================================================================>] 4,663       --.-K/s   in 0s      
+
+2009-03-11 14:02:30 (455 MB/s) - `-' saved [4663/4663]
+
+patching file jscntxt.c
+patching file jsgc.c
+patching file jsgc.h
+]0;paul@strangepork:/tmp/bug478336/js/src[01;32mpaul@strangepork[01;34m /tmp/bug478336/js/src $[00m LD=gcc XCFLAGS="$(nspr-config --cflags)" XLDFLAGS="$(nspr-config --libs)" JS_THREADSAFE =1 make -f Makefile.ref
+cat: ../../dist/Linux_All_DBG.OBJ/nspr/Version: No such file or directory
+cd editline; make -f Makefile.ref all
+make[1]: Entering directory `/tmp/bug478336/js/src/editline'
+gcc -o Linux_All_DBG.OBJ/editline.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -DXP_UNIX -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul  -DJSFILE -I/usr/include/nspr -DANSI_ARROWS -DHAVE_TCGETATTR -DHIDE -DUSE_DIRENT -DSYS_UNIX -DHAVE_STDLIB -DUNIQUE_HISTORY editline.c
+editline.c: In function ‘readline’:
+editline.c:1038: warning: implicit declaration of function ‘getpid’
+editline.c: In function ‘add_history’:
+editline.c:1051: warning: pointer targets in passing argument 2 of ‘strcmp’ differ in signedness
+gcc -o Linux_All_DBG.OBJ/sysunix.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -DXP_UNIX -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul  -DJSFILE -I/usr/include/nspr -DANSI_ARROWS -DHAVE_TCGETATTR -DHIDE -DUSE_DIRENT -DSYS_UNIX -DHAVE_STDLIB -DUNIQUE_HISTORY sysunix.c
+ar rv Linux_All_DBG.OBJ/libedit.a Linux_All_DBG.OBJ/editline.o Linux_All_DBG.OBJ/sysunix.o
+ar: creating Linux_All_DBG.OBJ/libedit.a
+a - Linux_All_DBG.OBJ/editline.o
+a - Linux_All_DBG.OBJ/sysunix.o
+echo Linux_All_DBG.OBJ/libedit.a
+Linux_All_DBG.OBJ/libedit.a
+make[1]: Leaving directory `/tmp/bug478336/js/src/editline'
+make -f Makefile.ref  Linux_All_DBG.OBJ/libjs.a Linux_All_DBG.OBJ/libjs.so Linux_All_DBG.OBJ/js  Linux_All_DBG.OBJ/jsautocfg.h Linux_All_DBG.OBJ/jscpucfg Linux_All_DBG.OBJ/jscpucfg.o
+cat: ../../dist/Linux_All_DBG.OBJ/nspr/Version: No such file or directory
+make[1]: Entering directory `/tmp/bug478336/js/src'
+make[1]: Circular jscpucfg.h <- Linux_All_DBG.OBJ/jsautocfg.h dependency dropped.
+gcc -o Linux_All_DBG.OBJ/jscpucfg.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jscpucfg.c
+gcc -o Linux_All_DBG.OBJ/jscpucfg Linux_All_DBG.OBJ/jscpucfg.o
+make[1]: Circular Linux_All_DBG.OBJ/jsautocfg.h <- Linux_All_DBG.OBJ/jsautocfg.h dependency dropped.
+rm -f Linux_All_DBG.OBJ/jsautocfg.h
+Linux_All_DBG.OBJ/jscpucfg > Linux_All_DBG.OBJ/jsautocfg.h
+gcc -o Linux_All_DBG.OBJ/jsapi.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsapi.c
+gcc -o Linux_All_DBG.OBJ/jsarena.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsarena.c
+gcc -o Linux_All_DBG.OBJ/jsarray.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsarray.c
+gcc -o Linux_All_DBG.OBJ/jsatom.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsatom.c
+gcc -o Linux_All_DBG.OBJ/jsbool.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsbool.c
+gcc -o Linux_All_DBG.OBJ/jscntxt.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jscntxt.c
+gcc -o Linux_All_DBG.OBJ/jsdate.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsdate.c
+gcc -o Linux_All_DBG.OBJ/jsdbgapi.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsdbgapi.c
+gcc -o Linux_All_DBG.OBJ/jsdhash.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsdhash.c
+gcc -o Linux_All_DBG.OBJ/jsdtoa.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsdtoa.c
+gcc -o Linux_All_DBG.OBJ/jsemit.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsemit.c
+gcc -o Linux_All_DBG.OBJ/jsexn.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsexn.c
+gcc -o Linux_All_DBG.OBJ/jsfun.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsfun.c
+gcc -o Linux_All_DBG.OBJ/jsgc.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsgc.c
+gcc -o Linux_All_DBG.OBJ/jshash.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jshash.c
+gcc -o Linux_All_DBG.OBJ/jsinterp.o -c -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr  jsinterp.c
+gcc -o Linux_All_DBG.OBJ/jsinvoke.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsinvoke.c
+gcc -o Linux_All_DBG.OBJ/jsiter.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsiter.c
+gcc -o Linux_All_DBG.OBJ/jslock.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jslock.c
+gcc -o Linux_All_DBG.OBJ/jslog2.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jslog2.c
+gcc -o Linux_All_DBG.OBJ/jslong.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jslong.c
+gcc -o Linux_All_DBG.OBJ/jsmath.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsmath.c
+gcc -o Linux_All_DBG.OBJ/jsnum.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsnum.c
+gcc -o Linux_All_DBG.OBJ/jsobj.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsobj.c
+gcc -o Linux_All_DBG.OBJ/jsopcode.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsopcode.c
+gcc -o Linux_All_DBG.OBJ/jsparse.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsparse.c
+gcc -o Linux_All_DBG.OBJ/jsprf.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsprf.c
+gcc -o Linux_All_DBG.OBJ/jsregexp.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsregexp.c
+gcc -o Linux_All_DBG.OBJ/jskwgen.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jskwgen.c
+gcc -o Linux_All_DBG.OBJ/jskwgen -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr -Wl,-R/usr/lib/nspr -L/usr/lib/nspr -lplds4 -lplc4 -lnspr4 -lpthread -ldl -lm Linux_All_DBG.OBJ/jskwgen.o
+Linux_All_DBG.OBJ/jskwgen Linux_All_DBG.OBJ/jsautokw.h
+gcc -o Linux_All_DBG.OBJ/jsscan.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsscan.c
+gcc -o Linux_All_DBG.OBJ/jsscope.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsscope.c
+gcc -o Linux_All_DBG.OBJ/jsscript.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsscript.c
+gcc -o Linux_All_DBG.OBJ/jsstr.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsstr.c
+gcc -o Linux_All_DBG.OBJ/jsutil.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsutil.c
+gcc -o Linux_All_DBG.OBJ/jsxdrapi.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsxdrapi.c
+gcc -o Linux_All_DBG.OBJ/jsxml.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr jsxml.c
+gcc -o Linux_All_DBG.OBJ/prmjtime.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr prmjtime.c
+ar rv Linux_All_DBG.OBJ/libjs.a Linux_All_DBG.OBJ/jsapi.o Linux_All_DBG.OBJ/jsarena.o Linux_All_DBG.OBJ/jsarray.o Linux_All_DBG.OBJ/jsatom.o Linux_All_DBG.OBJ/jsbool.o Linux_All_DBG.OBJ/jscntxt.o Linux_All_DBG.OBJ/jsdate.o Linux_All_DBG.OBJ/jsdbgapi.o Linux_All_DBG.OBJ/jsdhash.o Linux_All_DBG.OBJ/jsdtoa.o Linux_All_DBG.OBJ/jsemit.o Linux_All_DBG.OBJ/jsexn.o Linux_All_DBG.OBJ/jsfun.o Linux_All_DBG.OBJ/jsgc.o Linux_All_DBG.OBJ/jshash.o Linux_All_DBG.OBJ/jsinterp.o Linux_All_DBG.OBJ/jsinvoke.o Linux_All_DBG.OBJ/jsiter.o Linux_All_DBG.OBJ/jslock.o Linux_All_DBG.OBJ/jslog2.o Linux_All_DBG.OBJ/jslong.o Linux_All_DBG.OBJ/jsmath.o Linux_All_DBG.OBJ/jsnum.o Linux_All_DBG.OBJ/jsobj.o Linux_All_DBG.OBJ/jsopcode.o Linux_All_DBG.OBJ/jsparse.o Linux_All_DBG.OBJ/jsprf.o Linux_All_DBG.OBJ/jsregexp.o Linux_All_DBG.OBJ/jsscan.o Linux_All_DBG.OBJ/jsscope.o Linux_All_DBG.OBJ/jsscript.o Linux_All_DBG.OBJ/jsstr.o Linux_All_DBG.OBJ/jsutil.o Linux_All_DBG.OBJ/jsxdrapi.o Linux_All_DBG.OBJ/jsxml.o Linux_All_DBG.OBJ/prmjtime.o
+ar: creating Linux_All_DBG.OBJ/libjs.a
+a - Linux_All_DBG.OBJ/jsapi.o
+a - Linux_All_DBG.OBJ/jsarena.o
+a - Linux_All_DBG.OBJ/jsarray.o
+a - Linux_All_DBG.OBJ/jsatom.o
+a - Linux_All_DBG.OBJ/jsbool.o
+a - Linux_All_DBG.OBJ/jscntxt.o
+a - Linux_All_DBG.OBJ/jsdate.o
+a - Linux_All_DBG.OBJ/jsdbgapi.o
+a - Linux_All_DBG.OBJ/jsdhash.o
+a - Linux_All_DBG.OBJ/jsdtoa.o
+a - Linux_All_DBG.OBJ/jsemit.o
+a - Linux_All_DBG.OBJ/jsexn.o
+a - Linux_All_DBG.OBJ/jsfun.o
+a - Linux_All_DBG.OBJ/jsgc.o
+a - Linux_All_DBG.OBJ/jshash.o
+a - Linux_All_DBG.OBJ/jsinterp.o
+a - Linux_All_DBG.OBJ/jsinvoke.o
+a - Linux_All_DBG.OBJ/jsiter.o
+a - Linux_All_DBG.OBJ/jslock.o
+a - Linux_All_DBG.OBJ/jslog2.o
+a - Linux_All_DBG.OBJ/jslong.o
+a - Linux_All_DBG.OBJ/jsmath.o
+a - Linux_All_DBG.OBJ/jsnum.o
+a - Linux_All_DBG.OBJ/jsobj.o
+a - Linux_All_DBG.OBJ/jsopcode.o
+a - Linux_All_DBG.OBJ/jsparse.o
+a - Linux_All_DBG.OBJ/jsprf.o
+a - Linux_All_DBG.OBJ/jsregexp.o
+a - Linux_All_DBG.OBJ/jsscan.o
+a - Linux_All_DBG.OBJ/jsscope.o
+a - Linux_All_DBG.OBJ/jsscript.o
+a - Linux_All_DBG.OBJ/jsstr.o
+a - Linux_All_DBG.OBJ/jsutil.o
+a - Linux_All_DBG.OBJ/jsxdrapi.o
+a - Linux_All_DBG.OBJ/jsxml.o
+a - Linux_All_DBG.OBJ/prmjtime.o
+echo Linux_All_DBG.OBJ/libjs.a
+Linux_All_DBG.OBJ/libjs.a
+gcc -shared  -o Linux_All_DBG.OBJ/libjs.so Linux_All_DBG.OBJ/jsapi.o Linux_All_DBG.OBJ/jsarena.o Linux_All_DBG.OBJ/jsarray.o Linux_All_DBG.OBJ/jsatom.o Linux_All_DBG.OBJ/jsbool.o Linux_All_DBG.OBJ/jscntxt.o Linux_All_DBG.OBJ/jsdate.o Linux_All_DBG.OBJ/jsdbgapi.o Linux_All_DBG.OBJ/jsdhash.o Linux_All_DBG.OBJ/jsdtoa.o Linux_All_DBG.OBJ/jsemit.o Linux_All_DBG.OBJ/jsexn.o Linux_All_DBG.OBJ/jsfun.o Linux_All_DBG.OBJ/jsgc.o Linux_All_DBG.OBJ/jshash.o Linux_All_DBG.OBJ/jsinterp.o Linux_All_DBG.OBJ/jsinvoke.o Linux_All_DBG.OBJ/jsiter.o Linux_All_DBG.OBJ/jslock.o Linux_All_DBG.OBJ/jslog2.o Linux_All_DBG.OBJ/jslong.o Linux_All_DBG.OBJ/jsmath.o Linux_All_DBG.OBJ/jsnum.o Linux_All_DBG.OBJ/jsobj.o Linux_All_DBG.OBJ/jsopcode.o Linux_All_DBG.OBJ/jsparse.o Linux_All_DBG.OBJ/jsprf.o Linux_All_DBG.OBJ/jsregexp.o Linux_All_DBG.OBJ/jsscan.o Linux_All_DBG.OBJ/jsscope.o Linux_All_DBG.OBJ/jsscript.o Linux_All_DBG.OBJ/jsstr.o Linux_All_DBG.OBJ/jsutil.o Linux_All_DBG.OBJ/jsxdrapi.o Linux_All_DBG.OBJ/jsxml.o Linux_All_DBG.OBJ/prmjtime.o  -Wl,-R/usr/lib/nspr -L/usr/lib/nspr -lplds4 -lplc4 -lnspr4 -lpthread -ldl -lm -L./../../dist/lib -lnspr4
+/usr/lib/gcc/i686-pc-linux-gnu/4.1.2/../../../../i686-pc-linux-gnu/bin/ld: warning: creating a DT_TEXTREL in object.
+gcc -o Linux_All_DBG.OBJ/js.o -c -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr js.c
+gcc -o Linux_All_DBG.OBJ/js -Wall -Wno-format -MMD -DGCC_OPT_BUG -g3 -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R -DX86_LINUX  -DDEBUG -DDEBUG_paul -DJS_THREADSAFE -DEDITLINE -ILinux_All_DBG.OBJ -I./../../dist/include/nspr -I/usr/include/nspr Linux_All_DBG.OBJ/js.o Linux_All_DBG.OBJ/libjs.a -Wl,-R/usr/lib/nspr -L/usr/lib/nspr -lplds4 -lplc4 -lnspr4 -lpthread -ldl -lm -L./../../dist/lib -lnspr4 \
+	    editline/Linux_All_DBG.OBJ/libedit.a
+make[1]: `Linux_All_DBG.OBJ/jsautocfg.h' is up to date.
+make[1]: `Linux_All_DBG.OBJ/jscpucfg' is up to date.
+make[1]: `Linux_All_DBG.OBJ/jscpucfg.o' is up to date.
+make[1]: Leaving directory `/tmp/bug478336/js/src'
+]0;paul@strangepork:/tmp/bug478336/js/src[01;32mpaul@strangepork[01;34m /tmp/bug478336/js/src $[00m cat > test.c <<!
+> #include <stdlib.h>
+> #include <pthread.h>
+> 
+> #include "jsapi.h"
+> 
+> static JSRuntime *rt;
+> 
+> #define THREADS 100
+> 
+> static void * testfunc(void *ignored) {
+> 
+> int i;
+> for (i = 0; i < 100; ++i) {
+>     JSContext *cx = JS_NewContext(rt, 0x1000);
+>     if (cx) {
+>         JS_BeginRequest(cx);
+>         JS_DestroyContext(cx);
+>     }
+> }
+> 
+>     return NULL;
+> }
+> 
+> int main(void) {
+> 
+>     rt = JS_NewRuntime(0x100000);
+>     if (rt == NULL)
+>         return 1;
+> 
+>     /* Uncommenting this to guarantee there's always at least
+>      * one context in the runtime prevents this problem. */
+> //  JSContext *cx = JS_NewContext(rt, 0x1000);
+> 
+>     int i;
+>     pthread_t thread[THREADS];
+>     for (i = 0; i < THREADS; i++) {
+>         pthread_create(&thread[i], NULL, testfunc, NULL);
+>     }
+> 
+>     for (i = 0; i < THREADS; i++) {
+>         pthread_join(thread[i], NULL);
+>     }
+> 
+>     return 0;
+> }
+> !
+]0;paul@strangepork:/tmp/bug478336/js/src[01;32mpaul@strangepork[01;34m /tmp/bug478336/js/src $[00m gcc -g -DXP_UNIX -DJS_THREADSAFE -I. -I Linux_All_DBG.OBJ/ test.c -L Linux_All_DBG.OBJ/  -ljs
+]0;paul@strangepork:/tmp/bug478336/js/src[01;32mpaul@strangepork[01;34m /tmp/bug478336/js/src $[00m export LD_LIBRARY_PATH=Linux_All_DBG.OBJ/
+]0;paul@strangepork:/tmp/bug478336/js/src[01;32mpaul@strangepork[01;34m /tmp/bug478336/js/src $[00m ./a.out 
+Segmentation fault
+]0;paul@strangepork:/tmp/bug478336/js/src[01;32mpaul@strangepork[01;34m /tmp/bug478336/js/src $[00m gdb ./a.out 
+[?1034hGNU gdb 6.8
+Copyright (C) 2008 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "i686-pc-linux-gnu"...
+(gdb) run
+Starting program: /tmp/bug478336/js/src/a.out 
+[Thread debugging using libthread_db enabled]
+[New Thread 0xb7c87950 (LWP 16656)]
+[New Thread 0xb7c86b90 (LWP 16659)]
+[New Thread 0xb7485b90 (LWP 16660)]
+[New Thread 0xb6c84b90 (LWP 16661)]
+[Thread 0xb7c86b90 (LWP 16659) exited]
+[New Thread 0xb62ffb90 (LWP 16662)]
+[New Thread 0xb5afeb90 (LWP 16663)]
+[New Thread 0xb52fdb90 (LWP 16664)]
+[New Thread 0xb4afcb90 (LWP 16665)]
+[New Thread 0xb42fbb90 (LWP 16666)]
+[New Thread 0xb3afab90 (LWP 16667)]
+[New Thread 0xb32f9b90 (LWP 16668)]
+[New Thread 0xb2af8b90 (LWP 16669)]
+[New Thread 0xb22f7b90 (LWP 16670)]
+
+Program received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0xb32f9b90 (LWP 16668)]
+0xb7ee8901 in js_TraceContext (trc=0xb32f92d0, acx=0x8082a50) at jsgc.c:2768
+2768	        if (a == acx->stackPool.first.next &&
+(gdb) bt
+#0  0xb7ee8901 in js_TraceContext (trc=0xb32f92d0, acx=0x8082a50) at jsgc.c:2768
+#1  0xb7ee8f0a in js_TraceRuntime (trc=0xb32f92d0, allAtoms=0) at jsgc.c:2875
+#2  0xb7ee9975 in js_GC (cx=0x80b6588, gckind=GC_NORMAL) at jsgc.c:3235
+#3  0xb7eb908a in js_DestroyContext (cx=0x80b6588, mode=JSDCM_FORCE_GC) at jscntxt.c:443
+#4  0xb7ea3a9c in JS_DestroyContext (cx=0x80b6588) at jsapi.c:1035
+#5  0x08048653 in testfunc (ignored=0x0) at test.c:17
+#6  0xb7cf41b2 in start_thread () from /lib/libpthread.so.0
+#7  0xb7dd0a5e in clone () from /lib/libc.so.6
+(gdb) p a
+$1 = (JSArena *) 0x0
+(gdb) p acx->stackPool
+$2 = {first = {next = 0x0, base = 134752916, limit = 134752916, avail = 134752916}, current = 0x8082a84, arenasize = 4096, 
+  mask = 3, quotap = 0x8082a7c}
+(gdb) quit
+The program is running.  Exit anyway? (y or n) EOF [assumed Y]
+]0;paul@strangepork:/tmp/bug478336/js/src[01;32mpaul@strangepork[01;34m /tmp/bug478336/js/src $[00m exit
+
+Script done on Wed 11 Mar 2009 14:04:15 NZDT

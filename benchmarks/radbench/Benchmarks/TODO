@@ -1,0 +1,2 @@
+--nspr and JS bugs seem to be linking with my system nspr instead of the
+compiled one--need to fix this.

@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: MagickWand, C API for ImageMagick: Deprecated Methods</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="magickwc, api, for, imagemagick:, deprecated, methods, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../../index.html"><img id="titlebar-west" src="../../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="309479466"><img id="titlebar-west" src="../../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img src="../../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../../index.html"><img id="titlebar-east" src="../../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../../index.html">About ImageMagick</a>
+      <a href="../../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="2068980661" class="sub">Usage</a>
+      <a href="../../www/api.html">Program Interfaces</a>
+      <a href="../../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../../Magick++/" target="2137102011" class="sub">Magick++</a>
+      <a href="../../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/install-source.html">Install from Source</a>
+      <a href="../../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../../www/binary-releases.html">Binary Releases</a>
+      <a href="../../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../../www/sitemap.html">Site Map</a>
+			<a href="../../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../../www/sponsors.html">Sponsors</a>
+  <a href="http://www.produkte24.com" class="sponsor" target="sponsor">Kataloge zum<br />Herunterladen</a><!-- 200910010000 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p class="navigation-index">[ <a href="#DrawGetFillAlpha">DrawGetFillAlpha</a> | <a href="#DrawGetStrokeAlpha">DrawGetStrokeAlpha</a> | <a href="#DrawPeekGraphicWand">DrawPeekGraphicWand</a> | <a href="#DrawPopGraphicContext">DrawPopGraphicContext</a> | <a href="#DrawPushGraphicContext">DrawPushGraphicContext</a> | <a href="#DrawSetFillAlpha">DrawSetFillAlpha</a> | <a href="#DrawSetStrokeAlpha">DrawSetStrokeAlpha</a> | <a href="#MagickColorFloodfillImage">MagickColorFloodfillImage</a> | <a href="#MagickDescribeImage">MagickDescribeImage</a> | <a href="#MagickGetImageAttribute">MagickGetImageAttribute</a> | <a href="#MagickMatteFloodfillImage">MagickMatteFloodfillImage</a> | <a href="#MagickOpaqueImage">MagickOpaqueImage</a> | <a href="#MagickSetImageAttribute">MagickSetImageAttribute</a> | <a href="#MagickSetImageIndex">MagickSetImageIndex</a> | <a href="#MagickTransparentImage">MagickTransparentImage</a> | <a href="#MagickRegionOfInterestImage">MagickRegionOfInterestImage</a> | <a href="#MagickGetImageSize">MagickGetImageSize</a> | <a href="#MagickWriteImageBlob">MagickWriteImageBlob</a> | <a href="#MagickSetImageVirtualPixelMethod">MagickSetImageVirtualPixelMethod</a> | <a href="#PixelGetNextRow">PixelGetNextRow</a> | <a href="#PixelIteratorGetException">PixelIteratorGetException</a> ]</p>
+
+<div style="margin: auto;">
+  <h2><a name="DrawGetFillAlpha">DrawGetFillAlpha</a></h2>
+</div>
+
+<p>DrawGetFillAlpha() returns the alpha used when drawing using the fill color or fill texture.  Fully opaque is 1.0.</p></ol>
+
+<p>The format of the DrawGetFillAlpha method is:</p>
+
+<pre class="code">
+  double DrawGetFillAlpha(const DrawingWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The drawing wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DrawGetStrokeAlpha">DrawGetStrokeAlpha</a></h2>
+</div>
+
+<p>DrawGetStrokeAlpha() returns the alpha of stroked object outlines.</p></ol>
+
+<p>The format of the DrawGetStrokeAlpha method is:</p>
+
+<pre class="code">
+  double DrawGetStrokeAlpha(const DrawingWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The drawing wand. </p>
+<div style="margin: auto;">
+  <h2><a name="DrawPeekGraphicWand">DrawPeekGraphicWand</a></h2>
+</div>
+
+<p>DrawPeekGraphicWand() returns the current drawing wand.</p></ol>
+
+<p>The format of the PeekDrawingWand method is:</p>
+
+<pre class="code">
+  DrawInfo *DrawPeekGraphicWand(const DrawingWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The drawing wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DrawPopGraphicContext">DrawPopGraphicContext</a></h2>
+</div>
+
+<p>DrawPopGraphicContext() destroys the current drawing wand and returns to the previously pushed drawing wand. Multiple drawing wands may exist. It is an error to attempt to pop more drawing wands than have been pushed, and it is proper form to pop all drawing wands which have been pushed.</p></ol>
+
+<p>The format of the DrawPopGraphicContext method is:</p>
+
+<pre class="code">
+  MagickBooleanType DrawPopGraphicContext(DrawingWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The drawing wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DrawPushGraphicContext">DrawPushGraphicContext</a></h2>
+</div>
+
+<p>DrawPushGraphicContext() clones the current drawing wand to create a new drawing wand.  The original drawing drawing wand(s) may be returned to by invoking PopDrawingWand().  The drawing wands are stored on a drawing wand stack.  For every Pop there must have already been an equivalent Push.</p></ol>
+
+<p>The format of the DrawPushGraphicContext method is:</p>
+
+<pre class="code">
+  MagickBooleanType DrawPushGraphicContext(DrawingWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The drawing wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DrawSetFillAlpha">DrawSetFillAlpha</a></h2>
+</div>
+
+<p>DrawSetFillAlpha() sets the alpha to use when drawing using the fill color or fill texture.  Fully opaque is 1.0.</p></ol>
+
+<p>The format of the DrawSetFillAlpha method is:</p>
+
+<pre class="code">
+  void DrawSetFillAlpha(DrawingWand *wand,const double fill_alpha)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The drawing wand.</p></ol>
+
+<h5>fill_alpha</h5>
+<ol><p>fill alpha</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="DrawSetStrokeAlpha">DrawSetStrokeAlpha</a></h2>
+</div>
+
+<p>DrawSetStrokeAlpha() specifies the alpha of stroked object outlines.</p></ol>
+
+<p>The format of the DrawSetStrokeAlpha method is:</p>
+
+<pre class="code">
+  void DrawSetStrokeAlpha(DrawingWand *wand,const double stroke_alpha)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The drawing wand.</p></ol>
+
+<h5>stroke_alpha</h5>
+<ol><p>stroke alpha.  The value 1.0 is opaque.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickColorFloodfillImage">MagickColorFloodfillImage</a></h2>
+</div>
+
+<p>MagickColorFloodfillImage() changes the color value of any pixel that matches target and is an immediate neighbor.  If the method FillToBorderMethod is specified, the color value is changed for any neighbor pixel that does not match the bordercolor member of image.</p></ol>
+
+<p>The format of the MagickColorFloodfillImage method is:</p>
+
+<pre class="code">
+  MagickBooleanType MagickColorFloodfillImage(MagickWand *wand,
+    const PixelWand *fill,const double fuzz,const PixelWand *bordercolor,
+    const long x,const long y)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>fill</h5>
+<ol><p>The floodfill color pixel wand.</p></ol>
+
+<h5>fuzz</h5>
+<ol><p>By default target must match a particular pixel color exactly.  However, in many cases two colors may differ by a small amount. The fuzz member of image defines how much tolerance is acceptable to consider two colors as the same.  For example, set fuzz to 10 and the color red at intensities of 100 and 102 respectively are now interpreted as the same color for the purposes of the floodfill.</p></ol>
+
+<h5>bordercolor</h5>
+<ol><p>The border color pixel wand.</p></ol>
+
+<h5>x,y</h5>
+<ol><p>The starting location of the operation.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickDescribeImage">MagickDescribeImage</a></h2>
+</div>
+
+<p>MagickDescribeImage() identifies an image by printing its attributes to the file.  Attributes include the image width, height, size, and others.</p></ol>
+
+<p>The format of the MagickDescribeImage method is:</p>
+
+<pre class="code">
+  const char *MagickDescribeImage(MagickWand *wand)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickGetImageAttribute">MagickGetImageAttribute</a></h2>
+</div>
+
+<p>MagickGetImageAttribute() returns a value associated with the specified property.  Use MagickRelinquishMemory() to free the value when you are finished with it.</p></ol>
+
+<p>The format of the MagickGetImageAttribute method is:</p>
+
+<pre class="code">
+  char *MagickGetImageAttribute(MagickWand *wand,const char *property)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>property</h5>
+<ol><p>The property.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickMatteFloodfillImage">MagickMatteFloodfillImage</a></h2>
+</div>
+
+<p>MagickMatteFloodfillImage() changes the transparency value of any pixel that matches target and is an immediate neighbor.  If the method FillToBorderMethod is specified, the transparency value is changed for any neighbor pixel that does not match the bordercolor member of image.</p></ol>
+
+<p>The format of the MagickMatteFloodfillImage method is:</p>
+
+<pre class="code">
+  MagickBooleanType MagickMatteFloodfillImage(MagickWand *wand,
+    const double alpha,const double fuzz,const PixelWand *bordercolor,
+    const long x,const long y)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>alpha</h5>
+<ol><p>The level of transparency: 1.0 is fully opaque and 0.0 is fully transparent.</p></ol>
+
+<h5>fuzz</h5>
+<ol><p>By default target must match a particular pixel color exactly.  However, in many cases two colors may differ by a small amount. The fuzz member of image defines how much tolerance is acceptable to consider two colors as the same.  For example, set fuzz to 10 and the color red at intensities of 100 and 102 respectively are now interpreted as the same color for the purposes of the floodfill.</p></ol>
+
+<h5>bordercolor</h5>
+<ol><p>The border color pixel wand.</p></ol>
+
+<h5>x,y</h5>
+<ol><p>The starting location of the operation.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickOpaqueImage">MagickOpaqueImage</a></h2>
+</div>
+
+<p>MagickOpaqueImage() changes any pixel that matches color with the color defined by fill.</p></ol>
+
+<p>The format of the MagickOpaqueImage method is:</p>
+
+<pre class="code">
+  MagickBooleanType MagickOpaqueImage(MagickWand *wand,
+    const PixelWand *target,const PixelWand *fill,const double fuzz)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>channel</h5>
+<ol><p>The channel(s).</p></ol>
+
+<h5>target</h5>
+<ol><p>Change this target color to the fill color within the image.</p></ol>
+
+<h5>fill</h5>
+<ol><p>The fill pixel wand.</p></ol>
+
+<h5>fuzz</h5>
+<ol><p>By default target must match a particular pixel color exactly.  However, in many cases two colors may differ by a small amount. The fuzz member of image defines how much tolerance is acceptable to consider two colors as the same.  For example, set fuzz to 10 and the color red at intensities of 100 and 102 respectively are now interpreted as the same color for the purposes of the floodfill.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickSetImageAttribute">MagickSetImageAttribute</a></h2>
+</div>
+
+<p>MagickSetImageAttribute() associates a property with an image.</p></ol>
+
+<p>The format of the MagickSetImageAttribute method is:</p>
+
+<pre class="code">
+  MagickBooleanType MagickSetImageAttribute(MagickWand *wand,
+    const char *property,const char *value)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>property</h5>
+<ol><p>The property.</p></ol>
+
+<h5>value</h5>
+<ol><p>The value.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickSetImageIndex">MagickSetImageIndex</a></h2>
+</div>
+
+<p>MagickSetImageIndex() set the current image to the position of the list specified with the index parameter.</p></ol>
+
+<p>The format of the MagickSetImageIndex method is:</p>
+
+<pre class="code">
+  MagickBooleanType MagickSetImageIndex(MagickWand *wand,const long index)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>index</h5>
+<ol><p>The scene number.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickTransparentImage">MagickTransparentImage</a></h2>
+</div>
+
+<p>MagickTransparentImage() changes any pixel that matches color with the color defined by fill.</p></ol>
+
+<p>The format of the MagickTransparentImage method is:</p>
+
+<pre class="code">
+  MagickBooleanType MagickTransparentImage(MagickWand *wand,
+    const PixelWand *target,const double alpha,const double fuzz)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>target</h5>
+<ol><p>Change this target color to specified opacity value within the image.</p></ol>
+
+<h5>alpha</h5>
+<ol><p>The level of transparency: 1.0 is fully opaque and 0.0 is fully transparent.</p></ol>
+
+<h5>fuzz</h5>
+<ol><p>By default target must match a particular pixel color exactly.  However, in many cases two colors may differ by a small amount. The fuzz member of image defines how much tolerance is acceptable to consider two colors as the same.  For example, set fuzz to 10 and the color red at intensities of 100 and 102 respectively are now interpreted as the same color for the purposes of the floodfill.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickRegionOfInterestImage">MagickRegionOfInterestImage</a></h2>
+</div>
+
+<p>MagickRegionOfInterestImage() extracts a region of the image and returns it as a a new wand.</p></ol>
+
+<p>The format of the MagickRegionOfInterestImage method is:</p>
+
+<pre class="code">
+  MagickWand *MagickRegionOfInterestImage(MagickWand *wand,
+    const unsigned long width,const unsigned long height,const long x,
+    const long y)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>width</h5>
+<ol><p>The region width.</p></ol>
+
+<h5>height</h5>
+<ol><p>The region height.</p></ol>
+
+<h5>x</h5>
+<ol><p>The region x offset.</p></ol>
+
+<h5>y</h5>
+<ol><p>The region y offset.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickGetImageSize">MagickGetImageSize</a></h2>
+</div>
+
+<p>MagickGetImageSize() returns the image length in bytes.</p></ol>
+
+<p>The format of the MagickGetImageSize method is:</p>
+
+<pre class="code">
+  MagickBooleanType MagickGetImageSize(MagickWand *wand,
+    MagickSizeType *length)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>length</h5>
+<ol><p>The image length in bytes.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickWriteImageBlob">MagickWriteImageBlob</a></h2>
+</div>
+
+<p>MagickWriteImageBlob() implements direct to memory image formats.  It returns the image as a blob and its length.   Use MagickSetFormat() to set the format of the returned blob (GIF, JPEG,  PNG, etc.).</p></ol>
+
+<p>Use MagickRelinquishMemory() to free the blob when you are done with it.</p></ol>
+
+<p>The format of the MagickWriteImageBlob method is:</p>
+
+<pre class="code">
+  unsigned char *MagickWriteImageBlob(MagickWand *wand,size_t *length)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>length</h5>
+<ol><p>The length of the blob.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="MagickSetImageVirtualPixelMethod">MagickSetImageVirtualPixelMethod</a></h2>
+</div>
+
+<p>MagickSetImageVirtualPixelMethod() sets the image virtual pixel method.</p></ol>
+
+<p>The format of the MagickSetImageVirtualPixelMethod method is:</p>
+
+<pre class="code">
+  VirtualPixelMethod MagickSetImageVirtualPixelMethod(MagickWand *wand,
+    const VirtualPixelMethod method)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>wand</h5>
+<ol><p>The magick wand.</p></ol>
+
+<h5>method</h5>
+<ol><p>The image virtual pixel method : UndefinedVirtualPixelMethod, ConstantVirtualPixelMethod,  EdgeVirtualPixelMethod, MirrorVirtualPixelMethod, or TileVirtualPixelMethod.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelGetNextRow">PixelGetNextRow</a></h2>
+</div>
+
+<p>PixelGetNextRow() returns the next row as an array of pixel wands from the pixel iterator.</p></ol>
+
+<p>The format of the PixelGetNextRow method is:</p>
+
+<pre class="code">
+  PixelWand **PixelGetNextRow(PixelIterator *iterator,
+    unsigned long *number_wands)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>iterator</h5>
+<ol><p>The pixel iterator.</p></ol>
+
+<h5>number_wands</h5>
+<ol><p>The number of pixel wands.</p></ol>
+
+<div style="margin: auto;">
+  <h2><a name="PixelIteratorGetException">PixelIteratorGetException</a></h2>
+</div>
+
+<p>PixelIteratorGetException() returns the severity, reason, and description of any error that occurs when using other methods in this API.</p></ol>
+
+<p>The format of the PixelIteratorGetException method is:</p>
+
+<pre class="code">
+  char *PixelIteratorGetException(const Pixeliterator *iterator,
+    ExceptionType *severity)
+</pre>
+
+<p>A description of each parameter follows:</p></ol>
+
+<h5>iterator</h5>
+<ol><p>The pixel iterator.</p></ol>
+
+<h5>severity</h5>
+<ol><p>The severity of the error is returned here.</p></ol>
+
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="265616191">Discourse Server</a> &bull;
+    <a href="../../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://studio.webbyland.com/ImageMagick/MagickStudio/scripts/MagickStudio.cgi" target="337010010">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>

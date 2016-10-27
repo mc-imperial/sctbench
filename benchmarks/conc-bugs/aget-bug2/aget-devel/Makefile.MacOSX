@@ -1,0 +1,23 @@
+# EnderUNIX Aget Makefile
+# http://www.enderunix.org/aget/
+
+OBJS = main.o Aget.o Misc.o Head.o Signal.o Download.o Resume.o
+CFLAGS = -g -Wall -W 
+# Remove '-pedantic' to prevent myriad of warnings with gcc3.x
+LDFLAGS = -lpthread
+CC = gcc
+PREFIX = /usr/local
+
+all: aget
+
+aget: $(OBJS)
+	$(CC) -o $@ $(OBJS) $(LDFLAGS)
+
+install: aget
+	install -m 755 -s aget  $(PREFIX)/bin/aget
+
+clean: 
+	rm -f aget *.o core.* *~
+
+c:
+	rm -f *core* *~ *log

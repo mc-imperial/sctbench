@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <style type="text/css" media="screen,projection"><!--
+    @import url("../www/magick.css");
+  //--></style>
+  <meta name="verify-v1" content="g222frIIxcQTrvDR3NBRUSKP3AnMNoqxOkIniCEkV7U=" />
+  <link rel="meta" type="application/rdf+xml" title="ICI" href="http://imagemagick.org/ici.rdf" />
+  <title>ImageMagick: MagickWand, C API for ImageMagick</title>
+  <meta http-equiv="Content-Language" content="en-US"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Reply-to" content="magick-users@imagemagick.org"/>
+  <meta name="Generator" content="PHP"/>
+  <meta name="Keywords" content="magickwc, api, for, imagemagick, ImageMagick, ImageMagic, MagickCore, MagickWand, PerlMagick, Magick++, RMagick, PythonMagick, JMagick, TclMagick, Image, Magick, Magic, Wand"/>
+  <meta name="Description" content="ImageMagick® is a software suite to create, edit, and compose bitmap images. It can read, convert and write images in a variety of formats (about 100) including GIF, JPEG, JPEG-2000, PNG, PDF, PhotoCD, TIFF, and DPX. Use ImageMagick to translate, flip, mirror, rotate, scale, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.  ImageMagick is free software delivered as a ready-to-run binary distribution or as source code that you can freely use, copy, modify, and distribute. Its license is compatible with the GPL. It runs on all major operating systems.  The functionality of ImageMagick is typically utilized from the command line or you can use the features from programs written in your favorite programming language. Choose from these interfaces: MagickCore (C), MagickWand (C), ChMagick (Ch), Magick++ (C++), JMagick (Java), L-Magick (Lisp), PascalMagick (Pascal), PerlMagick (Perl), MagickWand for PHP (PHP), PythonMagick (Python), RMagick (Ruby), or TclMagick (Tcl/TK). With a language interface, use ImageMagick to modify or create images automagically and dynamically."/>
+  <meta name="Rating" content="GENERAL"/>
+  <meta name="Robots" content="INDEX, FOLLOW"/>
+  <meta name="Generator" content="ImageMagick Studio LLC"/>
+  <meta name="Author" content="ImageMagick Studio LLC"/>
+  <meta name="Revisit-after" content="2 DAYS"/>
+  <meta name="Resource-type" content="document"/>
+  <meta name="Copyright" content="Copyright (c) 1999-2007 ImageMagick Studio LLC"/>
+  <meta name="Distribution" content="Global"/>
+  <link rel="shortcut icon" href="../images/wand.ico"  type="images/vnd.microsoft.icon"/>
+</head>
+
+<body id="www-imagemagick-org">
+  <table id="titlebar" style="width: 100%;background-color: #f5f5f5" cellpadding="0" cellspacing="0" border="0" summary="ImageMagick">
+    <tbody>
+      <tr valign="top">
+        <td align="left"><a href="../index.html"><img id="titlebar-west" src="../images/script.png" alt="[ImageMagick]" width="350" height="60" border="0" vspace="28" name="titlebar-west"/></a></td>
+        <td align="left"><a href="https://secure.networkredux.com/affiliate/idevaffiliate.html?id=146" target="1689139465"><img id="titlebar-west" src="../images/networkredux.png" alt="[sponsor]" border="0" vspace="45" name="titlebar-west"/></a></td>
+        <td width="99%"><br /></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img src="../images/sprite.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+        <td style="background-color: white" align="right"><a href="../index.html"><img id="titlebar-east" src="../images/logo.jpg" alt="" width="114" height="118" border="0" name="titlebar-east"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="width: 100%" border="0" cellpadding="0" cellspacing="0" summary="">
+  <tbody>
+
+    <tr valign="top" style="height: 100%;">
+      <td id="menu" width="1%" height="100%">
+      <p><a href="#main">Skip to page contents</a></p>
+      <span>[</span>
+      <a href="../index.html">About ImageMagick</a>
+      <a href="../www/command-line-tools.html">Command-line Tools</a>
+      <a href="../www/command-line-processing.html" class="sub">Processing</a>
+      <a href="../www/command-line-options.html" class="sub">Options</a>
+      <a href="http://www.imagemagick.org/Usage/" target="1694843705" class="sub">Usage</a>
+      <a href="../www/api.html">Program Interfaces</a>
+      <a href="../www/magick-wand.html" class="sub">MagickWand</a>
+      <a href="../www/magick-core.html" class="sub">MagickCore</a>
+      <a href="../www/perl-magick.html" class="sub">PerlMagick</a>
+      <a href="../Magick++/" target="2065869293" class="sub">Magick++</a>
+      <a href="../www/architecture.html">Architecture</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/install-source.html">Install from Source</a>
+      <a href="../www/install-source.html#unix" class="sub">Unix</a>
+      <a href="../www/install-source.html#windows" class="sub">Windows</a>
+      <a href="../www/binary-releases.html">Binary Releases</a>
+      <a href="../www/binary-releases.html#unix" class="sub">Unix</a>
+      <a href="../www/binary-releases.html#macosx" class="sub">Mac OS X</a>
+      <a href="../www/binary-releases.html#windows" class="sub">Windows</a>
+      <a href="../www/resources.html">Resources</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/download.html">Download</a>
+  <span>]</span><br /><span>[</span>
+      <a href="../www/sitemap.html">Site Map</a>
+			<a href="../www/links.html" class="sub">Links</a>
+  <span>]</span><br /><br /><span>[</span>
+      <a href="../www/sponsors.html">Sponsors</a>
+  <a href="http://urltra.de/" class="sponsor" target="sponsor">Linkliste URLtra</a><!-- 200711120050 -->
+      <span>]</span>
+      </td>
+
+      <td id="main" valign="top">
+<p>The MagickWand API is the recommended interface between the C programming language and the ImageMagick image processing libraries.  Unlike the <a href="../www/magick-core.html">MagickCore</a> C API, MagickWand uses only a few opaque types.  Accessors are available to set or get important wand properties.  A description of the MagickWand public methods are found here:</p>
+
+<ul>
+  <li><a href="../www/api/magick-wand.html">Magick Wand Methods</a></li>
+  <li><a href="../www/api/magick-property.html">Set or Get Magick Wand Properties</a></li>
+  <li><a href="../www/api/magick-image.html">Magick Wand Image Methods</a></li>
+  <li><a href="../www/api/pixel-iterator.html">Pixel Iterator Methods</a></li>
+  <li><a href="../www/api/pixel-wand.html">Pixel Wand Methods</a></li>
+  <li><a href="../www/api/drawing-wand.html">Image Vector Drawing</a></li>
+  <li><a href="../www/api/magick-deprecate.html">Deprecated Methods</a></li>
+</ul>
+
+<p>After you write your MagickWand program, compile it like this:</p>
+
+<pre class="text">
+  cc `Wand-config --cflags --cppflags` wand.c `Wand-config --ldflags --libs`
+</pre>
+
+<p>Here is a example program that utilizes the MagickWand API to get you started, <a href="../www/source/wand.c">wand.c</a>. It reads an image, creates a thumbnail, and writes the result to disk.</p>
+
+<div class="viewport">
+<pre class="code">
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+#include &lt;wand/MagickWand.h>
+
+int main(int argc,char **argv)
+{
+#define ThrowWandException(wand) \
+{ \
+  char \
+    *description; \
+ \
+  ExceptionType \
+    severity; \
+ \
+  description=MagickGetException(wand,&severity); \
+  (void) fprintf(stderr,"%s %s %lu %s\n",GetMagickModule(),description); \
+  description=(char *) MagickRelinquishMemory(description); \
+  exit(-1); \
+}
+
+  MagickBooleanType
+    status;
+
+  MagickWand
+    *magick_wand;
+
+  if (argc != 3)
+    {
+      (void) fprintf(stdout,"Usage: %s image thumbnail\n",argv[0]);
+      exit(0);
+    }
+  /*
+    Read an image.
+  */
+  MagickWandGenesis();
+  magick_wand=NewMagickWand();  
+  status=MagickReadImage(magick_wand,argv[1]);
+  if (status == MagickFalse)
+    ThrowWandException(magick_wand);
+  /*
+    Turn the images into a thumbnail sequence.
+  */
+  MagickResetIterator(magick_wand);
+  while (MagickNextImage(magick_wand) != MagickFalse)
+    MagickResizeImage(magick_wand,106,80,LanczosFilter,1.0);
+  /*
+    Write the image then destroy it.
+  */
+  status=MagickWriteImages(magick_wand,argv[2],MagickTrue);
+  if (status == MagickFalse)
+    ThrowWandException(magick_wand);
+  magick_wand=DestroyMagickWand(magick_wand);
+  MagickWandTerminus();
+  return(0);
+}
+</pre>
+</div>
+
+<p>Here is another program that shows one way to get and set image pixels with the MagickWand API, <a href="../www/source/contrast.c">contrast.c</a>. It reads an image, applies sigmoidal non-linearity contrast control, and writes the result to disk.</p>
+
+<div class="viewport">
+<pre class="code">
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+#include &lt;math.h>
+#include &lt;wand/MagickWand.h>
+
+int main(int argc,char **argv)
+{
+#define QuantumScale  ((MagickRealType) 1.0/(MagickRealType) QuantumRange)
+#define SigmoidalContrast(x) \
+  (QuantumRange*(1.0/(1+exp(10.0*(0.5-QuantumScale*x)))-0.0066928509)*1.0092503)
+#define ThrowWandException(wand) \
+{ \
+  char \
+    *description; \
+ \
+  ExceptionType \
+    severity; \
+ \
+  description=MagickGetException(wand,&severity); \
+  (void) fprintf(stderr,"%s %s %lu %s\n",GetMagickModule(),description); \
+  description=(char *) MagickRelinquishMemory(description); \
+  exit(-1); \
+}
+
+  long
+    y;
+
+  MagickBooleanType
+    status;
+
+  MagickPixelPacket
+    pixel;
+
+  MagickWand
+    *contrast_wand,
+    *image_wand;
+
+  PixelIterator
+    *contrast_iterator,
+    *iterator;
+
+  PixelWand
+    **contrast_pixels,
+    **pixels;
+
+  register long
+    x;
+
+  unsigned long
+    width;
+
+  if (argc != 3)
+    {
+      (void) fprintf(stdout,"Usage: %s image sigmoidal-image\n",argv[0]);
+      exit(0);
+    }
+  /*
+    Read an image.
+  */
+  MagickWandGenesis();
+  image_wand=NewMagickWand();
+  status=MagickReadImage(image_wand,argv[1]);
+  if (status == MagickFalse)
+    ThrowWandException(image_wand);
+  contrast_wand=CloneMagickWand(image_wand);
+  /*
+    Sigmoidal non-linearity contrast control.
+  */
+  iterator=NewPixelIterator(image_wand);
+  contrast_iterator=NewPixelIterator(contrast_wand);
+  if ((iterator == (PixelIterator *) NULL) ||
+      (contrast_iterator == (PixelIterator *) NULL))
+    ThrowWandException(image_wand);
+  for (y=0; y < (long) MagickGetImageHeight(image_wand); y++)
+  {
+    pixels=PixelGetNextIteratorRow(iterator,&width);
+    contrast_pixels=PixelGetNextIteratorRow(contrast_iterator,&width);
+    if ((pixels == (PixelWand **) NULL) ||
+        (contrast_pixels == (PixelWand **) NULL))
+      break;
+    for (x=0; x < (long) width; x++)
+    {
+      PixelGetMagickColor(pixels[x],&pixel);
+      pixel.red=SigmoidalContrast(pixel.red);
+      pixel.green=SigmoidalContrast(pixel.green);
+      pixel.blue=SigmoidalContrast(pixel.blue);
+      pixel.index=SigmoidalContrast(pixel.index);
+      PixelSetMagickColor(contrast_pixels[x],&pixel);
+    }
+    (void) PixelSyncIterator(contrast_iterator);
+  }
+  if (y < (long) MagickGetImageHeight(image_wand))
+    ThrowWandException(image_wand);
+  contrast_iterator=DestroyPixelIterator(contrast_iterator);
+  iterator=DestroyPixelIterator(iterator);
+  image_wand=DestroyMagickWand(image_wand);
+  /*
+    Write the image then destroy it.
+  */
+  status=MagickWriteImages(contrast_wand,argv[2],MagickTrue);
+  if (status == MagickFalse)
+    ThrowWandException(image_wand);
+  contrast_wand=DestroyMagickWand(contrast_wand);
+  MagickWandTerminus();
+  return(0);
+}
+</pre>
+</div>
+      </td>
+      <td id="margin" width="1%" height="100%" valign="top" align="right">&nbsp;</td>
+    </tr>
+  </tbody>
+  </table>
+  <div id="linkbar">
+    <a href="http://www.imagemagick.org/discourse-server/" target="1423005923">Discourse Server</a> &bull;
+    <a href="../www/mailing-list.html">Mailing Lists</a> &bull;
+    <a href="http://studio.webbyland.com/ImageMagick/MagickStudio/scripts/MagickStudio.cgi" target="1422732026">ImageMagick Studio</a>
+  </div>
+  <div id="footer">
+    <span id="footer-west">&copy; 1999-2007 ImageMagick Studio LLC</span>
+  </div>
+  <div style="clear: both; margin: 0; width: 100%; "></div>
+</body>
+</html>
