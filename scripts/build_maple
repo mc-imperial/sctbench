@@ -1,0 +1,11 @@
+#!/bin/bash
+set -x
+set -e
+set -u
+
+cd ${ROOT}
+
+# Build
+cd maple
+make compiletype=release
+cd ..

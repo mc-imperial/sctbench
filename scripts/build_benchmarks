@@ -1,0 +1,33 @@
+#!/bin/bash
+set -x
+set -e
+set -u
+
+cd ${ROOT}
+
+cd benchmarks
+cd chess
+./build.sh
+cd ..
+cd conc-bugs
+./build.sh
+cd ..
+cd concurrent-software-benchmarks
+./build.sh
+cd ..
+cd inspect_benchmarks
+./build.sh
+cd ..
+cd inspect_examples
+./build.sh
+cd ..
+cd parsec-2.0
+./buildall.sh
+cd ..
+cd safestack
+./build.sh
+cd ..
+cd splash2
+./build.sh
+cd ..
+
