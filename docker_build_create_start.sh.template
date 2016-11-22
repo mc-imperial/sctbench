@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+set -x
+set -u
+
+IMAGE=sctbench-image
+CONTAINER=sctbench-container
+
+docker build -t ${IMAGE} .
+
+docker stop ${CONTAINER} | true
+docker rm ${CONTAINER} | true
+
+docker create -ti --name ${CONTAINER} ${IMAGE}
+
+docker start -ia ${CONTAINER}
+
