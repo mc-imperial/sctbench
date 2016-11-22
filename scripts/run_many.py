@@ -30,26 +30,26 @@ def commandLine ():
                          help="A list of tests to run.",
                          dest="testslist")
     
-    # cmdline.add_argument("-wt",
-    #                      "--walltime",
-    #                       action="store",
-    #                       type=str,
-    #                       help="max wall time for each test",
-    #                       default="09:00:00")
+    cmdline.add_argument("-wt",
+                         "--walltime",
+                          action="store",
+                          type=str,
+                          help="max wall time for each test",
+                          default="09:00:00")
     
-    # cmdline.add_argument("-mem",
-    #                      "--mem",
-    #                       action="store",
-    #                       type=str,
-    #                       help="max RAM needed",
-    #                       default="800mb")
+    cmdline.add_argument("-mem",
+                         "--mem",
+                          action="store",
+                          type=str,
+                          help="max RAM needed",
+                          default="800mb")
     
-    # cmdline.add_argument("-ncpus",
-    #                      "--ncpus",
-    #                       action="store",
-    #                       type=str,
-    #                       help="#CPUs needed",
-    #                       default="2")
+    cmdline.add_argument("-ncpus",
+                         "--ncpus",
+                          action="store",
+                          type=str,
+                          help="#CPUs needed",
+                          default="2")
     
     cmdline.add_argument("-mode",
                          "--mode",

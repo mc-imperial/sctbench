@@ -89,7 +89,6 @@ def run(test, timeout, outfile):
     cmd = [path.join(".","run.sh"), test]
     sys.stdout.flush()
     os.environ["timeout"] = str(timeout)
-    print cmd
     fulloutfile = outfile
     if os.environ["cluster"]=="1":
         outfile = path.join(os.environ["TMPDIR"], path.basename(outfile))
