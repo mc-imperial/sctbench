@@ -123,7 +123,7 @@ if __name__ == "__main__":
     mode = sys.argv.pop(0)
     
     if len(sys.argv) != 0:
-        print "USAGE: ", cmd_name, "suite test outdir timelimit numThreads min max mode "
+        print "USAGE: ", cmd_name, "suite test outdir timelimit numThreads maxThreads maxSteps min max limit seed startIndex mode"
         sys.exit(1)
     
     
