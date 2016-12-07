@@ -2438,40 +2438,40 @@ def writeMacros(filename):
         write("numBuggyRandOverHalf", numBuggyRandOverHalf)
         write("numRandAllBuggy", numRandAllBuggy)
 
-# graph1("graphFirstBugThenTotal.pdf")
-# graph2("graphNonBuggyThenTotal.pdf")
-# #graph3("graphAll.pdf")
-# #graph4("graphDfsIpb.pdf")
-# #graph5("graphDfsIdb.pdf")
-# #graphIdbVsDfs("graphIdbVsDfs.pdf")
-# #graphWorstIdbVsWorstRandom("graphWorstIdbVsWorstRandom.pdf")
+graph1("graphFirstBugThenTotal.pdf")
+graph2("graphNonBuggyThenTotal.pdf")
+graph3("graphAll.pdf")
+graph4("graphDfsIpb.pdf")
+graph5("graphDfsIdb.pdf")
+graphIdbVsDfs("graphIdbVsDfs.pdf")
+graphWorstIdbVsWorstRandom("graphWorstIdbVsWorstRandom.pdf")
 
-# calc_cumulative()
+calc_cumulative()
 
-# graph_cumulative("graph_cumulative.pdf", benchmarks)
-# graph_cumulative2("graph_cumulative2.pdf", benchmarks)
-# graph_cumulative3("graph_cumulative3.pdf", benchmarks)
+graph_cumulative("graph_cumulative.pdf", benchmarks)
+graph_cumulative2("graph_cumulative2.pdf", benchmarks)
+graph_cumulative3("graph_cumulative3.pdf", benchmarks)
 
 barchart("barChart.pdf", 0)
 barchart("barChart2.pdf", 1)
 
-# venn_diagram1("vennDiagram.pdf")
-# venn_diagram2("vennDiagram2.pdf")
-# #venn_diagram3("vennDiagram3.pdf")
-# #venn_diagram4("vennDiagram4.pdf")
+venn_diagram1("vennDiagram.pdf")
+venn_diagram2("vennDiagram2.pdf")
+venn_diagram3("vennDiagram3.pdf")
+venn_diagram4("vennDiagram4.pdf")
 
-# venn_diagram_random("vennDiagramRandom.pdf")
-# venn_diagram_pct_rand_idb("venn_diagram_pct_rand_idb.pdf")
-# venn_diagram_pct_rand_ipb("venn_diagram_pct_rand_ipb.pdf")
-# venn_diagram_pct_maple_idb("venn_diagram_pct_maple_idb.pdf")
+venn_diagram_random("vennDiagramRandom.pdf")
+venn_diagram_pct_rand_idb("venn_diagram_pct_rand_idb.pdf")
+venn_diagram_pct_rand_ipb("venn_diagram_pct_rand_ipb.pdf")
+venn_diagram_pct_maple_idb("venn_diagram_pct_maple_idb.pdf")
 
 
 
-# writeTable2("tableRand.tex")
+writeTable2("tableRand.tex")
 
-# #writeCsv("table.csv")
-# writeCsv("table.tex", " & ", "\\\\\n", False, latex=True)
-# writeMacros("genmacros.tex")
+writeCsv("table.csv")
+writeCsv("table.tex", " & ", "\\\\\n", False, latex=True)
+writeMacros("genmacros.tex")
 
 # paperDir = "/data/eclipseLatex/workspace/paper2014/"
 # figuresDir = paperDir+"figures/" 
