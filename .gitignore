@@ -3,4 +3,7 @@
 /cluster_env.sh
 /.idea/
 /.vagrant/
-
+*.pyc
+/benchmarks/*.pdf
+/benchmarks/*.tex
+/benchmarks/*.csv
