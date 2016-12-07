@@ -7,6 +7,7 @@ import sys
 from random import shuffle
 import random
 import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import math
 import shutil
