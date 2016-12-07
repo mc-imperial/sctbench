@@ -1,3 +1,19 @@
+# SCTBench
+
+A set of C/C++ pthread benchmarks and tools for evaluating concurrency testing techniques.
+
+You can download our original VirtualBox artifact to reproduce our experiments [here](https://sites.google.com/site/sctbenchmarks/).
+This git repository is supposed to be more convenient and includes more recent changes,
+such as our implementation of the PCT algorithm.
+Usability of the tools and scripts could still be greatly improved.
+Nevertheless, it should be possible to reproduce our experimental evaluation.
+
+Recall that the data race detection phase is nondeterministic
+and different compiler versions may also lead to different binaries.
+Thus, our study is not deterministic.
+However, we provide a link to our log files so
+additional analysis of our results is possible and
+the graphs and tables can be reproduced deterministically. 
 
 # Instructions
 
@@ -79,11 +95,37 @@ A log file will be output for each benchmark
 The log files will be scanned by the scripts that generate the result tables and graphs.
 You could also write your own scripts to scan these log files.
 
-# Generating results
+# Generating results tables and graphs
 
-TODO. We used the script: `scripts/tabulate2.py`. 
-You need `matplotlib` and possibly other Python modules.
-You also have to rename the results directories to include the word `use`.
-You have to have a complete set of results for ALL benchmarks.
+We used the script: `scripts/tabulate2.py`:
+
+* You need `matplotlib` and possibly other Python modules.
+* You also have to rename the results directories to include the word `use`.
+* You have to have a complete set of results for ALL benchmarks.
+
 In other words, the script is not easy to use in its current form. 
 The results table and PDFs are output in the `benchmarks/` directory.
+
+You can download our log files to reproduce our results:
+
+```bash
+cd benchmarks
+mkdir __results
+cd __results
+wget https://www.dropbox.com/s/41k5e649m1c9lar/2015-06-100_000_after_reviews.tar.bz2?dl=1
+tar -xvf 2015-06-100_000_after_reviews.tar.bz2
+ls
+# Should see the following:
+# 2015-06-100_000_after_reviews.tar.bz2 use-2015-01-23-17-33-08--100_000_pb_db   use-2015-03-07-19-50-18--100_000_pct3
+# use-2015-01-23-17-28-54--100_000_pct1  use-2015-01-23-17-34-38--100_000_random  use-2015-05-28-14-36-21--10_000_chess_pb_db
+# use-2015-01-23-17-32-10--100_000_dfs   use-2015-03-07-19-49-58--100_000_pct2    use-2015-05-28-14-36-41--10_000_chess_dfs
+cd ../..
+tabluate2.py
+ls benchmarks/
+# Should see:
+# barChart2.pdf                   graph_cumulative2.pdf    ... etc.
+```
+
+Once the log files have been scanned, the data is cached in `benchmarks/benchmarks.bin`
+so you can regenerate graphs and tables without having to rescan logs files.
+
