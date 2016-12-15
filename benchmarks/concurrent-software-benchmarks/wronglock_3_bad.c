@@ -2573,7 +2573,7 @@ extern void __assert (const char *__assertion, const char *__file, int __line)
 
 static int iNum1 = 1;
 static int iNum2 = 3;
-static int dataValue = 0;
+static volatile int dataValue = 0;
 pthread_mutex_t *dataLock;
 pthread_mutex_t *thisLock;
 

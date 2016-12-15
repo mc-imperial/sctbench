@@ -7,7 +7,7 @@
 
 static int iNum1 = 1;
 static int iNum2 = 7;
-static int dataValue = 0;
+static volatile int dataValue = 0;
 pthread_mutex_t *dataLock;
 pthread_mutex_t *thisLock;
 
